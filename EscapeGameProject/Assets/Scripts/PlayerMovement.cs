@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float playerSpeed = 5f;
+    private Rigidbody rb;
+    public int playerDamage = 2;
+    public GameObject MiniMap;
+    public bool onMove;
+    void Start()
+    {
+        onMove = true;
+        rb = GetComponent<Rigidbody>();
+        MiniMap.SetActive(false);
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (onMove)
+        {
+            float inputX = Input.GetAxis("Horizontal");
+            float inputY = Input.GetAxis("Vertical");
+            Vector3 velocity = new Vector3(inputX, -1, inputY);
+            velocity *= playerSpeed;
+            rb.velocity = velocity;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Destroy(gameObject);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            MiniMap.SetActive(!MiniMap.activeSelf);
+
+
+        }
+
+    }
+}
