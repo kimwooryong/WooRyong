@@ -1,8 +1,8 @@
 ID,Name,Description,CanCount,Weight,CanGrab
-1,TestItem,Å×½ºÆ® ¿ë ¾ÆÀÌÅÛ Ã¹ ¹øÂ°ÀÌ´Ù.,TRUE,1,TRUE
-2,TestItem2,Å×½ºÆ® ¿ë ¾ÆÀÌÅÛ ¼¼ ¹øÂ°ÀÌ´Ù.,TRUE,1,FALSE
-3,Number3,³Ñ¹ö 3. ,FALSE,10,FALSE
-4,µ¹¸æÀÌ,´©±º°¡ÀÇ ¸Ó¸®¸¦ ¶§¸± ¼ö ÀÖ´Ù.,FALSE,5,TRUE
-5,Finger,Â¬ÀßÇÏ´Ù,TRUE,0.5,FALSE
-6,Dead Man Head,µ¹¿¡ ¸ÂÀº °Í Ã³·³ º¸ÀÎ´Ù.,FALSE,20,TRUE
-7,Dead Man Body,Â÷°©°Ô ½Ä¾ú´Ù.,FALSE,80,FALSE
+1,TestItem,"""í…ŒìŠ¤íŠ¸ ìš© ì•„ì´í…œ ì²« ë²ˆì§¸ì´ë‹¤.""",TRUE,1,TRUE
+2,TestItem2,"""í…ŒìŠ¤íŠ¸ ìš© ì•„ì´í…œ ì„¸ ë²ˆì§¸ì´ë‹¤.""",TRUE,1,FALSE
+3,Number3,"""ë„˜ë²„ 3. """,FALSE,10,FALSE
+4,ëŒë©©ì´,"""ëˆ„êµ°ê°€ì˜ ë¨¸ë¦¬ë¥¼ ë•Œë¦´ ìˆ˜ ìžˆë‹¤.""",FALSE,5,TRUE
+5,Finger,"""ì§­ìž˜í•˜ë‹¤""",TRUE,0.5,FALSE
+6,Dead Man Head,"""ëŒì— ë§žì€ ê²ƒ ì²˜ëŸ¼ ë³´ì¸ë‹¤.""",FALSE,20,TRUE
+7,Dead Man Body,"""ì°¨ê°‘ê²Œ ì‹ì—ˆë‹¤.""",FALSE,80,FALSE
