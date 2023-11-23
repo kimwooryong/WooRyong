@@ -10,6 +10,9 @@
 **/[Ll]ogs/
 **/[Uu]ser[Ss]ettings/
 
+#사용할 폴더, 개인적으로 자료 저장할 폴더 추가
+**/[Pp]ersonal[Aa]sset
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 **/[Mm]emoryCaptures/
