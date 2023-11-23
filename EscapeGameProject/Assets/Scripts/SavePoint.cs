@@ -5,9 +5,8 @@ using UnityEngine;
 public class SavePoint : MonoBehaviour
 {
     private bool canInteract = false;
-    private PlayerSpawner spawnPlayer;
-    private Vector3 firstSpawnPosition;
-    private Quaternion firstSpawnRotation;
+    private GameManager gameManager;
+    private Transform firstSpawnPosition;
     private TreeSpawn treeSpawner;
     private DayNightCycle dayNightCycle;
     private UIManager uiManager;
@@ -16,20 +15,19 @@ public class SavePoint : MonoBehaviour
     public CanvasGroup panelCanvasGroup;
 
     public float fadeDuration = 5f;
-
+    private int randCount;
 
     private void Start()
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
-        spawnPlayer = FindObjectOfType<PlayerSpawner>();
+        gameManager = FindObjectOfType<GameManager>();
         treeSpawner = FindObjectOfType<TreeSpawn>();
         uiManager = FindObjectOfType<UIManager>();
         playerMovement = FindObjectOfType<PlayerMovement>();
 
-        if (spawnPlayer != null)
+        if (gameManager != null)
         {
-            firstSpawnPosition = spawnPlayer.transform.position;
-            firstSpawnRotation = spawnPlayer.transform.rotation;
+            firstSpawnPosition = gameManager.spawnPlace.transform;
         }
     }
 
@@ -66,44 +64,34 @@ public class SavePoint : MonoBehaviour
             canInteract = false;
         }
     }
-
     private void SetSavePoint()
     {
-        if (spawnPlayer != null)
-        {
-            spawnPlayer.spawnPlace.position = transform.position;
-            spawnPlayer.spawnPlace.rotation = transform.rotation;
-        }
+        gameManager.SetSpawnPoint(transform);
     }
 
     private void OnDestroy()
     {
-        if (spawnPlayer != null)
-        {
-            spawnPlayer.spawnPlace.position = firstSpawnPosition;
-            spawnPlayer.spawnPlace.rotation = firstSpawnRotation;
-        }
+        gameManager.SetSpawnPoint(firstSpawnPosition);
     }
 
     public IEnumerator FadePanel()
     {
-        
-        {
-        float timer = 0f;
-        while (timer < fadeDuration)
-        {
 
-            panelCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-            timer += Time.deltaTime;
+        {
+            float timer = 0f;
+            while (timer < fadeDuration)
+            {
+
+                panelCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+                timer += Time.deltaTime;
                 playerMovement.onMove = false;
-                    yield return null;
-        }
-        SetSavePoint();
-        treeSpawner.SpawnTrees();
-        dayNightCycle.ResetDayNightCycle();
-        panelCanvasGroup.alpha = 0f;
+                yield return null;
+            }
+            SetSavePoint();
+            treeSpawner.SpawnTrees();
+            dayNightCycle.ResetDayNightCycle();
+            panelCanvasGroup.alpha = 0f;
             playerMovement.onMove = true;
         }
     }
 }
-
