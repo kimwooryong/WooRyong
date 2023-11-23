@@ -13,19 +13,19 @@ public class TreeSpawn : MonoBehaviour
     public LayerMask spawnLayer;
     public LayerMask obstacleLayer;
 
-    private int maxSpawnObject = 300;
-
-    
+    private int maxSpawnObject = 1000;
 
     private void Start()
     {
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 5; i++)
         {
             SpawnTrees();
         }
     }
+    
     public void SpawnTrees()
     {
+        
         int currentSpawnObject = GameObject.FindGameObjectsWithTag("NaturalObject").Length;
 
         int remainingObjects = Mathf.Max(0, maxSpawnObject - currentSpawnObject);

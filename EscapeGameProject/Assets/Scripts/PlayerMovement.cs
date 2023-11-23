@@ -8,27 +8,37 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed = 5f;
     private Rigidbody rb;
     public int playerDamage = 2;
-    public GameObject MiniMap;
+    public GameObject miniMap;
     public bool onMove;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
+        
         onMove = true;
         rb = GetComponent<Rigidbody>();
-        MiniMap.SetActive(false);
+        if(miniMap != null)
+        {
+        miniMap.SetActive(false);
+
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (onMove)
+ /*       if (onMove)
         {
             float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             Vector3 velocity = new Vector3(inputX, -1, inputY);
             velocity *= playerSpeed;
             rb.velocity = velocity;
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -36,10 +46,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            MiniMap.SetActive(!MiniMap.activeSelf);
-
-
+            miniMap.SetActive(!miniMap.activeSelf);
         }
+
 
     }
 }

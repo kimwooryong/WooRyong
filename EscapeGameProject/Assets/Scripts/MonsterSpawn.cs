@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    public GameObject monsterPrefab;
+    public GameObject[] monsterPrefab;
     public float minDistance = 10f;
     public float maxDistance = 20f;
     public LayerMask spawnLayer;
@@ -27,7 +27,8 @@ public class MonsterSpawner : MonoBehaviour
 
             if (!Physics.CheckSphere(randomPosition, 1f, obstacleLayer))
             {
-                Instantiate(monsterPrefab, randomPosition, Quaternion.identity);
+                int randomPrefabCount = Random.Range(0, monsterPrefab.Length);
+                Instantiate(monsterPrefab[randomPrefabCount], randomPosition, Quaternion.identity);
                 nextSpawnTime = Time.time + spawnInterval;
             }
         }
