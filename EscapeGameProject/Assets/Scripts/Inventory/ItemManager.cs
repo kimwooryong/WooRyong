@@ -8,12 +8,11 @@ public enum eItemKeyColumns
 {
     ID,
     Name,
-    Description
+    Description,
+    CanCount
 }
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField]
-    public TextMeshProUGUI text;
 
     #region ½Ì±ÛÅæ
     private static ItemManager instance;
@@ -41,14 +40,21 @@ public class ItemManager : MonoBehaviour
         }
     }
     #endregion
-    List<Dictionary<string, object>> data;
+    private List<Dictionary<string, object>> data;
 
     private void Start()
     {
         data = CSVReader.Read("ItemDataBase");
     }
 
+    public object ReadItemData(int itemID, eItemKeyColumns dataBaseKey)
+    {
+        return data[itemID][dataBaseKey.ToString()];
+    }
 
+    //Å×½ºÆ®¿ë
+    [SerializeField]
+    public TextMeshProUGUI text;
     private int count = 0;
     public void Update()
     {
