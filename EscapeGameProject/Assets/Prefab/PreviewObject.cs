@@ -107,6 +107,8 @@ public class PreviewObject : MonoBehaviour
         }
     }
 
+
+    // 이것들을 하나의 벡터값 * 방향 으로 만들어라
     public Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
     {
         // 우측
@@ -146,7 +148,7 @@ public class PreviewObject : MonoBehaviour
         }
 
         // 위
-        Vector3 up = snapTransform.position + snapTransform.up.normalized * transform.localScale.y;
+        Vector3 up = snapTransform.position + snapTransform.up.normalized * transform.localScale.y ;
         fDist = Vector3.Distance(currentPosition, up);
         if (fDist < fDistShortest)
         {
@@ -172,11 +174,13 @@ public class PreviewObject : MonoBehaviour
 
     public Vector3 GetSnapPosition(Vector3 currentPosition, ref Quaternion snapRotation)
     {
-        Debug.Log("3");
+        Debug.Log("2");
+        
         Transform snapTransform = GetClosestCollider();
         if (snapTransform != null)
         {
             Vector3 snapPosition = GetSnapPosition(currentPosition, snapTransform);
+            Debug.Log("snapPosition" + snapPosition);
 
             float dist = Vector3.Distance(snapPosition, currentPosition);
             if (dist < 1f)
