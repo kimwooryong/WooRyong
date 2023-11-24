@@ -1,163 +1,428 @@
 fileFormatVersion: 2
 guid: d1a62975036a7a64cbaf804bb4898907
-timeCreated: 1509973452
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Arm_Calf
-    100002: Bone
-    100004: Bone.001
-    100006: Bone.002
-    100008: Bone.003
-    100010: Bone.004
-    100012: Bone.004_end
-    100014: Bone.005
-    100016: Bone.006
-    100018: Bone.007
-    100020: Bone.008
-    100022: Bone.009
-    100024: Bone.010
-    100026: Bone.010_end
-    100028: Bone.013
-    100030: Bone.014.L
-    100032: Bone.014.R
-    100034: Bone.015.L
-    100036: Bone.015.R
-    100038: Bone.0155.L
-    100040: Bone.0155.L_end
-    100042: Bone.0155.R
-    100044: Bone.0155.R_end
-    100046: Bone.016.L
-    100048: Bone.016.L_end
-    100050: Bone.016.R
-    100052: Bone.016.R_end
-    100054: Bone.017.L
-    100056: Bone.017.R
-    100058: Bone.018.L
-    100060: Bone.018.R
-    100062: Bone.019.L
-    100064: Bone.019.R
-    100066: Bone.0199.L
-    100068: Bone.0199.L_end
-    100070: Bone.0199.R
-    100072: Bone.0199.R_end
-    100074: Bone.020.L
-    100076: Bone.020.L_end
-    100078: Bone.020.R
-    100080: Bone.020.R_end
-    100082: Bone.021.L
-    100084: Bone.021.R
-    100086: Bone.022.L
-    100088: Bone.022.L_end
-    100090: Bone.022.R
-    100092: Bone.022.R_end
-    100094: Calf_low
-    100096: //RootNode
-    400000: Arm_Calf
-    400002: Bone
-    400004: Bone.001
-    400006: Bone.002
-    400008: Bone.003
-    400010: Bone.004
-    400012: Bone.004_end
-    400014: Bone.005
-    400016: Bone.006
-    400018: Bone.007
-    400020: Bone.008
-    400022: Bone.009
-    400024: Bone.010
-    400026: Bone.010_end
-    400028: Bone.013
-    400030: Bone.014.L
-    400032: Bone.014.R
-    400034: Bone.015.L
-    400036: Bone.015.R
-    400038: Bone.0155.L
-    400040: Bone.0155.L_end
-    400042: Bone.0155.R
-    400044: Bone.0155.R_end
-    400046: Bone.016.L
-    400048: Bone.016.L_end
-    400050: Bone.016.R
-    400052: Bone.016.R_end
-    400054: Bone.017.L
-    400056: Bone.017.R
-    400058: Bone.018.L
-    400060: Bone.018.R
-    400062: Bone.019.L
-    400064: Bone.019.R
-    400066: Bone.0199.L
-    400068: Bone.0199.L_end
-    400070: Bone.0199.R
-    400072: Bone.0199.R_end
-    400074: Bone.020.L
-    400076: Bone.020.L_end
-    400078: Bone.020.R
-    400080: Bone.020.R_end
-    400082: Bone.021.L
-    400084: Bone.021.R
-    400086: Bone.022.L
-    400088: Bone.022.L_end
-    400090: Bone.022.R
-    400092: Bone.022.R_end
-    400094: Calf_low
-    400096: //RootNode
-    4300000: Calf_low
-    7400000: attack_2
-    7400002: attack_1
-    7400004: die
-    7400006: eat_1
-    7400008: eat_2
-    7400010: Hate
-    7400012: hit_back
-    7400014: hit_front
-    7400016: hit_left
-    7400018: hit_right
-    7400020: idle_1
-    7400022: idle_2
-    7400024: jump
-    7400026: run
-    7400028: run_attack
-    7400030: sleep_end
-    7400032: sleep_idle
-    7400034: sleep_start
-    7400036: walk_1
-    7400038: walk_back
-    7400040: walk_slow
-    7400042: Arm_Calf|attack_1
-    7400044: Arm_Calf|jump
-    7400046: Arm_Calf|run_attack
-    7400048: Arm_Calf|walk_1
-    7400050: Arm_Calf|walk_back
-    7400052: Arm_Calf|walk_slow
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: Calf_low
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Arm_Calf
+  - first:
+      1: 100002
+    second: Bone
+  - first:
+      1: 100004
+    second: Bone.001
+  - first:
+      1: 100006
+    second: Bone.002
+  - first:
+      1: 100008
+    second: Bone.003
+  - first:
+      1: 100010
+    second: Bone.004
+  - first:
+      1: 100012
+    second: Bone.004_end
+  - first:
+      1: 100014
+    second: Bone.005
+  - first:
+      1: 100016
+    second: Bone.006
+  - first:
+      1: 100018
+    second: Bone.007
+  - first:
+      1: 100020
+    second: Bone.008
+  - first:
+      1: 100022
+    second: Bone.009
+  - first:
+      1: 100024
+    second: Bone.010
+  - first:
+      1: 100026
+    second: Bone.010_end
+  - first:
+      1: 100028
+    second: Bone.013
+  - first:
+      1: 100030
+    second: Bone.014.L
+  - first:
+      1: 100032
+    second: Bone.014.R
+  - first:
+      1: 100034
+    second: Bone.015.L
+  - first:
+      1: 100036
+    second: Bone.015.R
+  - first:
+      1: 100038
+    second: Bone.0155.L
+  - first:
+      1: 100040
+    second: Bone.0155.L_end
+  - first:
+      1: 100042
+    second: Bone.0155.R
+  - first:
+      1: 100044
+    second: Bone.0155.R_end
+  - first:
+      1: 100046
+    second: Bone.016.L
+  - first:
+      1: 100048
+    second: Bone.016.L_end
+  - first:
+      1: 100050
+    second: Bone.016.R
+  - first:
+      1: 100052
+    second: Bone.016.R_end
+  - first:
+      1: 100054
+    second: Bone.017.L
+  - first:
+      1: 100056
+    second: Bone.017.R
+  - first:
+      1: 100058
+    second: Bone.018.L
+  - first:
+      1: 100060
+    second: Bone.018.R
+  - first:
+      1: 100062
+    second: Bone.019.L
+  - first:
+      1: 100064
+    second: Bone.019.R
+  - first:
+      1: 100066
+    second: Bone.0199.L
+  - first:
+      1: 100068
+    second: Bone.0199.L_end
+  - first:
+      1: 100070
+    second: Bone.0199.R
+  - first:
+      1: 100072
+    second: Bone.0199.R_end
+  - first:
+      1: 100074
+    second: Bone.020.L
+  - first:
+      1: 100076
+    second: Bone.020.L_end
+  - first:
+      1: 100078
+    second: Bone.020.R
+  - first:
+      1: 100080
+    second: Bone.020.R_end
+  - first:
+      1: 100082
+    second: Bone.021.L
+  - first:
+      1: 100084
+    second: Bone.021.R
+  - first:
+      1: 100086
+    second: Bone.022.L
+  - first:
+      1: 100088
+    second: Bone.022.L_end
+  - first:
+      1: 100090
+    second: Bone.022.R
+  - first:
+      1: 100092
+    second: Bone.022.R_end
+  - first:
+      1: 100094
+    second: Calf_low
+  - first:
+      1: 100096
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Arm_Calf
+  - first:
+      4: 400002
+    second: Bone
+  - first:
+      4: 400004
+    second: Bone.001
+  - first:
+      4: 400006
+    second: Bone.002
+  - first:
+      4: 400008
+    second: Bone.003
+  - first:
+      4: 400010
+    second: Bone.004
+  - first:
+      4: 400012
+    second: Bone.004_end
+  - first:
+      4: 400014
+    second: Bone.005
+  - first:
+      4: 400016
+    second: Bone.006
+  - first:
+      4: 400018
+    second: Bone.007
+  - first:
+      4: 400020
+    second: Bone.008
+  - first:
+      4: 400022
+    second: Bone.009
+  - first:
+      4: 400024
+    second: Bone.010
+  - first:
+      4: 400026
+    second: Bone.010_end
+  - first:
+      4: 400028
+    second: Bone.013
+  - first:
+      4: 400030
+    second: Bone.014.L
+  - first:
+      4: 400032
+    second: Bone.014.R
+  - first:
+      4: 400034
+    second: Bone.015.L
+  - first:
+      4: 400036
+    second: Bone.015.R
+  - first:
+      4: 400038
+    second: Bone.0155.L
+  - first:
+      4: 400040
+    second: Bone.0155.L_end
+  - first:
+      4: 400042
+    second: Bone.0155.R
+  - first:
+      4: 400044
+    second: Bone.0155.R_end
+  - first:
+      4: 400046
+    second: Bone.016.L
+  - first:
+      4: 400048
+    second: Bone.016.L_end
+  - first:
+      4: 400050
+    second: Bone.016.R
+  - first:
+      4: 400052
+    second: Bone.016.R_end
+  - first:
+      4: 400054
+    second: Bone.017.L
+  - first:
+      4: 400056
+    second: Bone.017.R
+  - first:
+      4: 400058
+    second: Bone.018.L
+  - first:
+      4: 400060
+    second: Bone.018.R
+  - first:
+      4: 400062
+    second: Bone.019.L
+  - first:
+      4: 400064
+    second: Bone.019.R
+  - first:
+      4: 400066
+    second: Bone.0199.L
+  - first:
+      4: 400068
+    second: Bone.0199.L_end
+  - first:
+      4: 400070
+    second: Bone.0199.R
+  - first:
+      4: 400072
+    second: Bone.0199.R_end
+  - first:
+      4: 400074
+    second: Bone.020.L
+  - first:
+      4: 400076
+    second: Bone.020.L_end
+  - first:
+      4: 400078
+    second: Bone.020.R
+  - first:
+      4: 400080
+    second: Bone.020.R_end
+  - first:
+      4: 400082
+    second: Bone.021.L
+  - first:
+      4: 400084
+    second: Bone.021.R
+  - first:
+      4: 400086
+    second: Bone.022.L
+  - first:
+      4: 400088
+    second: Bone.022.L_end
+  - first:
+      4: 400090
+    second: Bone.022.R
+  - first:
+      4: 400092
+    second: Bone.022.R_end
+  - first:
+      4: 400094
+    second: Calf_low
+  - first:
+      4: 400096
+    second: //RootNode
+  - first:
+      43: 4300000
+    second: Calf_low
+  - first:
+      74: 7400000
+    second: attack_2
+  - first:
+      74: 7400002
+    second: attack_1
+  - first:
+      74: 7400004
+    second: die
+  - first:
+      74: 7400006
+    second: eat_1
+  - first:
+      74: 7400008
+    second: eat_2
+  - first:
+      74: 7400010
+    second: Hate
+  - first:
+      74: 7400012
+    second: hit_back
+  - first:
+      74: 7400014
+    second: hit_front
+  - first:
+      74: 7400016
+    second: hit_left
+  - first:
+      74: 7400018
+    second: hit_right
+  - first:
+      74: 7400020
+    second: idle_1
+  - first:
+      74: 7400022
+    second: idle_2
+  - first:
+      74: 7400024
+    second: jump
+  - first:
+      74: 7400026
+    second: run
+  - first:
+      74: 7400028
+    second: run_attack
+  - first:
+      74: 7400030
+    second: sleep_end
+  - first:
+      74: 7400032
+    second: sleep_idle
+  - first:
+      74: 7400034
+    second: sleep_start
+  - first:
+      74: 7400036
+    second: walk_1
+  - first:
+      74: 7400038
+    second: walk_back
+  - first:
+      74: 7400040
+    second: walk_slow
+  - first:
+      74: 7400042
+    second: Arm_Calf|attack_1
+  - first:
+      74: 7400044
+    second: Arm_Calf|jump
+  - first:
+      74: 7400046
+    second: Arm_Calf|run_attack
+  - first:
+      74: 7400048
+    second: Arm_Calf|walk_1
+  - first:
+      74: 7400050
+    second: Arm_Calf|walk_back
+  - first:
+      74: 7400052
+    second: Arm_Calf|walk_slow
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Calf_low
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: attack_2
       takeName: attack_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -284,6 +549,7 @@ ModelImporter:
     - serializedVersion: 16
       name: attack_1
       takeName: attack_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 22
       wrapMode: 0
@@ -410,6 +676,7 @@ ModelImporter:
     - serializedVersion: 16
       name: die
       takeName: die
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -536,6 +803,7 @@ ModelImporter:
     - serializedVersion: 16
       name: eat_1
       takeName: eat_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -662,6 +930,7 @@ ModelImporter:
     - serializedVersion: 16
       name: eat_2
       takeName: eat_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 204
       wrapMode: 0
@@ -788,6 +1057,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Hate
       takeName: Hate
+      internalID: 0
       firstFrame: 0
       lastFrame: 90
       wrapMode: 0
@@ -914,6 +1184,7 @@ ModelImporter:
     - serializedVersion: 16
       name: hit_back
       takeName: hit_back
+      internalID: 0
       firstFrame: 0
       lastFrame: 18
       wrapMode: 0
@@ -1040,6 +1311,7 @@ ModelImporter:
     - serializedVersion: 16
       name: hit_front
       takeName: hit_front
+      internalID: 0
       firstFrame: 0
       lastFrame: 18
       wrapMode: 0
@@ -1166,6 +1438,7 @@ ModelImporter:
     - serializedVersion: 16
       name: hit_left
       takeName: hit_left
+      internalID: 0
       firstFrame: 0
       lastFrame: 18
       wrapMode: 0
@@ -1292,6 +1565,7 @@ ModelImporter:
     - serializedVersion: 16
       name: hit_right
       takeName: hit_right
+      internalID: 0
       firstFrame: 0
       lastFrame: 18
       wrapMode: 0
@@ -1418,6 +1692,7 @@ ModelImporter:
     - serializedVersion: 16
       name: idle_1
       takeName: idle_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 100
       wrapMode: 0
@@ -1544,6 +1819,7 @@ ModelImporter:
     - serializedVersion: 16
       name: idle_2
       takeName: idle_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 100
       wrapMode: 0
@@ -1670,6 +1946,7 @@ ModelImporter:
     - serializedVersion: 16
       name: jump
       takeName: jump
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -1796,6 +2073,7 @@ ModelImporter:
     - serializedVersion: 16
       name: run
       takeName: run
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1922,6 +2200,7 @@ ModelImporter:
     - serializedVersion: 16
       name: run_attack
       takeName: run_attack
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2048,6 +2327,7 @@ ModelImporter:
     - serializedVersion: 16
       name: sleep_end
       takeName: sleep_end
+      internalID: 0
       firstFrame: 0
       lastFrame: 50
       wrapMode: 0
@@ -2174,6 +2454,7 @@ ModelImporter:
     - serializedVersion: 16
       name: sleep_idle
       takeName: sleep_idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 50
       wrapMode: 0
@@ -2300,6 +2581,7 @@ ModelImporter:
     - serializedVersion: 16
       name: sleep_start
       takeName: sleep_start
+      internalID: 0
       firstFrame: 0
       lastFrame: 50
       wrapMode: 0
@@ -2426,6 +2708,7 @@ ModelImporter:
     - serializedVersion: 16
       name: walk_1
       takeName: walk_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -2552,6 +2835,7 @@ ModelImporter:
     - serializedVersion: 16
       name: walk_back
       takeName: walk_back
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -2678,6 +2962,7 @@ ModelImporter:
     - serializedVersion: 16
       name: walk_slow
       takeName: walk_slow
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2807,26 +3092,49 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -2836,14 +3144,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 1
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
