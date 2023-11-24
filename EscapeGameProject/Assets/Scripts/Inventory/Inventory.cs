@@ -19,16 +19,21 @@ public class Inventory : MonoBehaviour
     }
 
     //특정 ID 아이템 획득
-    private void GetItem(int itemID)
+    private void AddItem(int itemID)
     {
-        //이미 있는 아이템일 때.
-        if (FindItem(itemID))
+        //아이템 검색
+        int index = FindItem(itemID);
+        //없다면
+        if(index == -1)
         {
 
         }
-        //없는 아이템일 때.
+        //있다면
         else
         {
+            //있고, 합칠 수 있다면
+
+            //있지만, 합칠 수 없다면
 
         }
     }
@@ -41,25 +46,17 @@ public class Inventory : MonoBehaviour
     {
 
     }
-    private bool FindItem(int itemID)
+    //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
+    private int FindItem(int itemID)
     {
-        foreach (ItemSlot slot in InventorySlots)
+        for (int i = 0; i < InventorySlots.Count; i++)
         {
-            //빈 칸 발견시
-            if (slot.itemID == 0)
+            //아이템 ID 같은거
+            if (InventorySlots[i].itemID == itemID)
             {
-                Debug.Log("아이템 슬롯 끝.");
-                return false;
-            }
-            else
-            {
-                //item이 이미 있을 때
-                if(slot.itemID == itemID)
-                {
-                    return true;
-                }
+                return i;
             }
         }
-        return false;
+            return -1;
     }
 }

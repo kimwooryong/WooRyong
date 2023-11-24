@@ -11,6 +11,7 @@ public class ItemSlot : MonoBehaviour
     public string itemDescription;
     public int itemAmount;
     public SpriteRenderer itemIcon;
+    public bool canCount;
 
     public void SetItemSlot(int getItemID)
     {
@@ -28,5 +29,9 @@ public class ItemSlot : MonoBehaviour
         itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description).ToString();
         //스프라이트 경로 받아서 설정. 이미지 읽어오기.
         //itemIcon =
-        }
+    }
+    public void PlusItemAmount(int quantity)
+    {
+        
+    }
 }
