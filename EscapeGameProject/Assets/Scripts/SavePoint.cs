@@ -71,7 +71,7 @@ public class SavePoint : MonoBehaviour
 
     private void OnDestroy()
     {
-        gameManager.SetSpawnPoint(firstSpawnPosition);
+        gameManager.SetSpawnPoint(firstSpawnPosition);      
     }
 
     public IEnumerator FadePanel()

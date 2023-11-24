@@ -164,7 +164,9 @@ public class PreviewObject : MonoBehaviour
             closestPosition = down;
             Debug.Log("down");
         }
-        Debug.Log(closestPosition);
+
+
+        Debug.Log("9" + closestPosition);
         return closestPosition;
     }
 
