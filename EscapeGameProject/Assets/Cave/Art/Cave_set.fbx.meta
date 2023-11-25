@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 844c7b20011f7654b9c8d1788484ea96
+timeCreated: 1467481119
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Cave_rocks1
+    100002: Cave_rocks2
+    100004: Cave_rocks3
+    100006: Cave_rocks4
+    100008: Cave_rocks5
+    100010: Cave_rocks6
+    100012: Cave_rocks7
+    100014: Cave_rocks8
+    100016: //RootNode
+    100018: Cave_set
+    100020: Cave_Set1
+    100022: Cave_Set2
+    100024: Cave_Set3
+    100026: Cave_Set4
+    100028: Cave_Set5
+    100030: Rocks1
+    100032: Rocks2
+    100034: Rocks3
+    100036: Rocks4
+    100038: Rocks5
+    100040: Skeleton01
+    100042: Skeleton02
+    100044: Skeleton03
+    100046: Cave_Set6
+    400000: Cave_rocks1
+    400002: Cave_rocks2
+    400004: Cave_rocks3
+    400006: Cave_rocks4
+    400008: Cave_rocks5
+    400010: Cave_rocks6
+    400012: Cave_rocks7
+    400014: Cave_rocks8
+    400016: //RootNode
+    400018: Cave_set
+    400020: Cave_Set1
+    400022: Cave_Set2
+    400024: Cave_Set3
+    400026: Cave_Set4
+    400028: Cave_Set5
+    400030: Rocks1
+    400032: Rocks2
+    400034: Rocks3
+    400036: Rocks4
+    400038: Rocks5
+    400040: Skeleton01
+    400042: Skeleton02
+    400044: Skeleton03
+    400046: Cave_Set6
+    2300000: Cave_rocks1
+    2300002: Cave_rocks2
+    2300004: Cave_rocks3
+    2300006: Cave_rocks4
+    2300008: Cave_rocks5
+    2300010: Cave_rocks6
+    2300012: Cave_rocks7
+    2300014: Cave_rocks8
+    2300016: Cave_set
+    2300018: Cave_Set1
+    2300020: Cave_Set2
+    2300022: Cave_Set3
+    2300024: Cave_Set4
+    2300026: Cave_Set5
+    2300028: Rocks1
+    2300030: Rocks2
+    2300032: Rocks3
+    2300034: Rocks4
+    2300036: Rocks5
+    2300038: Skeleton01
+    2300040: Skeleton02
+    2300042: Skeleton03
+    2300044: Cave_Set6
+    3300000: Cave_rocks1
+    3300002: Cave_rocks2
+    3300004: Cave_rocks3
+    3300006: Cave_rocks4
+    3300008: Cave_rocks5
+    3300010: Cave_rocks6
+    3300012: Cave_rocks7
+    3300014: Cave_rocks8
+    3300016: Cave_set
+    3300018: Cave_Set1
+    3300020: Cave_Set2
+    3300022: Cave_Set3
+    3300024: Cave_Set4
+    3300026: Cave_Set5
+    3300028: Rocks1
+    3300030: Rocks2
+    3300032: Rocks3
+    3300034: Rocks4
+    3300036: Rocks5
+    3300038: Skeleton01
+    3300040: Skeleton02
+    3300042: Skeleton03
+    3300044: Cave_Set6
+    4300000: Cave_Set5
+    4300002: Rocks1
+    4300004: Rocks2
+    4300006: Rocks3
+    4300008: Rocks4
+    4300010: Rocks5
+    4300012: Cave_Set3
+    4300014: Cave_Set1
+    4300016: Cave_Set2
+    4300018: Cave_Set4
+    4300020: Skeleton01
+    4300022: Cave_set
+    4300024: Cave_rocks1
+    4300026: Cave_rocks2
+    4300028: Cave_rocks3
+    4300030: Cave_rocks4
+    4300032: Cave_rocks5
+    4300034: Cave_rocks6
+    4300036: Cave_rocks7
+    4300038: Cave_rocks8
+    4300040: Skeleton02
+    4300042: Skeleton03
+    4300044: Cave_Set6
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
