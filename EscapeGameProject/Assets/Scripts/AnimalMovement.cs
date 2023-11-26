@@ -16,6 +16,10 @@ public class AnimalMovement : MonoBehaviour
 {
 
     private Animation ani;
+    private string[] idleStates = {"eat", "idle", "walk"};
+    private int currentIdle;
+
+
     public float moveSpeed = 5f;
     public float rotationSpeed = 45f;
     public float rotationInterval = 2f;
@@ -24,37 +28,61 @@ public class AnimalMovement : MonoBehaviour
 
     public MonsterBehavior behavior;
     public float rayRange = 10f;
-    public Transform player;
+    public Transform playerPosition;
     public bool isPlayerCheck;
 
     public float coneAngle = 45f;
     public int rayCount = 5;
 
+    public bool isIdleStateChangeRunning = false;
+    private bool isAttckTime = false;
+
+    public int currentHp;
+    public int maxHp;
+    private PlayerMovement player;
+    private bool isHit = false;
+    private bool isDie = false;
 
     private void Start()
     {
         ani = GetComponent<Animation>();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        player = FindObjectOfType<PlayerMovement>();
+        currentHp = maxHp;
 
     }
 
+
     void Update()
     {
-
-
-        if (!isPlayerCheck)
+        float distanceToPlayer = Vector3.Distance(this.gameObject.transform.position, playerPosition.position);
+        if (!isPlayerCheck && !isHit && !isDie)
         {
 
             ani.wrapMode = WrapMode.Loop;
-            ani.Play("walk_1");
-
             timer += Time.deltaTime;
-            if (timer >= rotationInterval)
-            {
-                RotateSmoothly();
 
-                timer = 0f;
+            if (!isIdleStateChangeRunning)
+            {
+                StartCoroutine(IdleStateChange());
             }
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
+            ani.CrossFade(idleStates[currentIdle] , 0.3f);
+
+            string currentAnimationState = idleStates[currentIdle];
+
+            
+            if (currentIdle == 2)
+            {
+                if (timer >= rotationInterval)
+                {
+                    RotateSmoothly();
+
+                    timer = 0f;
+                }
+                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            }
+
 
             RaycastHit hit;
             float raySpacing = coneAngle / (rayCount - 1);
@@ -84,25 +112,35 @@ public class AnimalMovement : MonoBehaviour
 
         }
 
-
-        else if (isPlayerCheck)
+        
+        else if (isPlayerCheck && !isHit && !isDie)
         {
-            ani.wrapMode = WrapMode.Loop;
-            ani.Play("run");
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
             if (behavior == MonsterBehavior.Aggression)
             {
-                Vector3 directionToPlayer = (player.position - transform.position);
+                
+                Vector3 directionToPlayer = (playerPosition.position - transform.position);
                 directionToPlayer.y = 0f;
 
                 Quaternion rotation = Quaternion.LookRotation(directionToPlayer);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
 
-                if (distanceToPlayer > 1f)
+                if (distanceToPlayer > 1.7f && !isAttckTime)
                 {
                     transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
+                    ani.wrapMode = WrapMode.Loop;
+                    ani.Play("run");
                 }
+                if (distanceToPlayer <= 1.7f)
+                {
+                    transform.Translate(Vector3.forward * moveSpeed * 0.01f * Time.deltaTime);
+                    if(isAttckTime == false)
+                    {
+                    StartCoroutine(WaitAttackTime());
+
+                    }
+                }
+
                 else if (distanceToPlayer >= 20)
                 {
                     isPlayerCheck = false;
@@ -112,7 +150,9 @@ public class AnimalMovement : MonoBehaviour
 
             if (behavior == MonsterBehavior.Defensiveness)
             {
-                Vector3 directionToPlayer = (player.position - transform.position);
+                ani.wrapMode = WrapMode.Loop;
+                ani.Play("run");
+                Vector3 directionToPlayer = (playerPosition.position - transform.position);
                 directionToPlayer.y = 0f;
 
                 Quaternion rotation = Quaternion.LookRotation(-directionToPlayer);
@@ -125,8 +165,24 @@ public class AnimalMovement : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            isHit = true;
+            TakeDamage(player.playerDamage);
+            if (currentHp <= 0)
+            {
+
+                isDie = true;
+                StartCoroutine(DestroyAfterDelay(1f));
+
+            }
+        }
+
+
+
 
     }
+
 
     void RotateSmoothly()
     {
@@ -152,6 +208,75 @@ public class AnimalMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerCheck = true;
+            
         }
     }
+
+    IEnumerator IdleStateChange()
+    {
+        isIdleStateChangeRunning = true;
+
+        yield return new WaitForSecondsRealtime(7.0f);
+
+        currentIdle = Random.Range(0, idleStates.Length);
+
+        isIdleStateChangeRunning = false;
+    }
+    IEnumerator WaitAttackTime()
+    {
+        isAttckTime = true;
+
+        ani.Play("attack");
+
+        yield return new WaitForSecondsRealtime(0.8f);
+
+        ani.Stop("attack");
+
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        isAttckTime = false;
+    }
+
+    void TakeDamage(int damage)
+    {
+        isPlayerCheck = true;
+        currentHp -= damage;
+
+        if (currentHp < 0)
+        {
+            currentHp = 0;
+        }
+
+        StartCoroutine(HitAnimation());
+    }
+
+    IEnumerator DestroyAfterDelay(float delay)
+    {
+        ani.Stop();
+        ani.Play("die");
+
+        yield return new WaitForSecondsRealtime(delay * 1.04f);
+        ani.Stop();
+        float destroyWaitTime = 0f;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z);
+
+        while (destroyWaitTime < 2.0f)
+        {
+            destroyWaitTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, destroyWaitTime / 5.0f);
+            yield return null;
+        }
+        Destroy(gameObject, delay * 2.0f);
+        yield return new WaitForSecondsRealtime(delay * 2.0f);
+    }
+
+    IEnumerator HitAnimation()
+    {
+        ani.Stop();
+        ani.Play("hit");
+        yield return new WaitForSeconds(1.0f);
+        isHit = false;
+    }
+
 }

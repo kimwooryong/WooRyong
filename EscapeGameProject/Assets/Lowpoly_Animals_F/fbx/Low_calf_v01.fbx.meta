@@ -314,7 +314,7 @@ ModelImporter:
     second: eat_1
   - first:
       74: 7400008
-    second: eat_2
+    second: eat
   - first:
       74: 7400010
     second: Hate
@@ -323,7 +323,7 @@ ModelImporter:
     second: hit_back
   - first:
       74: 7400014
-    second: hit_front
+    second: hit
   - first:
       74: 7400016
     second: hit_left
@@ -335,7 +335,7 @@ ModelImporter:
     second: idle_1
   - first:
       74: 7400022
-    second: idle_2
+    second: idle
   - first:
       74: 7400024
     second: jump
@@ -356,7 +356,7 @@ ModelImporter:
     second: sleep_start
   - first:
       74: 7400036
-    second: walk_1
+    second: walk
   - first:
       74: 7400038
     second: walk_back
@@ -928,7 +928,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: eat_2
+      name: eat
       takeName: eat_2
       internalID: 0
       firstFrame: 0
@@ -1309,7 +1309,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hit_front
+      name: hit
       takeName: hit_front
       internalID: 0
       firstFrame: 0
@@ -1817,7 +1817,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: idle_2
+      name: idle
       takeName: idle_2
       internalID: 0
       firstFrame: 0
@@ -2706,7 +2706,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk_1
+      name: walk
       takeName: walk_1
       internalID: 0
       firstFrame: 0
