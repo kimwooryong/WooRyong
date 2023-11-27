@@ -29,7 +29,7 @@ public class CameraLook : MonoBehaviour
                        Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -75f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         body.Rotate(Vector3.up * mouseX);
