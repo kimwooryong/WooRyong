@@ -16,8 +16,9 @@ public class AnimalMovement : MonoBehaviour
 {
 
     private Animation ani;
-    private string[] idleStates = {"eat", "idle", "walk"};
+    public string[] idleStates;
     private int currentIdle;
+    public float attackRecognitionScope;
 
 
     public float moveSpeed = 5f;
@@ -67,12 +68,14 @@ public class AnimalMovement : MonoBehaviour
                 StartCoroutine(IdleStateChange());
             }
 
-            ani.CrossFade(idleStates[currentIdle] , 0.3f);
-
             string currentAnimationState = idleStates[currentIdle];
 
+            ani.CrossFade(idleStates[currentIdle] , 0.3f);
+
             
-            if (currentIdle == 2)
+
+            
+            if (currentIdle == 0)
             {
                 if (timer >= rotationInterval)
                 {
@@ -125,13 +128,13 @@ public class AnimalMovement : MonoBehaviour
                 Quaternion rotation = Quaternion.LookRotation(directionToPlayer);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
 
-                if (distanceToPlayer > 1.7f && !isAttckTime)
+                if (distanceToPlayer > attackRecognitionScope && !isAttckTime)
                 {
                     transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
                     ani.wrapMode = WrapMode.Loop;
                     ani.Play("run");
                 }
-                if (distanceToPlayer <= 1.7f)
+                if (distanceToPlayer <= attackRecognitionScope)
                 {
                     transform.Translate(Vector3.forward * moveSpeed * 0.01f * Time.deltaTime);
                     if(isAttckTime == false)
@@ -177,12 +180,7 @@ public class AnimalMovement : MonoBehaviour
 
             }
         }
-
-
-
-
     }
-
 
     void RotateSmoothly()
     {

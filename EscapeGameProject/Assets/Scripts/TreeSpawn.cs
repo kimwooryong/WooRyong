@@ -39,7 +39,6 @@ public class TreeSpawn : MonoBehaviour
             Vector3 randomPosition = GenerateRandomSpawnPosition();
             Instantiate(treePrefab[randomPrefabCount], randomPosition, Quaternion.identity);
         }
-        //Debug.Log(remainingObjects);
     }
 
 
