@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = velocity;
         }*/
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Destroy(gameObject);
         }

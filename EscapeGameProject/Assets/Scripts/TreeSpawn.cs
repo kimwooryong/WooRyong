@@ -15,8 +15,12 @@ public class TreeSpawn : MonoBehaviour
 
     private int maxSpawnObject = 1000;
 
+    private GameObject emptyObject;
+
     private void Start()
     {
+        emptyObject = new GameObject("TreeObject");
+        
         for(int i = 0; i < 5; i++)
         {
             SpawnTrees();
@@ -34,10 +38,12 @@ public class TreeSpawn : MonoBehaviour
 
         int randomPrefabCount = Random.Range(0, treePrefab.Length);
 
+
         for (int i = 0; i < numberOfObjects; i++)
         {
             Vector3 randomPosition = GenerateRandomSpawnPosition();
-            Instantiate(treePrefab[randomPrefabCount], randomPosition, Quaternion.identity);
+            GameObject treeInstance = Instantiate(treePrefab[randomPrefabCount], randomPosition, Quaternion.identity);
+            treeInstance.transform.parent = emptyObject.transform;
         }
     }
 
