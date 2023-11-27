@@ -19,7 +19,10 @@ public class ItemSlot : MonoBehaviour
         if(itemID == getItemID)
         {
             //합쳐질 수 있는지 검사
+            //if(ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.CanCount) == true)
+            //{
 
+            //}
 
         }
         //아니라면
