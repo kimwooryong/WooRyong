@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum eItemKeyColumns
 {
     ID,
     Name,
-    Description
+    Description,
+    CanCount
 }
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField]
-    public TextMeshProUGUI text;
 
     #region 싱글톤
     private static ItemManager instance;
@@ -41,14 +41,22 @@ public class ItemManager : MonoBehaviour
         }
     }
     #endregion
-    List<Dictionary<string, object>> data;
+    private List<Dictionary<string, object>> data;
+    private string itemPrefabPath = "ItemPrefabs/ItemPrefab";
 
     private void Start()
     {
         data = CSVReader.Read("ItemDataBase");
     }
 
+    public object ReadItemData(int itemID, eItemKeyColumns dataBaseKey)
+    {
+        return data[itemID][dataBaseKey.ToString()];
+    }
 
+    //테스트용
+    [SerializeField]
+    public TextMeshProUGUI text;
     private int count = 0;
     public void Update()
     {
@@ -63,6 +71,34 @@ public class ItemManager : MonoBehaviour
            "Description : " + data[count]["Description"]);
             count++;
             if (count > 6) count = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DropItemToField(int.Parse(idText.text));
+        }
+    }
+
+    public TMP_InputField idText;
+    public void DropItemToField(int id)
+    {
+        //ID 받아와서 필드 내에 prefab 드롭함
+        if(id == 0)
+        {
+            Debug.Log("그런 아이템은 없다.");
+            return;
+        }
+        else
+        {
+            string itemPrefabFile = $"{itemPrefabPath}{id.ToString()}";
+            GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
+            if(itemPrefab != null)
+            {
+                Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("데이터베이스에 아이템이 없다");
+            }
         }
     }
 }
