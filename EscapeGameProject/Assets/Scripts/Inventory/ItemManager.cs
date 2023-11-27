@@ -43,7 +43,6 @@ public class ItemManager : MonoBehaviour
     #endregion
     private List<Dictionary<string, object>> data;
     private string itemPrefabPath = "ItemPrefabs/ItemPrefab";
-    private string itemIconPath = "ItemIcons/ItemIcon";
 
     private void Start()
     {
@@ -82,21 +81,7 @@ public class ItemManager : MonoBehaviour
         //테스트용 아이템 획득
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LootItemToInventory(int.Parse(idText.text), 1);
-        }
-    }
-    public Sprite LoadItemIcon(int id)
-    {
-        if(id == 0)
-        {
-            Debug.Log("그건 손입니다.");
-            return null;
-        }
-        else
-        {
-            string itemIconFile = $"{itemIconPath}{id.ToString()}";
-            Sprite icon = Resources.Load<Sprite>(itemIconFile);
-            return icon;
+            LootItemToInventory(int.Parse(idText.text));
         }
     }
 
@@ -125,7 +110,7 @@ public class ItemManager : MonoBehaviour
     }
 
     public Inventory playerInventory;
-    public void LootItemToInventory(int id, int amount)
+    public void LootItemToInventory(int id)
     {
         if(id == 0)
         {
@@ -134,7 +119,7 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            playerInventory.AddItem(id, amount);
+            playerInventory.AddItem(id);
         }
     }
 }
