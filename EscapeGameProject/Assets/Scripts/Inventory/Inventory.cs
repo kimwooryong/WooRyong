@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
     }
 
     //특정 ID 아이템 획득
-    public void AddItem(int itemID)
+    public void AddItem(int itemID, int amount)
     {
         //아이템 검색
         int index = FindItem(itemID);
@@ -33,17 +33,30 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                InventorySlots[emptyIndex].SetItemSlot(itemID);
+                InventorySlots[emptyIndex].SetItemSlot(itemID, amount);
             }
         }
         //있다면
         else
         {
             //있고, 합칠 수 있다면
-            
-
+            if (InventorySlots[index].canCount == true)
+            {
+                InventorySlots[index].PlusItemAmount(amount);
+            }
             //있지만, 합칠 수 없다면 빈칸 탐색.
-
+            else
+            {
+                int emptyIndex = FindItem(0);
+                if (emptyIndex == -1)
+                {
+                    Debug.Log("인벤토리에 빈 칸이 없음.");
+                }
+                else
+                {
+                    InventorySlots[emptyIndex].SetItemSlot(itemID, amount);
+                }
+            }
         }
     }
     private void RemoveItem(int index, int amount)
