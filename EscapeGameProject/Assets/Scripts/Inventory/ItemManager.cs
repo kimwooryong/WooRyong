@@ -43,6 +43,7 @@ public class ItemManager : MonoBehaviour
     #endregion
     private List<Dictionary<string, object>> data;
     private string itemPrefabPath = "ItemPrefabs/ItemPrefab";
+    private string itemIconPath = "ItemIcons/ItemIcon";
 
     private void Start()
     {
@@ -72,16 +73,37 @@ public class ItemManager : MonoBehaviour
             count++;
             if (count > 6) count = 0;
         }
+
+        //테스트용 아이템 드랍
         if (Input.GetKeyDown(KeyCode.K))
         {
-            DropItemToField(int.Parse(idText.text));
+            DropItemToField(int.Parse(idText.text), transform.position);
+        }
+        //테스트용 아이템 획득
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LootItemToInventory(int.Parse(idText.text), 1);
+        }
+    }
+    public Sprite LoadItemIcon(int id)
+    {
+        if(id == 0)
+        {
+            Debug.Log("그건 손입니다.");
+            return null;
+        }
+        else
+        {
+            string itemIconFile = $"{itemIconPath}{id.ToString()}";
+            Sprite icon = Resources.Load<Sprite>(itemIconFile);
+            return icon;
         }
     }
 
     public TMP_InputField idText;
-    public void DropItemToField(int id)
+    //ID 받아와서 필드 내에 prefab 드롭함
+    public void DropItemToField(int id, Vector3 createPos)
     {
-        //ID 받아와서 필드 내에 prefab 드롭함
         if(id == 0)
         {
             Debug.Log("그런 아이템은 없다.");
@@ -93,12 +115,26 @@ public class ItemManager : MonoBehaviour
             GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
             if(itemPrefab != null)
             {
-                Instantiate(itemPrefab, transform.position, Quaternion.identity);
+                Instantiate(itemPrefab, createPos, Quaternion.identity);
             }
             else
             {
                 Debug.Log("데이터베이스에 아이템이 없다");
             }
+        }
+    }
+
+    public Inventory playerInventory;
+    public void LootItemToInventory(int id, int amount)
+    {
+        if(id == 0)
+        {
+            Debug.Log("그런 아이템은 없다.");
+            return;
+        }
+        else
+        {
+            playerInventory.AddItem(id, amount);
         }
     }
 }

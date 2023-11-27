@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3638595930784290554}
   - component: {fileID: 2432361105351896388}
   - component: {fileID: 2373940562009811291}
+  - component: {fileID: 2226936628920399162}
   m_Layer: 0
   m_Name: AppleTree
   m_TagString: NaturalObject
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3638595930784290554
 MeshFilter:
@@ -100,3 +101,25 @@ MonoBehaviour:
   maxHp: 3
   treeObject:
   - {fileID: 3549613545652043818, guid: b79a1799ebb417f44ba943348d143d0b, type: 3}
+--- !u!64 &2226936628920399162
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422136126415878555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 9ddce011fb3cf3341b8c252c9b00cb4c, type: 3}
