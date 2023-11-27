@@ -129,7 +129,7 @@ public class PlayerCotroller : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce);
 
             Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 3f : 2.5f;
+            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 0.5f : 1f;
             cameraObject.transform.position = newPosition;
 
 
@@ -155,7 +155,7 @@ public class PlayerCotroller : MonoBehaviour
         if (_isCrouch)
         {
             Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 0.72618f;
+            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 2.2f : 1.2f;
             cameraObject.transform.position = newPosition;
         }
         else
