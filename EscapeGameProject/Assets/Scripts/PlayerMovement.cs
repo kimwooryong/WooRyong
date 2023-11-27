@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if(miniMap != null)
         {
-        miniMap.SetActive(false);
+             miniMap.SetActive(false);
 
         }
 
