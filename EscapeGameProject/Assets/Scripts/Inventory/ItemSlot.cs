@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
@@ -10,31 +11,61 @@ public class ItemSlot : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public int itemAmount;
-    public SpriteRenderer itemIcon;
+    public Image itemIcon;
     public bool canCount;
 
-    public void SetItemSlot(int getItemID)
+    public TextMeshProUGUI itemAmountText;
+
+    private void Awake()
     {
-        //가지고 있는게 또 들어온다면
-        if(itemID == getItemID)
+        Image[] IconSlots = GetComponentsInChildren<Image>();
+        if(IconSlots != null )
         {
-            //합쳐질 수 있는지 검사
-            //if(ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.CanCount) == true)
-            //{
-
-            //}
-
+            itemIcon = IconSlots[1];
         }
-        //아니라면
-
+        else
+        {
+            Debug.Log("이미지 못찾음!");
+        }
+        TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
+        if(TextSlot != null)
+        {
+            itemAmountText = TextSlot;
+        }
+        else
+        {
+            Debug.Log("tmp 못찾음!");
+        }
+    }
+    public void SetItemSlot(int getItemID, int amount)
+    {
         itemID = getItemID;
         itemName = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Name).ToString();
         itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description).ToString();
-        //스프라이트 경로 받아서 설정. 이미지 읽어오기.
-        //itemIcon =
+        itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
+        itemAmountText.text = amount.ToString();
+        if(amount == 0)
+        {
+            SetColorBlack();
+        }
+        else
+        {
+            SetColorWhite();
+        }
     }
     public void PlusItemAmount(int quantity)
     {
-        
+        itemAmount += quantity;
+        itemAmountText.text = itemAmount.ToString();
     }
+    private void SetColorBlack()
+    {
+        itemIcon.color = Color.black;
+    }
+    private void SetColorWhite()
+    {
+        itemIcon.color = Color.white;
+    }
+
+    //마우스 동작
 }
