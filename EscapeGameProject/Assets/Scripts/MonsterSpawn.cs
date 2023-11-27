@@ -36,12 +36,29 @@ public class MonsterSpawner : MonoBehaviour
 
     Vector3 GenerateRandomSpawnPosition()
     {
-        Vector3 randomPosition;
-        do
+        Vector3 randomPosition = Vector3.zero;
+
+        for (int attempts = 0; attempts < 10; attempts++)
         {
             randomPosition = Random.insideUnitSphere * maxDistance + transform.position;
-        } while (Vector3.Distance(randomPosition, transform.position) < minDistance);
+            randomPosition.y = GetTerrainHeight(randomPosition);
 
-        return randomPosition;
+            if (!Physics.CheckSphere(randomPosition, 1f, obstacleLayer) && Vector3.Distance(randomPosition, transform.position) >= minDistance)
+            {
+                return randomPosition;
+            }
+        }
+
+        return Vector3.zero;
+    }
+
+    float GetTerrainHeight(Vector3 position)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(new Vector3(position.x, 100f, position.z), Vector3.down, out hit, 200f, spawnLayer))
+        {
+            return hit.point.y;
+        }
+        return 0f;
     }
 }
