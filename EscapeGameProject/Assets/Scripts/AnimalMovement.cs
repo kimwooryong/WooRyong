@@ -44,6 +44,8 @@ public class AnimalMovement : MonoBehaviour
     private bool isHit = false;
     private bool isDie = false;
 
+    public GameObject[] dropItemObject;
+
     private void Start()
     {
         ani = GetComponent<Animation>();
@@ -255,6 +257,10 @@ public class AnimalMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(delay * 1.04f);
         ani.Stop();
+        foreach (GameObject item in dropItemObject)
+        {
+            Instantiate(item, transform.position, Quaternion.identity);
+        }
         float destroyWaitTime = 0f;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z);
@@ -276,5 +282,7 @@ public class AnimalMovement : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         isHit = false;
     }
+
+
 
 }
