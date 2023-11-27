@@ -39,11 +39,22 @@ public class ItemSlot : MonoBehaviour
     }
     public void SetItemSlot(int getItemID, int amount)
     {
+        var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
         itemID = getItemID;
-        itemName = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Name).ToString();
+        itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
+        //itemName = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Name).ToString();
         itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description).ToString();
         itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
         itemAmountText.text = amount.ToString();
+        //canCount = (bool)ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.CanCount);
+        if (canCount)
+        {
+            itemAmountText.gameObject.SetActive(true);
+        }
+        else
+        {
+            itemAmountText.gameObject.SetActive(false);
+        }
         if(amount == 0)
         {
             SetColorBlack();
@@ -68,4 +79,5 @@ public class ItemSlot : MonoBehaviour
     }
 
     //마우스 동작
+
 }

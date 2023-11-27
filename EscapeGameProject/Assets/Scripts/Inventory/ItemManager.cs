@@ -50,9 +50,15 @@ public class ItemManager : MonoBehaviour
         data = CSVReader.Read("ItemDataBase");
     }
 
+    //특정값 받아오기
     public object ReadItemData(int itemID, eItemKeyColumns dataBaseKey)
     {
         return data[itemID][dataBaseKey.ToString()];
+    }
+    //값 전체 받아오기
+    public Dictionary<string, object> ReadItemData(int itemID)
+    {
+        return data[itemID];
     }
 
     //테스트용

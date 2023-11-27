@@ -547,15 +547,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 410281960}
+  - {fileID: 1089210220}
   - {fileID: 549314731}
   - {fileID: 996411331}
   - {fileID: 1265966357}
   - {fileID: 2017036151}
   - {fileID: 1905315001}
   - {fileID: 1564208308}
-  - {fileID: 1089210220}
   - {fileID: 1686236543}
-  - {fileID: 410281960}
   m_Father: {fileID: 1641555996}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -610,7 +610,6 @@ MonoBehaviour:
   - {fileID: 1089210221}
   - {fileID: 1686236544}
   - {fileID: 410281961}
-  inventorySize: 0
 --- !u!1 &253069725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,40 +1063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 925575779}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 925575779}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &330944751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,40 +1588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 253069727}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 253069727}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &392390947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,9 +1717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97cec2c779d71a4a997fc41be00e596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 399919037}
-  itemDatabase: {fileID: 11400000, guid: 35a8746a550e8c84cb51e650b6cb2d63, type: 2}
-  assignItem: 2
 --- !u!114 &399919035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,40 +1767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 1421716701}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 1421716701}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &410281959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,40 +1955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 183396898}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 183396898}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &455175919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,40 +2197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 392390949}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 392390949}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &490346073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,40 +2643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 364686582}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 364686582}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &601941551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,40 +3133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 606810154}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 606810154}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &700745501
 GameObject:
   m_ObjectHideFlags: 0
@@ -5215,40 +4973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 629793131}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 629793131}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1169663479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,40 +5509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 1044238314}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 1044238314}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1336149619
 GameObject:
   m_ObjectHideFlags: 0
@@ -8366,40 +8056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 1694867926}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 1694867926}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1860642430
 GameObject:
   m_ObjectHideFlags: 0
@@ -8664,9 +8320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97cec2c779d71a4a997fc41be00e596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 1917579975}
-  itemDatabase: {fileID: 11400000, guid: 35a8746a550e8c84cb51e650b6cb2d63, type: 2}
-  assignItem: 1
 --- !u!114 &1917579973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8717,40 +8370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 460328466}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 460328466}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1934424141
 GameObject:
   m_ObjectHideFlags: 0
@@ -9849,40 +9468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4519becc7b6a4ea384e9c4f8a00a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 1232037586}
-  m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 1232037586}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  m_SlotGroup: 0
-  m_ID: 0
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2143498555
 GameObject:
   m_ObjectHideFlags: 0

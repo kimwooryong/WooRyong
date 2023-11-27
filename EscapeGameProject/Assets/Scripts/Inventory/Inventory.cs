@@ -6,12 +6,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<ItemSlot> InventorySlots;
-    public event Action OnItemChanged;
 
-    [SerializeField]
-    private int inventorySize;
-
-    
 
     private void InitializeInventory()
     {
