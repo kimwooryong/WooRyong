@@ -87,7 +87,7 @@ public class CraftManual : MonoBehaviour
 
     private void InputHandler()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !isPreviewActived) // UI열기인데 중복열림 방지
+        if (Input.GetKeyDown(KeyCode.T) && !isPreviewActived) // UI열기인데 중복열림 방지
         {
             Window(); // UI
         }
