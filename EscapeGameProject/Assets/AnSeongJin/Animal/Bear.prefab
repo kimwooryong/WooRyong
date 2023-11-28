@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 8924035378638451717}
   - component: {fileID: 4487344268662112558}
   - component: {fileID: 7323487964402345428}
+  - component: {fileID: 5418439139433067676}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -151,8 +152,6 @@ Animation:
   - {fileID: 7400008, guid: 716d7e8e7ab526f4ba5ca918687b3fe5, type: 3}
   - {fileID: 7400016, guid: 716d7e8e7ab526f4ba5ca918687b3fe5, type: 3}
   - {fileID: 7400022, guid: 716d7e8e7ab526f4ba5ca918687b3fe5, type: 3}
-  - {fileID: 7400028, guid: 716d7e8e7ab526f4ba5ca918687b3fe5, type: 3}
-  - {fileID: 7400034, guid: 716d7e8e7ab526f4ba5ca918687b3fe5, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -186,6 +185,7 @@ MonoBehaviour:
   isIdleStateChangeRunning: 0
   currentHp: 20
   maxHp: 20
+  dieTime: 1
 --- !u!65 &8924035378638451717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -257,6 +257,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5418439139433067676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914806452919722965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd86112d1eb3d47866ea6df9011426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem:
+  - {fileID: 8175894785339760241, guid: b01b33d4a38d9254ebfaee0f5fd45691, type: 3}
+  - {fileID: 3025308830699120397, guid: 8e05bcefbf4425b43addb7473d7de980, type: 3}
+  - {fileID: 7702234674668225222, guid: 91b4935f689aeb4469f02bd0d0925bb6, type: 3}
+  - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
+  - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
+  - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
+  minDropCount: 8
+  maxDropCount: 9
 --- !u!1 &1298265028668788979
 GameObject:
   m_ObjectHideFlags: 0

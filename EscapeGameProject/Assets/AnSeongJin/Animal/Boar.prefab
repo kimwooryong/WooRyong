@@ -1477,6 +1477,7 @@ GameObject:
   - component: {fileID: 7590600159462787817}
   - component: {fileID: 7173842936265380746}
   - component: {fileID: 1153157467021881429}
+  - component: {fileID: -5502850189762387038}
   m_Layer: 0
   m_Name: Boar
   m_TagString: Untagged
@@ -1517,9 +1518,6 @@ Animation:
   - {fileID: 7400012, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   - {fileID: 7400002, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   - {fileID: 7400008, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
-  - {fileID: 7400022, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
-  - {fileID: 7400030, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
-  - {fileID: 7400028, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1601,6 +1599,7 @@ MonoBehaviour:
   isIdleStateChangeRunning: 0
   currentHp: 5
   maxHp: 5
+  dieTime: 1
 --- !u!136 &1153157467021881429
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1624,6 +1623,27 @@ CapsuleCollider:
   m_Height: 2.895874
   m_Direction: 2
   m_Center: {x: 0.031158447, y: 0.6408601, z: 0.2180481}
+--- !u!114 &-5502850189762387038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740410059648555539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd86112d1eb3d47866ea6df9011426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem:
+  - {fileID: 8175894785339760241, guid: b01b33d4a38d9254ebfaee0f5fd45691, type: 3}
+  - {fileID: 3025308830699120397, guid: 8e05bcefbf4425b43addb7473d7de980, type: 3}
+  - {fileID: 7702234674668225222, guid: 91b4935f689aeb4469f02bd0d0925bb6, type: 3}
+  - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
+  - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
+  - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
+  minDropCount: 0
+  maxDropCount: 0
 --- !u!1 &7939082473644072811
 GameObject:
   m_ObjectHideFlags: 0

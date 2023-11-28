@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1892633660638912251}
   - component: {fileID: 5807658424349965385}
   m_Layer: 14
-  m_Name: Pork.Filet
+  m_Name: G_Pork.Filet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71b355d75ec02394289f94e069efb071, type: 2}
+  - {fileID: 2100000, guid: b06b225451b959744af034735bb8e865, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

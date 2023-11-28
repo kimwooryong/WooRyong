@@ -59,14 +59,14 @@ public class AnimalDropItem : MonoBehaviour
 
     void DropItem()
     {
-        foreach (GameObject item in dropItem)
+        if (dropItem.Length > 0)
         {
-
+            int randomIndex = Random.Range(0, dropItem.Length);
+            GameObject choiceItem = dropItem[randomIndex];
             Vector3 spawnPosition = transform.position;
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
-            Instantiate(item, spawnPosition, Quaternion.identity);
-
+            Instantiate(choiceItem, spawnPosition, Quaternion.identity);
         }
     }
 }
