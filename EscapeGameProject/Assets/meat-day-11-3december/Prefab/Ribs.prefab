@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8073318525530346338}
   - component: {fileID: -1649409906108678884}
   - component: {fileID: 9038488919399769794}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Ribs
   m_TagString: Untagged
   m_Icon: {fileID: 0}

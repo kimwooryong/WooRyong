@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1599152658562960616}
   - component: {fileID: -8087339410404019315}
   - component: {fileID: 4259000336711700140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Parma.Ham
   m_TagString: Untagged
   m_Icon: {fileID: 0}

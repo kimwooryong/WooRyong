@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5804247454869847201}
   - component: {fileID: 6816806279920945603}
   - component: {fileID: 4822127389635524079}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lamb.Chop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

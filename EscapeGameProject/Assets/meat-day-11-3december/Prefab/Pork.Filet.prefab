@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3894617166111450615}
   - component: {fileID: 1892633660638912251}
   - component: {fileID: 5807658424349965385}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pork.Filet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
