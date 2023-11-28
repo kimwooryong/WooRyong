@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 
+
 public class PlayerCotroller : MonoBehaviour
 {
     public InputManager inputManager;
@@ -29,6 +30,7 @@ public class PlayerCotroller : MonoBehaviour
     [SerializeField] float m_AnimSpeedMultiplier = 1f;
     [SerializeField] float m_RunCycleLegOffset = 0.2f;
     //  
+    float attack;
     float right;
     float forward;
     float crouch;
@@ -42,9 +44,23 @@ public class PlayerCotroller : MonoBehaviour
     public Transform cameraObject;
     private Vector3 originalCameraLocalPosition;
 
+    // 무기
+    [SerializeField] bool isHammer;
+    [SerializeField] bool isKnife;
+    [SerializeField] bool ispickaxe;
+
+    // 공격 유무
+    bool isAttack;
+
+    // 무기 장착
+    public GameObject[] weaponPrefabs;
+    private int weaponNum =0;
+
+
     private void Start()
     {
         inputManager.inputMaster.Movement.Jump.started += _ => Jump();
+        inputManager.inputMaster.Movement.Attack.started += _ => AttackMonster();
 
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -73,7 +89,9 @@ public class PlayerCotroller : MonoBehaviour
         Vector3 move = transform.right * right + transform.forward * forward;
         move *= inputManager.inputMaster.Movement.Run.ReadValue<float>() == 0 ? speed : runSpeed;
 
+
         rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+
 
         UpdateAnimator(move);
 
@@ -86,6 +104,21 @@ public class PlayerCotroller : MonoBehaviour
         {
             _isGrounded = true;
         }
+
+        if (other.transform.CompareTag("Hammer"))
+        {
+            isHammer = true;
+        }
+
+        if (other.transform.CompareTag("Knife"))
+        {
+            isKnife = true;
+        }
+
+        if (other.transform.CompareTag("Pickaxe"))
+        {
+            ispickaxe = true;
+        }
     }
 
     private void OnCollisionExit(Collision other)
@@ -94,6 +127,106 @@ public class PlayerCotroller : MonoBehaviour
         {
             _isGrounded = false;
         }
+
+        if (other.transform.CompareTag("Hammer"))
+        {
+            isHammer = false;
+        }
+
+        if (other.transform.CompareTag("Knife"))
+        {
+            isKnife = false;
+        }
+
+        if (other.transform.CompareTag("Pickaxe"))
+        {
+            ispickaxe = false;
+        }
+    }
+
+    public void ChangeWeapon()
+    {
+       
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            // Player를 찾기
+            GameObject player = GameObject.Find("Player");
+
+            // Player가 있다면
+            if (player != null)
+            {
+                // Player의 자식들을 찾아 Weapon을 검색
+                Transform weapon = player.transform.Find("M_Nurse_Basic/_M_Rig/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R/DEF-forearm.R/DEF-hand.R/Weapon");
+
+                // Weapon이 있다면
+                if (weapon != null)
+                {
+                    // 기존의 자식 GameObject들 삭제
+                    foreach (Transform child in weapon)
+                    {
+                        GameObject.Destroy(child.gameObject);
+                    }
+
+                    // 무기 프리팹 배열 길이에 맞춰 무기 번호 설정
+                    weaponNum %= weaponPrefabs.Length;
+
+                    // 새로운 무기의 프리팹을 인스턴스화하고 Weapon의 자식으로 설정
+                    GameObject newWeapon = Instantiate(weaponPrefabs[weaponNum], weapon);
+                    weaponNum++; // 다음 무기 번호로 이동
+                    
+                }
+            }
+        }
+
+
+    }
+
+    public void AttackMonster()
+    {
+        float attackValue = inputManager.inputMaster.Movement.Attack.ReadValue<float>();
+        if(attackValue > 0)
+        {
+            isAttack = true;
+        }
+
+        if (isHammer == true)
+        {
+            m_Animator.SetBool("Hammer", true);
+            m_Animator.SetBool("Knife", false);
+            m_Animator.SetBool("Pickax", false);
+
+        }
+
+        if(isKnife == true)
+        {
+            m_Animator.SetBool("Hammer", false);
+            m_Animator.SetBool("Knife", true);
+            m_Animator.SetBool("Pickax", false);
+
+        }
+
+        if (ispickaxe == true)
+        {
+            m_Animator.SetBool("Hammer", false);
+            m_Animator.SetBool("Knife", false);
+            m_Animator.SetBool("Pickax", true);
+
+        }
+
+        if(isHammer == false && isKnife == false && ispickaxe == false)
+        {
+            m_Animator.SetBool("Hammer", false);
+            m_Animator.SetBool("Knife", false);
+            m_Animator.SetBool("Pickax", false);
+
+        }
+
+    
+    
+    
+    
+    
     }
 
 
@@ -105,13 +238,13 @@ public class PlayerCotroller : MonoBehaviour
 
         if (_isSprint)
         {
-            m_Animator.SetBool("Running", true); // Running 블렌드 트리로 전환
+            // m_Animator.SetBool("Running", true); // Running 블렌드 트리로 전환
             m_Animator.SetFloat("Speed_f", 2f); // Speed_f 값을 변경
             Debug.Log("뛰는 중");
         }
         else
         {
-            m_Animator.SetBool("Running", false); // 원래 블렌드 트리로 전환
+            // m_Animator.SetBool("Running", false); // 원래 블렌드 트리로 전환
             m_Animator.SetFloat("Speed_f", 1f); // Speed_f 값을 변경
             Debug.Log("뛰기 끝");
         }
@@ -120,7 +253,7 @@ public class PlayerCotroller : MonoBehaviour
 
 
 
-    void Jump()
+    private void Jump()
     {
 
         if (_isGrounded)
@@ -129,7 +262,7 @@ public class PlayerCotroller : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce);
 
             Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 0.5f : 1f;
+            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
             cameraObject.transform.position = newPosition;
 
 
@@ -147,7 +280,8 @@ public class PlayerCotroller : MonoBehaviour
 
 
 
-    void Crouch()
+
+    private void Crouch()
     {
         float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
         _isCrouch = crouchValue > 0.0f;
@@ -155,7 +289,7 @@ public class PlayerCotroller : MonoBehaviour
         if (_isCrouch)
         {
             Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 2.2f : 1.2f;
+            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : -0.777f;
             cameraObject.transform.position = newPosition;
         }
         else
@@ -189,6 +323,7 @@ public class PlayerCotroller : MonoBehaviour
         // update the animator parameters
         m_Animator.SetFloat("Forward", forward, 0.1f, Time.deltaTime);
         m_Animator.SetFloat("Turn", right, 0.1f, Time.deltaTime);
+        m_Animator.SetFloat("Attack", attack, 0.1f, Time.deltaTime);
         m_Animator.SetBool("Crouch", _isCrouch);
         m_Animator.SetBool("OnGround", _isGrounded);
 
