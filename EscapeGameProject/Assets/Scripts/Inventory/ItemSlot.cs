@@ -20,10 +20,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI itemAmountText;
 
 
-    private void Awake()
+    public void Awake()
     {
         Image[] IconSlots = GetComponentsInChildren<Image>();
-        if(IconSlots != null )
+        if(IconSlots != null)
         {
             itemIcon = IconSlots[1];
         }
@@ -41,7 +41,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Debug.Log("tmp ¸øÃ£À½!");
         }
     }
-    public void SetItemSlot(int getItemID, int amount)
+    public virtual void SetItemSlot(int getItemID, int amount)
     {
         var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
         if( itemDataAll == null )
@@ -89,11 +89,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
     }
-    private void SetColorBlack()
+    public void SetColorBlack()
     {
         itemIcon.color = Color.black;
     }
-    private void SetColorWhite()
+    public void SetColorWhite()
     {
         itemIcon.color = Color.white;
     }

@@ -6,16 +6,27 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [HideInInspector]
     public List<ItemSlot> InventorySlots;
 
-    public List<ItemSlot> QuickSlots;
+    [SerializeField]
+    private GameObject inventorySlotPrefab;
+    [SerializeField]
+    private int inventorySize;
 
-
-
+    private void Awake()
+    {
+        InitializeInventory();
+    }
     private void InitializeInventory()
     {
         InventorySlots = new List<ItemSlot>();
-        QuickSlots = new List<ItemSlot>();
+        for(int i = 0; i < inventorySize;  i++)
+        {
+            GameObject tempGo = Instantiate(inventorySlotPrefab, gameObject.transform);
+            ItemSlot tempSlot = tempGo.GetComponent<ItemSlot>();
+            InventorySlots.Add(tempSlot);
+        }
     }
 
     //특정 ID 아이템 획득
@@ -63,10 +74,12 @@ public class Inventory : MonoBehaviour
     {
 
     }
-    //A칸 슬롯과 B칸 슬롯 변경.
-    private void SwapItemSlot(int indexA, int indexB)
+    //A칸 슬롯을 B칸 슬롯에 드롭
+    private void SwapItemSlot(ItemSlot slotA, ItemSlot slotB)
     {
-
+        ItemSlot tempSlot = slotA;
+        slotA = slotB;
+        slotB = tempSlot;
     }
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
     private int FindItem(int itemID)
