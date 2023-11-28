@@ -217,7 +217,7 @@ public class ItemManager : MonoBehaviour
         TooltipUI.SetActive(true);
         TooltipItemName.text = item.itemName;
         TooltipItemDescription.text = item.itemDescription;
-        TooltipItemAmount.text = item.itemAmount.ToString();
+        TooltipItemAmount.text = $"¼ö·® : {item.itemAmount}";
     }
     public void HideTooltip()
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class QuickSlot : ItemSlot
 {
     public bool canGrab;
+
     public override void SetItemSlot(int getItemID, int amount)
     {
         var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);

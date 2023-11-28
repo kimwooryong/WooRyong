@@ -58,7 +58,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
         itemAmount = amount;
-        itemAmountText.text = amount.ToString();
+        itemAmountText.text = itemAmount.ToString();
         if (canCount)
         {
             itemAmountText.gameObject.SetActive(true);
