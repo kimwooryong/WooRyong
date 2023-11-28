@@ -6340,10 +6340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ed5a9f49e52e548af1921ec084312d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryCanvas: {fileID: 0}
-  leftCanvas: {fileID: 0}
-  middleCanvas: {fileID: 0}
-  rightCanvas: {fileID: 0}
+  inventoryCanvas: {fileID: 332136361}
+  inventoryBG: {fileID: 1461785644}
+  leftCanvas: {fileID: 13613871}
+  middleCanvas: {fileID: 852335205}
+  rightCanvas: {fileID: 813095147}
   idText: {fileID: 1646498440}
   playerInventory: {fileID: 225720460}
   playerQuickSlot: {fileID: 1671719463}
