@@ -6,6 +6,12 @@ TagManager:
   tags:
   - NaturalObject
   - Ground
+  - Hammer
+  - Knife
+  - Pickaxe
+  - Cloud
+  - Seagull
+  - Tornado
   layers:
   - Default
   - TransparentFX
