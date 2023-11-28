@@ -106,7 +106,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
         Debug.Log("마우스 온");
-        ItemManager.Instance.ShowTooltip(this);
+        ItemManager.Instance.ShowTooltip(this, eventData.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)

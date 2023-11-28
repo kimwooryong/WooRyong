@@ -154,8 +154,19 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI TooltipItemAmount;
 
-    public void ShowTooltip(ItemSlot item)
+    public void ShowTooltip(ItemSlot item, Vector3 cursorPos)
     {
+        RectTransform tooltipRect = TooltipUI.GetComponent<RectTransform>();
+        //오른쪽에 있다면 왼쪽으로 피벗생성
+        if(cursorPos.x > Screen.width / 2)
+        {
+            tooltipRect.pivot = new Vector2(1f, 0f);
+        }
+        else
+        {
+            tooltipRect.pivot = new Vector2(0f, 0f);
+        }
+        TooltipUI.transform.position = cursorPos;
         TooltipUI.SetActive(true);
         TooltipItemName.text = item.itemName;
         TooltipItemDescription.text = item.itemDescription;
