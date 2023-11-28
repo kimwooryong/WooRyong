@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int itemID;
     public string itemName;
@@ -15,6 +18,7 @@ public class ItemSlot : MonoBehaviour
     public bool canCount;
 
     public TextMeshProUGUI itemAmountText;
+
 
     private void Awake()
     {
@@ -40,13 +44,21 @@ public class ItemSlot : MonoBehaviour
     public void SetItemSlot(int getItemID, int amount)
     {
         var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
+        if( itemDataAll == null )
+        {
+            Debug.Log("읽어 올 데이터가 없습니다.");
+            return;
+        }
         itemID = getItemID;
         itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
-        //itemName = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Name).ToString();
-        itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description).ToString();
+        itemDescription = itemDataAll[eItemKeyColumns.Description.ToString()] as string;
+
+        object objCount = itemDataAll[eItemKeyColumns.CanCount.ToString()];
+        canCount = Convert.ToBoolean(objCount);
+
         itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
+        itemAmount = amount;
         itemAmountText.text = amount.ToString();
-        //canCount = (bool)ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.CanCount);
         if (canCount)
         {
             itemAmountText.gameObject.SetActive(true);
@@ -69,6 +81,14 @@ public class ItemSlot : MonoBehaviour
         itemAmount += quantity;
         itemAmountText.text = itemAmount.ToString();
     }
+    public void TestCount()
+    {
+        if (itemAmount == 0)
+        {
+            Debug.Log("아이템 없음");
+            return;
+        }
+    }
     private void SetColorBlack()
     {
         itemIcon.color = Color.black;
@@ -77,7 +97,21 @@ public class ItemSlot : MonoBehaviour
     {
         itemIcon.color = Color.white;
     }
+    //Tooltip
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(itemAmount == 0)
+        {
+            Debug.Log("아이템 없음");
+            return;
+        }
+        Debug.Log("마우스 온");
+        ItemManager.Instance.ShowTooltip(this);
+    }
 
-    //마우스 동작
-
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("마우스 아웃");
+        ItemManager.Instance.HideTooltip();
+    }
 }

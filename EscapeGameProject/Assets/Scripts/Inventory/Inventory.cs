@@ -1,16 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     public List<ItemSlot> InventorySlots;
 
+    public List<ItemSlot> QuickSlots;
+
+
 
     private void InitializeInventory()
     {
         InventorySlots = new List<ItemSlot>();
+        QuickSlots = new List<ItemSlot>();
     }
 
     //∆Ø¡§ ID æ∆¿Ã≈€ »πµÊ
@@ -76,4 +81,6 @@ public class Inventory : MonoBehaviour
         }
         return -1;
     }
+
+
 }

@@ -143,4 +143,26 @@ public class ItemManager : MonoBehaviour
             playerInventory.AddItem(id, amount);
         }
     }
+
+    //æ∆¿Ã≈€≈¯∆¡
+    [SerializeField]
+    private GameObject TooltipUI;
+    [SerializeField]
+    private TextMeshProUGUI TooltipItemName;
+    [SerializeField]
+    private TextMeshProUGUI TooltipItemDescription;
+    [SerializeField]
+    private TextMeshProUGUI TooltipItemAmount;
+
+    public void ShowTooltip(ItemSlot item)
+    {
+        TooltipUI.SetActive(true);
+        TooltipItemName.text = item.itemName;
+        TooltipItemDescription.text = item.itemDescription;
+        TooltipItemAmount.text = item.itemAmount.ToString();
+    }
+    public void HideTooltip()
+    {
+        TooltipUI.SetActive(false);
+    }
 }
