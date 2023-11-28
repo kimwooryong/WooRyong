@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum MonsterBehavior
@@ -43,8 +44,11 @@ public class AnimalMovement : MonoBehaviour
     private PlayerMovement player;
     private bool isHit = false;
     private bool isDie = false;
+    [HideInInspector]
+    public float dieTime = 1.0f;
 
-    public GameObject[] dropItemObject;
+    private BoxCollider boxCollider;
+
 
     private void Start()
     {
@@ -52,6 +56,8 @@ public class AnimalMovement : MonoBehaviour
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
         currentHp = maxHp;
+
+        boxCollider = GetComponent<BoxCollider>();
 
     }
 
@@ -178,7 +184,7 @@ public class AnimalMovement : MonoBehaviour
             {
 
                 isDie = true;
-                StartCoroutine(DestroyAfterDelay(1f));
+                StartCoroutine(DestroyAfterDelay(dieTime));
 
             }
         }
@@ -232,7 +238,7 @@ public class AnimalMovement : MonoBehaviour
 
         ani.Stop("attack");
 
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         isAttckTime = false;
     }
@@ -255,12 +261,9 @@ public class AnimalMovement : MonoBehaviour
         ani.Stop();
         ani.Play("die");
 
-        yield return new WaitForSecondsRealtime(delay * 1.04f);
+        Destroy(boxCollider, delay - 0.1f);
+        yield return new WaitForSecondsRealtime(delay);
         ani.Stop();
-        foreach (GameObject item in dropItemObject)
-        {
-            Instantiate(item, transform.position, Quaternion.identity);
-        }
         float destroyWaitTime = 0f;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z);

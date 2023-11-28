@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 5176680588477886961}
   - component: {fileID: 7157506988950038309}
   - component: {fileID: 8866893916855187917}
+  - component: {fileID: 5015662336350187541}
   m_Layer: 0
   m_Name: Hare
   m_TagString: Untagged
@@ -498,7 +499,6 @@ Animation:
   - {fileID: 7400030, guid: f1cea6e0f24ea5e43ad1a4d32e9c92da, type: 3}
   - {fileID: 7400010, guid: f1cea6e0f24ea5e43ad1a4d32e9c92da, type: 3}
   - {fileID: 7400018, guid: f1cea6e0f24ea5e43ad1a4d32e9c92da, type: 3}
-  - {fileID: 7400022, guid: f1cea6e0f24ea5e43ad1a4d32e9c92da, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -580,6 +580,7 @@ MonoBehaviour:
   isIdleStateChangeRunning: 0
   currentHp: 2
   maxHp: 2
+  dieTime: 1
 --- !u!136 &8866893916855187917
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -603,6 +604,27 @@ CapsuleCollider:
   m_Height: 1.085846
   m_Direction: 2
   m_Center: {x: 0, y: 0.2661047, z: 0.042922974}
+--- !u!114 &5015662336350187541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762597533244979587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd86112d1eb3d47866ea6df9011426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem:
+  - {fileID: 8175894785339760241, guid: b01b33d4a38d9254ebfaee0f5fd45691, type: 3}
+  - {fileID: 3025308830699120397, guid: 8e05bcefbf4425b43addb7473d7de980, type: 3}
+  - {fileID: 7702234674668225222, guid: 91b4935f689aeb4469f02bd0d0925bb6, type: 3}
+  - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
+  - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
+  - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
+  minDropCount: 0
+  maxDropCount: 0
 --- !u!1 &2773403989107615908
 GameObject:
   m_ObjectHideFlags: 0

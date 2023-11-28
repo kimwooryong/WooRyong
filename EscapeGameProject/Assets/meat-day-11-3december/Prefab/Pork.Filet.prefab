@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3894617166111450615}
   - component: {fileID: 1892633660638912251}
   - component: {fileID: 5807658424349965385}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Pork.Filet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6095106458368995959}
   m_LocalRotation: {x: -0.6540972, y: 0.27181122, z: 0.33686966, w: 0.62031794}
   m_LocalPosition: {x: -1.839408, y: 0.06845595, z: 0.6659646}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int itemID;
     public string itemName;
@@ -16,10 +19,11 @@ public class ItemSlot : MonoBehaviour
 
     public TextMeshProUGUI itemAmountText;
 
-    private void Awake()
+
+    public void Awake()
     {
         Image[] IconSlots = GetComponentsInChildren<Image>();
-        if(IconSlots != null )
+        if(IconSlots != null)
         {
             itemIcon = IconSlots[1];
         }
@@ -37,13 +41,32 @@ public class ItemSlot : MonoBehaviour
             Debug.Log("tmp 못찾음!");
         }
     }
-    public void SetItemSlot(int getItemID, int amount)
+    public virtual void SetItemSlot(int getItemID, int amount)
     {
+        var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
+        if( itemDataAll == null )
+        {
+            Debug.Log("읽어 올 데이터가 없습니다.");
+            return;
+        }
         itemID = getItemID;
-        itemName = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Name).ToString();
-        itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description).ToString();
+        itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
+        itemDescription = itemDataAll[eItemKeyColumns.Description.ToString()] as string;
+
+        object objCount = itemDataAll[eItemKeyColumns.CanCount.ToString()];
+        canCount = Convert.ToBoolean(objCount);
+
         itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
-        itemAmountText.text = amount.ToString();
+        itemAmount = amount;
+        itemAmountText.text = itemAmount.ToString();
+        if (canCount)
+        {
+            itemAmountText.gameObject.SetActive(true);
+        }
+        else
+        {
+            itemAmountText.gameObject.SetActive(false);
+        }
         if(amount == 0)
         {
             SetColorBlack();
@@ -58,14 +81,37 @@ public class ItemSlot : MonoBehaviour
         itemAmount += quantity;
         itemAmountText.text = itemAmount.ToString();
     }
-    private void SetColorBlack()
+    public void TestCount()
+    {
+        if (itemAmount == 0)
+        {
+            Debug.Log("아이템 없음");
+            return;
+        }
+    }
+    public void SetColorBlack()
     {
         itemIcon.color = Color.black;
     }
-    private void SetColorWhite()
+    public void SetColorWhite()
     {
         itemIcon.color = Color.white;
     }
+    //Tooltip
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(itemAmount == 0)
+        {
+            Debug.Log("아이템 없음");
+            return;
+        }
+        Debug.Log("마우스 온");
+        ItemManager.Instance.ShowTooltip(this, eventData.position);
+    }
 
-    //마우스 동작
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("마우스 아웃");
+        ItemManager.Instance.HideTooltip();
+    }
 }

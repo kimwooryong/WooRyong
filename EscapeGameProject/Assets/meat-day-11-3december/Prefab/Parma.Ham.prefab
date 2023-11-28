@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1599152658562960616}
   - component: {fileID: -8087339410404019315}
   - component: {fileID: 4259000336711700140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Parma.Ham
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7702234674668225222}
   m_LocalRotation: {x: -0.70125294, y: -0.14441521, z: -0.47466213, w: 0.51194197}
   m_LocalPosition: {x: -1.0664521, y: 0.14303899, z: 0.35999665}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: -1

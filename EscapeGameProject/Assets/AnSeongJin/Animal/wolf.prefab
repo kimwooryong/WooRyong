@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.size
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[0]
@@ -631,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[5]
       value: 
-      objectReference: {fileID: 7400014, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
+      objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[6]
       value: 
@@ -708,6 +708,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4449566277259803129}
+    - targetCorrespondingSourceObject: {fileID: 100092, guid: 0faec1d65d1a862429fd6c3fdef4bfcb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8969059308737355152}
   m_SourcePrefab: {fileID: 100100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
 --- !u!1 &5927564802457219089 stripped
 GameObject:
@@ -746,6 +750,7 @@ MonoBehaviour:
   isIdleStateChangeRunning: 0
   currentHp: 8
   maxHp: 8
+  dieTime: 1
 --- !u!65 &3358483280066266036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -817,3 +822,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-8969059308737355152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927564802457219089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd86112d1eb3d47866ea6df9011426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem:
+  - {fileID: 8175894785339760241, guid: b01b33d4a38d9254ebfaee0f5fd45691, type: 3}
+  - {fileID: 3025308830699120397, guid: 8e05bcefbf4425b43addb7473d7de980, type: 3}
+  - {fileID: 7702234674668225222, guid: 91b4935f689aeb4469f02bd0d0925bb6, type: 3}
+  - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
+  - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
+  - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
+  minDropCount: 0
+  maxDropCount: 0
