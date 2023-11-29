@@ -162,7 +162,7 @@ public class ItemManager : MonoBehaviour
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if(playerGO != null)
         {
-            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward;
+            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 4;
             return dropPos;
         }
         else

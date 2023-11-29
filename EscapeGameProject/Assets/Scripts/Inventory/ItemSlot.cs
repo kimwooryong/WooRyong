@@ -120,20 +120,35 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         Debug.Log("마우스 아웃");
         ItemManager.Instance.HideTooltip();
     }
-
+    //아이템 버리기
+    private bool isClickProcessing = false;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(itemID == 0)
+        if (isClickProcessing)
         {
-            Debug.Log("빈 슬롯은 버릴 수 없어");
             return;
         }
-        // 마우스 우클릭, 버리기
         if (eventData.button == PointerEventData.InputButton.Right)
         {
+            StartCoroutine(CoDropItem());
+        }
+    }
+    IEnumerator CoDropItem()
+    {
+        isClickProcessing = true;
+        //클릭 간격 0.2초 이하면 무시
+        if (itemID != 0)
+        {
+            // 마우스 우클릭, 버리기
             Debug.Log("마우스 우클릭!");
             PlusItemAmount(-1);
             ItemManager.Instance.DropItemToField(itemID);
+            yield return new WaitForSeconds(0.2f);
+            isClickProcessing = false;
+        }
+        else
+        {
+            Debug.Log("빈 슬롯은 버릴 수 없어");
         }
     }
 
