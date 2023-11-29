@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         spawnPlace = newSpawnPoint;
     }
+    //Cursor
     public void VisibleCursor()
     {
         Cursor.lockState = CursorLockMode.None; // 마우스 고정 해제
