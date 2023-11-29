@@ -49,6 +49,7 @@ public class ItemManager : MonoBehaviour
     private string dataBasePath = "ItemDataBase";
 
 
+
     //키 입력
     private bool isActiveInventory;
     private bool isActiveQuickSlot;
@@ -91,7 +92,7 @@ public class ItemManager : MonoBehaviour
         //테스트용 아이템 드랍
         if (Input.GetKeyDown(KeyCode.K))
         {
-            DropItemToField(int.Parse(idText.text), dropPos);
+            DropItemToField(int.Parse(idText.text));
         }
         //테스트용 아이템 획득
         if (Input.GetKeyDown(KeyCode.L))
@@ -156,9 +157,24 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    private Vector3 FindDropPos()
+    {
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+        if(playerGO != null)
+        {
+            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward;
+            return dropPos;
+        }
+        else
+        {
+            Debug.Log("플레이어 없음");
+            return Vector3.zero;
+        }
+    }
     public TMP_InputField idText;
+    
     //ID 받아와서 필드 내에 prefab 드롭함
-    public void DropItemToField(int id, Vector3 createPos)
+    public void DropItemToField(int id)
     {
         if(id == 0)
         {
@@ -171,7 +187,7 @@ public class ItemManager : MonoBehaviour
             GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
             if(itemPrefab != null)
             {
-                Instantiate(itemPrefab, createPos, Quaternion.identity);
+                Instantiate(itemPrefab, FindDropPos(), Quaternion.identity);
             }
             else
             {
