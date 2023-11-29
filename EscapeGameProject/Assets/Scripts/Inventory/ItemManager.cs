@@ -85,8 +85,6 @@ public class ItemManager : MonoBehaviour
     }
 
     //테스트용
-    private int count = 0;
-    public Vector3 dropPos;
     public void Update()
     {
         //테스트용 아이템 드랍

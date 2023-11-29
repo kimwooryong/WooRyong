@@ -649,20 +649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1106916986622331450, guid: a5356ee7b3303f14b900d2d1d9af46ba,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5582528616125088363, guid: a5356ee7b3303f14b900d2d1d9af46ba,
         type: 3}
       propertyPath: m_Name
       value: InventoryCanvas (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5582528616125088363, guid: a5356ee7b3303f14b900d2d1d9af46ba,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7366965824990017742, guid: a5356ee7b3303f14b900d2d1d9af46ba,
         type: 3}
@@ -3326,18 +3316,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1165456441 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-    type: 3}
-  m_PrefabInstance: {fileID: 9135957742757664696}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1361278462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4717799323456031077, guid: d0f9477802a40104a89ba4ec3bab3cef,
@@ -6025,27 +6003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go_BaseUI: {fileID: 5231075256743775841}
-  craft_fire:
-  - craftName: Foundation
-    go_Prefab: {fileID: 4869367290019317714, guid: 5acdad288151a0a43a495472cf24fc5b,
-      type: 3}
-    go_PreviewPrefab: {fileID: 4869367290019317714, guid: 0567c585f3320604fb52c018579ae703,
-      type: 3}
-  - craftName: stairs
-    go_Prefab: {fileID: 9079102003691628436, guid: d10d4399106f6cd4d83c85cd63265bbb,
-      type: 3}
-    go_PreviewPrefab: {fileID: 9079102003691628436, guid: 22021ed387869b143b0df565eb63f90c,
-      type: 3}
-  - craftName: wall
-    go_Prefab: {fileID: 3943032989887938890, guid: 3591396943254ff46b96539a60d83643,
-      type: 3}
-    go_PreviewPrefab: {fileID: 3943032989887938890, guid: dc0cde904497ec543aac56d42283d7ee,
-      type: 3}
-  - craftName: wall_Door
-    go_Prefab: {fileID: 4991315726532104825, guid: b9e440ffc41d4c64ea1c653f4a5c32b1,
-      type: 3}
-    go_PreviewPrefab: {fileID: 4991315726532104825, guid: 4abc9b11b5fd6f84dab124657ed3afd4,
-      type: 3}
+  craft_Build: []
   tf_Player: {fileID: 4207293826641142}
   layerMask:
     serializedVersion: 2
@@ -6246,21 +6204,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBehaviourUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2060269419181733335, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: ItemText
-      value: 
-      objectReference: {fileID: 1165456441}
-    - target: {fileID: 2733754915975977406, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2733754915975977406, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 4248039047846183365, guid: 851c462a602ed1846bbd31dea089ee77,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6364,33 +6307,6 @@ PrefabInstance:
     - target: {fileID: 4248039047846183365, guid: 851c462a602ed1846bbd31dea089ee77,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 9cc68bf5669913e46911bda55b81c267,
-        type: 2}
-    - target: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 1462266938440143407, guid: 9cc68bf5669913e46911bda55b81c267,
-        type: 2}
-    - target: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4312581000118790237, guid: 851c462a602ed1846bbd31dea089ee77,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
