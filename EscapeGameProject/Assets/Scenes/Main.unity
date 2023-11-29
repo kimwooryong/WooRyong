@@ -4422,7 +4422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -220, y: -180}
+  m_AnchoredPosition: {x: -220, y: 0}
   m_SizeDelta: {x: -840, y: -640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756403122
@@ -4544,7 +4544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 220, y: -180}
+  m_AnchoredPosition: {x: 220, y: 0}
   m_SizeDelta: {x: -840, y: -640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769195175
@@ -12339,9 +12339,9 @@ MonoBehaviour:
     go_PreviewPrefab: {fileID: 3943032989887938890, guid: dc0cde904497ec543aac56d42283d7ee,
       type: 3}
   - craftName: wall_Door
-    go_Prefab: {fileID: 4353471692694283364, guid: 599acbcf900627f49ae2aca90afe98ad,
+    go_Prefab: {fileID: 4991315726532104825, guid: b9e440ffc41d4c64ea1c653f4a5c32b1,
       type: 3}
-    go_PreviewPrefab: {fileID: 4353471692694283364, guid: 33e96c2cdda19e049862abcbded3bf8b,
+    go_PreviewPrefab: {fileID: 4991315726532104825, guid: 4abc9b11b5fd6f84dab124657ed3afd4,
       type: 3}
   tf_Player: {fileID: 4207293826641142}
   layerMask:
