@@ -186,6 +186,7 @@ public class CraftManual : MonoBehaviour
             go_Prefab = null;
             go_Preview = null;
             previewObject = null;
+            CloseWindow(); 
         }
     }
 
@@ -240,7 +241,6 @@ public class CraftManual : MonoBehaviour
 
     private void OpenWindow()
     {
-        Debug.Log("확인1");
         GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
@@ -248,7 +248,6 @@ public class CraftManual : MonoBehaviour
 
     private void CloseWindow()
     {
-        Debug.Log("확인2");
         GameManager.Instance.InvisibleCursor();
         isActivated = false;
         go_BaseUI.SetActive(false);
