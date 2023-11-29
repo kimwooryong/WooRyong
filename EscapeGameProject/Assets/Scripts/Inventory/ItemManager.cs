@@ -1,3 +1,4 @@
+using System;
 using System.Buffers.Text;
 using System.Collections;
 using System.Collections.Generic;
@@ -70,11 +71,26 @@ public class ItemManager : MonoBehaviour
     //특정값 받아오기
     public object ReadItemData(int itemID, eItemKeyColumns dataBaseKey)
     {
+        foreach (var item in data)
+        {
+            if (item.ContainsKey(eItemKeyColumns.ID.ToString()) && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
+            {
+                return item;
+            }
+        }
         return data[itemID][dataBaseKey.ToString()];
     }
-    //값 전체 받아오기
+    //ID로 값 전체 받아오기
     public Dictionary<string, object> ReadItemData(int itemID)
     {
+        // ID에 해당하는 아이템 데이터 찾기
+        foreach (var item in data)
+        {
+            if (item.ContainsKey(eItemKeyColumns.ID.ToString()) && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
+            {
+                return item;
+            }
+        }
         return data[itemID];
     }
 
@@ -105,8 +121,15 @@ public class ItemManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I))
         {
             isActiveInventory = !isActiveInventory;
-            Debug.Log(isActiveInventory);
             inventoryCanvas.gameObject.SetActive(isActiveInventory);
+            if (isActiveInventory)
+            {
+                GameManager.Instance.VisibleCursor();
+            }
+            else
+            {
+                GameManager.Instance.InvisibleCursor();
+            }
         }
         //테스트용 퀵슬롯 온오프
         if (Input.GetKeyDown(KeyCode.Tab))
