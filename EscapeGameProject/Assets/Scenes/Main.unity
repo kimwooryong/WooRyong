@@ -931,12 +931,12 @@ GameObject:
   - component: {fileID: 242892676}
   - component: {fileID: 242892675}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Player_Crosshair_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &242892674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1750,7 +1750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &332136359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9481,6 +9481,7 @@ GameObject:
   - component: {fileID: 1787855494}
   - component: {fileID: 1787855493}
   - component: {fileID: 1787855492}
+  - component: {fileID: 1787855496}
   m_Layer: 5
   m_Name: Canvas_UI
   m_TagString: Untagged
@@ -9574,6 +9575,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1787855496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787855491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3557d351c1a428408abc8e9c417e11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRaycast: 2.5
+  crosshairPrefab: {fileID: 242892673}
 --- !u!1 &1800608353
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,8 +12363,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2816
   range: 15
-  maxRaycast: 3
-  crosshairPrefab: {fileID: 242892673}
 --- !u!224 &8345970001690752217
 RectTransform:
   m_ObjectHideFlags: 0
