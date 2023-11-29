@@ -49,16 +49,12 @@ public class AnimalMovement : MonoBehaviour
 
     private BoxCollider boxCollider;
 
-    private AnimalAttack animalAttack;
-
 
     private void Start()
     {
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
-        animalAttack = GetComponentInChildren<AnimalAttack>();
-        animalAttack.enabled = false;
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
@@ -238,9 +234,8 @@ public class AnimalMovement : MonoBehaviour
 
         ani.Play("attack");
 
-        yield return new WaitForSecondsRealtime(0.2f);
-        StartCoroutine(animalAttack.Attack());
-        yield return new WaitForSecondsRealtime(0.6f);
+        yield return new WaitForSecondsRealtime(0.8f);
+
         ani.Stop("attack");
 
         yield return new WaitForSecondsRealtime(0.2f);
