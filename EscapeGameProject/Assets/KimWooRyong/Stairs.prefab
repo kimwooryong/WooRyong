@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 3221067749145064088}
   - component: {fileID: 2360106968126892163}
   m_Layer: 11
-  m_Name: Foundation_Stairs
+  m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

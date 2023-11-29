@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 9214528949652705290}
   - component: {fileID: -9089916875355940064}
   m_Layer: 0
-  m_Name: Foundation_Stairs 1
+  m_Name: Stairs Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -46,6 +46,7 @@ public class ItemManager : MonoBehaviour
     private List<Dictionary<string, object>> data;
     private string itemPrefabPath = "ItemPrefabs/ItemPrefab";
     private string itemIconPath = "ItemIcons/ItemIcon";
+    private string dataBasePath = "ItemDataBase";
 
 
     //키 입력
@@ -65,7 +66,7 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        data = CSVReader.Read("ItemDataBase");
+        data = CSVReader.Read(dataBasePath);
     }
 
     //특정값 받아오기
