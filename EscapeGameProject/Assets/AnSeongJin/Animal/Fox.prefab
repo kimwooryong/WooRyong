@@ -689,8 +689,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400032, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
   m_Animations:
-  - {fileID: 7400010, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
   - {fileID: 7400000, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
+  - {fileID: 7400010, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
   - {fileID: 7400020, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
   - {fileID: 7400028, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
   - {fileID: 7400032, guid: a666bc52ea3645348930a8ea354d3c20, type: 3}
@@ -811,14 +811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 8175894785339760241, guid: b01b33d4a38d9254ebfaee0f5fd45691, type: 3}
-  - {fileID: 3025308830699120397, guid: 8e05bcefbf4425b43addb7473d7de980, type: 3}
-  - {fileID: 7702234674668225222, guid: 91b4935f689aeb4469f02bd0d0925bb6, type: 3}
-  - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
-  - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
-  - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
-  minDropCount: 0
-  maxDropCount: 0
+  - {fileID: 6095106458368995959, guid: e59483d4469efb047a9b9ee403c6055c, type: 3}
+  minDropCount: 2
+  maxDropCount: 3
 --- !u!1 &2841849267067434167
 GameObject:
   m_ObjectHideFlags: 0

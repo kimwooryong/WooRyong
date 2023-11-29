@@ -8,7 +8,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, 
+    IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     public int itemID;
     public string itemName;
@@ -79,6 +80,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void PlusItemAmount(int quantity)
     {
         itemAmount += quantity;
+        //-1로 아이템 버리기.
+        if(itemAmount == 0)
+        {
+            SetItemSlot(0, 0);
+        }
         itemAmountText.text = itemAmount.ToString();
     }
     public void TestCount()
@@ -113,6 +119,37 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Debug.Log("마우스 아웃");
         ItemManager.Instance.HideTooltip();
+    }
+    //아이템 버리기
+    private bool isClickProcessing = false;
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (isClickProcessing)
+        {
+            return;
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            StartCoroutine(CoDropItem());
+        }
+    }
+    IEnumerator CoDropItem()
+    {
+        isClickProcessing = true;
+        //클릭 간격 0.2초 이하면 무시
+        if (itemID != 0)
+        {
+            // 마우스 우클릭, 버리기
+            Debug.Log("마우스 우클릭!");
+            PlusItemAmount(-1);
+            ItemManager.Instance.DropItemToField(itemID);
+            yield return new WaitForSeconds(0.2f);
+            isClickProcessing = false;
+        }
+        else
+        {
+            Debug.Log("빈 슬롯은 버릴 수 없어");
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
