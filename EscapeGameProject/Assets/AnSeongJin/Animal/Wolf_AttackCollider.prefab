@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2583958630049571903}
   - component: {fileID: 6958858381230384426}
-  - component: {fileID: 3179968060958381947}
   - component: {fileID: 3355857211254851797}
   m_Layer: 0
   m_Name: Wolf_AttackCollider
@@ -57,33 +56,6 @@ CapsuleCollider:
   m_Height: 0.8804736
   m_Direction: 1
   m_Center: {x: 9.04039e-12, y: -0.059761558, z: -0.12446643}
---- !u!54 &3179968060958381947
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2249075559907724851}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3355857211254851797
 MonoBehaviour:
   m_ObjectHideFlags: 0

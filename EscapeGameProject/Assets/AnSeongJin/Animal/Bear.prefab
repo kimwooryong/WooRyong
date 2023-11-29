@@ -189,6 +189,7 @@ MonoBehaviour:
   currentHp: 20
   maxHp: 20
   dieTime: 1
+  animalAttackPrefab: {fileID: 185974075857867401}
 --- !u!65 &8924035378638451717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1806,6 +1807,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f4b4068045aeba458f0c5d16be6b7b8, type: 3}
+--- !u!1 &185974075857867401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698270977032456644, guid: 6f4b4068045aeba458f0c5d16be6b7b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 802898226243738445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3105285639287441230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2322810092058385411, guid: 6f4b4068045aeba458f0c5d16be6b7b8,
