@@ -13,23 +13,32 @@ public class PlayerBehaviour : MonoBehaviour
     public float maxRaycast; // 오브젝트 확인 레이 거리 
     public GameObject crosshairPrefab; // 크로스헤어 프리팹
     private GameObject crosshairInstance; // 크로스헤어
+    [SerializeField]
+    private LayerMask itemLayer;
 
     private void RayObject() // 은하씨 드릴 레이 아이템 확인용
     {
-        Debug.DrawRay(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, Color.blue); // 씬 창에 레이선이 보이게 해주는 코드
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // 카메라 기준 가운데에 레이 발사
-
-        RaycastHit hit; // 맞은거
-
-        if (Physics.Raycast(ray, out hit, maxRaycast))
+        Ray testRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // 카메라 기준 가운데에 레이 발사
+        TestWhatHit(testRay);
+    }
+    private void TestWhatHit(Ray ray)
+    {
+        RaycastHit hit;
+        //아이템 스크립트 감지
+        if (Physics.Raycast(ray, out hit, maxRaycast, itemLayer))
         {
             Debug.Log("맞은 오브젝트 " + hit.collider.gameObject.name); // 레이에 충돌한 오브젝트의 이름을 표시
-
+            Item hitItem = hit.collider.gameObject.GetComponent<Item>();
+            if (hitItem != null)
+            {
+                Debug.Log($"그 아이템은 {hitItem.GetItemID()} 의 ID를 가진 {hitItem.GetItemDescription()}이야.");
+            }
+            else
+            {
+                Debug.Log("item 스크립트가 없다.");
+            }
             crosshairPrefab.gameObject.SetActive(true);
-
-            Vector3 crosshairPosition = hit.point; // 크로스헤어를 표시할 위치 설정
-
-            UpdateCrosshair(crosshairPosition); // 크로스헤어를 표시하거나 업데이트
+            UpdateCrosshair(hit.point); // 크로스헤어를 표시하거나 업데이트
         }
         else
         {
