@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public int itemID;
     public string itemName;
@@ -113,5 +113,20 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Debug.Log("¸¶¿ì½º ¾Æ¿ô");
         ItemManager.Instance.HideTooltip();
+    }
+
+    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    void IDragHandler.OnDrag(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
     }
 }
