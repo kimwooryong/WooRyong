@@ -47,7 +47,13 @@ public class AnimalMovement : MonoBehaviour
     [HideInInspector]
     public float dieTime = 1.0f;
 
+    public GameObject attackCollider;
+
     private BoxCollider boxCollider;
+
+    private AnimalAttack animalAttack;
+
+    private GameObject instantiatedAttackCollider;
 
 
     private void Start()
@@ -55,15 +61,28 @@ public class AnimalMovement : MonoBehaviour
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
+        animalAttack = GetComponentInChildren<AnimalAttack>();
+
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
 
+        instantiatedAttackCollider = Instantiate(attackCollider, transform.position + new Vector3(0, 1, 1), Quaternion.identity) as GameObject;
+
     }
+    
+
 
 
     void Update()
     {
+        if(attackCollider != null) 
+        {
+            instantiatedAttackCollider.transform.position = gameObject.transform.position + new Vector3(0, 1, 1);
+
+        }
+
+
         float distanceToPlayer = Vector3.Distance(this.gameObject.transform.position, playerPosition.position);
         if (!isPlayerCheck && !isHit && !isDie)
         {
@@ -110,8 +129,11 @@ public class AnimalMovement : MonoBehaviour
 
                     if (Physics.Raycast(this.gameObject.transform.position, rayRotation * this.gameObject.transform.forward, out hit, rayRange))
                     {
+                        Debug.Log("r");
                         if (hit.collider.CompareTag("Player"))
                         {
+                            ani.Stop();
+                            Debug.Log("¼±¸ÂÀ½");
                             isPlayerCheck = true;
                             break;
                         }
@@ -234,8 +256,9 @@ public class AnimalMovement : MonoBehaviour
 
         ani.Play("attack");
 
-        yield return new WaitForSecondsRealtime(0.8f);
-
+        yield return new WaitForSecondsRealtime(0.2f);
+        StartCoroutine(animalAttack.Attack());
+        yield return new WaitForSecondsRealtime(0.6f);
         ani.Stop("attack");
 
         yield return new WaitForSecondsRealtime(0.2f);

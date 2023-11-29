@@ -11492,6 +11492,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2325358430644955622, guid: 2f5efae9c5b001b4685782a62131bc7d,
+        type: 3}
+      propertyPath: spawnInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325358430644955622, guid: 2f5efae9c5b001b4685782a62131bc7d,
+        type: 3}
+      propertyPath: monsterPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325358430644955622, guid: 2f5efae9c5b001b4685782a62131bc7d,
+        type: 3}
+      propertyPath: monsterPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 5927564802457219089, guid: 135505ca12e0c64459824cb55db96a32,
+        type: 3}
+    - target: {fileID: 2325358430644955622, guid: 2f5efae9c5b001b4685782a62131bc7d,
+        type: 3}
+      propertyPath: monsterPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 5927564802457219089, guid: 135505ca12e0c64459824cb55db96a32,
+        type: 3}
     - target: {fileID: 2515472605120201480, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
       propertyPath: miniMap
