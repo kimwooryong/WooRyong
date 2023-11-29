@@ -115,10 +115,17 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         ItemManager.Instance.HideTooltip();
     }
 
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = eventData.position;
+    }
+
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
         throw new NotImplementedException();
     }
+
+
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {

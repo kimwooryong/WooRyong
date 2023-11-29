@@ -240,16 +240,16 @@ public class CraftManual : MonoBehaviour
 
     private void OpenWindow()
     {
-        Cursor.lockState = CursorLockMode.None; // 마우스 고정 해제
-        Cursor.visible = true; // 마우스 클릭가능
+        Debug.Log("확인1");
+        GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
     }
 
     private void CloseWindow()
     {
-        Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 고정
-        Cursor.visible = false; // 마우스 클릭불가
+        Debug.Log("확인2");
+        GameManager.Instance.InvisibleCursor();
         isActivated = false;
         go_BaseUI.SetActive(false);
     }
