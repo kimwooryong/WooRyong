@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -7,11 +8,15 @@ public class Item : MonoBehaviour
     //ItemID
     [SerializeField]
     private int itemID;
-    private string itemDescription;
+    [SerializeField]
+    private string itemName;
+    private int itemAmount = 1;
 
-    private void OnEnable()
+    private void Start()
     {
-        itemDescription = ItemManager.Instance.ReadItemData(itemID, eItemKeyColumns.Description) as string;
+        Debug.Log("아이템 설정");
+        var itemDataAll = ItemManager.Instance.ReadItemData(itemID);
+        itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
     }
     public int GetItemID()
     {
@@ -19,6 +24,10 @@ public class Item : MonoBehaviour
     }
     public string GetItemDescription()
     {
-        return itemDescription;
+        return itemName;
+    }
+    public int GetItemAmount()
+    {
+        return itemAmount;
     }
 }
