@@ -127,5 +127,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+
     }
 }

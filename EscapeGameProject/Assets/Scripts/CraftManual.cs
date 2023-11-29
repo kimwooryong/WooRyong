@@ -29,7 +29,7 @@ public class CraftManual : MonoBehaviour
 
 
     [SerializeField]
-    public craft[] craft_fire; // ¸ð´ÚºÒ¿ë ÅÇ
+    public craft[] craft_Build; // ¸ð´ÚºÒ¿ë ÅÇ
 
     
     private GameObject go_Preview; // ¹Ì¸®º¸±â ÇÁ¸®ÆéÀ» ´ãÀ» º¯¼ö
@@ -57,10 +57,10 @@ public class CraftManual : MonoBehaviour
     public void SlotClick(int _slotNumber) // ½½·Ô Å¬¸¯
     {
         Debug.Log("0");
-        go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
+        go_Preview = Instantiate(craft_Build[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
         previewObject = go_Preview.GetComponent<PreviewObject>();
 
-        go_Prefab = craft_fire[_slotNumber].go_Prefab;
+        go_Prefab = craft_Build[_slotNumber].go_Prefab;
         isPreviewActived = true; // ÇÁ¸®ºä ÄÑÁÖ±â
         go_BaseUI.SetActive(false); // UI ²¨ÁÖ±â
         
