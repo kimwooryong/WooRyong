@@ -23,7 +23,7 @@ public class AnimalAttack : MonoBehaviour
     }
     void Start()
     {
-
+        capsuleCollider.enabled = false;
 
 
     }

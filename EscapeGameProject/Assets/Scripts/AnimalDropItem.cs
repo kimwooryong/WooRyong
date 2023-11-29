@@ -24,6 +24,7 @@ public class AnimalDropItem : MonoBehaviour
 
     private float animalDieTime = 0;
 
+
     private void Start()
     {
         animal = GetComponent<AnimalMovement>();

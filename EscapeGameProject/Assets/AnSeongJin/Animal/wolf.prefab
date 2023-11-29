@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4395919059593958416
+--- !u!1001 &5788966582321618245
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,12 +11,27 @@ PrefabInstance:
     - target: {fileID: 2249075559907724851, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
       propertyPath: m_Name
-      value: AttackCollider
+      value: Wolf_AttackCollider
       objectReference: {fileID: 0}
     - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
       propertyPath: m_RootOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
@@ -26,12 +41,12 @@ PrefabInstance:
     - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28593636
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.42980957
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
         type: 3}
@@ -68,16 +83,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.6670539
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.30922818
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 6.98736e-22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.23356283
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.29108205
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958858381230384426, guid: 1ce3e1d73e31ed849b34680005d12f6a,
+        type: 3}
+      propertyPath: m_Direction
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce3e1d73e31ed849b34680005d12f6a, type: 3}
---- !u!4 &2224041230036070447 stripped
+--- !u!4 &8325637012477180282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2583958630049571903, guid: 1ce3e1d73e31ed849b34680005d12f6a,
     type: 3}
-  m_PrefabInstance: {fileID: 4395919059593958416}
+  m_PrefabInstance: {fileID: 5788966582321618245}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5927564802457319149
 PrefabInstance:
@@ -777,7 +822,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400092, guid: 0faec1d65d1a862429fd6c3fdef4bfcb,
         type: 3}
       insertIndex: 0
-      addedObject: {fileID: 2224041230036070447}
+      addedObject: {fileID: 8325637012477180282}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100092, guid: 0faec1d65d1a862429fd6c3fdef4bfcb,
         type: 3}
@@ -838,8 +883,6 @@ MonoBehaviour:
   currentHp: 8
   maxHp: 8
   dieTime: 1
-  attackCollider: {fileID: 2249075559907724851, guid: 1ce3e1d73e31ed849b34680005d12f6a,
-    type: 3}
 --- !u!65 &3358483280066266036
 BoxCollider:
   m_ObjectHideFlags: 0

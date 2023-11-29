@@ -47,13 +47,15 @@ public class AnimalMovement : MonoBehaviour
     [HideInInspector]
     public float dieTime = 1.0f;
 
-    public GameObject attackCollider;
 
     private BoxCollider boxCollider;
 
     private AnimalAttack animalAttack;
 
-    private GameObject instantiatedAttackCollider;
+    private GameObject attackCollider;
+    private Vector3 attackColliderPosition;
+
+
 
 
     private void Start()
@@ -61,13 +63,14 @@ public class AnimalMovement : MonoBehaviour
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
+        attackCollider = animalAttack.gameObject;
         animalAttack = GetComponentInChildren<AnimalAttack>();
 
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
 
-        instantiatedAttackCollider = Instantiate(attackCollider, transform.position + new Vector3(0, 1, 1), Quaternion.identity) as GameObject;
+        attackColliderPosition = new Vector3(gameObject.transform.position.x , gameObject.transform.position.y , gameObject.transform.position.z );
 
     }
     
@@ -76,10 +79,10 @@ public class AnimalMovement : MonoBehaviour
 
     void Update()
     {
-        if(attackCollider != null) 
-        {
-            instantiatedAttackCollider.transform.position = gameObject.transform.position + new Vector3(0, 1, 1);
 
+        if (attackCollider != null)
+        {
+            attackCollider.transform.position = attackColliderPosition;
         }
 
 
