@@ -117,23 +117,15 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        itemIcon.gameObject.transform.position = eventData.position;
     }
 
-    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        itemIcon.gameObject.transform.localPosition = Vector3.zero;
     }
 
-
-
-    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        throw new NotImplementedException();
-    }
-
-    void IDragHandler.OnDrag(PointerEventData eventData)
-    {
-        throw new NotImplementedException();
     }
 }
