@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AnimalDropItem : MonoBehaviour
+public class AnimalItemDrop : MonoBehaviour
 {
 
 
@@ -63,7 +63,7 @@ public class AnimalDropItem : MonoBehaviour
         {
             int randomIndex = Random.Range(0, dropItem.Length);
             GameObject choiceItem = dropItem[randomIndex];
-            Vector3 spawnPosition = transform.position;
+            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
             Instantiate(choiceItem, spawnPosition, Quaternion.identity);
