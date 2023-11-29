@@ -1033,8 +1033,8 @@ MonoBehaviour:
   - {fileID: 361293138026540266, guid: 535aada18462d1b45a3ae35219f15616, type: 3}
   - {fileID: 6095106458368995959, guid: 32a8c813d8950be4e93990cf40942a48, type: 3}
   - {fileID: 7314325441962089804, guid: 8077d92b4bb4b9946a46053e07cf10cf, type: 3}
-  minDropCount: 4
-  maxDropCount: 4
+  minDropCount: 0
+  maxDropCount: 0
 --- !u!1 &3934560565235326010
 GameObject:
   m_ObjectHideFlags: 0

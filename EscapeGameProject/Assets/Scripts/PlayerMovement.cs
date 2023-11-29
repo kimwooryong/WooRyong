@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 5f;
-    [HideInInspector]
-    public Rigidbody rb;
-
+    private Rigidbody rb;
     public int playerDamage = 2;
     public GameObject miniMap;
     public bool onMove;
