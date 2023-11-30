@@ -6,6 +6,9 @@ using UnityEngine;
 public class QuickSlot : ItemSlot
 {
     public bool canGrab;
+    private void Update()
+    {
+    }
 
     public override void SetItemSlot(int getItemID, int amount)
     {
