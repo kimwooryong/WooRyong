@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8554174987896217173}
   - component: {fileID: 5060886761013860446}
   - component: {fileID: 6324255866612412777}
-  - component: {fileID: -6988650889837780078}
   - component: {fileID: 8559601514356241357}
+  - component: {fileID: -4225708532729748124}
   m_Layer: 0
   m_Name: WoodWallWindow Green
   m_TagString: Untagged
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6988650889837780078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855455672171133162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerGround: 10
-  green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
-  Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
 --- !u!65 &8559601514356241357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,9 +100,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.9847113, y: 1.0061076, z: 0.1008333}
   m_Center: {x: 0.003820449, y: 0.49876246, z: -0.012250574}
+--- !u!114 &-4225708532729748124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855455672171133162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82068f2726441904db05cdaa22a00c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerGround: 10
+  green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
+  Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
