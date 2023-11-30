@@ -34,7 +34,10 @@ public class CraftManual : MonoBehaviour
     
     private GameObject go_Preview; // 미리보기 프리펩을 담을 변수
 
+
     private PreviewObject previewObject; // 클래스 참조
+    private WallPreview wallPreview; // 클래스 참조
+
 
     private Quaternion savedRotation;
 
@@ -108,27 +111,41 @@ public class CraftManual : MonoBehaviour
             Cancel(); // 취소
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (previewObject != null)
         {
-            if (go_Preview != null)
+            if (Input.GetKey(KeyCode.Q))
             {
-                go_Preview.transform.Rotate(new Vector3(0f, 90f * Time.deltaTime, 0f)); // 회전
+                if (go_Preview != null)
+                {
+                    go_Preview.transform.Rotate(new Vector3(0f, 90f * Time.deltaTime, 0f)); // 회전
+                }
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (go_Preview != null)
+                {
+                    go_Preview.transform.Rotate(new Vector3(0f, -90f * Time.deltaTime, 0f)); // 회전
+                }
             }
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (wallPreview != null)
         {
-            if (go_Preview != null)
+            if (Input.GetKey(KeyCode.Q))
             {
-                go_Preview.transform.Rotate(new Vector3(0f, -90f * Time.deltaTime, 0f)); // 회전
+                if (go_Preview != null)
+                {
+                    go_Preview.transform.Rotate(new Vector3(0f, 90, 0f)); // 회전
+                }
             }
-        }
 
-        if (Input.GetKey(KeyCode.K))
-        {
-            if (go_Preview != null)
+            if (Input.GetKey(KeyCode.E))
             {
-                go_Preview.transform.Rotate(new Vector3(0f, 0f, -90f * Time.deltaTime)); // 회전
+                if (go_Preview != null)
+                {
+                    go_Preview.transform.Rotate(new Vector3(0f, -90, 0f)); // 회전
+                }
             }
         }
     }
@@ -153,18 +170,23 @@ public class CraftManual : MonoBehaviour
 
     private void PreviewPositionUpdate() // 프리뷰 설치전 움직임
     {
-        Debug.Log("1");
         Debug.DrawRay(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, Color.red); // 씬 창에 레이선이 보이게 해주는 코드
         if(Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range, layerMask)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
         {
             if(hitInfo.transform != null) // 위치값이 있다면
             {
                 Quaternion rotation = go_Preview.transform.rotation;
+                Debug.Log(previewObject);
                 Vector3 _location = previewObject.GetSnapPosition(hitInfo.point, ref rotation); 
                 Debug.Log("4");
                 go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
                 go_Preview.transform.rotation = rotation;
             }
+            /*if (hitInfo.transform != null && wallPreview) // 위치값이 있다면
+            {
+                Vector3 _location = wallPreview.GetSnapPosition(hitInfo.point);
+                go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
+            }*/
         }
     }
 

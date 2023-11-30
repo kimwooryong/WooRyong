@@ -7,8 +7,8 @@ using static UnityEditor.FilePathAttribute;
 public class PreviewObject : MonoBehaviour
 {
     // 충돌한 오브젝트의 콜라이더
-    private List<Collider> colliderList = new List<Collider>();
-    private List<Collider> snapColliderList = new List<Collider>();
+    public List<Collider> colliderList = new List<Collider>();
+    public List<Collider> snapColliderList = new List<Collider>();
 
     [SerializeField]
     private int layerGround; // 지상 레이어
@@ -16,28 +16,36 @@ public class PreviewObject : MonoBehaviour
     private const int IGNORE_RAYCAST_LAYER = 2;
 
     [SerializeField]
-    private Material green; // 초록색
+    public Material green; // 초록색
     [SerializeField]
-    private Material Red; // 빨간색
+    public Material Red; // 빨간색
 
-    private List<Renderer> _renderers = new List<Renderer>();
-    private List<GameObject> _gameObjects = new List<GameObject>();
+    public List<Renderer> _renderers = new List<Renderer>();
+    public List<GameObject> _gameObjects = new List<GameObject>();
 
-    private void Start() // 오브젝트의 모든 랜더러를 받아오는 코드
+    public void Start() 
+    {
+        ChangeRenderer();
+    }
+
+    public void ChangeRenderer()// 오브젝트의 모든 랜더러를 받아오는 코드
     {
         _renderers.Add(transform.GetComponent<Renderer>());
         foreach (Transform tfChild in transform) // 자식 오브젝트에게도 렌더러를 넘겨준다.
             _renderers.Add(tfChild.GetComponent<Renderer>());
     }
 
+   /* public virtual void AAA()
+    {
+        Debug.Log("나는 김우룡!");
+    }*/
 
-
-    void Update()
+    public void Update()
     {
         ChangeColor(); // 색깔 바꾸기 초록, 빨강
     }
 
-    private void ChangeColor()
+    public void ChangeColor()
     {
         if (colliderList.Count > 0) // 닿는 콜라이더가 1개 이상이면 빨간색
         {
@@ -49,7 +57,7 @@ public class PreviewObject : MonoBehaviour
         }
     }
 
-    private void SetColor(Material mat) // 색깔 바꿔주는 함수
+    public void SetColor(Material mat) // 색깔 바꿔주는 함수
     {
         foreach (var renderer in _renderers)
             renderer.material = mat;
@@ -88,28 +96,7 @@ public class PreviewObject : MonoBehaviour
         return colliderList.Count == 0;
     }
 
-    void Test() // 레이에 맞은 물체의 콜라이더 크기 받아오기
-    {
-        // 레이를 쏘기 위한 원점과 방향 설정
-        Vector3 rayOrigin = Camera.main.transform.position;
-        Vector3 rayDirection = Camera.main.transform.forward;
-
-        // 레이캐스트를 통해 맞은 객체 정보 저장
-        RaycastHit hit;
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit))
-        {
-            // 맞은 객체의 콜라이더 가져오기
-            Collider collider = hit.collider;
-
-            // 콜라이더의 크기 출력
-            Vector3 colliderSize = collider.bounds.size;
-            Debug.Log("맞은 객체의 콜라이더 크기: " + colliderSize);
-        }
-    }
-
-
-    // 이것들을 하나의 벡터값 * 방향 으로 만들어라
-    public Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
+    public virtual Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
     {
         // 우측
         Vector3 right = snapTransform.position + snapTransform.right * transform.localScale.z;
@@ -166,9 +153,6 @@ public class PreviewObject : MonoBehaviour
             closestPosition = down;
             Debug.Log("down");
         }
-
-
-        Debug.Log("9" + closestPosition);
         return closestPosition;
     }
 

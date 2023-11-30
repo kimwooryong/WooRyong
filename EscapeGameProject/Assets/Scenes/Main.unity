@@ -8666,6 +8666,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBehaviourUI
       objectReference: {fileID: 0}
+    - target: {fileID: 693538089738638978, guid: 851c462a602ed1846bbd31dea089ee77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4248039047846183365, guid: 851c462a602ed1846bbd31dea089ee77,
         type: 3}
       propertyPath: m_Pivot.x
@@ -13567,7 +13572,7 @@ MonoBehaviour:
   tf_Player: {fileID: 4207293826641142}
   layerMask:
     serializedVersion: 2
-    m_Bits: 2816
+    m_Bits: 68352
   range: 15
 --- !u!114 &9002702847384694903
 MonoBehaviour:

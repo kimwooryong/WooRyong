@@ -2,58 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallPreview : MonoBehaviour
+public class WallPreview : PreviewObject
 {
-    // 충돌한 오브젝트의 콜라이더
-    private List<Collider> colliderList = new List<Collider>();
-    private List<Collider> snapColliderList = new List<Collider>();
-
     [SerializeField]
-    private int layerGround; // 지상 레이어
+    private int layerFoundation; // 지상 레이어
     // private int foundation; // 토대 레이어
-    private const int IGNORE_RAYCAST_LAYER = 2;
-
-    [SerializeField]
-    private Material green; // 초록색
-    [SerializeField]
-    private Material Red; // 빨간색
-
-    private List<Renderer> _renderers = new List<Renderer>();
-    private List<GameObject> _gameObjects = new List<GameObject>();
+    private const int IGNORE_RAYCAST_LAYER = 16;
 
 
-    private void Start() // 오브젝트의 모든 랜더러를 받아오는 코드
+    /*public override void AAA()
     {
-        _renderers.Add(transform.GetComponent<Renderer>());
-        foreach (Transform tfChild in transform) // 자식 오브젝트에게도 렌더러를 넘겨준다.
-            _renderers.Add(tfChild.GetComponent<Renderer>());
-    }
-
-
-    void Update()
-    {
-        ChangeColor(); // 색깔 바꾸기 초록, 빨강
-    }
-
-
-    private void ChangeColor()
-    {
-        if (colliderList.Count > 0) // 닿는 콜라이더가 1개 이상이면 빨간색
-        {
-            SetColor(Red);
-        }
-        else
-        {
-            SetColor(green); // 닿는 콜라이더가 없다면 초록색
-        }
-    }
-
-
-    private void SetColor(Material mat) // 색깔 바꿔주는 함수
-    {
-        foreach (var renderer in _renderers)
-            renderer.material = mat;
-    }
+        base.AAA();
+        Debug.Log("를 상속받았지~");
+    }*/
 
 
     private void OnTriggerEnter(Collider other)
@@ -64,7 +25,7 @@ public class WallPreview : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
+        if (other.gameObject.layer != layerFoundation && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
         {
             colliderList.Add(other); // 콜라이더 리스트 추가
         }
@@ -73,24 +34,32 @@ public class WallPreview : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.transform.GetComponent<SnapObject>() != null)
+        if (other.gameObject.transform.GetComponent<WallSnap>() != null)
         {
             snapColliderList.Remove(other);    // Snap 콜라이더로 추가
             return;
         }
 
-        if (other.gameObject.layer != layerGround && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
+        if (other.gameObject.layer != layerFoundation && other.gameObject.layer != IGNORE_RAYCAST_LAYER)
         {
             colliderList.Remove(other); // 콜라이더 리스트 삭제
         }
     }
 
-
-    public bool isBuildable()
+    public override Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
     {
-        return colliderList.Count == 0;
+        Vector3 up = snapTransform.position + snapTransform.up.normalized * transform.localScale.y;
+        float fDist = Vector3.Distance(currentPosition, up);
+        float fDistShortest = fDist;
+        Vector3 closestPosition = up;
+        if (fDist < fDistShortest)
+        {
+            fDistShortest = fDist;
+            closestPosition = up;
+            Debug.Log("안착 성공");
+        }
+        return closestPosition;
     }
-
 
     public Vector3 GetSnapPosition(Vector3 currentPosition)
     {
@@ -110,7 +79,7 @@ public class WallPreview : MonoBehaviour
     }
 
 
-    public Transform GetClosestCollider()
+   /* public Transform GetClosestCollider()
     {
         if (snapColliderList.Count == 0)
             return null;
@@ -149,6 +118,6 @@ public class WallPreview : MonoBehaviour
         }
 
         return closestCollider.transform;
-    }
+    }*/
 }
 
