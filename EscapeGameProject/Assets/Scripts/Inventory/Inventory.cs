@@ -74,16 +74,7 @@ public class Inventory : MonoBehaviour
     {
 
     }
-    //A칸 아이템을 B칸 아이템과 위치 교체
-    private void SwapItemSlot(ItemSlot slotA, ItemSlot slotB)
-    {
-        //퀵슬롯에서면 canGrab 테스트할 것.
 
-        ItemSlot tempSlot = new ItemSlot();
-        tempSlot.SetItemSlot(slotA.itemID, slotA.itemAmount);
-        slotA.SetItemSlot(slotB.itemID, slotB.itemAmount);
-        slotB.SetItemSlot(tempSlot.itemID, tempSlot.itemAmount);
-    }
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
     private int FindItem(int itemID)
     {
