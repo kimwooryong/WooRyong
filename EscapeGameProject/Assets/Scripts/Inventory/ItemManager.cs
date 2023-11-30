@@ -1,9 +1,9 @@
 using System;
-using System.Buffers.Text;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum eItemKeyColumns
@@ -41,6 +41,7 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        SetQuickSlot();
     }
     #endregion
     private List<Dictionary<string, object>> data;
@@ -57,13 +58,14 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private Canvas inventoryCanvas;
     [SerializeField]
-    private Image inventoryBG;
+    private UnityEngine.UI.Image inventoryBG;
     [SerializeField]
     private GameObject leftCanvas;
     [SerializeField]
     private GameObject middleCanvas;
     [SerializeField]
     private GameObject rightCanvas;
+
 
     private void Start()
     {
@@ -115,36 +117,96 @@ public class ItemManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             isActiveQuickSlot = true;
+            GameManager.Instance.InvisibleAndNoneCursor();
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
             isActiveQuickSlot = false;
+            GameManager.Instance.InvisibleCursor();
         }
+        //인벤토리 활성화(I키)
         if (isActiveInventory)
         {
-            inventoryBG.gameObject.SetActive(true);
-            leftCanvas.SetActive(true);
-            middleCanvas.SetActive(true);
-            rightCanvas.SetActive(true);
+            SetCanvasInventory();
         }
+        //퀵슬롯 활성화(Tab키)
         else if(isActiveQuickSlot)
         {
-            inventoryCanvas.gameObject.SetActive(true);
-            inventoryBG.gameObject.SetActive(false);
-            leftCanvas.SetActive(false);
-            middleCanvas.SetActive(true);
-            rightCanvas.SetActive(false);
+            SetCanvasQuickSlot();
+            DetectQuickSlot();
         }
         else
         {
             inventoryCanvas.gameObject.SetActive(false);
         }
     }
+
+    #region 퀵슬롯
+
+    public GameObject testUI;
+    private GraphicRaycaster quickSlotGR;
+    private PointerEventData ped;
+    private List<RaycastResult> raycastResults;
+    private float quickSlotDistance = 250f;
+    private void SetQuickSlot()
+    {
+        quickSlotGR = inventoryCanvas.GetComponent<GraphicRaycaster>();
+        ped = new PointerEventData(null);
+        raycastResults = new List<RaycastResult>();
+    }
+    private Vector2 SetPointerPosition()
+    {
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+        Vector2 quickPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        return (quickPos - screenCenter).normalized * quickSlotDistance + screenCenter;
+    }
+    private void DetectQuickSlot()
+    {
+        raycastResults.Clear();
+
+        //Test
+        testUI.transform.position = SetPointerPosition();
+
+        ped.position = SetPointerPosition();
+        quickSlotGR.Raycast(ped, raycastResults);
+        if (raycastResults.Count == 0)
+        {
+            Debug.Log("충돌 UI없음");
+            return;
+        }
+        foreach (var hit in raycastResults)
+        {
+            Debug.Log("Hit UI: " + hit.gameObject.name);
+            // UI 히트에 따라 함수 호출 또는 UI 상태 변경과 같은 추가 처리를 추가할 수 있습니다.
+        }
+    }
+
+
+    #endregion
+
+    #region 인벤토리 캔버스 활성화 종류
+    private void SetCanvasInventory()
+    {
+        inventoryBG.gameObject.SetActive(true);
+        leftCanvas.SetActive(true);
+        middleCanvas.SetActive(true);
+        rightCanvas.SetActive(true);
+    }
+    private void SetCanvasQuickSlot()
+    {
+        inventoryCanvas.gameObject.SetActive(true);
+        inventoryBG.gameObject.SetActive(false);
+        leftCanvas.SetActive(false);
+        middleCanvas.SetActive(true);
+        rightCanvas.SetActive(false);
+    }
+    #endregion
+
     public Sprite LoadItemIcon(int id)
     {
         if(id == 0)
         {
-            Debug.Log("그건 손입니다.");
+            Debug.Log("그건 없습니다.");
             return null;
         }
         else
@@ -155,12 +217,13 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    //플레이어 위치 찾기
     private Vector3 FindDropPos()
     {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if(playerGO != null)
         {
-            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 4;
+            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 2;
             return dropPos;
         }
         else
@@ -209,7 +272,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    //아이템툴팁
+    #region 아이템 툴팁
     [SerializeField]
     private GameObject TooltipUI;
     [SerializeField]
@@ -241,4 +304,16 @@ public class ItemManager : MonoBehaviour
     {
         TooltipUI.SetActive(false);
     }
+    #endregion
+
+    //A칸 아이템을 B칸 아이템과 위치 교체
+    public void SwapItemSlot(ItemSlot slotA, ItemSlot slotB)
+    {
+        //퀵슬롯에서면 canGrab 테스트할 것.
+        int tempID = slotA.itemID;
+        int tempAmount = slotA.itemAmount;
+        slotA.SetItemSlot(slotB.itemID, slotB.itemAmount);
+        slotB.SetItemSlot(tempID, tempAmount);
+    }
+
 }

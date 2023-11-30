@@ -53,4 +53,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 고정
         Cursor.visible = false; // 마우스 클릭불가
     }
+    public void InvisibleAndNoneCursor()
+    {
+        Cursor.lockState = CursorLockMode.None; // 마우스 고정 해제
+        Cursor.visible = false; // 마우스 클릭불가
+    }
 }

@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 450315915}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -847,7 +847,10 @@ MonoBehaviour:
   isHammer: 0
   isKnife: 0
   ispickaxe: 0
-  weaponPrefabs: []
+  weaponPrefabs:
+  - {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b, type: 3}
+  - {fileID: 4231031488058023189, guid: 14cd7d5e6c431eb48b471fa1b6928984, type: 3}
+  - {fileID: 6032137825525080156, guid: 3af8a209753ffb24caed5d1cc969d0fe, type: 3}
 --- !u!114 &1765449824
 MonoBehaviour:
   m_ObjectHideFlags: 0

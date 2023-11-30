@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -56,6 +57,9 @@ public class PlayerCotroller : MonoBehaviour
     public GameObject[] weaponPrefabs;
     private int weaponNum =0;
 
+    //
+
+
 
     private void Start()
     {
@@ -67,6 +71,7 @@ public class PlayerCotroller : MonoBehaviour
         m_Capsule = GetComponent<CapsuleCollider>();
 
         originalCameraLocalPosition = cameraObject.transform.localPosition;
+
 
 
     }
@@ -182,50 +187,47 @@ public class PlayerCotroller : MonoBehaviour
 
     }
 
+
+
     public void AttackMonster()
     {
         float attackValue = inputManager.inputMaster.Movement.Attack.ReadValue<float>();
         if(attackValue > 0)
         {
             isAttack = true;
+
+            if (isHammer == true)
+            {
+                m_Animator.SetBool("Hammer", true);
+                m_Animator.SetBool("Knife", false);
+                m_Animator.SetBool("Pickax", false);
+
+            }
+
+            if (isKnife == true)
+            {
+                m_Animator.SetBool("Hammer", false);
+                m_Animator.SetBool("Knife", true);
+                m_Animator.SetBool("Pickax", false);
+
+            }
+
+            if (ispickaxe == true)
+            {
+                m_Animator.SetBool("Hammer", false);
+                m_Animator.SetBool("Knife", false);
+                m_Animator.SetBool("Pickax", true);
+
+            }
+
+            if (isHammer == false && isKnife == false && ispickaxe == false)
+            {
+                m_Animator.SetBool("Hammer", false);
+                m_Animator.SetBool("Knife", false);
+                m_Animator.SetBool("Pickax", false);
+
+            }
         }
-
-        if (isHammer == true)
-        {
-            m_Animator.SetBool("Hammer", true);
-            m_Animator.SetBool("Knife", false);
-            m_Animator.SetBool("Pickax", false);
-
-        }
-
-        if(isKnife == true)
-        {
-            m_Animator.SetBool("Hammer", false);
-            m_Animator.SetBool("Knife", true);
-            m_Animator.SetBool("Pickax", false);
-
-        }
-
-        if (ispickaxe == true)
-        {
-            m_Animator.SetBool("Hammer", false);
-            m_Animator.SetBool("Knife", false);
-            m_Animator.SetBool("Pickax", true);
-
-        }
-
-        if(isHammer == false && isKnife == false && ispickaxe == false)
-        {
-            m_Animator.SetBool("Hammer", false);
-            m_Animator.SetBool("Knife", false);
-            m_Animator.SetBool("Pickax", false);
-
-        }
-
-    
-    
-    
-    
     
     }
 
