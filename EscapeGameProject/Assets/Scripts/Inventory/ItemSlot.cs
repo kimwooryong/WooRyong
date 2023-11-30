@@ -19,18 +19,28 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     public bool canCount;
 
     public TextMeshProUGUI itemAmountText;
-
-
     public void Awake()
     {
-        Image[] IconSlots = GetComponentsInChildren<Image>();
-        if(IconSlots != null)
+        Debug.Log("슬롯하나 생성");
+        InitializeSlot();
+    }
+
+    public void InitializeSlot()
+    {
+        Debug.Log("슬롯 초기화");
+        itemID = 0;
+        itemName = "빈 칸";
+        itemDescription = "빈 칸";
+        itemAmount = 0;
+        itemAmountText.gameObject.SetActive(false);
+        canCount = false;
+
+        Transform iconTransform = transform.Find("Icon");
+        if (iconTransform != null)
         {
-            itemIcon = IconSlots[1];
-        }
-        else
-        {
-            Debug.Log("이미지 못찾음!");
+            itemIcon = iconTransform.GetComponent<Image>();
+            itemIcon.sprite = null;
+            SetColorBlack();
         }
         TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
         if(TextSlot != null)
@@ -39,11 +49,18 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         }
         else
         {
-            Debug.Log("tmp 못찾음!");
+            itemAmount = 0;
+            Debug.Log("TMP Text 못찾음!");
         }
     }
     public virtual void SetItemSlot(int getItemID, int amount)
     {
+        if(getItemID == 0)
+        {
+            Debug.Log("ID 가 0 인 칸 초기화");
+            InitializeSlot();
+            return;
+        }
         var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
         if( itemDataAll == null )
         {
@@ -57,7 +74,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         object objCount = itemDataAll[eItemKeyColumns.CanCount.ToString()];
         canCount = Convert.ToBoolean(objCount);
 
-        itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
+        if(itemIcon != null)
+        {
+            itemIcon.sprite = ItemManager.Instance.LoadItemIcon(itemID);
+        }
         itemAmount = amount;
         itemAmountText.text = itemAmount.ToString();
         if (canCount)
@@ -106,25 +126,22 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     //Tooltip
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(itemAmount == 0)
+        if(itemID == 0)
         {
-            Debug.Log("아이템 없음");
             return;
         }
-        Debug.Log("마우스 온");
         ItemManager.Instance.ShowTooltip(this, eventData.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("마우스 아웃");
         ItemManager.Instance.HideTooltip();
     }
     //아이템 버리기
-    private bool isClickProcessing = false;
+    private bool isRightClickProcessing = false;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isClickProcessing)
+        if (isRightClickProcessing)
         {
             return;
         }
@@ -135,7 +152,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     }
     IEnumerator CoDropItem()
     {
-        isClickProcessing = true;
+        isRightClickProcessing = true;
         //클릭 간격 0.2초 이하면 무시
         if (itemID != 0)
         {
@@ -144,7 +161,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             PlusItemAmount(-1);
             ItemManager.Instance.DropItemToField(itemID);
             yield return new WaitForSeconds(0.2f);
-            isClickProcessing = false;
+            isRightClickProcessing = false;
         }
         else
         {
@@ -152,6 +169,12 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         }
     }
 
+    [HideInInspector]
+    public Vector2 startPosition = new Vector2();
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        startPosition = gameObject.transform.position;
+    }
     public void OnDrag(PointerEventData eventData)
     {
         itemIcon.gameObject.transform.position = eventData.position;
@@ -159,11 +182,29 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        itemIcon.gameObject.transform.localPosition = Vector3.zero;
+        //위치 초기화
+        itemIcon.gameObject.transform.position = startPosition;
+        //다른 슬롯에 놓여진다면
+        GameObject endObject = eventData.pointerCurrentRaycast.gameObject;
+        if(endObject != null)
+        {
+            Debug.Log(endObject);
+            ItemSlot endDragSlot = endObject.GetComponent<ItemSlot>();
+            if(endDragSlot != null)
+            {
+                Debug.Log("아이템 스왑");
+                ItemManager.Instance.SwapItemSlot(this, endDragSlot);
+            }
+            else
+            {
+                Debug.Log("슬롯이 아님");
+            }
+        }
+        else
+        {
+            Debug.Log("Raycast에 맞지않음.");
+        }
+
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-
-    }
 }

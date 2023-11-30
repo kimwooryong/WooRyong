@@ -9,6 +9,12 @@ public class QuickSlot : ItemSlot
 
     public override void SetItemSlot(int getItemID, int amount)
     {
+        if (getItemID == 0)
+        {
+            Debug.Log("ID 가 0 인 칸 초기화");
+            InitializeSlot();
+            return;
+        }
         var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
         if (itemDataAll == null)
         {

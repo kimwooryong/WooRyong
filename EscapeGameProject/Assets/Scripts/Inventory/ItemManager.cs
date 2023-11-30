@@ -239,6 +239,17 @@ public class ItemManager : MonoBehaviour
         TooltipItemDescription.text = item.itemDescription;
         TooltipItemAmount.text = $"수량 : {item.itemAmount}";
     }
+
+    //A칸 아이템을 B칸 아이템과 위치 교체
+    public void SwapItemSlot(ItemSlot slotA, ItemSlot slotB)
+    {
+        //퀵슬롯에서면 canGrab 테스트할 것.
+        int tempID = slotA.itemID;
+        int tempAmount = slotA.itemAmount;
+        slotA.SetItemSlot(slotB.itemID, slotB.itemAmount);
+        slotB.SetItemSlot(tempID, tempAmount);
+    }
+
     public void HideTooltip()
     {
         TooltipUI.SetActive(false);
