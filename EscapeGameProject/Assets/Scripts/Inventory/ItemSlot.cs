@@ -40,7 +40,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         {
             itemIcon = iconTransform.GetComponent<Image>();
             itemIcon.sprite = null;
-            SetColorBlack();
+            SetColorEmpty();
         }
         TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
         if(TextSlot != null)
@@ -53,6 +53,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             Debug.Log("TMP Text 못찾음!");
         }
     }
+
+    protected Dictionary<string, object> itemDataAll;
     public virtual void SetItemSlot(int getItemID, int amount)
     {
         if(getItemID == 0)
@@ -61,7 +63,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             InitializeSlot();
             return;
         }
-        var itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
+
+        itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
         if( itemDataAll == null )
         {
             Debug.Log("읽어 올 데이터가 없습니다.");
@@ -90,7 +93,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         }
         if(amount == 0)
         {
-            SetColorBlack();
+            SetColorEmpty();
         }
         else
         {
@@ -115,7 +118,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             return;
         }
     }
-    public void SetColorBlack()
+    public void SetColorEmpty()
     {
         itemIcon.color = Color.black;
     }
