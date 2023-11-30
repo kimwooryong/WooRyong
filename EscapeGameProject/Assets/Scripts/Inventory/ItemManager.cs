@@ -122,31 +122,45 @@ public class ItemManager : MonoBehaviour
         {
             isActiveQuickSlot = false;
         }
+        //인벤토리 활성화(I키)
         if (isActiveInventory)
         {
-            inventoryBG.gameObject.SetActive(true);
-            leftCanvas.SetActive(true);
-            middleCanvas.SetActive(true);
-            rightCanvas.SetActive(true);
+            SetCanvasInventory();
         }
+        //퀵슬롯 활성화(Tab키)
         else if(isActiveQuickSlot)
         {
-            inventoryCanvas.gameObject.SetActive(true);
-            inventoryBG.gameObject.SetActive(false);
-            leftCanvas.SetActive(false);
-            middleCanvas.SetActive(true);
-            rightCanvas.SetActive(false);
+            SetCanvasQuickSlot();
         }
         else
         {
             inventoryCanvas.gameObject.SetActive(false);
         }
     }
+
+    #region 인벤토리 캔버스 활성화 종류
+    private void SetCanvasInventory()
+    {
+        inventoryBG.gameObject.SetActive(true);
+        leftCanvas.SetActive(true);
+        middleCanvas.SetActive(true);
+        rightCanvas.SetActive(true);
+    }
+    private void SetCanvasQuickSlot()
+    {
+        inventoryCanvas.gameObject.SetActive(true);
+        inventoryBG.gameObject.SetActive(false);
+        leftCanvas.SetActive(false);
+        middleCanvas.SetActive(true);
+        rightCanvas.SetActive(false);
+    }
+    #endregion
+
     public Sprite LoadItemIcon(int id)
     {
         if(id == 0)
         {
-            Debug.Log("그건 손입니다.");
+            Debug.Log("그건 없습니다.");
             return null;
         }
         else
@@ -157,12 +171,13 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    //플레이어 위치 찾기
     private Vector3 FindDropPos()
     {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if(playerGO != null)
         {
-            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 4;
+            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 2;
             return dropPos;
         }
         else

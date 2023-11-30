@@ -28,4 +28,8 @@ public class QuickSlot : ItemSlot
             return;
         }
     }
+    public void SetColorSelect()
+    {
+        itemIcon.color = Color.red;
+    }
 }
