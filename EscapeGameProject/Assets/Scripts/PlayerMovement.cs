@@ -41,10 +41,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = velocity;
         }*/
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Destroy(gameObject);
-        }
         if (Input.GetKeyDown(KeyCode.M))
         {
             miniMap.SetActive(!miniMap.activeSelf);

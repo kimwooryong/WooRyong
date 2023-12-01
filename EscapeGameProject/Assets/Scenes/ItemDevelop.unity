@@ -4264,7 +4264,6 @@ MonoBehaviour:
   leftCanvas: {fileID: 197798164}
   middleCanvas: {fileID: 197798162}
   rightCanvas: {fileID: 197798160}
-  dropPos: {x: 480, y: 20, z: 460}
   testUI: {fileID: 904753503}
   idText: {fileID: 197798165}
   playerInventory: {fileID: 197798163}
@@ -4717,56 +4716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelCanvasGroup: {fileID: 528847833}
   fadeDuration: 5
---- !u!1 &2070610366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4354444511723974570, guid: 2f5efae9c5b001b4685782a62131bc7d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2098097902276642652}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2070610373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070610366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!1 &2112933743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,11 +5258,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4354444511723974570, guid: 2f5efae9c5b001b4685782a62131bc7d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2070610373}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5efae9c5b001b4685782a62131bc7d, type: 3}
 --- !u!1 &2162672804737373331
 GameObject:
