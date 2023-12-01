@@ -174,14 +174,53 @@ public class ItemManager : MonoBehaviour
             Debug.Log("충돌 UI없음");
             return;
         }
+        GameObject preSlotObject = null;
+        GameObject tempSlotObject;
+        QuickSlot tempQuickSlot;
         foreach (var hit in raycastResults)
         {
-            Debug.Log("Hit UI: " + hit.gameObject.name);
-            // UI 히트에 따라 함수 호출 또는 UI 상태 변경과 같은 추가 처리를 추가할 수 있습니다.
+            //충돌 UI가 퀵슬롯 있는지 검사.
+            tempSlotObject = hit.gameObject;
+            //UI 충돌이 있다면
+            if(tempSlotObject != null)
+            {
+                //퀵슬롯이 있다면 선택
+                tempQuickSlot = tempSlotObject.GetComponent<QuickSlot>();
+                if(tempQuickSlot != null)
+                {
+                    tempQuickSlot.SetSelect();
+                    //첫 검사라면 
+                    if(preSlotObject == null)
+                    {
+                        preSlotObject = tempSlotObject;
+                    }
+                    //첫 검사가 아니고, 기존과 같다면
+                    else if(preSlotObject == tempSlotObject)
+                    {
+                        return;
+                    }
+                    //첫 검사가 아니고, 기존과 다르다면 
+                    else if(preSlotObject != tempSlotObject)
+                    {
+                        tempQuickSlot = preSlotObject.GetComponent<QuickSlot>();
+                        tempQuickSlot.SetNonSelect();
+                    }
+                    else
+                    {
+                        Debug.Log("의도하지 않은 사항");
+                    }
+                }
+                else
+                {
+                    Debug.Log("충돌UI에 퀵슬롯이 없음.");
+                }
+            }
+            else
+            {
+                Debug.Log("충돌한 UI가 없음");
+            }
         }
     }
-
-
     #endregion
 
     #region 인벤토리 캔버스 활성화 종류

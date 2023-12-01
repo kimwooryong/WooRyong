@@ -6,8 +6,18 @@ using UnityEngine;
 public class QuickSlot : ItemSlot
 {
     public bool canGrab;
+    public bool isSelected = false;
+    private Vector3 SelectScale = Vector3.one * 1.1f;
     private void Update()
     {
+        if (isSelected)
+        {
+            gameObject.transform.localScale = SelectScale;
+        }
+        else 
+        {
+            gameObject.transform.localScale = Vector3.one;
+        }
     }
 
     public override void SetItemSlot(int getItemID, int amount)
@@ -31,8 +41,16 @@ public class QuickSlot : ItemSlot
             return;
         }
     }
-    public void SetColorSelect()
+    public void SetSelect()
     {
-        itemIcon.color = Color.red;
+        isSelected = true;
+    }
+    public void SetNonSelect()
+    {
+        isSelected = false;
+    }
+    public void EquipItem()
+    {
+        Debug.Log("아이템 장비");
     }
 }
