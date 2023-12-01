@@ -88,7 +88,7 @@ public class SavePoint : MonoBehaviour
                 yield return null;
             }
             SetSavePoint();
-            treeSpawner.SpawnTrees();
+            //treeSpawner.SpawnTrees(); 한정 자원 변경
             dayNightCycle.ResetDayNightCycle();
             panelCanvasGroup.alpha = 0f;
             playerMovement.onMove = true;
