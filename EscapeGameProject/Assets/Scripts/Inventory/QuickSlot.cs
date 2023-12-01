@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuickSlot : ItemSlot
 {
     public bool canGrab;
-    public bool isSelected = false;
+    private bool isSelected = false;
     private Vector3 SelectScale = Vector3.one * 1.1f;
     private void Update()
     {
