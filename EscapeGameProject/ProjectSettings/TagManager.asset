@@ -11,6 +11,8 @@ TagManager:
   - Pickaxe
   - Cloud
   - Seagull
+  - Weapon
+  - Bow
   - Tornado
   layers:
   - Default

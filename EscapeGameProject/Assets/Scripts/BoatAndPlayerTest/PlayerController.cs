@@ -37,27 +37,55 @@ public class PlayerCotroller : MonoBehaviour
     float crouch;
 
     const float k_Half = 0.5f;
-    //
+    
+    // Ä³¸¯ÅÍ ±âº» ¿ä¼Ò
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     CapsuleCollider m_Capsule;
-    //
+    
+    // Ä«¸Þ¶ó À§Ä¡ Á¤º¸
     public Transform cameraObject;
     private Vector3 originalCameraLocalPosition;
 
-    // ¹«±â
-    [SerializeField] bool isHammer;
+    // ¹«±â ÀåÂø ¿©ºÎ bool
+    [SerializeField] bool isWeapon;
     [SerializeField] bool isKnife;
-    [SerializeField] bool ispickaxe;
+    [SerializeField] bool isBow;
 
-    // °ø°Ý À¯¹«
-    bool isAttack;
+    // ÀåÂø À¯¹« È®ÀÎ ¿ä¼Ò
+    // µµ³¢ Ã¢ °î±ªÀÌ
+    [SerializeField]
+    private GameObject weapons;
+    [SerializeField]
+    private GameObject weaponsOnShoulder;
+    // Ä®
+    [SerializeField]
+    private GameObject knife;
+    [SerializeField]
+    private GameObject knifeOnShoulder;
+    [SerializeField]
+    // È°
+    private GameObject bow;
+    [SerializeField]
+    private GameObject bowOnShoulder;
+    public bool isEquipping;
+    public bool isEquipped;
+
+
+    //¸·±â
+    public bool isBlocking;
+
+    //¹ßÂ÷±â
+    public bool isKicking;
+
+    //°ø°Ý ¿ä¼Ò
+    public bool isAttacking;
+    private float timeSinceAttack;
+    public int currentAttack = 0;
 
     // ¹«±â ÀåÂø
-    public GameObject[] weaponPrefabs;
-    private int weaponNum =0;
-
-    //
+    //public GameObject[] weaponPrefabs;
+    //private int weaponNum =0;
 
 
 
@@ -78,9 +106,16 @@ public class PlayerCotroller : MonoBehaviour
 
     private void Update()
     {
+        timeSinceAttack += Time.deltaTime;
+
         Moving();
         Crouch();
         Sprint();
+
+        AttackMonster();
+        Equip();
+        Block();
+        Kick();
     }
 
     /// <summary>
@@ -110,20 +145,11 @@ public class PlayerCotroller : MonoBehaviour
             _isGrounded = true;
         }
 
-        if (other.transform.CompareTag("Hammer"))
+        if (other.transform.CompareTag("Weapon"))
         {
-            isHammer = true;
+            isWeapon = true;
         }
 
-        if (other.transform.CompareTag("Knife"))
-        {
-            isKnife = true;
-        }
-
-        if (other.transform.CompareTag("Pickaxe"))
-        {
-            ispickaxe = true;
-        }
     }
 
     private void OnCollisionExit(Collision other)
@@ -133,22 +159,14 @@ public class PlayerCotroller : MonoBehaviour
             _isGrounded = false;
         }
 
-        if (other.transform.CompareTag("Hammer"))
+        if (other.transform.CompareTag("Weapon"))
         {
-            isHammer = false;
+            isWeapon = false;
         }
 
-        if (other.transform.CompareTag("Knife"))
-        {
-            isKnife = false;
-        }
-
-        if (other.transform.CompareTag("Pickaxe"))
-        {
-            ispickaxe = false;
-        }
     }
 
+    /* ¹«±â±³Ã¼
     public void ChangeWeapon()
     {
        
@@ -186,51 +204,152 @@ public class PlayerCotroller : MonoBehaviour
 
 
     }
-
+    */
 
 
     public void AttackMonster()
     {
         float attackValue = inputManager.inputMaster.Movement.Attack.ReadValue<float>();
-        if(attackValue > 0)
+        if (attackValue >0 && m_Animator.GetBool("OnGround") && timeSinceAttack > 0.8f)
         {
-            isAttack = true;
+            if (!isEquipped)
+                return;
 
-            if (isHammer == true)
-            {
-                m_Animator.SetBool("Hammer", true);
-                m_Animator.SetBool("Knife", false);
-                m_Animator.SetBool("Pickax", false);
+            currentAttack++;
+            isAttacking = true;
 
-            }
+            if (currentAttack > 3)
+                currentAttack = 1;
 
-            if (isKnife == true)
-            {
-                m_Animator.SetBool("Hammer", false);
-                m_Animator.SetBool("Knife", true);
-                m_Animator.SetBool("Pickax", false);
+            //Reset
+            if (timeSinceAttack > 1.0f)
+                currentAttack = 1;
 
-            }
+            //Call Attack Triggers
+            m_Animator.SetTrigger("Attack" + currentAttack);
 
-            if (ispickaxe == true)
-            {
-                m_Animator.SetBool("Hammer", false);
-                m_Animator.SetBool("Knife", false);
-                m_Animator.SetBool("Pickax", true);
-
-            }
-
-            if (isHammer == false && isKnife == false && ispickaxe == false)
-            {
-                m_Animator.SetBool("Hammer", false);
-                m_Animator.SetBool("Knife", false);
-                m_Animator.SetBool("Pickax", false);
-
-            }
+            //Reset Timer
+            timeSinceAttack = 0;
         }
-    
+
     }
 
+    //This will be used at animation event
+    public void ResetAttack()
+    {
+        isAttacking = false;
+    }
+
+    public void Kick()
+    {
+        float kickValue = inputManager.inputMaster.Movement.Kick.ReadValue<float>();
+        if (kickValue >0 && m_Animator.GetBool("OnGround"))
+        {
+            m_Animator.SetBool("Kick", true);
+            isKicking = true;
+        }
+        else
+        {
+            m_Animator.SetBool("Kick", false);
+            isKicking = false;
+        }
+    }
+
+    public void Equipped()
+    {
+        isEquipping = false;
+    }
+
+    private void Block()
+    {
+        float blockValue = inputManager.inputMaster.Movement.Shield.ReadValue<float>();
+        if (blockValue > 0 && m_Animator.GetBool("OnGround"))
+        {
+            m_Animator.SetBool("Block", true);
+            isBlocking = true;
+        }
+        else
+        {
+            m_Animator.SetBool("Block", false);
+            isBlocking = false;
+        }
+    }
+
+    private void Equip()
+    {
+        
+        // Ä®
+        if (Input.GetKeyDown(KeyCode.Alpha1) && m_Animator.GetBool("OnGround") && m_Animator.GetBool("isKnife"))
+        {
+            isEquipping = true;
+            m_Animator.SetTrigger("Equip");
+        }
+
+        // µµ³¢ Ã¢ °î±ªÀÌ
+        if (Input.GetKeyDown(KeyCode.Alpha2) && m_Animator.GetBool("OnGround") )
+        {
+            isEquipping = true;
+            m_Animator.SetTrigger("Equip");
+        }
+
+        // È°
+        if (Input.GetKeyDown(KeyCode.Alpha3) && m_Animator.GetBool("OnGround") && m_Animator.GetBool("isBow"))
+        {
+            isEquipping = true;
+            m_Animator.SetTrigger("Equip");
+        }
+    }
+
+    public void ActiveWeapon()
+    {
+        // µµ³¢ °î±ªÀÌ Ã¢
+        if (!isEquipped)
+        {
+            weapons.SetActive(true);
+            weaponsOnShoulder.SetActive(false);
+            m_Animator.SetBool("isWeapon", true);
+            isEquipped = !isEquipped;
+        }
+        else
+        {
+            weapons.SetActive(false);
+            weaponsOnShoulder.SetActive(true);
+            m_Animator.SetBool("isWeapon", false);
+            isEquipped = !isEquipped;
+        }
+
+        // Ä®
+        if (!isEquipped && isKnife == true)
+        {
+            knife.SetActive(true);
+            knifeOnShoulder.SetActive(false);
+            m_Animator.SetBool("isKnife", true);
+            isEquipped = !isEquipped;
+        }
+        else
+        {
+            knife.SetActive(false);
+            knifeOnShoulder.SetActive(true);
+            m_Animator.SetBool("isKnife", false);
+            isEquipped = !isEquipped;
+        }
+
+        //È°
+        if (!isEquipped && isBow == true)
+        {
+            bow.SetActive(true);
+            bowOnShoulder.SetActive(false);
+            m_Animator.SetBool("isBow", true);
+            isEquipped = !isEquipped;
+        }
+        else
+        {
+            bow.SetActive(false);
+            bowOnShoulder.SetActive(true);
+            m_Animator.SetBool("isBow", false);
+            isEquipped = !isEquipped;
+        }
+    }
 
     private void Sprint()
     {

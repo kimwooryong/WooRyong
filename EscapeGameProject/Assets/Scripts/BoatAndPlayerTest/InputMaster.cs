@@ -122,12 +122,39 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Attack"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b9c7d58c-c6e4-47e5-9103-453dc66d7380"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Button"",
+                    ""id"": ""31b4fb62-4498-459e-90ec-c9b97fd8afd1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Kick"",
+                    ""type"": ""Value"",
+                    ""id"": ""6e16727b-edae-42dc-a90d-2287aafc8635"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Aiming"",
+                    ""type"": ""Value"",
+                    ""id"": ""662a3147-99c2-435f-afc8-a03210d0bbad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -240,6 +267,39 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""051258f0-e802-4150-926c-2a0a4ee3c7d7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f19495d6-7c70-4ada-81d5-6c20ab4d200d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Kick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bf37cb1-7360-42d2-8296-0dd27f9c59ed"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -258,6 +318,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
         m_Movement_Crouch = m_Movement.FindAction("Crouch", throwIfNotFound: true);
         m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
+        m_Movement_Shield = m_Movement.FindAction("Shield", throwIfNotFound: true);
+        m_Movement_Kick = m_Movement.FindAction("Kick", throwIfNotFound: true);
+        m_Movement_Aiming = m_Movement.FindAction("Aiming", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -379,6 +442,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Run;
     private readonly InputAction m_Movement_Crouch;
     private readonly InputAction m_Movement_Attack;
+    private readonly InputAction m_Movement_Shield;
+    private readonly InputAction m_Movement_Kick;
+    private readonly InputAction m_Movement_Aiming;
     public struct MovementActions
     {
         private @InputMaster m_Wrapper;
@@ -389,6 +455,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Movement_Run;
         public InputAction @Crouch => m_Wrapper.m_Movement_Crouch;
         public InputAction @Attack => m_Wrapper.m_Movement_Attack;
+        public InputAction @Shield => m_Wrapper.m_Movement_Shield;
+        public InputAction @Kick => m_Wrapper.m_Movement_Kick;
+        public InputAction @Aiming => m_Wrapper.m_Movement_Aiming;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -416,6 +485,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Shield.started += instance.OnShield;
+            @Shield.performed += instance.OnShield;
+            @Shield.canceled += instance.OnShield;
+            @Kick.started += instance.OnKick;
+            @Kick.performed += instance.OnKick;
+            @Kick.canceled += instance.OnKick;
+            @Aiming.started += instance.OnAiming;
+            @Aiming.performed += instance.OnAiming;
+            @Aiming.canceled += instance.OnAiming;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -438,6 +516,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Shield.started -= instance.OnShield;
+            @Shield.performed -= instance.OnShield;
+            @Shield.canceled -= instance.OnShield;
+            @Kick.started -= instance.OnKick;
+            @Kick.performed -= instance.OnKick;
+            @Kick.canceled -= instance.OnKick;
+            @Aiming.started -= instance.OnAiming;
+            @Aiming.performed -= instance.OnAiming;
+            @Aiming.canceled -= instance.OnAiming;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -468,5 +555,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnShield(InputAction.CallbackContext context);
+        void OnKick(InputAction.CallbackContext context);
+        void OnAiming(InputAction.CallbackContext context);
     }
 }

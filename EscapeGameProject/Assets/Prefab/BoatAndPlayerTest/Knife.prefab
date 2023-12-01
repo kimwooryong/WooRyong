@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 9169466182541393220}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Knife
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ Transform:
   - {fileID: 6157144372782811158}
   - {fileID: 3999965387590985167}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &9169466182541393220
 LODGroup:
