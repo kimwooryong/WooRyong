@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class TreeSpawn : MonoBehaviour
@@ -17,19 +16,30 @@ public class TreeSpawn : MonoBehaviour
 
     private GameObject emptyObject;
 
+    private float randomSize;
+
     private void Start()
     {
         emptyObject = new GameObject("TreeObject");
-        
-        for(int i = 0; i < 5; i++)
+
+        randomRotation = Quaternion.identity;
+
+        for (int i = 0; i < 5; i++)
         {
+            Debug.Log(randomRotation);
             SpawnTrees();
         }
     }
-    
+
+    private void Update()
+    {
+        randomSize = Random.Range(1, 1.2f);
+    }
+
+    private Quaternion randomRotation;
+
     public void SpawnTrees()
     {
-        
         int currentSpawnObject = GameObject.FindGameObjectsWithTag("NaturalObject").Length;
 
         int remainingObjects = Mathf.Max(0, maxSpawnObject - currentSpawnObject);
@@ -38,11 +48,12 @@ public class TreeSpawn : MonoBehaviour
 
         int randomPrefabCount = Random.Range(0, treePrefab.Length);
 
-
         for (int i = 0; i < numberOfObjects; i++)
         {
+            randomRotation.y = Random.Range(0f, 4f);
+
             Vector3 randomPosition = GenerateRandomSpawnPosition();
-            GameObject treeInstance = Instantiate(treePrefab[randomPrefabCount], randomPosition, Quaternion.identity);
+            GameObject treeInstance = Instantiate(treePrefab[randomPrefabCount], randomPosition, randomRotation);
             treeInstance.transform.parent = emptyObject.transform;
         }
     }

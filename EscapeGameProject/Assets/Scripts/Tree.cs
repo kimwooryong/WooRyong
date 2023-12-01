@@ -34,9 +34,12 @@ public class Tree : MonoBehaviour
     }
     void DropItem()
     {
+        if(treeObject!= null) 
+        {
         foreach (GameObject item in treeObject)
         {
             Instantiate(item, transform.position, Quaternion.identity);
+        }
         }
     }
 

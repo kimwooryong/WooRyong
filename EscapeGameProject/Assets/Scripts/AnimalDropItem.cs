@@ -67,6 +67,7 @@ public class AnimalDropItem : MonoBehaviour
             Vector3 spawnPosition = transform.position;
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
+            spawnPosition.y += 0.3f;
             Instantiate(choiceItem, spawnPosition, Quaternion.identity);
         }
     }
