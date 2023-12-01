@@ -6581,7 +6581,7 @@ PrefabInstance:
     - target: {fileID: 6889822886135787498, guid: 1838732249f21f54fb7e590e7dda6fd8,
         type: 3}
       propertyPath: sceneName
-      value: Cave1
+      value: Cave
       objectReference: {fileID: 0}
     - target: {fileID: 6889822886135787498, guid: 1838732249f21f54fb7e590e7dda6fd8,
         type: 3}

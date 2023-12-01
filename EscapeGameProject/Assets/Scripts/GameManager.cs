@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject playerPrefab;
     public Transform spawnPlace;
-    private int currentSpawnIndex;
+    private MonsterSpawner monsterSpawner;
 
     private void Awake()
     {
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoad;
+        monsterSpawner = FindObjectOfType<MonsterSpawner>();
     }
 
     private void Update()
@@ -63,6 +65,16 @@ public class GameManager : MonoBehaviour
     void OnSceneLoad( UnityEngine.SceneManagement.Scene scene, LoadSceneMode load)
     {
 
+        if(scene.name == "Cave")
+        {
+            monsterSpawner.Deactivate();
+
+        }
+        else if(scene.name == " Main")
+        {
+            monsterSpawner.Activate();  
+        }
     }
+
 
 }
