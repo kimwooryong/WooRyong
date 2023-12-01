@@ -1591,8 +1591,6 @@ Animation:
   - {fileID: 7400012, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   - {fileID: 7400008, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   - {fileID: 7400030, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
-  - {fileID: 7400022, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
-  - {fileID: 7400002, guid: aa7066cc29d0627478b14a9c961eb97a, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1711,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 6095106458368995959, guid: e59483d4469efb047a9b9ee403c6055c, type: 3}
+  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
   minDropCount: 5
   maxDropCount: 5
 --- !u!1 &7939082473644072811

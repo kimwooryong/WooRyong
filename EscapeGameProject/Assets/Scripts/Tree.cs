@@ -7,40 +7,139 @@ public class Tree : MonoBehaviour
 {
     public int currentHp;
     public int maxHp;
-    public GameObject[] treeObject;
+    public GameObject[] dropItem;
+    private float dropLocation;
     private PlayerMovement player;
 
-    private void Start()
-    {
-        player = FindObjectOfType<PlayerMovement>(); 
-        currentHp = maxHp;
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
+    private int dropCount;
 
-            TakeDamage(player.playerDamage);
-            if(currentHp <= 0)
+    private float treeDestroyTime;
+
+    private bool isDrop = false;
+
+    private float danglingItemY;
+    private float danglingItemXZ;
+
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+        currentHp = maxHp;
+        dropCount = Random.Range(3, 4);
+
+        if (dropItem.Length >= 2)
+        {
+            for (int i = 0; i < dropItem.Length - 2; i++)
             {
-                DropItem();
-                Destroy(gameObject);
+                danglingItemXZ = Random.Range(-0.5f, 0.5f);
+                danglingItemY = Random.Range(3.0f, 4.0f);
+                GameObject newDrop = DropAddItem(false);
+                newDrop.transform.parent = transform;
             }
         }
     }
+
+    private void Update()
+    {
+        dropLocation = Random.Range(-0.3f, 0.3f);
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(player.playerDamage);
+        }
+
+        if (currentHp <= 0 && !isDrop)
+        {
+            
+            treeDestroyTime += Time.deltaTime;
+            if(treeDestroyTime >= 0.99f)
+            {
+                GrivtyCheck();
+            }
+            if (treeDestroyTime >= 1)
+            {
+                for (int i = 0; i < dropCount; i++)
+                {
+                    dropLocation = Random.Range(-0.3f, 0.3f);
+                    DropBasicItem();
+                }
+
+                Destroy(gameObject);
+                isDrop = true;
+            }
+        }
+    }
+
     void TakeDamage(int damage)
     {
         currentHp -= damage;
     }
-    void DropItem()
+
+    GameObject DropBasicItem()
     {
-        if(treeObject!= null) 
+        if (dropItem.Length >= 2)
         {
-        foreach (GameObject item in treeObject)
-        {
-            Instantiate(item, transform.position, Quaternion.identity);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
+            spawnPosition.x += dropLocation;
+            spawnPosition.z += dropLocation;
+
+            GameObject drop1 = Instantiate(dropItem[0], spawnPosition, Quaternion.identity);
+            GameObject drop2 = Instantiate(dropItem[1], spawnPosition, Quaternion.identity);
+
+            return drop1;
         }
-        }
+
+        return null;
     }
 
+    GameObject DropAddItem(bool applyGravity)
+    {
+        if (dropItem.Length > 2)
+        {
+            Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
+            spawnPosition.x += dropLocation;
+            spawnPosition.z += dropLocation;
+            for (int i = 2; i < dropItem.Length; i++)
+            {
+                GameObject choiceItem = dropItem[i];
+                if (choiceItem != null)
+                {
+                    GameObject newItem = Instantiate(choiceItem, spawnPosition, Quaternion.identity);
+
+                    Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
+                    if (itemRigidbody != null)
+                    {
+                        itemRigidbody.useGravity = applyGravity;
+                    }
+
+                    if (currentHp <= 0)
+                    {
+                        itemRigidbody.useGravity = true;
+                    }
+
+                    return newItem;
+                }
+            }
+
+
+
+        }
+
+        return null;
+    }
+
+    private void GrivtyCheck()
+    {
+        foreach (Transform child in transform)
+        {
+            Rigidbody childRigidbody = child.GetComponent<Rigidbody>();
+
+            if (childRigidbody != null)
+            {
+                childRigidbody.useGravity = true;
+            }
+
+            child.parent = null;
+        }
+    }
 }
