@@ -19,9 +19,12 @@ public class MinimapController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (dayNightCycle != null)
         {
-            ToggleMinimap();
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ToggleMinimap();
+            }
         }
     }
 

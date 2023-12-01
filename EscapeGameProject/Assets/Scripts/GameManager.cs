@@ -1,14 +1,12 @@
 using System.Collections;
 using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject playerPrefab;
     public Transform spawnPlace;
-    private MonsterSpawner monsterSpawner;
 
     private void Awake()
     {
@@ -24,8 +22,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoad;
-        monsterSpawner = FindObjectOfType<MonsterSpawner>();
     }
 
     private void Update()
@@ -62,19 +58,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // 마우스 고정 해제
         Cursor.visible = false; // 마우스 클릭불가
     }
-    void OnSceneLoad( UnityEngine.SceneManagement.Scene scene, LoadSceneMode load)
-    {
 
-        if(scene.name == "Cave")
-        {
-            monsterSpawner.Deactivate();
-
-        }
-        else if(scene.name == " Main")
-        {
-            monsterSpawner.Activate();  
-        }
-    }
 
 
 }

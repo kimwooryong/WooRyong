@@ -61,13 +61,5 @@ public class MonsterSpawner : MonoBehaviour
         }
         return 0f;
     }
-    public void Activate()
-    {
-        gameObject.SetActive(true);
-    }
 
-    public void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
 }
