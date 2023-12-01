@@ -54,7 +54,7 @@ public class TreeSpawn : MonoBehaviour
 
             Vector3 randomPosition = GenerateRandomSpawnPosition();
             GameObject treeInstance = Instantiate(treePrefab[randomPrefabCount], randomPosition, randomRotation);
-            randomSize = Random.Range(0.6f, 1.4f);
+            randomSize = Random.Range(0.8f, 1.2f);
             treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
             treeInstance.transform.parent = emptyObject.transform;
         }

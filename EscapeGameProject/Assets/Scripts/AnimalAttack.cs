@@ -34,6 +34,7 @@ public class AnimalAttack : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
+            player.rb.AddForce(Vector3.back * 20, ForceMode.Impulse);
             Debug.Log("동물 공격");
 
         }   
