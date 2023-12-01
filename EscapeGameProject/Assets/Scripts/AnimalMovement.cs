@@ -64,13 +64,18 @@ public class AnimalMovement : MonoBehaviour
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
         animalAttack = GetComponentInChildren<AnimalAttack>();
+        if(attackCollider != null )
+        {
+
         attackCollider = animalAttack.gameObject;
+            attackCollider.transform.localPosition = Vector3.zero;
+        }
 
 
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
-        attackCollider.transform.localPosition = Vector3.zero;
+
 
 
     }
