@@ -9,7 +9,6 @@ public class CaveEntrance : MonoBehaviour
     public Vector3 playerPosition;
     public Vector3 playerRotation;
 
-    public bool isCaveEnter = false;
 
     private DayNightCycle dayNightCycle;
     private Quaternion savedRotation;
@@ -17,10 +16,16 @@ public class CaveEntrance : MonoBehaviour
 
     private MonsterSpawner monsterSpawner;
 
+    private GameManager gameManager;
+
+    [HideInInspector]
+    public float newIntensityMultiplier = 1.0f;
+
     private void Start()
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
         monsterSpawner = FindObjectOfType<MonsterSpawner>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,14 +36,17 @@ public class CaveEntrance : MonoBehaviour
             collision.transform.position = playerPosition;
             collision.transform.eulerAngles = playerRotation;
 
+            
 
         }
     }
     void EnterCave()
     {
-        isCaveEnter = !isCaveEnter;
-        if (isCaveEnter)
+        gameManager.isCaveEnter = !gameManager.isCaveEnter;
+        if (gameManager.isCaveEnter)
         {
+            newIntensityMultiplier = 0.0f;
+            RenderSettings.ambientIntensity *= newIntensityMultiplier;
 
             dayNightCycle.gameObject.SetActive(false);
             monsterSpawner.enabled = false;
@@ -47,6 +55,8 @@ public class CaveEntrance : MonoBehaviour
         }
         else
         {
+            newIntensityMultiplier = 1.0f;
+            RenderSettings.reflectionIntensity *= newIntensityMultiplier;
             dayNightCycle.gameObject.SetActive(true);
             monsterSpawner.enabled = true;
         }

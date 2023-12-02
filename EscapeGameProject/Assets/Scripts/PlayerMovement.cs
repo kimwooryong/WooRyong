@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int playerDamage = 2;
     public GameObject miniMap;
     public bool onMove;
+    private GameManager gameManager;
     private CaveEntrance cave;
 
     private void Awake()
@@ -19,9 +20,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.isCaveEnter = false;
         cave = FindObjectOfType<CaveEntrance>();
-        cave.isCaveEnter = false;
-        onMove = true;
+        cave.newIntensityMultiplier = 1.0f;
+        //onMove = true;
         rb = GetComponent<Rigidbody>();
         if(miniMap != null)
         {

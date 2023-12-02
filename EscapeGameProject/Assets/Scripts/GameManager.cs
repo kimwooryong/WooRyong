@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Transform spawnPlace;
 
+    public bool isCaveEnter = false;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+
     }
 
     private void Update()
