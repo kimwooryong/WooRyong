@@ -43,7 +43,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             SetColorEmpty();
         }
         TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
-        if(TextSlot != null)
+        if (TextSlot != null)
         {
             itemAmountText = TextSlot;
         }
