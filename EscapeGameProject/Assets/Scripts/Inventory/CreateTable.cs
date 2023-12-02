@@ -1,45 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using TMPro;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class CreateTable : Inventory
 {
-    [HideInInspector]
-    public List<ItemSlot> InventorySlots;
-
-    [SerializeField]
-    private GameObject inventorySlotPrefab;
-    [SerializeField]
-    private int inventorySize;
-
-    protected void Awake()
-    {
-        InitializeInventory();
-    }
-    protected void InitializeInventory()
-    {
-        InventorySlots = new List<ItemSlot>();
-        for(int i = 0; i < inventorySize;  i++)
-        {
-            GameObject tempGo = Instantiate(inventorySlotPrefab, gameObject.transform);
-            ItemSlot tempSlot = tempGo.GetComponent<ItemSlot>();
-            InventorySlots.Add(tempSlot);
-        }
-    }
-
     //특정 ID 아이템 획득
-    public virtual void AddItem(int itemID, int amount)
+    public void AddItem(int itemID, int amount)
     {
         //아이템 검색
         int index = FindItem(itemID);
         //없다면 빈 칸 찾아서 추가
-        if(index == -1)
+        if (index == -1)
         {
             int emptyIndex = FindItem(0);
-            if(emptyIndex == -1)
+            if (emptyIndex == -1)
             {
                 Debug.Log("인벤토리에 빈 칸이 없음.");
             }
@@ -71,13 +45,13 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public virtual void RemoveItem(int index, int amount)
+    private void RemoveItem(int index, int amount)
     {
 
     }
 
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
-    protected virtual int FindItem(int itemID)
+    private int FindItem(int itemID)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
@@ -89,6 +63,4 @@ public class Inventory : MonoBehaviour
         }
         return -1;
     }
-
-
 }

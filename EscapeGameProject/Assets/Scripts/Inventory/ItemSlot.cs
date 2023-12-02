@@ -120,14 +120,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     }
     public void SetColorEmpty()
     {
-        itemIcon.color = Color.black;
+        Color newColor = itemIcon.color;
+        newColor.a = 0f;
+        itemIcon.color = newColor;
     }
     public void SetColorWhite()
     {
         itemIcon.color = Color.white;
     }
     //Tooltip
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(itemID == 0)
         {
@@ -136,13 +138,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
         ItemManager.Instance.ShowTooltip(this, eventData.position);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         ItemManager.Instance.HideTooltip();
     }
     //아이템 버리기
     private bool isRightClickProcessing = false;
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (isRightClickProcessing)
         {
@@ -174,16 +176,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
 
     [HideInInspector]
     public Vector2 startPosition = new Vector2();
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         startPosition = gameObject.transform.position;
     }
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         itemIcon.gameObject.transform.position = eventData.position;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         //위치 초기화
         itemIcon.gameObject.transform.position = startPosition;

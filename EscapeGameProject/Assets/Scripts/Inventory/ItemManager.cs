@@ -143,7 +143,6 @@ public class ItemManager : MonoBehaviour
 
     #region Äü½½·Ô
 
-    public GameObject testUI;
     private GraphicRaycaster quickSlotGR;
     private PointerEventData ped;
     private List<RaycastResult> raycastResults;
@@ -165,8 +164,6 @@ public class ItemManager : MonoBehaviour
     {
         raycastResults.Clear();
 
-        //Test
-        testUI.transform.position = SetPointerPosition();
         ped.position = SetPointerPosition();
         quickSlotGR.Raycast(ped, raycastResults);
         if (raycastResults.Count == 0)
@@ -248,7 +245,7 @@ public class ItemManager : MonoBehaviour
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if(playerGO != null)
         {
-            Vector3 dropPos = playerGO.transform.position + playerGO.transform.forward * 2;
+            Vector3 dropPos = playerGO.transform.position + playerGO.transform.up + playerGO.transform.forward * 2;
             return dropPos;
         }
         else
