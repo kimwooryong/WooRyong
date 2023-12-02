@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5922209881707108896}
   - component: {fileID: -620631241348444684}
   - component: {fileID: 817111603934034640}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: WoodWall Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3943032989887938890}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 341.01944, y: 5.2000003, z: 461.3877}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5161505966490675258
 MeshFilter:
@@ -97,9 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderList: []
+  snapColliderList: []
   layerGround: 10
   green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
   Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
+  _renderers: []
+  _gameObjects: []
 --- !u!65 &817111603934034640
 BoxCollider:
   m_ObjectHideFlags: 0

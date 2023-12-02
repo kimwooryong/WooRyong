@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 816188880772212644}
   - component: {fileID: 6478519510824098042}
   - component: {fileID: 841304088670237357}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: WoodWallDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4045991737298382294}
   - component: {fileID: 5229825369685223286}
   - component: {fileID: 5904194797616447729}
-  m_Layer: 15
+  m_Layer: 28
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1213242435969721782}
   - component: {fileID: 5543559509370023547}
   - component: {fileID: 1235472049125989071}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16038,9 +16038,9 @@ MonoBehaviour:
     go_PreviewPrefab: {fileID: 9079102003691628436, guid: 22021ed387869b143b0df565eb63f90c,
       type: 3}
   - craftName: Foundation
-    go_Prefab: {fileID: 4869367290019317714, guid: 5acdad288151a0a43a495472cf24fc5b,
+    go_Prefab: {fileID: 4869367290019317714, guid: 15f4adf9f02123b4aa15f4a2f1129f5c,
       type: 3}
-    go_PreviewPrefab: {fileID: 4869367290019317714, guid: 0567c585f3320604fb52c018579ae703,
+    go_PreviewPrefab: {fileID: 4869367290019317714, guid: f99748fcc893b3e4db8cbed1965e74e5,
       type: 3}
   - craftName: Wall
     go_Prefab: {fileID: 3943032989887938890, guid: 3591396943254ff46b96539a60d83643,
@@ -16063,9 +16063,6 @@ MonoBehaviour:
     go_PreviewPrefab: {fileID: 6080653832599585325, guid: 33e6afc8d03a3264a96e1cbaf0bdc88e,
       type: 3}
   tf_Player: {fileID: 4207293826641142}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 68352
   range: 15
 --- !u!114 &9002702847384694903
 MonoBehaviour:

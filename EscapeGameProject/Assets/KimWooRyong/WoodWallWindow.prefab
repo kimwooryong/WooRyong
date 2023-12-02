@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6324255866612412777}
   - component: {fileID: -8977233148963098861}
   - component: {fileID: -1903516159844733389}
-  m_Layer: 11
+  - component: {fileID: 4998184210973425379}
+  m_Layer: 27
   m_Name: WoodWallWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,3 +134,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9847113, y: 1.0061076, z: 0.1008333}
   m_Center: {x: 0.003820449, y: 0.49876246, z: -0.012250574}
+--- !u!114 &4998184210973425379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855455672171133162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156163c37270f1a4d8f7362b7172f8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4675881473358946650}
   - component: {fileID: -1454273909429189740}
   - component: {fileID: 3425448968065401833}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Cieling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

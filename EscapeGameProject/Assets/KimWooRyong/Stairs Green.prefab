@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5104975573513844877}
   - component: {fileID: 7993573651047229236}
   - component: {fileID: 2077325982933435594}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3970550412914172579}
   - component: {fileID: 9214528949652705290}
   - component: {fileID: -9089916875355940064}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Stairs Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,9 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderList: []
+  snapColliderList: []
   layerGround: 10
   green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
   Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
+  _renderers: []
+  _gameObjects: []
 --- !u!65 &-9089916875355940064
 BoxCollider:
   m_ObjectHideFlags: 0

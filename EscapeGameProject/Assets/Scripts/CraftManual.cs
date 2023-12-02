@@ -9,6 +9,7 @@ public class craft
     public string craftName; // 이름
     public GameObject go_Prefab; // 실제 설치되는 프리펩
     public GameObject go_PreviewPrefab; // 미리보기 프리렙
+    // public LayerMask IsBuildLayer; // 설치 가능 레이어
 }
 
 public class prefabs
@@ -31,12 +32,12 @@ public class CraftManual : MonoBehaviour
     [SerializeField]
     public craft[] craft_Build; // 모닥불용 탭
 
-    
+
     private GameObject go_Preview; // 미리보기 프리펩을 담을 변수
 
 
     private PreviewObject previewObject; // 클래스 참조
-    private WallPreview wallPreview; // 클래스 참조
+    private craft craft;
 
 
     private Quaternion savedRotation;
@@ -51,8 +52,8 @@ public class CraftManual : MonoBehaviour
 
     // RaycastHit 필요 변수 선언
     private RaycastHit hitInfo; // 정보
-    [SerializeField]
-    private LayerMask layerMask; // 레이어 마스크 설정
+/*    [SerializeField]
+    private LayerMask LayerMask; // 레이어*/
     [SerializeField]
     private float range; // 거리
 
@@ -66,7 +67,7 @@ public class CraftManual : MonoBehaviour
         go_Prefab = craft_Build[_slotNumber].go_Prefab;
         isPreviewActived = true; // 프리뷰 켜주기
         go_BaseUI.SetActive(false); // UI 꺼주기
-        
+
     }
 
     void Update()
@@ -87,7 +88,7 @@ public class CraftManual : MonoBehaviour
         }
     }
 
-    
+
 
     private void InputHandler()
     {
@@ -111,41 +112,19 @@ public class CraftManual : MonoBehaviour
             Cancel(); // 취소
         }
 
-        if (previewObject != null)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (Input.GetKey(KeyCode.Q))
+            if (go_Preview != null)
             {
-                if (go_Preview != null)
-                {
-                    go_Preview.transform.Rotate(new Vector3(0f, 90f * Time.deltaTime, 0f)); // 회전
-                }
-            }
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                if (go_Preview != null)
-                {
-                    go_Preview.transform.Rotate(new Vector3(0f, -90f * Time.deltaTime, 0f)); // 회전
-                }
+                go_Preview.transform.Rotate(new Vector3(0f, 90f , 0f)); // 회전
             }
         }
 
-        if (wallPreview != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.Q))
+            if (go_Preview != null)
             {
-                if (go_Preview != null)
-                {
-                    go_Preview.transform.Rotate(new Vector3(0f, 90, 0f)); // 회전
-                }
-            }
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                if (go_Preview != null)
-                {
-                    go_Preview.transform.Rotate(new Vector3(0f, -90, 0f)); // 회전
-                }
+                go_Preview.transform.Rotate(new Vector3(0f, -90f, 0f)); // 회전
             }
         }
     }
@@ -164,20 +143,20 @@ public class CraftManual : MonoBehaviour
             go_Prefab = null;
             go_Preview = null;
             previewObject = null;
-            CloseWindow(); 
+            CloseWindow();
         }
     }
 
     private void PreviewPositionUpdate() // 프리뷰 설치전 움직임
     {
         Debug.DrawRay(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, Color.red); // 씬 창에 레이선이 보이게 해주는 코드
-        if(Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range, layerMask)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
+        if (Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range/*, LayerMask*/)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
         {
-            if(hitInfo.transform != null) // 위치값이 있다면
+            if (hitInfo.transform != null) // 위치값이 있다면
             {
                 Quaternion rotation = go_Preview.transform.rotation;
                 Debug.Log(previewObject);
-                Vector3 _location = previewObject.GetSnapPosition(hitInfo.point, ref rotation); 
+                Vector3 _location = previewObject.GetSnapPosition(hitInfo.point, ref rotation);
                 Debug.Log("4");
                 go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
                 go_Preview.transform.rotation = rotation;
@@ -190,11 +169,11 @@ public class CraftManual : MonoBehaviour
         }
     }
 
-  
-        // 제희 피셜 확인하면 프리뷰 오브젝트가 겹치지않게 만들 수 있다. ( 설치 가능 상태일때 넣어주면 좋을듯 )
-        // BoxCollider box;
-        // box.bounds.extents.x;
-    
+
+    // 제희 피셜 확인하면 프리뷰 오브젝트가 겹치지않게 만들 수 있다. ( 설치 가능 상태일때 넣어주면 좋을듯 )
+    // BoxCollider box;
+    // box.bounds.extents.x;
+
 
     private void Cancel() // 취소
     {
@@ -203,7 +182,7 @@ public class CraftManual : MonoBehaviour
             Destroy(go_Preview);
         }
         isActivated = false;
-        isPreviewActived= false;
+        isPreviewActived = false;
         go_Preview = null;
         go_Prefab = null;
 
@@ -212,7 +191,7 @@ public class CraftManual : MonoBehaviour
 
     private void Window()
     {
-        if(!isActivated)
+        if (!isActivated)
         {
             OpenWindow();
         }

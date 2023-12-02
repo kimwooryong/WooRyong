@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallPreview : PreviewObject
+/*public class WallPreview : PreviewObject
 {
     [SerializeField]
     private int layerFoundation; // 지상 레이어
@@ -10,11 +10,11 @@ public class WallPreview : PreviewObject
     private const int IGNORE_RAYCAST_LAYER = 16;
 
 
-    /*public override void AAA()
+    *//*public override void AAA()
     {
         base.AAA();
         Debug.Log("를 상속받았지~");
-    }*/
+    }*//*
 
 
     private void OnTriggerEnter(Collider other)
@@ -76,7 +76,7 @@ public class WallPreview : PreviewObject
             }
         }
         return currentPosition;
-    }
+    }*/
 
 
    /* public Transform GetClosestCollider()
@@ -119,5 +119,5 @@ public class WallPreview : PreviewObject
 
         return closestCollider.transform;
     }*/
-}
+//}
 
