@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -100,29 +99,30 @@ public class Tree : MonoBehaviour
             Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
-            List<GameObject> remainingItems = new List<GameObject>(dropItem);
-            remainingItems.RemoveAt(0);
-            remainingItems.RemoveAt(0);
-            remainingItems = remainingItems.OrderBy(x => Random.value).ToList();
-            GameObject choiceItem = remainingItems[0];
-
-            if (choiceItem != null)
+            for (int i = 2; i < dropItem.Length; i++)
             {
-                GameObject newItem = Instantiate(choiceItem, spawnPosition, Quaternion.identity);
-
-                Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
-                if (itemRigidbody != null)
+                GameObject choiceItem = dropItem[i];
+                if (choiceItem != null)
                 {
-                    itemRigidbody.useGravity = applyGravity;
-                }
+                    GameObject newItem = Instantiate(choiceItem, spawnPosition, Quaternion.identity);
 
-                if (currentHp <= 0)
-                {
-                    itemRigidbody.useGravity = true;
-                }
+                    Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
+                    if (itemRigidbody != null)
+                    {
+                        itemRigidbody.useGravity = applyGravity;
+                    }
 
-                return newItem;
+                    if (currentHp <= 0)
+                    {
+                        itemRigidbody.useGravity = true;
+                    }
+
+                    return newItem;
+                }
             }
+
+
+
         }
 
         return null;
