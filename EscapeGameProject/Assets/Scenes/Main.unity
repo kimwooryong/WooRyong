@@ -1966,6 +1966,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water_02
       objectReference: {fileID: 0}
+    - target: {fileID: 4717799323456031079, guid: d0f9477802a40104a89ba4ec3bab3cef,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16045,6 +16050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993942828488961140, guid: b37b3915066995a47b94d4f47f1f027c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
