@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
@@ -14,11 +15,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int inventorySize;
 
-    private void Awake()
+    protected void Awake()
     {
         InitializeInventory();
     }
-    private void InitializeInventory()
+    protected void InitializeInventory()
     {
         InventorySlots = new List<ItemSlot>();
         for(int i = 0; i < inventorySize;  i++)
@@ -30,7 +31,7 @@ public class Inventory : MonoBehaviour
     }
 
     //특정 ID 아이템 획득
-    public void AddItem(int itemID, int amount)
+    public virtual void AddItem(int itemID, int amount)
     {
         //아이템 검색
         int index = FindItem(itemID);
@@ -70,13 +71,13 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    private void RemoveItem(int index, int amount)
+    public virtual void RemoveItem(int index, int amount)
     {
 
     }
 
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
-    private int FindItem(int itemID)
+    protected virtual int FindItem(int itemID)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
