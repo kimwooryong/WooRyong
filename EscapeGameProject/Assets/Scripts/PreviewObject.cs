@@ -96,7 +96,7 @@ public class PreviewObject : MonoBehaviour
         return colliderList.Count == 0;
     }
 
-    public virtual Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
+    /*public virtual Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
     {
         // 우측
         Vector3 right = snapTransform.position + snapTransform.right * transform.localScale.z;
@@ -154,22 +154,22 @@ public class PreviewObject : MonoBehaviour
             Debug.Log("down");
         }
         return closestPosition;
-    }
+    }*/
 
-    public Vector3 GetSnapPosition(Vector3 currentPosition, ref Quaternion snapRotation)
+    public Vector3 GetSnapPosition(Vector3 currentPosition/*, ref Quaternion snapRotation*/)
     {
         Debug.Log("2");
         
         Transform snapTransform = GetClosestCollider();
         if (snapTransform != null)
         {
-            Vector3 snapPosition = GetSnapPosition(currentPosition, snapTransform);
+            Vector3 snapPosition = GetSnapPosition(currentPosition/*, snapTransform*/);
             Debug.Log("snapPosition" + snapPosition);
 
             float dist = Vector3.Distance(snapPosition, currentPosition);
             if (dist < 1f)
             {
-                snapRotation = snapTransform.rotation;
+                // snapRotation = snapTransform.rotation;
                 return snapPosition;
             }
         }
