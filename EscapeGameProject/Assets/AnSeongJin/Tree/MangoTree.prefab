@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1142677907615883339}
   - component: {fileID: -3187928567482031166}
   - component: {fileID: 432788321920360954}
+  - component: {fileID: 1664080989525708480}
   m_Layer: 0
   m_Name: MangoTree
   m_TagString: NaturalObject
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 3
   maxHp: 3
-  treeObject: []
+  dropItem: []
 --- !u!64 &432788321920360954
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -122,3 +123,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: a502c85dd672f8d428b76fd14220881f, type: 3}
+--- !u!114 &1664080989525708480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724551222665973982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c225dceadc215e041a5bc54205e5d168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 3
+  maxHp: 3
+  dropItem: []

@@ -121,4 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 3
   maxHp: 3
-  treeObject: []
+  dropItem:
+  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
