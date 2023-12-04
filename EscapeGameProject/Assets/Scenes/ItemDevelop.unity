@@ -620,6 +620,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8215
+  randomSize: 0
 --- !u!4 &197419527
 Transform:
   m_ObjectHideFlags: 0
@@ -1908,6 +1909,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8215
+  randomSize: 0
 --- !u!4 &683922320
 Transform:
   m_ObjectHideFlags: 0
@@ -2582,6 +2584,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 279
+  randomSize: 0
 --- !u!4 &886923812
 Transform:
   m_ObjectHideFlags: 0
@@ -3303,6 +3306,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 4036202737910617982, guid: 2f5efae9c5b001b4685782a62131bc7d,
     type: 3}
   spawnPlace: {fileID: 518923873}
+  isCaveEnter: 0
 --- !u!4 &1069224778
 Transform:
   m_ObjectHideFlags: 0
@@ -4215,6 +4219,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8215
+  randomSize: 0
 --- !u!4 &1819697899
 Transform:
   m_ObjectHideFlags: 0
@@ -4264,7 +4269,6 @@ MonoBehaviour:
   leftCanvas: {fileID: 197798164}
   middleCanvas: {fileID: 197798162}
   rightCanvas: {fileID: 197798160}
-  testUI: {fileID: 904753503}
   idText: {fileID: 197798165}
   playerInventory: {fileID: 197798163}
   playerQuickSlot: {fileID: 197798161}
@@ -4581,6 +4585,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8215
+  randomSize: 0
 --- !u!4 &2046530501
 Transform:
   m_ObjectHideFlags: 0
@@ -6074,9 +6079,9 @@ MonoBehaviour:
   go_BaseUI: {fileID: 5231075256743775841}
   craft_Build: []
   tf_Player: {fileID: 4207293826641142}
-  layerMask:
+  LayerMask:
     serializedVersion: 2
-    m_Bits: 2816
+    m_Bits: 0
   range: 15
 --- !u!1001 &7926187515409147085
 PrefabInstance:
