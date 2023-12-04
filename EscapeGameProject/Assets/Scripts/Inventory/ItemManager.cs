@@ -80,6 +80,7 @@ public class ItemManager : MonoBehaviour
         {
             if (item.ContainsKey(eItemKeyColumns.ID.ToString()) && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
             {
+                Debug.Log($"item = {item}");
                 return item;
             }
         }

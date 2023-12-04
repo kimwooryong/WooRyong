@@ -21,13 +21,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     public TextMeshProUGUI itemAmountText;
     public void Awake()
     {
-        Debug.Log("½½·ÔÇÏ³ª »ý¼º");
         InitializeSlot();
     }
 
-    public void InitializeSlot()
+    public virtual void InitializeSlot()
     {
-        Debug.Log("½½·Ô ÃÊ±âÈ­");
         itemID = 0;
         itemName = "ºó Ä­";
         itemDescription = "ºó Ä­";
@@ -42,19 +40,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             itemIcon.sprite = null;
             SetColorEmpty();
         }
-        TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
-        if (TextSlot != null)
-        {
-            itemAmountText = TextSlot;
-        }
-        else
-        {
-            itemAmount = 0;
-            Debug.Log("TMP Text ¸øÃ£À½!");
-        }
     }
 
-    protected Dictionary<string, object> itemDataAll;
+    protected Dictionary<string, object> itemDataAll = new Dictionary<string, object>();
     public virtual void SetItemSlot(int getItemID, int amount)
     {
         if(getItemID == 0)
