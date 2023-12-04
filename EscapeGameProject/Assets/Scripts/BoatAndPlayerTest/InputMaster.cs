@@ -155,6 +155,33 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeKnife"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b704bff-861e-4d4c-9731-29dc5606313d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeHammer"",
+                    ""type"": ""Button"",
+                    ""id"": ""416df4cd-3ec9-43c2-97e9-0c431c6000ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangePickaxe"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b6282ac-a651-4655-9915-60ab078c7cb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +327,39 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc20c807-c03e-4e4f-990f-e9ed897ceae5"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeKnife"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fce2c9d-2743-45bf-878b-0dd5afcbc9bb"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeHammer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63b76473-8167-41d1-94ad-ad1c74e9fdaa"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangePickaxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -321,6 +381,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Movement_Shield = m_Movement.FindAction("Shield", throwIfNotFound: true);
         m_Movement_Kick = m_Movement.FindAction("Kick", throwIfNotFound: true);
         m_Movement_Aiming = m_Movement.FindAction("Aiming", throwIfNotFound: true);
+        m_Movement_ChangeKnife = m_Movement.FindAction("ChangeKnife", throwIfNotFound: true);
+        m_Movement_ChangeHammer = m_Movement.FindAction("ChangeHammer", throwIfNotFound: true);
+        m_Movement_ChangePickaxe = m_Movement.FindAction("ChangePickaxe", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -445,6 +508,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Shield;
     private readonly InputAction m_Movement_Kick;
     private readonly InputAction m_Movement_Aiming;
+    private readonly InputAction m_Movement_ChangeKnife;
+    private readonly InputAction m_Movement_ChangeHammer;
+    private readonly InputAction m_Movement_ChangePickaxe;
     public struct MovementActions
     {
         private @InputMaster m_Wrapper;
@@ -458,6 +524,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Shield => m_Wrapper.m_Movement_Shield;
         public InputAction @Kick => m_Wrapper.m_Movement_Kick;
         public InputAction @Aiming => m_Wrapper.m_Movement_Aiming;
+        public InputAction @ChangeKnife => m_Wrapper.m_Movement_ChangeKnife;
+        public InputAction @ChangeHammer => m_Wrapper.m_Movement_ChangeHammer;
+        public InputAction @ChangePickaxe => m_Wrapper.m_Movement_ChangePickaxe;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -494,6 +563,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Aiming.started += instance.OnAiming;
             @Aiming.performed += instance.OnAiming;
             @Aiming.canceled += instance.OnAiming;
+            @ChangeKnife.started += instance.OnChangeKnife;
+            @ChangeKnife.performed += instance.OnChangeKnife;
+            @ChangeKnife.canceled += instance.OnChangeKnife;
+            @ChangeHammer.started += instance.OnChangeHammer;
+            @ChangeHammer.performed += instance.OnChangeHammer;
+            @ChangeHammer.canceled += instance.OnChangeHammer;
+            @ChangePickaxe.started += instance.OnChangePickaxe;
+            @ChangePickaxe.performed += instance.OnChangePickaxe;
+            @ChangePickaxe.canceled += instance.OnChangePickaxe;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -525,6 +603,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Aiming.started -= instance.OnAiming;
             @Aiming.performed -= instance.OnAiming;
             @Aiming.canceled -= instance.OnAiming;
+            @ChangeKnife.started -= instance.OnChangeKnife;
+            @ChangeKnife.performed -= instance.OnChangeKnife;
+            @ChangeKnife.canceled -= instance.OnChangeKnife;
+            @ChangeHammer.started -= instance.OnChangeHammer;
+            @ChangeHammer.performed -= instance.OnChangeHammer;
+            @ChangeHammer.canceled -= instance.OnChangeHammer;
+            @ChangePickaxe.started -= instance.OnChangePickaxe;
+            @ChangePickaxe.performed -= instance.OnChangePickaxe;
+            @ChangePickaxe.canceled -= instance.OnChangePickaxe;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -558,5 +645,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnShield(InputAction.CallbackContext context);
         void OnKick(InputAction.CallbackContext context);
         void OnAiming(InputAction.CallbackContext context);
+        void OnChangeKnife(InputAction.CallbackContext context);
+        void OnChangeHammer(InputAction.CallbackContext context);
+        void OnChangePickaxe(InputAction.CallbackContext context);
     }
 }
