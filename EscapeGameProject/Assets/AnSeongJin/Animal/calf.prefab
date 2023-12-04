@@ -934,7 +934,7 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 1
-  rayRange: 7
+  boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 60
@@ -1010,10 +1010,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.85043335
-  m_Height: 1.7008667
+  m_Radius: 1.7618408
+  m_Height: 3.5236816
   m_Direction: 1
-  m_Center: {x: 0, y: 0.25960016, z: 0.29122925}
+  m_Center: {x: 0, y: 0.25960016, z: 1.2026367}
 --- !u!114 &4105841547340395773
 MonoBehaviour:
   m_ObjectHideFlags: 0

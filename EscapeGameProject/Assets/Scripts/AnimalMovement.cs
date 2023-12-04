@@ -46,20 +46,13 @@ public class AnimalMovement : MonoBehaviour
 
     private AnimalAttack animalAttack;
 
-    private GameObject attackCollider;
-    private Vector3 attackColliderPosition;
-
     private void Start()
     {
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
         animalAttack = GetComponentInChildren<AnimalAttack>();
-        if (attackCollider != null)
-        {
-            attackCollider = animalAttack.gameObject;
-            attackCollider.transform.localPosition = Vector3.zero;
-        }
+
 
         currentHp = maxHp;
 
@@ -94,22 +87,6 @@ public class AnimalMovement : MonoBehaviour
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             }
 
-            Quaternion rayRotation = Quaternion.Euler(0, -coneAngle / 2, 0);
-
-            Collider[] hitColliders = Physics.OverlapBox(transform.position, new Vector3(boxSize, boxSize, boxSize), rayRotation);
-
-            foreach (Collider hitCollider in hitColliders)
-            {
-                if (hitCollider.CompareTag("Player"))
-                {
-                    ani.Stop();
-                    Debug.Log("¼±¸ÂÀ½");
-                    isPlayerCheck = true;
-                    break;
-                }
-            }
-
-            DebugDrawWireBox(transform.position, new Vector3(boxSize, boxSize, boxSize), rayRotation);
         }
 
 
@@ -178,39 +155,7 @@ public class AnimalMovement : MonoBehaviour
             }
         }
     }
-    void DebugDrawWireBox(Vector3 center, Vector3 size, Quaternion rotation)
-    {
-        // Calculate the local axes based on rotation
-        Vector3 right = rotation * Vector3.right * size.x / 2f;
-        Vector3 up = rotation * Vector3.up * size.y / 2f;
-        Vector3 forward = rotation * Vector3.forward * size.z / 2f;
 
-        // Calculate the 8 corners of the box
-        Vector3 topLeftFront = center + up + forward - right;
-        Vector3 topRightFront = center + up + forward + right;
-        Vector3 bottomLeftFront = center - up + forward - right;
-        Vector3 bottomRightFront = center - up + forward + right;
-        Vector3 topLeftBack = center + up - forward - right;
-        Vector3 topRightBack = center + up - forward + right;
-        Vector3 bottomLeftBack = center - up - forward - right;
-        Vector3 bottomRightBack = center - up - forward + right;
-
-        // Draw lines connecting the corners to represent the wireframe
-        Debug.DrawLine(topLeftFront, topRightFront);
-        Debug.DrawLine(topRightFront, bottomRightFront);
-        Debug.DrawLine(bottomRightFront, bottomLeftFront);
-        Debug.DrawLine(bottomLeftFront, topLeftFront);
-
-        Debug.DrawLine(topLeftBack, topRightBack);
-        Debug.DrawLine(topRightBack, bottomRightBack);
-        Debug.DrawLine(bottomRightBack, bottomLeftBack);
-        Debug.DrawLine(bottomLeftBack, topLeftBack);
-
-        Debug.DrawLine(topLeftFront, topLeftBack);
-        Debug.DrawLine(topRightFront, topRightBack);
-        Debug.DrawLine(bottomRightFront, bottomRightBack);
-        Debug.DrawLine(bottomLeftFront, bottomLeftBack);
-    }
     void RotateSmoothly()
     {
         float targetRotation = Random.Range(0f, 360f);
