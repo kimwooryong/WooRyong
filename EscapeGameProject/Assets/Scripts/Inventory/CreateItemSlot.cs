@@ -14,7 +14,6 @@ public class CreateItemSlot : ItemSlot
     }
     private void Start()
     {
-        Debug.Log($"{itemID}, {itemAmount}");
         SetItemSlot(itemID, itemAmount);
     }
     public override void InitializeSlot()
