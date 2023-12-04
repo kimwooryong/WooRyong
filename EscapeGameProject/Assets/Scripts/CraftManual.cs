@@ -9,7 +9,6 @@ public class craft
     public string craftName; // 이름
     public GameObject go_Prefab; // 실제 설치되는 프리펩
     public GameObject go_PreviewPrefab; // 미리보기 프리렙
-    // public LayerMask IsBuildLayer; // 설치 가능 레이어
 }
 
 public class CraftManual : MonoBehaviour
@@ -32,7 +31,6 @@ public class CraftManual : MonoBehaviour
 
 
     private PreviewObject previewObject; // 클래스 참조
-    private craft craft;
 
 
     private Quaternion savedRotation;
@@ -150,8 +148,7 @@ public class CraftManual : MonoBehaviour
             if (hitInfo.transform != null) // 위치값이 있다면
             {
                 Quaternion rotation = go_Preview.transform.rotation;
-                Debug.Log(previewObject);
-                Vector3 _location = previewObject.GetSnapPosition(hitInfo.point/*, ref rotation*/);
+                Vector3 _location = previewObject.GetSnapPosition(hitInfo.point, ref rotation);
                 Debug.Log("4");
                 go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
                 go_Preview.transform.rotation = rotation;
