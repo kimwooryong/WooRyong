@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387906286301103715}
   - component: {fileID: 5607229219975717070}
+  - component: {fileID: 1844656803998980606}
   m_Layer: 0
   m_Name: Rock_1
   m_TagString: NaturalObject
@@ -198,7 +199,7 @@ Transform:
   - {fileID: 4985885178575749747}
   - {fileID: 1121797943439587448}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &5607229219975717070
 LODGroup:
@@ -223,3 +224,26 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7289297767213714605}
   m_Enabled: 1
+--- !u!136 &1844656803998980606
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281364300456577401}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

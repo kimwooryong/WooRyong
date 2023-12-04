@@ -826,7 +826,7 @@ MonoBehaviour:
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 70
-  rayCount: 6
+  rayCount: 5
   isIdleStateChangeRunning: 0
   currentHp: 8
   maxHp: 8
@@ -883,7 +883,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927564802457219089}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
