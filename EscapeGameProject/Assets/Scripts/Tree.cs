@@ -60,10 +60,6 @@ public class Tree : MonoBehaviour
             if(treeDestroyTime >= 0.99f)
             {
                 GrivtyCheck();
-                foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
-                {
-                    childRigidbody.detectCollisions = true;
-                }
             }
             if (treeDestroyTime >= 1)
             {
@@ -109,30 +105,58 @@ public class Tree : MonoBehaviour
             Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
-            for (int i = 2; i < dropItem.Length; i++)
+
+            float randomValue = Random.value * 100f; // 0에서 100 사이의 무작위 값 가져오기
+
+            float cumulativeProbability = 0f;
+            GameObject chosenItem = null;
+
+            for (int i = dropItem.Length - 1; i >= 2; i--)
             {
-                GameObject choiceItem = dropItem[i];
-                if (choiceItem != null)
+                float itemProbability = 0f;
+
+                switch (i)
                 {
-                    GameObject newItem = Instantiate(choiceItem, spawnPosition, Quaternion.identity);
+                    case 4:
+                        itemProbability = 5f;
+                        break;
+                    case 3:
+                        itemProbability = 10f;
+                        break;
+                    case 2:
+                        itemProbability = 15f;
+                        break;
+                    default:
+                        itemProbability = 100f - (5f + 10f + 15f);
+                        break;
+                }
 
-                    Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
-                    if (itemRigidbody != null)
-                    {
-                        itemRigidbody.useGravity = applyGravity;
-                    }
+                cumulativeProbability += itemProbability;
 
-                    if (currentHp <= 0)
-                    {
-                        itemRigidbody.useGravity = true;
-                    }
-
-                    return newItem;
+                if (randomValue <= cumulativeProbability)
+                {
+                    chosenItem = dropItem[i];
+                    break;
                 }
             }
 
+            if (chosenItem != null)
+            {
+                GameObject newItem = Instantiate(chosenItem, spawnPosition, Quaternion.identity);
 
+                Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
+                if (itemRigidbody != null)
+                {
+                    itemRigidbody.useGravity = applyGravity;
+                }
 
+                if (currentHp <= 0)
+                {
+                    itemRigidbody.useGravity = true;
+                }
+
+                return newItem;
+            }
         }
 
         return null;
@@ -143,7 +167,7 @@ public class Tree : MonoBehaviour
         foreach (Transform child in transform)
         {
             Rigidbody childRigidbody = child.GetComponent<Rigidbody>();
-
+            childRigidbody.detectCollisions = true;
             if (childRigidbody != null)
             {
                 childRigidbody.useGravity = true;

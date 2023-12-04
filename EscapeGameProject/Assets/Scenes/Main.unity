@@ -2704,7 +2704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &327366210
 Transform:
   m_ObjectHideFlags: 0
@@ -2732,8 +2732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c649fbf264017a14ea387b1422698085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab:
-  - {fileID: 8691437925199187071, guid: 2730ae40901f93340b40962c86395bb0, type: 3}
+  naturalObject: []
   minTrees: 40
   maxTrees: 50
   minDistance: 10
@@ -2745,6 +2744,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 279
   randomSize: 0
+  faunaAndFlora: 1
 --- !u!1 &331650461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,7 +5607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &683922319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5620,10 +5620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c649fbf264017a14ea387b1422698085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab:
-  - {fileID: 4337102141482522233, guid: 2033d3cf0095e984a8652bc760455b69, type: 3}
-  minTrees: 110
-  maxTrees: 120
+  naturalObject:
+  - {fileID: 0}
+  minTrees: 10
+  maxTrees: 20
   minDistance: 20
   maxDistance: 170
   spawnLayer:
@@ -5633,6 +5633,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8215
   randomSize: 0
+  faunaAndFlora: 1
 --- !u!4 &683922320
 Transform:
   m_ObjectHideFlags: 0
@@ -7475,24 +7476,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 905307145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa814e8c0d2c9f7409b789a533b02b5b, type: 3}
+  m_Script: {fileID: 11500000, guid: c649fbf264017a14ea387b1422698085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab:
-  - {fileID: 7740410059648555539, guid: 364cd4d1e5a06044bbaab195b68f63ff, type: 3}
-  - {fileID: 3887716965108339866, guid: 84b166a456502df4597cc750c7f56cdc, type: 3}
-  - {fileID: 2705382774451182363, guid: e76ac2d665b06b84588edb427ccbd9cf, type: 3}
+  naturalObject:
   - {fileID: 2762597533244979587, guid: 9bb0d1bbf2d08f74a885d0ab15332f8b, type: 3}
+  - {fileID: 2705382774451182363, guid: e76ac2d665b06b84588edb427ccbd9cf, type: 3}
+  - {fileID: 3887716965108339866, guid: 84b166a456502df4597cc750c7f56cdc, type: 3}
   - {fileID: 5927564802457219089, guid: 135505ca12e0c64459824cb55db96a32, type: 3}
-  minDistance: 60
-  maxDistance: 180
+  - {fileID: 7740410059648555539, guid: 364cd4d1e5a06044bbaab195b68f63ff, type: 3}
+  minTrees: 5
+  maxTrees: 10
+  minDistance: 20
+  maxDistance: 170
   spawnLayer:
     serializedVersion: 2
     m_Bits: 256
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8215
-  spawnInterval: 10
+  randomSize: 0
+  faunaAndFlora: 0
 --- !u!4 &924526322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420284, guid: 1dbc68de5fa7d3e4d917794165871dce,
@@ -13445,7 +13449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1813167728
 Transform:
   m_ObjectHideFlags: 0
@@ -13473,11 +13477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c649fbf264017a14ea387b1422698085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab:
-  - {fileID: 7281364300456577401, guid: 8f1522d7743d0d540a7200a334acd3a3, type: 3}
-  - {fileID: 2798988044355648261, guid: bc8eb5a32dc5a8740af80939d11bc11b, type: 3}
-  - {fileID: 4663511705053846160, guid: 0cc452297bdce3544a46f997859a60ac, type: 3}
-  - {fileID: 3725681963355457620, guid: 410d009018815134ab1bd1162963e442, type: 3}
+  naturalObject: []
   minTrees: 30
   maxTrees: 40
   minDistance: 10
@@ -13489,6 +13489,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 23
   randomSize: 0
+  faunaAndFlora: 1
 --- !u!1 &1846022876
 GameObject:
   m_ObjectHideFlags: 0

@@ -890,7 +890,7 @@ Transform:
   - {fileID: 3425909029785037322}
   - {fileID: 2874180076876518962}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!111 &7432423925303313131
 Animation:
@@ -934,11 +934,11 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 1
-  rayRange: 5
+  rayRange: 7
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
-  coneAngle: 45
-  rayCount: 5
+  coneAngle: 60
+  rayCount: 7
   isIdleStateChangeRunning: 0
   currentHp: 3
   maxHp: 3
