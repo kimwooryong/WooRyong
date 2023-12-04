@@ -31,14 +31,16 @@ public class Tree : MonoBehaviour
         {
             for (int i = 0; i < dropItem.Length - 2; i++)
             {
-                danglingItemXZ = Random.Range(-2.0f, 2.0f);
+                danglingItemXZ = Random.Range(-1.0f, 1.0f);
 
-                
                 GameObject newDrop = DropAddItem(false);
-                newDrop.transform.parent = transform;
-                foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                if (newDrop != null) // 체크 추가
                 {
-                    childRigidbody.detectCollisions = false;
+                    newDrop.transform.parent = transform;
+                    foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                    {
+                        childRigidbody.detectCollisions = false;
+                    }
                 }
             }
         }
@@ -55,11 +57,11 @@ public class Tree : MonoBehaviour
 
         if (currentHp <= 0 && !isDrop)
         {
-            
+
             treeDestroyTime += Time.deltaTime;
-            if(treeDestroyTime >= 0.99f)
+            if (treeDestroyTime >= 0.95f)
             {
-                GrivtyCheck();
+                GravityCheck();
             }
             if (treeDestroyTime >= 1)
             {
@@ -67,6 +69,11 @@ public class Tree : MonoBehaviour
                 {
                     dropLocation = Random.Range(-0.3f, 0.3f);
                     DropBasicItem();
+                    if (dropItem[1] != null)
+                    {
+                        DropBasicItem2();
+
+                    }
                 }
 
                 Destroy(gameObject);
@@ -84,14 +91,28 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length >= 2)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
             GameObject drop1 = Instantiate(dropItem[0], spawnPosition, Quaternion.identity);
-            GameObject drop2 = Instantiate(dropItem[1], spawnPosition, Quaternion.identity);
 
             return drop1;
+        }
+
+        return null;
+    }
+    GameObject DropBasicItem2()
+    {
+        if (dropItem.Length >= 2)
+        {
+            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
+            spawnPosition.x += dropLocation;
+            spawnPosition.z += dropLocation;
+
+            GameObject drop2 = Instantiate(dropItem[1], spawnPosition, Quaternion.identity);
+
+            return drop2;
         }
 
         return null;
@@ -106,7 +127,7 @@ public class Tree : MonoBehaviour
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
-            float randomValue = Random.value * 100f; // 0에서 100 사이의 무작위 값 가져오기
+            float randomValue = Random.value * 100f;
 
             float cumulativeProbability = 0f;
             GameObject chosenItem = null;
@@ -118,16 +139,16 @@ public class Tree : MonoBehaviour
                 switch (i)
                 {
                     case 4:
-                        itemProbability = 5f;
+                        itemProbability = 2f;
                         break;
                     case 3:
-                        itemProbability = 10f;
+                        itemProbability = 5f;
                         break;
                     case 2:
-                        itemProbability = 15f;
+                        itemProbability = 8f;
                         break;
                     default:
-                        itemProbability = 100f - (5f + 10f + 15f);
+                        itemProbability = 85f;
                         break;
                 }
 
@@ -148,11 +169,13 @@ public class Tree : MonoBehaviour
                 if (itemRigidbody != null)
                 {
                     itemRigidbody.useGravity = applyGravity;
+                    itemRigidbody.isKinematic = true;
                 }
 
                 if (currentHp <= 0)
                 {
                     itemRigidbody.useGravity = true;
+                    itemRigidbody.isKinematic = false;
                 }
 
                 return newItem;
@@ -162,16 +185,14 @@ public class Tree : MonoBehaviour
         return null;
     }
 
-    private void GrivtyCheck()
+    private void GravityCheck()
     {
         foreach (Transform child in transform)
         {
             Rigidbody childRigidbody = child.GetComponent<Rigidbody>();
             childRigidbody.detectCollisions = true;
-            if (childRigidbody != null)
-            {
-                childRigidbody.useGravity = true;
-            }
+            childRigidbody.useGravity = true;
+            childRigidbody.isKinematic = false;
 
             child.parent = null;
         }

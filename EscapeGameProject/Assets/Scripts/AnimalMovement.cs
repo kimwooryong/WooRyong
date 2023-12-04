@@ -11,25 +11,20 @@ public enum MonsterBehavior
     Defensiveness
 }
 
-
-
 public class AnimalMovement : MonoBehaviour
 {
-
     private Animation ani;
     public string[] idleStates;
     private int currentIdle;
     public float attackRecognitionScope;
 
-
     public float moveSpeed = 5f;
     public float rotationSpeed = 45f;
     public float rotationInterval = 2f;
-
     private float timer = 0f;
 
     public MonsterBehavior behavior;
-    public float rayRange = 10f;
+    public float boxSize = 1f;
     public Transform playerPosition;
     public bool isPlayerCheck;
 
@@ -47,16 +42,9 @@ public class AnimalMovement : MonoBehaviour
     [HideInInspector]
     public float dieTime = 1.0f;
 
-
     private BoxCollider boxCollider;
 
     private AnimalAttack animalAttack;
-
-    private GameObject attackCollider;
-    private Vector3 attackColliderPosition;
-
-
-
 
     private void Start()
     {
@@ -64,38 +52,19 @@ public class AnimalMovement : MonoBehaviour
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
         animalAttack = GetComponentInChildren<AnimalAttack>();
-        if(attackCollider != null )
-        {
-
-        attackCollider = animalAttack.gameObject;
-            attackCollider.transform.localPosition = Vector3.zero;
-        }
 
 
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
-
-
-
     }
-    
-
-
 
     void Update()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.position);
 
-        if (attackCollider != null)
-        {
-
-        }
-
-
-        float distanceToPlayer = Vector3.Distance(this.gameObject.transform.position, playerPosition.position);
         if (!isPlayerCheck && !isHit && !isDie)
         {
-
             ani.wrapMode = WrapMode.Loop;
             timer += Time.deltaTime;
 
@@ -106,55 +75,21 @@ public class AnimalMovement : MonoBehaviour
 
             string currentAnimationState = idleStates[currentIdle];
 
-            ani.CrossFade(idleStates[currentIdle] , 0.3f);
+            ani.CrossFade(idleStates[currentIdle], 0.3f);
 
-            
-
-            
             if (currentIdle == 0)
             {
                 if (timer >= rotationInterval)
                 {
                     RotateSmoothly();
-
                     timer = 0f;
                 }
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             }
 
-
-            RaycastHit hit;
-            float raySpacing = coneAngle / (rayCount - 1);
-
-            for (int i = 0; i < rayCount; i++)
-            {
-                float currentHorizontalAngle = -coneAngle / 2 + i * raySpacing;
-
-                for (int j = 0; j < rayCount; j++)
-                {
-                    float currentVerticalAngle = -coneAngle / 2 + j * raySpacing;
-
-                    Quaternion rayRotation = Quaternion.Euler(currentVerticalAngle, currentHorizontalAngle, 0);
-
-                    if (Physics.Raycast(this.gameObject.transform.position, rayRotation * this.gameObject.transform.forward, out hit, rayRange))
-                    {
-                        Debug.Log("r");
-                        if (hit.collider.CompareTag("Player"))
-                        {
-                            ani.Stop();
-                            Debug.Log("¼±¸ÂÀ½");
-                            isPlayerCheck = true;
-                            break;
-                        }
-                    }
-                    Debug.DrawRay(transform.position, rayRotation * transform.forward * rayRange, Color.Lerp(Color.red, Color.green, (i * rayCount + j) / (float)(rayCount * rayCount - 1)));
-                }
-
-            }
-
         }
 
-        
+
         else if (isPlayerCheck && !isHit && !isDie)
         {
 

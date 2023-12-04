@@ -19,15 +19,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     public bool canCount;
 
     public TextMeshProUGUI itemAmountText;
-    public void Awake()
+    public virtual void Awake()
     {
-        Debug.Log("½½·ÔÇÏ³ª »ý¼º");
         InitializeSlot();
     }
 
-    public void InitializeSlot()
+    public virtual void InitializeSlot()
     {
-        Debug.Log("½½·Ô ÃÊ±âÈ­");
         itemID = 0;
         itemName = "ºó Ä­";
         itemDescription = "ºó Ä­";
@@ -42,19 +40,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             itemIcon.sprite = null;
             SetColorEmpty();
         }
-        TextMeshProUGUI TextSlot = GetComponentInChildren<TextMeshProUGUI>();
-        if (TextSlot != null)
-        {
-            itemAmountText = TextSlot;
-        }
-        else
-        {
-            itemAmount = 0;
-            Debug.Log("TMP Text ¸øÃ£À½!");
-        }
     }
 
-    protected Dictionary<string, object> itemDataAll;
+    protected Dictionary<string, object> itemDataAll = new Dictionary<string, object>();
     public virtual void SetItemSlot(int getItemID, int amount)
     {
         if(getItemID == 0)
@@ -118,13 +106,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             return;
         }
     }
-    public void SetColorEmpty()
+    public virtual void SetColorEmpty()
     {
         Color newColor = itemIcon.color;
         newColor.a = 0f;
         itemIcon.color = newColor;
+        itemAmountText.gameObject.SetActive(false);
     }
-    public void SetColorWhite()
+    public virtual void SetColorWhite()
     {
         itemIcon.color = Color.white;
     }

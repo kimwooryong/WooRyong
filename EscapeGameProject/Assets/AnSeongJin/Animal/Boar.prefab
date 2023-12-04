@@ -1605,7 +1605,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7740410059648555539}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
-  rayRange: 10
+  boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 20
@@ -1694,10 +1694,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7759094
-  m_Height: 2.895874
+  m_Radius: 1.318232
+  m_Height: 13.994191
   m_Direction: 2
-  m_Center: {x: 0.031158447, y: 0.6408601, z: 0.2180481}
+  m_Center: {x: 0.0019412041, y: 0.6408601, z: 5.7672067}
 --- !u!114 &-5502850189762387038
 MonoBehaviour:
   m_ObjectHideFlags: 0

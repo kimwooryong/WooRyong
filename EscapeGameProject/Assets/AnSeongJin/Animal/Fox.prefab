@@ -676,7 +676,7 @@ Transform:
   - {fileID: 1120923126849432761}
   - {fileID: 6839992032369304736}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!111 &2434679004840953943
 Animation:
@@ -718,11 +718,11 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 1
-  rayRange: 10
+  boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 45
-  rayCount: 4
+  rayCount: 5
   isIdleStateChangeRunning: 0
   currentHp: 3
   maxHp: 3
@@ -767,10 +767,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6545105
-  m_Height: 1.5922852
+  m_Radius: 1.4787502
+  m_Height: 3.5818176
   m_Direction: 2
-  m_Center: {x: 0.012878418, y: 0.5021651, z: 0.07296753}
+  m_Center: {x: 0.012878418, y: 0.43104553, z: 1.0677338}
 --- !u!54 &1298055204982149731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -779,7 +779,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2705382774451182363}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 8
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

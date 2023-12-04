@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1534947778865278269}
   m_Layer: 0
   m_Name: AppleTree
-  m_TagString: Untagged
+  m_TagString: NaturalObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8845470044349251654
 MeshFilter:
@@ -122,8 +122,8 @@ MonoBehaviour:
   currentHp: 3
   maxHp: 3
   dropItem:
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 161483994579288452, guid: 6128dcb92dea4a14e95e02083a050bc4, type: 3}
+  - {fileID: 0}
+  - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}
+  - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}
+  - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}

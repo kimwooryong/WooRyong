@@ -481,7 +481,7 @@ Transform:
   - {fileID: 108199636784985783}
   - {fileID: 1409561263686071604}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!111 &5317838264368557641
 Animation:
@@ -573,10 +573,10 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 1
-  rayRange: 3
+  boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
-  coneAngle: 60
+  coneAngle: 45
   rayCount: 3
   isIdleStateChangeRunning: 0
   currentHp: 2
@@ -601,10 +601,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3884077
-  m_Height: 1.085846
+  m_Radius: 0.63002014
+  m_Height: 1.9375305
   m_Direction: 2
-  m_Center: {x: 0, y: 0.2661047, z: 0.042922974}
+  m_Center: {x: 0.013870239, y: 0.2661047, z: 0.46876526}
 --- !u!114 &5015662336350187541
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -252,7 +252,7 @@ MonoBehaviour:
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
-  rayRange: 10
+  boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 60
@@ -301,10 +301,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1691127
-  m_Height: 4.133667
+  m_Radius: 3.896329
+  m_Height: 14.726505
   m_Direction: 2
-  m_Center: {x: 0, y: 1.1374917, z: 0.11709595}
+  m_Center: {x: 0.031795025, y: 1.0900359, z: 5.413515}
 --- !u!54 &7323487964402345428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -313,7 +313,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914806452919722965}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
