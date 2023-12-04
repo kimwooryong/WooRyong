@@ -86,10 +86,6 @@ public class AnimalMovement : MonoBehaviour
     void Update()
     {
 
-        if (attackCollider != null)
-        {
-
-        }
 
 
         float distanceToPlayer = Vector3.Distance(this.gameObject.transform.position, playerPosition.position);
