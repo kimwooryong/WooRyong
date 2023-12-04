@@ -31,10 +31,15 @@ public class Tree : MonoBehaviour
         {
             for (int i = 0; i < dropItem.Length - 2; i++)
             {
-                danglingItemXZ = Random.Range(-0.5f, 0.5f);
-                danglingItemY = Random.Range(3.0f, 4.0f);
+                danglingItemXZ = Random.Range(-2.0f, 2.0f);
+
+                
                 GameObject newDrop = DropAddItem(false);
                 newDrop.transform.parent = transform;
+                foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                {
+                    childRigidbody.detectCollisions = false;
+                }
             }
         }
     }
@@ -55,6 +60,10 @@ public class Tree : MonoBehaviour
             if(treeDestroyTime >= 0.99f)
             {
                 GrivtyCheck();
+                foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                {
+                    childRigidbody.detectCollisions = true;
+                }
             }
             if (treeDestroyTime >= 1)
             {
@@ -96,6 +105,7 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length > 2)
         {
+            danglingItemY = Random.Range(4.6f, 4.8f);
             Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;

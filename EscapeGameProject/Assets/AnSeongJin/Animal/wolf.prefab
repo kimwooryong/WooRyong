@@ -916,7 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  minDropCount: 3
+  minDropCount: 4
   maxDropCount: 4
 --- !u!4 &5927564802457447473 stripped
 Transform:

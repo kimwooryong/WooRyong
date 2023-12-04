@@ -1712,8 +1712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
-  minDropCount: 5
-  maxDropCount: 5
+  minDropCount: 6
+  maxDropCount: 6
 --- !u!1 &7939082473644072811
 GameObject:
   m_ObjectHideFlags: 0

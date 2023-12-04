@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeSpawn : MonoBehaviour
+public class NaturalObjectSpawn : MonoBehaviour
 {
     public GameObject[] treePrefab;
     public int minTrees = 20;
@@ -16,7 +16,8 @@ public class TreeSpawn : MonoBehaviour
 
     private GameObject emptyObject;
 
-    private float randomSize;
+    [HideInInspector]
+    public float randomSize;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class TreeSpawn : MonoBehaviour
 
             Vector3 randomPosition = GenerateRandomSpawnPosition();
             GameObject treeInstance = Instantiate(treePrefab[randomPrefabCount], randomPosition, randomRotation);
-            randomSize = Random.Range(0.8f, 1.2f);
+            randomSize = Random.Range(0.9f, 1.1f);
             treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
             treeInstance.transform.parent = emptyObject.transform;
         }
