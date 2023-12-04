@@ -430,7 +430,6 @@ GameObject:
   - component: {fileID: 3564106845945586947}
   - component: {fileID: 3939272316203130062}
   - component: {fileID: 6021814672942548166}
-  - component: {fileID: 2325358430644955622}
   - component: {fileID: 2515472605120201480}
   m_Layer: 0
   m_Name: Player
@@ -456,7 +455,7 @@ Transform:
   - {fileID: 8269182975559972931}
   - {fileID: 6523392043372806017}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9185361980992717625
 CapsuleCollider:
@@ -556,33 +555,6 @@ MonoBehaviour:
   headToLower: {fileID: 2920952633777350371}
   crouchYHeadPosition: 1
   colliderToLower: {fileID: 9185361980992717625}
---- !u!114 &2325358430644955622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036202737910617982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa814e8c0d2c9f7409b789a533b02b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterPrefab:
-  - {fileID: 7740410059648555539, guid: 364cd4d1e5a06044bbaab195b68f63ff, type: 3}
-  - {fileID: 3887716965108339866, guid: 84b166a456502df4597cc750c7f56cdc, type: 3}
-  - {fileID: 2705382774451182363, guid: e76ac2d665b06b84588edb427ccbd9cf, type: 3}
-  - {fileID: 2762597533244979587, guid: 9bb0d1bbf2d08f74a885d0ab15332f8b, type: 3}
-  - {fileID: 5927564802457219089, guid: 135505ca12e0c64459824cb55db96a32, type: 3}
-  minDistance: 10
-  maxDistance: 20
-  spawnLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 23
-  spawnInterval: 10
 --- !u!114 &2515472605120201480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +586,7 @@ GameObject:
   - component: {fileID: 3230701705073440021}
   - component: {fileID: 5933026407269334260}
   - component: {fileID: 4767099345755330579}
-  - component: {fileID: 5108160131529909078}
+  - component: {fileID: 2578199529596398989}
   m_Layer: 0
   m_Name: First Person Camera
   m_TagString: MainCamera
@@ -735,7 +707,7 @@ MonoBehaviour:
   maxZoomFOV: 15
   currentZoom: 0
   sensitivity: 1
---- !u!114 &5108160131529909078
+--- !u!114 &2578199529596398989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

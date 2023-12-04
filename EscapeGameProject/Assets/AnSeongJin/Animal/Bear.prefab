@@ -255,8 +255,8 @@ MonoBehaviour:
   rayRange: 10
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
-  coneAngle: 45
-  rayCount: 5
+  coneAngle: 60
+  rayCount: 7
   isIdleStateChangeRunning: 0
   currentHp: 20
   maxHp: 20
