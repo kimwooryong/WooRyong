@@ -33,12 +33,14 @@ public class Tree : MonoBehaviour
             {
                 danglingItemXZ = Random.Range(-1.0f, 1.0f);
 
-                
                 GameObject newDrop = DropAddItem(false);
-                newDrop.transform.parent = transform;
-                foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                if (newDrop != null) // 체크 추가
                 {
-                    childRigidbody.detectCollisions = false;
+                    newDrop.transform.parent = transform;
+                    foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
+                    {
+                        childRigidbody.detectCollisions = false;
+                    }
                 }
             }
         }
@@ -55,9 +57,9 @@ public class Tree : MonoBehaviour
 
         if (currentHp <= 0 && !isDrop)
         {
-            
+
             treeDestroyTime += Time.deltaTime;
-            if(treeDestroyTime >= 0.99f)
+            if (treeDestroyTime >= 0.95f)
             {
                 GravityCheck();
             }
@@ -69,7 +71,7 @@ public class Tree : MonoBehaviour
                     DropBasicItem();
                     if (dropItem[1] != null)
                     {
-                    DropBasicItem2();
+                        DropBasicItem2();
 
                     }
                 }
@@ -125,7 +127,7 @@ public class Tree : MonoBehaviour
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
-            float randomValue = Random.value * 100f; // 0에서 100 사이의 무작위 값 가져오기
+            float randomValue = Random.value * 100f;
 
             float cumulativeProbability = 0f;
             GameObject chosenItem = null;
@@ -137,16 +139,16 @@ public class Tree : MonoBehaviour
                 switch (i)
                 {
                     case 4:
-                        itemProbability = 5f;
+                        itemProbability = 2f;
                         break;
                     case 3:
-                        itemProbability = 10f;
+                        itemProbability = 5f;
                         break;
                     case 2:
-                        itemProbability = 15f;
+                        itemProbability = 8f;
                         break;
                     default:
-                        itemProbability = 100f - (5f + 10f + 15f);
+                        itemProbability = 85f;
                         break;
                 }
 
@@ -189,11 +191,8 @@ public class Tree : MonoBehaviour
         {
             Rigidbody childRigidbody = child.GetComponent<Rigidbody>();
             childRigidbody.detectCollisions = true;
-            if (childRigidbody != null)
-            {
-                childRigidbody.useGravity = true;
-                childRigidbody.isKinematic = false;
-            }
+            childRigidbody.useGravity = true;
+            childRigidbody.isKinematic = false;
 
             child.parent = null;
         }
