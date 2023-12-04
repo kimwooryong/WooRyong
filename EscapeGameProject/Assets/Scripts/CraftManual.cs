@@ -9,6 +9,7 @@ public class craft
     public string craftName; // 이름
     public GameObject go_Prefab; // 실제 설치되는 프리펩
     public GameObject go_PreviewPrefab; // 미리보기 프리렙
+    public LayerMask layerMask; // 설치 가능 레이어
 }
 
 public class CraftManual : MonoBehaviour
@@ -39,14 +40,15 @@ public class CraftManual : MonoBehaviour
     private GameObject go_Prefab; // 실체 생성될 프리펩을 담을 변수
 
 
+    private LayerMask layerMask;
+
+
     [SerializeField]
     private Transform tf_Player; // 플레이어 위치
 
 
     // RaycastHit 필요 변수 선언
     private RaycastHit hitInfo; // 정보
-    [SerializeField]
-    private LayerMask LayerMask; // 레이어
     [SerializeField]
     private float range; // 거리
 
@@ -143,7 +145,7 @@ public class CraftManual : MonoBehaviour
     private void PreviewPositionUpdate() // 프리뷰 설치전 움직임
     {
         Debug.DrawRay(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, Color.red); // 씬 창에 레이선이 보이게 해주는 코드
-        if (Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range, LayerMask)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
+        if (Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range, layerMask)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
         {
             if (hitInfo.transform != null) // 위치값이 있다면
             {
