@@ -23,7 +23,6 @@ public class PreviewObject : MonoBehaviour
     public List<Renderer> _renderers = new List<Renderer>();
     public List<GameObject> _gameObjects = new List<GameObject>();
 
-    public Vector3 BuildObjectSize = new Vector3(2.5f, 2.5f, 2.5f);
 
     public void Start() 
     {
@@ -92,6 +91,7 @@ public class PreviewObject : MonoBehaviour
     {
         return colliderList.Count == 0;
     }
+
 
     public virtual Vector3 GetSnapPosition(Vector3 currentPosition, Transform snapTransform) // 위치 설정
     {
