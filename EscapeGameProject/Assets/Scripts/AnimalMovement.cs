@@ -11,25 +11,20 @@ public enum MonsterBehavior
     Defensiveness
 }
 
-
-
 public class AnimalMovement : MonoBehaviour
 {
-
     private Animation ani;
     public string[] idleStates;
     private int currentIdle;
     public float attackRecognitionScope;
 
-
     public float moveSpeed = 5f;
     public float rotationSpeed = 45f;
     public float rotationInterval = 2f;
-
     private float timer = 0f;
 
     public MonsterBehavior behavior;
-    public float rayRange = 10f;
+    public float boxSize = 1f;
     public Transform playerPosition;
     public bool isPlayerCheck;
 
@@ -47,7 +42,6 @@ public class AnimalMovement : MonoBehaviour
     [HideInInspector]
     public float dieTime = 1.0f;
 
-
     private BoxCollider boxCollider;
 
     private AnimalAttack animalAttack;
@@ -55,43 +49,29 @@ public class AnimalMovement : MonoBehaviour
     private GameObject attackCollider;
     private Vector3 attackColliderPosition;
 
-
-
-
     private void Start()
     {
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         player = FindObjectOfType<PlayerMovement>();
         animalAttack = GetComponentInChildren<AnimalAttack>();
-        if(attackCollider != null )
+        if (attackCollider != null)
         {
-
-        attackCollider = animalAttack.gameObject;
+            attackCollider = animalAttack.gameObject;
             attackCollider.transform.localPosition = Vector3.zero;
         }
-
 
         currentHp = maxHp;
 
         boxCollider = GetComponent<BoxCollider>();
-
-
-
     }
-    
-
-
 
     void Update()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.position);
 
-
-
-        float distanceToPlayer = Vector3.Distance(this.gameObject.transform.position, playerPosition.position);
         if (!isPlayerCheck && !isHit && !isDie)
         {
-
             ani.wrapMode = WrapMode.Loop;
             timer += Time.deltaTime;
 
@@ -102,55 +82,37 @@ public class AnimalMovement : MonoBehaviour
 
             string currentAnimationState = idleStates[currentIdle];
 
-            ani.CrossFade(idleStates[currentIdle] , 0.3f);
+            ani.CrossFade(idleStates[currentIdle], 0.3f);
 
-            
-
-            
             if (currentIdle == 0)
             {
                 if (timer >= rotationInterval)
                 {
                     RotateSmoothly();
-
                     timer = 0f;
                 }
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             }
 
+            Quaternion rayRotation = Quaternion.Euler(0, -coneAngle / 2, 0);
 
-            RaycastHit hit;
-            float raySpacing = coneAngle / (rayCount - 1);
+            Collider[] hitColliders = Physics.OverlapBox(transform.position, new Vector3(boxSize, boxSize, boxSize), rayRotation);
 
-            for (int i = 0; i < rayCount; i++)
+            foreach (Collider hitCollider in hitColliders)
             {
-                float currentHorizontalAngle = -coneAngle / 2 + i * raySpacing;
-
-                for (int j = 0; j < rayCount; j++)
+                if (hitCollider.CompareTag("Player"))
                 {
-                    float currentVerticalAngle = -coneAngle / 2 + j * raySpacing;
-
-                    Quaternion rayRotation = Quaternion.Euler(currentVerticalAngle, currentHorizontalAngle, 0);
-
-                    if (Physics.Raycast(this.gameObject.transform.position, rayRotation * this.gameObject.transform.forward, out hit, rayRange))
-                    {
-                        Debug.Log("r");
-                        if (hit.collider.CompareTag("Player"))
-                        {
-                            ani.Stop();
-                            Debug.Log("선맞음");
-                            isPlayerCheck = true;
-                            break;
-                        }
-                    }
-                    Debug.DrawRay(transform.position, rayRotation * transform.forward * rayRange, Color.Lerp(Color.red, Color.green, (i * rayCount + j) / (float)(rayCount * rayCount - 1)));
+                    ani.Stop();
+                    Debug.Log("선맞음");
+                    isPlayerCheck = true;
+                    break;
                 }
-
             }
 
+            DebugDrawWireBox(transform.position, new Vector3(boxSize, boxSize, boxSize), rayRotation);
         }
 
-        
+
         else if (isPlayerCheck && !isHit && !isDie)
         {
 
@@ -216,7 +178,39 @@ public class AnimalMovement : MonoBehaviour
             }
         }
     }
+    void DebugDrawWireBox(Vector3 center, Vector3 size, Quaternion rotation)
+    {
+        // Calculate the local axes based on rotation
+        Vector3 right = rotation * Vector3.right * size.x / 2f;
+        Vector3 up = rotation * Vector3.up * size.y / 2f;
+        Vector3 forward = rotation * Vector3.forward * size.z / 2f;
 
+        // Calculate the 8 corners of the box
+        Vector3 topLeftFront = center + up + forward - right;
+        Vector3 topRightFront = center + up + forward + right;
+        Vector3 bottomLeftFront = center - up + forward - right;
+        Vector3 bottomRightFront = center - up + forward + right;
+        Vector3 topLeftBack = center + up - forward - right;
+        Vector3 topRightBack = center + up - forward + right;
+        Vector3 bottomLeftBack = center - up - forward - right;
+        Vector3 bottomRightBack = center - up - forward + right;
+
+        // Draw lines connecting the corners to represent the wireframe
+        Debug.DrawLine(topLeftFront, topRightFront);
+        Debug.DrawLine(topRightFront, bottomRightFront);
+        Debug.DrawLine(bottomRightFront, bottomLeftFront);
+        Debug.DrawLine(bottomLeftFront, topLeftFront);
+
+        Debug.DrawLine(topLeftBack, topRightBack);
+        Debug.DrawLine(topRightBack, bottomRightBack);
+        Debug.DrawLine(bottomRightBack, bottomLeftBack);
+        Debug.DrawLine(bottomLeftBack, topLeftBack);
+
+        Debug.DrawLine(topLeftFront, topLeftBack);
+        Debug.DrawLine(topRightFront, topRightBack);
+        Debug.DrawLine(bottomRightFront, bottomRightBack);
+        Debug.DrawLine(bottomLeftFront, bottomLeftBack);
+    }
     void RotateSmoothly()
     {
         float targetRotation = Random.Range(0f, 360f);

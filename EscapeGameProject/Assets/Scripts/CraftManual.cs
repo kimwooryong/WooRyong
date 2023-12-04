@@ -9,6 +9,7 @@ public class craft
     public string craftName; // 이름
     public GameObject go_Prefab; // 실제 설치되는 프리펩
     public GameObject go_PreviewPrefab; // 미리보기 프리렙
+    public LayerMask layerMask; // 설치 가능 레이어
 }
 
 public class CraftManual : MonoBehaviour
@@ -38,7 +39,7 @@ public class CraftManual : MonoBehaviour
 
     private GameObject go_Prefab; // 실체 생성될 프리펩을 담을 변수
 
-    [SerializeField]
+
     private LayerMask layerMask;
 
 
@@ -52,19 +53,9 @@ public class CraftManual : MonoBehaviour
     private float range; // 거리
 
 
-    public void TabClick(int _tabNumber) // 슬롯 클릭
-    {
-        go_Preview = Instantiate(craft_Build[_tabNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
-        previewObject = go_Preview.GetComponent<PreviewObject>();
-
-        go_Prefab = craft_Build[_tabNumber].go_Prefab;
-        isPreviewActived = true; // 프리뷰 켜주기
-        go_BaseUI.SetActive(false); // UI 꺼주기
-
-    }
-
     public void SlotClick(int _slotNumber) // 슬롯 클릭
     {
+        Debug.Log("0");
         go_Preview = Instantiate(craft_Build[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
         previewObject = go_Preview.GetComponent<PreviewObject>();
 
@@ -160,6 +151,7 @@ public class CraftManual : MonoBehaviour
             {
                 Quaternion rotation = go_Preview.transform.rotation;
                 Vector3 _location = previewObject.GetSnapPosition(hitInfo.point, ref rotation);
+                Debug.Log("4");
                 go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
                 go_Preview.transform.rotation = rotation;
             }
