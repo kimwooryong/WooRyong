@@ -138,9 +138,9 @@ private int WeightedRandomSelection(float[] probabilities)
     {
         Vector3 randomPosition = Vector3.zero;
 
-        for (int attempts = 0; attempts < 10; attempts++)
+        while (true)
         {
-            randomPosition = Random.insideUnitSphere * maxDistance + transform.position;
+            randomPosition = Random.insideUnitSphere * Random.Range(minDistance, maxDistance) + transform.position;
             randomPosition.y = GetTerrainHeight(randomPosition);
 
             if (!Physics.CheckSphere(randomPosition, 1f, obstacleLayer) && Vector3.Distance(randomPosition, transform.position) >= minDistance)
@@ -148,8 +148,6 @@ private int WeightedRandomSelection(float[] probabilities)
                 return randomPosition;
             }
         }
-
-        return Vector3.zero;
     }
 
     float GetTerrainHeight(Vector3 position)

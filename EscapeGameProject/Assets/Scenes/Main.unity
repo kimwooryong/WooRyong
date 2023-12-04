@@ -742,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42108510}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5705,13 +5705,13 @@ MonoBehaviour:
   minTrees: 40
   maxTrees: 50
   minDistance: 10
-  maxDistance: 400
+  maxDistance: 200
   spawnLayer:
     serializedVersion: 2
     m_Bits: 8192
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 279
+    m_Bits: 4292990775
   randomSize: 0
   faunaAndFlora: 1
 --- !u!1 &327721226
@@ -24662,7 +24662,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485331984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
