@@ -91,7 +91,7 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length >= 2)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
@@ -106,7 +106,7 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length >= 2)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
