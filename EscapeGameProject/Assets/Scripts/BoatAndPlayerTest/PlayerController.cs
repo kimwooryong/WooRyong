@@ -50,7 +50,6 @@ public class PlayerCotroller : MonoBehaviour
     // ¹«±â ÀåÂø ¿©ºÎ bool
     [SerializeField] bool isWeapon;
     [SerializeField] bool isKnife;
-    [SerializeField] bool isBow;
 
     // ÀåÂø À¯¹« È®ÀÎ ¿ä¼Ò
     // µµ³¢ Ã¢ °î±ªÀÌ
@@ -63,11 +62,8 @@ public class PlayerCotroller : MonoBehaviour
     private GameObject knife;
     [SerializeField]
     private GameObject knifeOnShoulder;
-    [SerializeField]
-    // È°
-    private GameObject bow;
-    [SerializeField]
-    private GameObject bowOnShoulder;
+
+
     public bool isEquipping;
     public bool isEquipped;
 
@@ -108,6 +104,8 @@ public class PlayerCotroller : MonoBehaviour
     {
         timeSinceAttack += Time.deltaTime;
 
+        playerHasWeaponItem();
+
         Moving();
         Crouch();
         Sprint();
@@ -116,6 +114,9 @@ public class PlayerCotroller : MonoBehaviour
         Equip();
         Block();
         Kick();
+
+        Debug.Log($"ÀåÂø: {isEquipped}");
+
     }
 
     /// <summary>
@@ -138,6 +139,32 @@ public class PlayerCotroller : MonoBehaviour
 
     }
 
+    // ÇÃ·¹ÀÌ¾î°¡ ¹«±â ¾ÆÀÌÅÛÀ» °¡Áö°í ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+    public void playerHasWeaponItem()
+    {
+        if(weapons != null)
+        {
+            isWeapon = true;
+            m_Animator.SetBool("isWeapon", true);
+        }
+        else
+        {
+            isWeapon= false;
+            m_Animator.SetBool("isWeapon", false);
+        }
+
+        if(knife != null)
+        {
+            isKnife = true;
+            m_Animator.SetBool("isKnife", true);
+        }
+        else 
+        { 
+            isKnife= false;
+            m_Animator.SetBool("isKnife", false);
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Ground"))
@@ -145,10 +172,6 @@ public class PlayerCotroller : MonoBehaviour
             _isGrounded = true;
         }
 
-        if (other.transform.CompareTag("Weapon"))
-        {
-            isWeapon = true;
-        }
 
     }
 
@@ -159,10 +182,6 @@ public class PlayerCotroller : MonoBehaviour
             _isGrounded = false;
         }
 
-        if (other.transform.CompareTag("Weapon"))
-        {
-            isWeapon = false;
-        }
 
     }
 
@@ -215,11 +234,13 @@ public class PlayerCotroller : MonoBehaviour
             if (!isEquipped)
                 return;
 
-            currentAttack++;
+            //currentAttack++;
             isAttacking = true;
 
+            /*
             if (currentAttack > 3)
                 currentAttack = 1;
+            */
 
             //Reset
             if (timeSinceAttack > 1.0f)
@@ -279,43 +300,39 @@ public class PlayerCotroller : MonoBehaviour
     {
         
         // Ä®
-        if (Input.GetKeyDown(KeyCode.Alpha1) && m_Animator.GetBool("OnGround") && m_Animator.GetBool("isKnife"))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && m_Animator.GetBool("OnGround") && isKnife == true)
         {
             isEquipping = true;
-            m_Animator.SetTrigger("Equip");
-        }
+            m_Animator.SetTrigger("knifeEquip");
+        } 
+
 
         // µµ³¢ Ã¢ °î±ªÀÌ
-        if (Input.GetKeyDown(KeyCode.Alpha2) && m_Animator.GetBool("OnGround") )
+        if (Input.GetKeyDown(KeyCode.Alpha2) && m_Animator.GetBool("OnGround")  && isWeapon == true)
         {
             isEquipping = true;
-            m_Animator.SetTrigger("Equip");
+            m_Animator.SetTrigger("weaponEquip");
         }
+        
 
-        // È°
-        if (Input.GetKeyDown(KeyCode.Alpha3) && m_Animator.GetBool("OnGround") && m_Animator.GetBool("isBow"))
-        {
-            isEquipping = true;
-            m_Animator.SetTrigger("Equip");
-        }
     }
 
     public void ActiveWeapon()
     {
         // µµ³¢ °î±ªÀÌ Ã¢
-        if (!isEquipped)
+        if (!isEquipped && isWeapon == true)
         {
             weapons.SetActive(true);
             weaponsOnShoulder.SetActive(false);
-            m_Animator.SetBool("isWeapon", true);
             isEquipped = !isEquipped;
+            Debug.Log("µµ³¢ ÀåÂø");
         }
-        else
+        else 
         {
             weapons.SetActive(false);
             weaponsOnShoulder.SetActive(true);
-            m_Animator.SetBool("isWeapon", false);
             isEquipped = !isEquipped;
+            Debug.Log("µµ³¢ ÇØÁ¦");
         }
 
         // Ä®
@@ -323,32 +340,18 @@ public class PlayerCotroller : MonoBehaviour
         {
             knife.SetActive(true);
             knifeOnShoulder.SetActive(false);
-            m_Animator.SetBool("isKnife", true);
             isEquipped = !isEquipped;
+            Debug.Log("Ä® ÀåÂø");
         }
-        else
+        else 
         {
             knife.SetActive(false);
             knifeOnShoulder.SetActive(true);
-            m_Animator.SetBool("isKnife", false);
             isEquipped = !isEquipped;
+            Debug.Log("Ä® ÇØÁ¦");
         }
 
-        //È°
-        if (!isEquipped && isBow == true)
-        {
-            bow.SetActive(true);
-            bowOnShoulder.SetActive(false);
-            m_Animator.SetBool("isBow", true);
-            isEquipped = !isEquipped;
-        }
-        else
-        {
-            bow.SetActive(false);
-            bowOnShoulder.SetActive(true);
-            m_Animator.SetBool("isBow", false);
-            isEquipped = !isEquipped;
-        }
+      
     }
 
     private void Sprint()
