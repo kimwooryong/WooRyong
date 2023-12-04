@@ -5956,9 +5956,6 @@ MonoBehaviour:
   go_BaseUI: {fileID: 5231075256743775841}
   craft_Build: []
   tf_Player: {fileID: 4207293826641142}
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   range: 15
 --- !u!1001 &7926187515409147085
 PrefabInstance:
