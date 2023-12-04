@@ -8,14 +8,29 @@ using UnityEngine.UI;
 
 public class CreateItemSlot : ItemSlot
 {
-    public void Awake()
+    public override void Awake()
     {
-        Debug.Log($"제작창 불러오기. {itemID}, {itemAmount}");
-        SetItemSlot(itemID, itemAmount);
+        InitializeSlot();
     }
     private void Start()
     {
+        Debug.Log($"{itemID}, {itemAmount}");
+        SetItemSlot(itemID, itemAmount);
+    }
+    public override void InitializeSlot()
+    {
+        itemName = "빈 칸";
+        itemDescription = "빈 칸";
+        itemAmountText.gameObject.SetActive(false);
+        canCount = false;
 
+        Transform iconTransform = transform.Find("Icon");
+        if (iconTransform != null)
+        {
+            itemIcon = iconTransform.GetComponent<Image>();
+            itemIcon.sprite = null;
+            SetColorEmpty();
+        }
     }
     public override void SetItemSlot(int getItemID, int amount)
     {
@@ -55,15 +70,30 @@ public class CreateItemSlot : ItemSlot
         }
         SetColorWhite();
     }
+    public override void SetColorEmpty()
+    {
+        Color newColor = itemIcon.color;
+        newColor.a = 0f;
+        itemIcon.color = newColor;
+        itemAmountText.gameObject.SetActive(false);
+        Image boxImage = transform.gameObject.GetComponent<Image>();
+        boxImage.color = newColor;
+    }
+    public override void SetColorWhite()
+    {
+        itemIcon.color = Color.white;
+        Image boxImage = transform.gameObject.GetComponent<Image>();
+        boxImage.color = Color.white;
+    }
 
     #region 상속받지 않을 함수들 깡통화
     //포인터 이벤트 받지 않기
-    public override void OnPointerEnter(PointerEventData eventData)
-    {
-    }
-    public override void OnPointerExit(PointerEventData eventData)
-    { 
-    }
+    //public override void OnPointerEnter(PointerEventData eventData)
+    //{
+    //}
+    //public override void OnPointerExit(PointerEventData eventData)
+    //{ 
+    //}
     public override void OnPointerClick(PointerEventData eventData)
     {
     }

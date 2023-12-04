@@ -19,7 +19,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     public bool canCount;
 
     public TextMeshProUGUI itemAmountText;
-    public void Awake()
+    public virtual void Awake()
     {
         InitializeSlot();
     }
@@ -106,13 +106,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             return;
         }
     }
-    public void SetColorEmpty()
+    public virtual void SetColorEmpty()
     {
         Color newColor = itemIcon.color;
         newColor.a = 0f;
         itemIcon.color = newColor;
+        itemAmountText.gameObject.SetActive(false);
     }
-    public void SetColorWhite()
+    public virtual void SetColorWhite()
     {
         itemIcon.color = Color.white;
     }

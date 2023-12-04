@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CreateTable : MonoBehaviour
 {
+    public int targetItemID;
+    public int[] materialItemID;
 
     public CreateItemSlot targetItem;
     [SerializeField]
@@ -12,8 +14,6 @@ public class CreateTable : MonoBehaviour
 
     public void SetMaterial()
     {
-        //targetItem 읽어와서 해당 아이템 제작에 필요한 재료들을 materialItem에 입력하기.
-        
-        //
+
     }
 }

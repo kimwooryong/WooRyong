@@ -42,14 +42,13 @@ public class ItemManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         SetQuickSlot();
+        data = CSVReader.Read(dataBasePath);
     }
     #endregion
     private List<Dictionary<string, object>> data;
     private string itemPrefabPath = "ItemPrefabs/ItemPrefab";
     private string itemIconPath = "ItemIcons/ItemIcon";
     private string dataBasePath = "ItemDataBase";
-
-
 
     //키 입력
     private bool isActiveInventory;
@@ -69,7 +68,6 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        data = CSVReader.Read(dataBasePath);
     }
 
     //ID로 값 전체 받아오기
@@ -78,9 +76,10 @@ public class ItemManager : MonoBehaviour
         // ID에 해당하는 아이템 데이터 찾기
         foreach (var item in data)
         {
-            if (item.ContainsKey(eItemKeyColumns.ID.ToString()) && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
+            Debug.Log($"item = {item}");
+            if (item.ContainsKey(eItemKeyColumns.ID.ToString()) 
+                && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
             {
-                Debug.Log($"item = {item}");
                 return item;
             }
         }
