@@ -9,6 +9,7 @@ public class CaveEntrance : MonoBehaviour
     public Vector3 playerPosition;
     public Vector3 playerRotation;
 
+    public GameObject invisibleWall;
 
     private DayNightCycle dayNightCycle;
     private Quaternion savedRotation;
@@ -51,6 +52,10 @@ public class CaveEntrance : MonoBehaviour
             dayNightCycle.gameObject.SetActive(false);
             monsterSpawner.enabled = false;
 
+            if(invisibleWall != null)
+            {
+                Destroy(invisibleWall.gameObject);
+            }
 
         }
         else

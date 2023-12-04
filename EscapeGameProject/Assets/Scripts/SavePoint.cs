@@ -7,7 +7,7 @@ public class SavePoint : MonoBehaviour
     private bool canInteract = false;
     private GameManager gameManager;
     private Transform firstSpawnPosition;
-    private TreeSpawn treeSpawner;
+    private NaturalObjectSpawn naturalObjectSpawn;
     private DayNightCycle dayNightCycle;
     private UIManager uiManager;
     private PlayerMovement playerMovement;
@@ -21,7 +21,7 @@ public class SavePoint : MonoBehaviour
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
         gameManager = FindObjectOfType<GameManager>();
-        treeSpawner = FindObjectOfType<TreeSpawn>();
+        naturalObjectSpawn = FindObjectOfType<NaturalObjectSpawn>();
         uiManager = FindObjectOfType<UIManager>();
         playerMovement = FindObjectOfType<PlayerMovement>();
 
