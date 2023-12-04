@@ -830,7 +830,7 @@ PrefabInstance:
     - target: {fileID: 1877345955543661761, guid: d3d6db309512140ad845d705af9c1a65,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.88
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1877345955543661761, guid: d3d6db309512140ad845d705af9c1a65,
         type: 3}
@@ -876,6 +876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CampFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648852862108508885, guid: d3d6db309512140ad845d705af9c1a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
