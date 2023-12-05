@@ -128,6 +128,7 @@ MonoBehaviour:
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
+  treeType: 1
 --- !u!54 &3454322505641235974
 Rigidbody:
   m_ObjectHideFlags: 0

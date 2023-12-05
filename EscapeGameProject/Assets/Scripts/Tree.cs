@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+public enum TreeType
+{
+    Apple,
+    Palm
+}
 public class Tree : MonoBehaviour
 {
     public int currentHp;
@@ -20,6 +25,9 @@ public class Tree : MonoBehaviour
     private float danglingItemY;
     private float danglingItemXZ;
 
+    public TreeType treeType;
+
+
 
     void Start()
     {
@@ -31,12 +39,37 @@ public class Tree : MonoBehaviour
         {
             for (int i = 0; i < dropItem.Length - 2; i++)
             {
-                danglingItemXZ = Random.Range(-1.0f, 1.0f);
+                if (treeType == TreeType.Apple)
+                {
+                    float minRange = -1.0f;
+                    float maxRange = 1.0f;
+                    float excludedMin = -0.15f;
+                    float excludedMax = 0.15f;
+
+                    do
+                    {
+                        danglingItemXZ = Random.Range(minRange, maxRange);
+                    } while (danglingItemXZ >= excludedMin && danglingItemXZ <= excludedMax);
+
+                }
+                else if (treeType == TreeType.Palm)
+                {
+                    float minRange = -0.2f;
+                    float maxRange = 0.2f;
+                    float excludedMin = -0.15f;
+                    float excludedMax = 0.15f;
+
+                    do
+                    {
+                        danglingItemXZ = Random.Range(minRange, maxRange);
+                    } while (danglingItemXZ >= excludedMin && danglingItemXZ <= excludedMax);
+                }
 
                 GameObject newDrop = DropAddItem(false);
                 if (newDrop != null) // 체크 추가
                 {
                     newDrop.transform.parent = transform;
+
                 }
             }
         }
@@ -44,7 +77,6 @@ public class Tree : MonoBehaviour
 
     private void Update()
     {
-        dropLocation = Random.Range(-0.3f, 0.3f);
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -63,7 +95,9 @@ public class Tree : MonoBehaviour
             {
                 for (int i = 0; i < dropCount; i++)
                 {
+
                     dropLocation = Random.Range(-0.3f, 0.3f);
+
                     DropBasicItem();
                     if (dropItem[1] != null)
                     {
@@ -86,7 +120,7 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length >= 2)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
@@ -101,7 +135,7 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length >= 2)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, 1.0f, 0);
+            Vector3 spawnPosition = transform.position + new Vector3(0, 0.3f, 0);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
@@ -117,7 +151,14 @@ public class Tree : MonoBehaviour
     {
         if (dropItem.Length > 2)
         {
-            danglingItemY = Random.Range(4.6f, 4.8f);
+            if (treeType == TreeType.Apple)
+            {
+                danglingItemY = Random.Range(4.7f, 4.8f);
+            }
+            else if (treeType == TreeType.Palm)
+            {
+                danglingItemY = Random.Range(3.5f, 3.6f);
+            }
             Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
@@ -158,9 +199,12 @@ public class Tree : MonoBehaviour
 
             if (chosenItem != null)
             {
-                GameObject newItem = Instantiate(chosenItem, spawnPosition, Quaternion.identity);
-
+                if (treeType == TreeType.Apple)
+                {
+                    Quaternion appleTreeRotation = Quaternion.Euler(-90f, 0, 0);
+                GameObject newItem = Instantiate(chosenItem, spawnPosition, appleTreeRotation);
                 Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
+
                 if (itemRigidbody != null)
                 {
                     itemRigidbody.useGravity = applyGravity;
@@ -174,6 +218,28 @@ public class Tree : MonoBehaviour
                 }
 
                 return newItem;
+                }
+
+                if (treeType == TreeType.Palm)
+                {
+
+                    GameObject newItem = Instantiate(chosenItem, spawnPosition, Quaternion.identity);
+                    Rigidbody itemRigidbody = newItem.GetComponent<Rigidbody>();
+
+                    if (itemRigidbody != null)
+                    {
+                        itemRigidbody.useGravity = applyGravity;
+                        itemRigidbody.isKinematic = true;
+                    }
+
+                    if (currentHp <= 0)
+                    {
+                        itemRigidbody.useGravity = true;
+                        itemRigidbody.isKinematic = false;
+                    }
+
+                    return newItem;
+                }
             }
         }
 
