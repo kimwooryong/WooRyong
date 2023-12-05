@@ -10,6 +10,7 @@ public enum eItemKeyColumns
 {
     ID,
     Name,
+    Type,
     Description,
     CanCount,
     CanGrab,
@@ -17,7 +18,7 @@ public enum eItemKeyColumns
 }
 public class ItemManager : MonoBehaviour
 {
-
+    
     #region 싱글톤
     private static ItemManager instance;
     public static ItemManager Instance
@@ -65,7 +66,8 @@ public class ItemManager : MonoBehaviour
     private GameObject middleCanvas;
     [SerializeField]
     private GameObject rightCanvas;
-
+    [SerializeField]
+    public Image UsingItemIcon;
 
     private void Start()
     {
@@ -122,6 +124,11 @@ public class ItemManager : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
+            //사용
+            foreach(QuickSlot slots in playerQuickSlot.InventorySlots)
+            {
+                slots.UseQuickSlot();
+            }
             isActiveQuickSlot = false;
             GameManager.Instance.InvisibleCursor();
         }
@@ -181,7 +188,6 @@ public class ItemManager : MonoBehaviour
             //UI 충돌이 있다면
             if (tempSlotObject != null)
             {
-                Debug.Log($"충돌한 UI는 바로 {tempSlotObject}");
                 //현재 퀵슬롯 선택
                 tempQuickSlot = tempSlotObject.GetComponent<QuickSlot>();
                 if (tempQuickSlot != null)
