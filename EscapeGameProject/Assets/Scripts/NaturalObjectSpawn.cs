@@ -102,7 +102,7 @@ private void SpawnAnimal()
             }
             else
             {
-                randomSize = Random.Range(0.9f, 1.1f);
+                randomSize = Random.Range(0.95f, 1.05f);
                 treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
                 treeInstance.transform.parent = emptyObject.transform;
             }

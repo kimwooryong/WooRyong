@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7285805541040950924}
   - component: {fileID: -847138986319939494}
   - component: {fileID: 275498366606504179}
-  m_Layer: 23
+  m_Layer: 22
   m_Name: Foundation Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,13 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderList: []
-  snapColliderList: []
   layerGround: 10
   green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
   Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
-  _renderers: []
-  _gameObjects: []
 --- !u!64 &275498366606504179
 MeshCollider:
   m_ObjectHideFlags: 0

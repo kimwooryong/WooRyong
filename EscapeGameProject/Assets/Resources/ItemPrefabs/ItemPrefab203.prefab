@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 203
   itemName: 
+  healingAmount: 0
+  itemType: 1
 --- !u!54 &-972902129831845195
 Rigidbody:
   m_ObjectHideFlags: 0

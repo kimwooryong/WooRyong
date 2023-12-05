@@ -40,7 +40,6 @@ public class AnimalItemDrop : MonoBehaviour
 
         if (animal.currentHp <= 0 && !isDrop)
         {
-            Debug.Log("파 다달았음");
             animalDieTime += Time.deltaTime;
 
             if (animalDieTime >= animal.dieTime)
@@ -48,7 +47,6 @@ public class AnimalItemDrop : MonoBehaviour
                 for (int i = 0; i < dropCount; i++)
                 {
                     dropLocation = Random.Range(-0.3f, 0.3f);
-                    Debug.Log("생성");
                     DropItem();
                     
                 }
