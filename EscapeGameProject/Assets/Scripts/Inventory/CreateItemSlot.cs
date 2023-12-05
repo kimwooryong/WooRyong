@@ -40,7 +40,6 @@ public class CreateItemSlot : ItemSlot
             return;
         }
         itemDataAll = ItemManager.Instance.ReadItemData(getItemID);
-        Debug.Log($"아이템데이터 = {itemDataAll}");
         if (itemDataAll == null)
         {
             Debug.Log("해당 아이템 없음. -> 수정 필요");
