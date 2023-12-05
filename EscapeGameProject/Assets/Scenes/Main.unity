@@ -998,6 +998,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 449945196}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &458799644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 414063832374091696, guid: 13911f0ad93041f449172ba10a124408,
+    type: 3}
+  m_PrefabInstance: {fileID: 1760559907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &496165564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4469,7 +4481,7 @@ PrefabInstance:
     - target: {fileID: 4357696091687889376, guid: 13911f0ad93041f449172ba10a124408,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 448.2735
       objectReference: {fileID: 0}
     - target: {fileID: 4601502736838511240, guid: 13911f0ad93041f449172ba10a124408,
         type: 3}
@@ -4679,12 +4691,12 @@ PrefabInstance:
     - target: {fileID: 5750350596521474350, guid: 13911f0ad93041f449172ba10a124408,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.7509592
       objectReference: {fileID: 0}
     - target: {fileID: 5750350596521474350, guid: 13911f0ad93041f449172ba10a124408,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.4509591
+      value: 0.20191829
       objectReference: {fileID: 0}
     - target: {fileID: 5891753583380280019, guid: 13911f0ad93041f449172ba10a124408,
         type: 3}
@@ -5320,6 +5332,7 @@ MonoBehaviour:
   leftCanvas: {fileID: 1760559917}
   middleCanvas: {fileID: 1760559915}
   rightCanvas: {fileID: 1760559913}
+  UsingItemIcon: {fileID: 458799644}
   idText: {fileID: 1760559918}
   playerInventory: {fileID: 1760559916}
   playerQuickSlot: {fileID: 1760559914}
