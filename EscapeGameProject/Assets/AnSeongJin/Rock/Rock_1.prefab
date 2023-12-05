@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 5607229219975717070}
   - component: {fileID: 1844656803998980606}
   - component: {fileID: -2158948704207065539}
+  - component: {fileID: -7388525549905664560}
   m_Layer: 21
   m_Name: Rock_1
   m_TagString: NaturalObject
@@ -275,3 +276,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7388525549905664560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281364300456577401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f90e00b05b96a4a8d78d1d6473333e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 6
+  itemName: 
