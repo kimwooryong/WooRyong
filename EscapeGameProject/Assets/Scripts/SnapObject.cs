@@ -5,14 +5,4 @@ using UnityEngine;
 public class SnapObject : MonoBehaviour
 {
 
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
 }

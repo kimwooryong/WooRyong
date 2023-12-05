@@ -155,19 +155,20 @@ public class PreviewObject : MonoBehaviour
 
     public Vector3 GetSnapPosition(Vector3 currentPosition, ref Quaternion snapRotation)
     {
-        Debug.Log("2");
         
         Transform snapTransform = GetClosestCollider();
         if (snapTransform != null)
         {
-            Vector3 snapPosition = GetSnapPosition(currentPosition, snapTransform);
-            Debug.Log("snapPosition" + snapPosition);
-
-            float dist = Vector3.Distance(snapPosition, currentPosition);
-            if (dist < 1f)
+            if( gameObject.layer == 23)
             {
-                snapRotation = snapTransform.rotation;
-                return snapPosition;
+                Vector3 snapPosition = GetSnapPosition(currentPosition, snapTransform);
+
+                float dist = Vector3.Distance(snapPosition, currentPosition);
+                if (dist < 1f)
+                {
+                    snapRotation = snapTransform.rotation;
+                    return snapPosition;
+                }
             }
         }
         return currentPosition;

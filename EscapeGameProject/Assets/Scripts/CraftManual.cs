@@ -24,7 +24,7 @@ public class CraftManual : MonoBehaviour
 
 
     [SerializeField]
-    public craft[] craft_Build; // 모닥불용 탭
+    public craft[] craft_Build; // 빌드용 탭
 
 
     private GameObject go_Preview; // 미리보기 프리펩을 담을 변수
@@ -98,18 +98,20 @@ public class CraftManual : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Cancel(); // 취소
+            GameManager.Instance.InvisibleCursor();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cancel(); // 취소
+            GameManager.Instance.InvisibleCursor();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (go_Preview != null)
             {
-                go_Preview.transform.Rotate(new Vector3(0f, 90f , 0f)); // 회전
+                go_Preview.transform.Rotate(new Vector3(0f, 45f , 0f)); // 회전
             }
         }
 
@@ -117,7 +119,7 @@ public class CraftManual : MonoBehaviour
         {
             if (go_Preview != null)
             {
-                go_Preview.transform.Rotate(new Vector3(0f, -90f, 0f)); // 회전
+                go_Preview.transform.Rotate(new Vector3(0f, -45f, 0f)); // 회전
             }
         }
     }
@@ -152,11 +154,6 @@ public class CraftManual : MonoBehaviour
                 go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
                 go_Preview.transform.rotation = rotation;
             }
-            /*if (hitInfo.transform != null && wallPreview) // 위치값이 있다면
-            {
-                Vector3 _location = wallPreview.GetSnapPosition(hitInfo.point);
-                go_Preview.transform.position = _location; // 저장된 위치값에 프리뷰를 보여준다
-            }*/
         }
     }
 
@@ -178,6 +175,7 @@ public class CraftManual : MonoBehaviour
         go_Prefab = null;
 
         go_BaseUI.SetActive(false);
+        GameManager.Instance.InvisibleCursor();
     }
 
     private void Window()
