@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2728191995410029048}
   - component: {fileID: 1051431052360993157}
   - component: {fileID: 3408838765654228666}
-  - component: {fileID: 1833383401109234544}
+  - component: {fileID: 3454322505641235974}
   m_Layer: 0
   m_Name: PalmTree
   m_TagString: NaturalObject
@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
   - {fileID: 3408052663945536542, guid: bfe7b9928ddaead4a8d7ea0e40d43c3a, type: 3}
---- !u!54 &1833383401109234544
+--- !u!54 &3454322505641235974
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,8 +150,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0

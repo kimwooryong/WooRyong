@@ -37,10 +37,6 @@ public class Tree : MonoBehaviour
                 if (newDrop != null) // 체크 추가
                 {
                     newDrop.transform.parent = transform;
-                    foreach (Rigidbody childRigidbody in GetComponentsInChildren<Rigidbody>())
-                    {
-                        childRigidbody.detectCollisions = false;
-                    }
                 }
             }
         }
@@ -72,7 +68,6 @@ public class Tree : MonoBehaviour
                     if (dropItem[1] != null)
                     {
                         DropBasicItem2();
-
                     }
                 }
 
@@ -190,7 +185,6 @@ public class Tree : MonoBehaviour
         foreach (Transform child in transform)
         {
             Rigidbody childRigidbody = child.GetComponent<Rigidbody>();
-            childRigidbody.detectCollisions = true;
             childRigidbody.useGravity = true;
             childRigidbody.isKinematic = false;
 
