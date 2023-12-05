@@ -182,6 +182,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeTorch"",
+                    ""type"": ""Button"",
+                    ""id"": ""2753e6fe-88c5-4a21-80bd-fa0dfd013d90"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -360,6 +369,17 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""ChangePickaxe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6d08617-1041-4dfe-8a19-b80cbe408814"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTorch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -384,6 +404,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Movement_ChangeKnife = m_Movement.FindAction("ChangeKnife", throwIfNotFound: true);
         m_Movement_ChangeHammer = m_Movement.FindAction("ChangeHammer", throwIfNotFound: true);
         m_Movement_ChangePickaxe = m_Movement.FindAction("ChangePickaxe", throwIfNotFound: true);
+        m_Movement_ChangeTorch = m_Movement.FindAction("ChangeTorch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -511,6 +532,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_ChangeKnife;
     private readonly InputAction m_Movement_ChangeHammer;
     private readonly InputAction m_Movement_ChangePickaxe;
+    private readonly InputAction m_Movement_ChangeTorch;
     public struct MovementActions
     {
         private @InputMaster m_Wrapper;
@@ -527,6 +549,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @ChangeKnife => m_Wrapper.m_Movement_ChangeKnife;
         public InputAction @ChangeHammer => m_Wrapper.m_Movement_ChangeHammer;
         public InputAction @ChangePickaxe => m_Wrapper.m_Movement_ChangePickaxe;
+        public InputAction @ChangeTorch => m_Wrapper.m_Movement_ChangeTorch;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -572,6 +595,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @ChangePickaxe.started += instance.OnChangePickaxe;
             @ChangePickaxe.performed += instance.OnChangePickaxe;
             @ChangePickaxe.canceled += instance.OnChangePickaxe;
+            @ChangeTorch.started += instance.OnChangeTorch;
+            @ChangeTorch.performed += instance.OnChangeTorch;
+            @ChangeTorch.canceled += instance.OnChangeTorch;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -612,6 +638,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @ChangePickaxe.started -= instance.OnChangePickaxe;
             @ChangePickaxe.performed -= instance.OnChangePickaxe;
             @ChangePickaxe.canceled -= instance.OnChangePickaxe;
+            @ChangeTorch.started -= instance.OnChangeTorch;
+            @ChangeTorch.performed -= instance.OnChangeTorch;
+            @ChangeTorch.canceled -= instance.OnChangeTorch;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -648,5 +677,6 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnChangeKnife(InputAction.CallbackContext context);
         void OnChangeHammer(InputAction.CallbackContext context);
         void OnChangePickaxe(InputAction.CallbackContext context);
+        void OnChangeTorch(InputAction.CallbackContext context);
     }
 }
