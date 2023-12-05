@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 public enum TreeType
 {
     Apple,
-    Palm
+    Palm,
+    Bush
 }
 public class Tree : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class Tree : MonoBehaviour
     private bool isDrop = false;
 
     private float danglingItemY;
-    private float danglingItemXZ;
+    private float danglingItemX;
+    private float danglingItemZ;
 
     public TreeType treeType;
 
@@ -37,7 +39,7 @@ public class Tree : MonoBehaviour
 
         if (dropItem.Length >= 2)
         {
-            for (int i = 0; i < dropItem.Length - 2; i++)
+            for (int i = 0; i < dropItem.Length -2 ; i++)
             {
                 if (treeType == TreeType.Apple)
                 {
@@ -45,11 +47,18 @@ public class Tree : MonoBehaviour
                     float maxRange = 1.0f;
                     float excludedMin = -0.15f;
                     float excludedMax = 0.15f;
+                    
 
                     do
                     {
-                        danglingItemXZ = Random.Range(minRange, maxRange);
-                    } while (danglingItemXZ >= excludedMin && danglingItemXZ <= excludedMax);
+                        danglingItemX = Random.Range(minRange, maxRange);
+                        
+                    } while (danglingItemX >= excludedMin && danglingItemX <= excludedMax);
+                    do
+                    {
+                        danglingItemZ = Random.Range(minRange, maxRange);
+
+                    } while (danglingItemZ >= excludedMin && danglingItemZ <= excludedMax);
 
                 }
                 else if (treeType == TreeType.Palm)
@@ -61,8 +70,46 @@ public class Tree : MonoBehaviour
 
                     do
                     {
-                        danglingItemXZ = Random.Range(minRange, maxRange);
-                    } while (danglingItemXZ >= excludedMin && danglingItemXZ <= excludedMax);
+                        danglingItemX = Random.Range(minRange, maxRange);
+                    } while (danglingItemX >= excludedMin && danglingItemX <= excludedMax);
+                    do
+                    {
+                        danglingItemZ = Random.Range(minRange, maxRange);
+
+                    } while (danglingItemZ >= excludedMin && danglingItemZ <= excludedMax);
+                }
+                else if (treeType == TreeType.Bush)
+                {
+                    float fixedCoordinate = 0.5f;
+                    float randomCoordinate;
+
+
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        danglingItemX = fixedCoordinate;
+                        float minRangeZ = -0.5f;
+                        float maxRangeZ = 0.5f;
+                        float excludedMinZ = -0.01f;
+                        float excludedMaxZ = 0.01f;
+
+                        do
+                        {
+                            danglingItemZ = Random.Range(minRangeZ, maxRangeZ);
+                        } while (danglingItemZ >= excludedMinZ && danglingItemZ <= excludedMaxZ);
+                    }
+                    else
+                    {
+                        danglingItemZ = fixedCoordinate;
+                        float minRangeX = -0.5f;
+                        float maxRangeX = 0.5f;
+                        float excludedMinX = -0.01f;
+                        float excludedMaxX = 0.01f;
+
+                        do
+                        {
+                            danglingItemX = Random.Range(minRangeX, maxRangeX);
+                        } while (danglingItemX >= excludedMinX && danglingItemX <= excludedMaxX);
+                    }
                 }
 
                 GameObject newDrop = DropAddItem(false);
@@ -98,7 +145,12 @@ public class Tree : MonoBehaviour
 
                     dropLocation = Random.Range(-0.3f, 0.3f);
 
-                    DropBasicItem();
+                    if (dropItem[0] != null)
+                    {
+                        DropBasicItem();
+                    }
+                    
+
                     if (dropItem[1] != null)
                     {
                         DropBasicItem2();
@@ -159,7 +211,11 @@ public class Tree : MonoBehaviour
             {
                 danglingItemY = Random.Range(3.5f, 3.6f);
             }
-            Vector3 spawnPosition = transform.position + new Vector3(danglingItemXZ, danglingItemY, danglingItemXZ);
+            else if(treeType == TreeType.Bush)
+            {
+                danglingItemY = Random.Range(0.2f, 0.4f);
+            }
+            Vector3 spawnPosition = transform.position + new Vector3(danglingItemX, danglingItemY, danglingItemZ);
             spawnPosition.x += dropLocation;
             spawnPosition.z += dropLocation;
 
@@ -171,22 +227,43 @@ public class Tree : MonoBehaviour
             for (int i = dropItem.Length - 1; i >= 2; i--)
             {
                 float itemProbability = 0f;
-
-                switch (i)
+                if (treeType == TreeType.Apple || treeType == TreeType.Palm)
                 {
-                    case 4:
-                        itemProbability = 2f;
-                        break;
-                    case 3:
-                        itemProbability = 5f;
-                        break;
-                    case 2:
-                        itemProbability = 8f;
-                        break;
-                    default:
-                        itemProbability = 85f;
-                        break;
+                    switch (i)
+                    {
+                        case 4:
+                            itemProbability = 2f;
+                            break;
+                        case 3:
+                            itemProbability = 5f;
+                            break;
+                        case 2:
+                            itemProbability = 8f;
+                            break;
+                        default:
+                            itemProbability = 85f;
+                            break;
+                    }
                 }
+                else if (treeType == TreeType.Bush)
+                {
+                    switch (i)
+                    {
+                        case 4:
+                            itemProbability = 50f;
+                            break;
+                        case 3:
+                            itemProbability = 30f;
+                            break;
+                        case 2:
+                            itemProbability = 20f;
+                            break;
+                        default:
+                            itemProbability = 0f;
+                            break;
+                    }
+                }
+                
 
                 cumulativeProbability += itemProbability;
 
@@ -199,7 +276,7 @@ public class Tree : MonoBehaviour
 
             if (chosenItem != null)
             {
-                if (treeType == TreeType.Apple)
+                if (treeType == TreeType.Apple || treeType == TreeType.Bush)
                 {
                     Quaternion appleTreeRotation = Quaternion.Euler(-90f, 0, 0);
                 GameObject newItem = Instantiate(chosenItem, spawnPosition, appleTreeRotation);

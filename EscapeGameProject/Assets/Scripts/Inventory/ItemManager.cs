@@ -10,6 +10,7 @@ public enum eItemKeyColumns
 {
     ID,
     Name,
+    Type,
     Description,
     CanCount,
     CanGrab,
@@ -187,7 +188,6 @@ public class ItemManager : MonoBehaviour
             //UI 충돌이 있다면
             if (tempSlotObject != null)
             {
-                Debug.Log($"충돌한 UI는 바로 {tempSlotObject}");
                 //현재 퀵슬롯 선택
                 tempQuickSlot = tempSlotObject.GetComponent<QuickSlot>();
                 if (tempQuickSlot != null)
