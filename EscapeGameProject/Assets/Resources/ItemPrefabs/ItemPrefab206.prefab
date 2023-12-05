@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 206
   itemName: 
+  healingAmount: 0
+  itemType: 1
 --- !u!65 &591965262361693606
 BoxCollider:
   m_ObjectHideFlags: 0

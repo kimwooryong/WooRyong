@@ -108,8 +108,6 @@ public class PlayerCotroller : MonoBehaviour
 
         originalCameraLocalPosition = cameraObject.transform.localPosition;
 
-
-
     }
 
     private void Update()
