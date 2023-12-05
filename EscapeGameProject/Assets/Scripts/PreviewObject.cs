@@ -159,7 +159,7 @@ public class PreviewObject : MonoBehaviour
         Transform snapTransform = GetClosestCollider();
         if (snapTransform != null)
         {
-            if( gameObject.layer == 23)
+            if( gameObject.layer == 23 || gameObject.layer == 22)
             {
                 Vector3 snapPosition = GetSnapPosition(currentPosition, snapTransform);
 
