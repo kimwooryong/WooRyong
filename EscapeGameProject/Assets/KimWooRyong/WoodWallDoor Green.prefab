@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5817230702150805986}
   - component: {fileID: -7745136659389211443}
   - component: {fileID: -3732859366188616449}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: WoodWallDoor Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5928184337671751979}
   - component: {fileID: 9011558354677052006}
   - component: {fileID: 4045991737298382294}
-  m_Layer: 22
+  m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

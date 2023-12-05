@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 95307608101754181}
   - component: {fileID: -7139374611219925541}
   - component: {fileID: 4137801261388411206}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Cieling Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}

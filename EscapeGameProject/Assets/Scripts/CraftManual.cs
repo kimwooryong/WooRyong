@@ -24,7 +24,7 @@ public class CraftManual : MonoBehaviour
 
 
     [SerializeField]
-    public craft[] craft_Build; // ºôµå¿ë ÅÇ
+    public craft[] craft_Build; // ¿ë ÅÇ
 
 
     private GameObject go_Preview; // ¹Ì¸®º¸±â ÇÁ¸®ÆéÀ» ´ãÀ» º¯¼ö
@@ -139,6 +139,7 @@ public class CraftManual : MonoBehaviour
             go_Preview = null;
             previewObject = null;
             CloseWindow();
+
         }
     }
 
@@ -169,13 +170,13 @@ public class CraftManual : MonoBehaviour
         {
             Destroy(go_Preview);
         }
+        go_BaseUI.SetActive(false);
         isActivated = false;
         isPreviewActived = false;
         go_Preview = null;
         go_Prefab = null;
-
-        go_BaseUI.SetActive(false);
         GameManager.Instance.InvisibleCursor();
+
     }
 
     private void Window()
