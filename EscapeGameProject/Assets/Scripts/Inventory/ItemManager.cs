@@ -12,7 +12,8 @@ public enum eItemKeyColumns
     Name,
     Description,
     CanCount,
-    CanGrab
+    CanGrab,
+    HealingAmount
 }
 public class ItemManager : MonoBehaviour
 {
