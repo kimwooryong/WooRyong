@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4712557623008852973}
   - component: {fileID: 6963031472402726461}
   - component: {fileID: 6782454949451954143}
+  - component: {fileID: -1273345869651867839}
   m_Layer: 0
   m_Name: Bonfire Green
   m_TagString: Untagged
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1520055458040610348, guid: 6960b6769632e2a458ec6ff17b4a7466, type: 3}
+--- !u!114 &-1273345869651867839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075784894900043253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerGround: 10
+  green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
+  Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
