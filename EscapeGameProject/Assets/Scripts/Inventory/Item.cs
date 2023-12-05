@@ -30,6 +30,7 @@ public class Item : MonoBehaviour
         Debug.Log("아이템 설정");
         var itemDataAll = ItemManager.Instance.ReadItemData(itemID);
         itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
+        //음식이라면
         if(itemType == eItemType.Food)
         {
             healingAmount = (int)itemDataAll[eItemKeyColumns.HealingAmount.ToString()];
@@ -47,7 +48,6 @@ public class Item : MonoBehaviour
     {
         return itemAmount;
     }
-
     public void EquipItem()
     {
 

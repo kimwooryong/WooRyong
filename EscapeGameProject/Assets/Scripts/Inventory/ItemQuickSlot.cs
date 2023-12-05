@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class QuickSlot : ItemSlot
 {
@@ -49,8 +50,30 @@ public class QuickSlot : ItemSlot
     {
         isSelected = false;
     }
-    public void EquipItem()
+    public void UseQuickSlot()
     {
-        Debug.Log("아이템 장비");
+        //선택 슬롯 아니면
+        if (!isSelected)
+        {
+            return;
+        }
+        //빈 슬롯 선택시 맨손
+        if(itemID == 0)
+        {
+            ItemManager.Instance.UsingItemIcon.gameObject.SetActive(false);
+            return;
+        }
+        //선택된 슬롯일 경우 중앙 슬롯 아이콘을 위 아이콘으로 대체.
+        ItemManager.Instance.UsingItemIcon.gameObject.SetActive(true);
+        ItemManager.Instance.UsingItemIcon.sprite = itemIcon.sprite;
+    }
+
+    //오버라이드로 안쓰기
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
     }
 }

@@ -17,7 +17,7 @@ public enum eItemKeyColumns
 }
 public class ItemManager : MonoBehaviour
 {
-
+    
     #region ½Ì±ÛÅæ
     private static ItemManager instance;
     public static ItemManager Instance
@@ -65,7 +65,8 @@ public class ItemManager : MonoBehaviour
     private GameObject middleCanvas;
     [SerializeField]
     private GameObject rightCanvas;
-
+    [SerializeField]
+    public Image UsingItemIcon;
 
     private void Start()
     {
@@ -122,6 +123,11 @@ public class ItemManager : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
+            //»ç¿ë
+            foreach(QuickSlot slots in playerQuickSlot.InventorySlots)
+            {
+                slots.UseQuickSlot();
+            }
             isActiveQuickSlot = false;
             GameManager.Instance.InvisibleCursor();
         }
