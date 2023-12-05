@@ -1184,8 +1184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   naturalObject:
   - {fileID: 8691437925199187071, guid: 2730ae40901f93340b40962c86395bb0, type: 3}
-  minTrees: 40
-  maxTrees: 50
+  minTrees: 30
+  maxTrees: 40
   minDistance: 10
   maxDistance: 200
   spawnLayer:
@@ -2337,10 +2337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   naturalObject:
   - {fileID: 4337102141482522233, guid: 2033d3cf0095e984a8652bc760455b69, type: 3}
-  minTrees: 10
-  maxTrees: 20
+  minTrees: 80
+  maxTrees: 90
   minDistance: 20
-  maxDistance: 170
+  maxDistance: 300
   spawnLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -7444,7 +7444,7 @@ PrefabInstance:
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
@@ -7454,7 +7454,7 @@ PrefabInstance:
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
@@ -7469,7 +7469,7 @@ PrefabInstance:
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 7957933442853199858, guid: 2f5efae9c5b001b4685782a62131bc7d,
         type: 3}
