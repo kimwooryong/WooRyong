@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Distorsion_Mask:
-        m_Texture: {fileID: 2800000, guid: 1a058058e0c3941cda596888a96b1a38, type: 3}
+        m_Texture: {fileID: 2800000, guid: ae2ec7cc42a1b48e5b8568153b61c6b1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Gradient_Texture:
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Opacity_Mask:
-        m_Texture: {fileID: 2800000, guid: 7ef759937d7564dfab707d5a60f9cd45, type: 3}
+        m_Texture: {fileID: 2800000, guid: c79f715ab96e24ac790a4500bd8774d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -58,17 +58,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Bloom_Intensity: 3.85
+    - _Bloom_Intensity: 2.03
     - _Depth_Fade_Distance: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smooth_Step_Opacity_In: 0
-    - _Smooth_Step_Opacity_Out: 1
-    - _UV_Distorsion_Opacity_Intensity: 0
-    - _UV_Distortion_Intensity: -0.465
+    - _Smooth_Step_Opacity_Out: 1.06
+    - _UV_Distorsion_Opacity_Intensity: 0.03
+    - _UV_Distortion_Intensity: -0.3
     m_Colors:
-    - _Noise_01_Tiling_and_Panner_Speed: {r: 0.6, g: 0.6, b: 0, a: -1}
-    - _Noise_02_Tiling_and_Panner_Speed: {r: 0.6, g: 0.6, b: 0, a: -1}
+    - _Noise_01_Tiling_and_Panner_Speed: {r: -1, g: 1, b: 0, a: -1.1}
+    - _Noise_02_Tiling_and_Panner_Speed: {r: 1, g: 1, b: 1, a: -1}
   m_BuildTextureStacks: []
 --- !u!114 &5024757098762577306
 MonoBehaviour:
