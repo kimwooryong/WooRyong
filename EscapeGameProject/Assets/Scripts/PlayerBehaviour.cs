@@ -27,8 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
     public TextMeshProUGUI ItemText;
 
     private bool isDetecting;
-
-    private void RayObject() // 은하씨 드릴 레이 아이템 확인용
+    private void RayObject()
     {
         Ray testRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // 카메라 기준 가운데에 레이 발사
         TestWhatHit(testRay);
