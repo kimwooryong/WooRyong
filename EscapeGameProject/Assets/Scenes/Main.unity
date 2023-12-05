@@ -7335,6 +7335,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
         type: 3}
+      propertyPath: craft_Build.Array.data[1].go_Prefab
+      value: 
+      objectReference: {fileID: 4869367290019317714, guid: 15f4adf9f02123b4aa15f4a2f1129f5c,
+        type: 3}
+    - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
+        type: 3}
       propertyPath: craft_Build.Array.data[6].craftName
       value: Bonfire
       objectReference: {fileID: 0}
@@ -7365,6 +7371,12 @@ PrefabInstance:
       propertyPath: craft_Build.Array.data[8].go_Prefab
       value: 
       objectReference: {fileID: 4869367290019317714, guid: 5acdad288151a0a43a495472cf24fc5b,
+        type: 3}
+    - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
+        type: 3}
+      propertyPath: craft_Build.Array.data[1].go_PreviewPrefab
+      value: 
+      objectReference: {fileID: 4869367290019317714, guid: f99748fcc893b3e4db8cbed1965e74e5,
         type: 3}
     - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
         type: 3}
