@@ -95,12 +95,6 @@ public class CraftManual : MonoBehaviour
             Build(); // 설치
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            Cancel(); // 취소
-            GameManager.Instance.InvisibleCursor();
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cancel(); // 취소
