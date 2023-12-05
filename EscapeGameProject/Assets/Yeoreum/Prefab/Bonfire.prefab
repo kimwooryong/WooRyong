@@ -24533,7 +24533,7 @@ GameObject:
   - component: {fileID: 2841270344336243901}
   - component: {fileID: 8991888736293969862}
   m_Layer: 0
-  m_Name: CampFire_2
+  m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
