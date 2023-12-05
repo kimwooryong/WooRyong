@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2698723688313584983}
   - component: {fileID: 5743356640185566294}
   - component: {fileID: 5062864250247905107}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Rock_3
   m_TagString: NaturalObject
   m_Icon: {fileID: 0}

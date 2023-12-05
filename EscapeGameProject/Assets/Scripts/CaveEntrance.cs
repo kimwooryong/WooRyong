@@ -15,8 +15,6 @@ public class CaveEntrance : MonoBehaviour
     private Quaternion savedRotation;
     private float savedFog;
 
-    private MonsterSpawner monsterSpawner;
-
     private GameManager gameManager;
 
     [HideInInspector]
@@ -25,7 +23,6 @@ public class CaveEntrance : MonoBehaviour
     private void Start()
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
-        monsterSpawner = FindObjectOfType<MonsterSpawner>();
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
@@ -50,7 +47,6 @@ public class CaveEntrance : MonoBehaviour
             RenderSettings.ambientIntensity *= newIntensityMultiplier;
 
             dayNightCycle.gameObject.SetActive(false);
-            monsterSpawner.enabled = false;
 
             if(invisibleWall != null)
             {
@@ -63,7 +59,6 @@ public class CaveEntrance : MonoBehaviour
             newIntensityMultiplier = 1.0f;
             RenderSettings.reflectionIntensity *= newIntensityMultiplier;
             dayNightCycle.gameObject.SetActive(true);
-            monsterSpawner.enabled = true;
         }
     }
 }
