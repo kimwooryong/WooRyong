@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
     }
 
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
-    protected virtual int FindItem(int itemID)
+    public virtual int FindItem(int itemID)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
@@ -89,6 +89,14 @@ public class Inventory : MonoBehaviour
         }
         return -1;
     }
-
-
+    public int FindItemAmountWithIndex(int index)
+    {
+        int itemAmount = InventorySlots[index].itemAmount;
+        if(itemAmount <= 0)
+        {
+            Debug.Log("그 칸에는 뭐가 없다.");
+            return -1;
+        }
+        return itemAmount;
+    }
 }

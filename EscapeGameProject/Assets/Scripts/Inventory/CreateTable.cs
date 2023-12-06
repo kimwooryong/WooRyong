@@ -33,6 +33,11 @@ public class CreateTable : MonoBehaviour
     {
         SetSlots();
     }
+
+    private void OnEnable()
+    {
+        TestCreateCondition();
+    }
     public void SetSlots()
     {
         targetItem.SetItemSlot(targetItemID, targetItemAmount);
@@ -43,8 +48,34 @@ public class CreateTable : MonoBehaviour
                 (materialItems[i].materialItemID, materialItems[i].materialItemAmount);
         }
     }
+    public void TestCreateCondition()
+    {
+        bool createCondition = true;
+        for(int i = 0; i < materialItems.Length; i++)
+        {
+            //맞는 재료가 있는지 확인
+            int itemIndex = ItemManager.Instance.playerInventory.FindItem(materialItems[i].materialItemID);
+            int itemAmount = ItemManager.Instance.playerInventory.FindItemAmountWithIndex(itemIndex);
+            if(itemAmount < materialItems[i].materialItemAmount)
+            {
+                createCondition = false;
+                return;
+            }
+        }
+        if (createCondition == true)
+        {
+            btnCreate.gameObject.SetActive(true);
+        }
+        else
+        {
+            btnCreate.gameObject.SetActive(false);
+        }
+    }
     public void CreateItemToInventory()
     {
+        //아이템 재료가 다 있으면
+
+
         Debug.Log("아이템 생성");
     }
 }
