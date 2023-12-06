@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public int playerDamage = 2;
     public GameObject miniMap;
-    public bool onMove;
+    //public bool onMove;
     private GameManager gameManager;
     private CaveEntrance cave;
 

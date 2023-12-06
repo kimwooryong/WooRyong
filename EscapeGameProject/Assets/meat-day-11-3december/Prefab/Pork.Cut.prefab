@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8149779944296169809}
   - component: {fileID: 1534828713066059798}
   - component: {fileID: 5919911256085603222}
-  - component: {fileID: 7065319082921891566}
   m_Layer: 21
   m_Name: Pork.Cut
   m_TagString: Untagged
@@ -135,17 +134,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7065319082921891566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361293138026540266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f90e00b05b96a4a8d78d1d6473333e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 101
-  itemName: asd

@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 5025040443983621328, guid: 703290c47bf80b04787c89f9989f3028, type: 3}
   minDropCount: 8
   maxDropCount: 9
 --- !u!1 &1298265028668788979
