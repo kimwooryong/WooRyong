@@ -37,48 +37,68 @@ public class PlayerCotroller : MonoBehaviour
     float crouch;
 
     const float k_Half = 0.5f;
-    
+
     // Ä³¸¯ÅÍ ±âº» ¿ä¼Ò
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     CapsuleCollider m_Capsule;
-    
+
     // Ä«¸Þ¶ó À§Ä¡ Á¤º¸
     public Transform cameraObject;
     private Vector3 originalCameraLocalPosition;
 
-    // ¹«±â ¼ÒÁö ¿©ºÎ È®ÀÎ, Äü½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ ÀÖÀ» ¶§ true. -> Äü½½·Ô¿¡¼­
-    public bool isKnife;
-    public bool isHammer;
-    public bool isPickaxe;
-    public bool isTorch;
 
     // Ä®
     [SerializeField]
-    private GameObject knife;
+    private GameObject knifeOnHand;
     [SerializeField]
     private GameObject knifeOnShoulder;
     // µµ³¢
     [SerializeField]
-    private GameObject hammer;
+    private GameObject hammeOnHand;
     [SerializeField]
     private GameObject hammerOnShoulder;
     // °î±ªÀÌ
     [SerializeField]
-    private GameObject pickaxe;
+    private GameObject pickaxeOnHand;
     [SerializeField]
     private GameObject pickaxeOnShoulder;
     //È½ºÒ
-    
+    [SerializeField]
+    private GameObject torchOnHand;
+    [SerializeField]
+    private GameObject torchOnShoulder;
 
-    // ¹«±â ÀåÂøÇÏ°í ½Í´Ù
-    private bool changeKnife;
-    private bool changeHammer;
-    private bool changePickaxe;
+    //  
+    public bool isEquipping; // ÀåÂø Áß
+    public bool isEquipped;  // ÀåÂø µÊ
 
-    public bool isEquipping;
-    public bool isEquipped;
+    // 1,2,3,4 ¹ø Å° ¹Ýº¹ÇÏ¿© ´©¸¥ È½¼ö
+    private bool repeatClick1 = false;
+    private bool repeatClick2 = false;
+    private bool repeatClick3 = false;
+    private bool repeatClick4 = false;
 
+    // ¹«±â ¼ÒÁö ¿©ºÎ È®ÀÎ, Äü½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ ÀÖÀ» ¶§ true. -> Äü½½·Ô¿¡¼­
+    // ÀÎº¥Åä¸®¿¡ Á¸Àç
+    public bool isKnifeInventory;
+    public bool isHammerInventory;
+    public bool isPickaxeInventory;
+    public bool isTorchInventory;
+
+
+    // ´©¸£¸é Æ®¸®°Å·Î ½ÇÇà. -> ÀåÂøÁßÀÌ¸é ÇØÁ¦, ÀåÂø ÁßÀÌ ¾Æ´Ï°í, is~~°ªÀÌ trueÀÌ¸é ÀåÂø
+    private bool knifeChangeTrigger;
+    private bool hammerChangeTrigger;
+    private bool pickaxeChangeTrigger;
+    private bool torchChangeTrigger;
+
+
+    // ÇöÀç ¼Õ¿¡ ÀåÂøÁßÀÎ ÀåºñÀÇ Bool°ª
+    private bool knifeEquipOnHand;
+    private bool hammerEquipOnHand;
+    private bool pickaxeEquipOnHand;
+    private bool torchEquipOnHand;
 
     //¸·±â
     public bool isBlocking;
@@ -95,7 +115,10 @@ public class PlayerCotroller : MonoBehaviour
     //public GameObject[] weaponPrefabs;
     //private int weaponNum =0;
 
+    private void Awake()
+    {
 
+    }
 
     private void Start()
     {
@@ -108,12 +131,32 @@ public class PlayerCotroller : MonoBehaviour
 
         originalCameraLocalPosition = cameraObject.transform.localPosition;
 
+
+        playerHasWeaponItem();
+
+        if (isKnifeInventory == true)
+        {
+            m_Animator.SetBool("KnifeOnShoulder", true);
+        }
+        if (isHammerInventory == true)
+        {
+            m_Animator.SetBool("HammerOnShoulder", true);
+        }
+        if (isPickaxeInventory == true)
+        {
+            m_Animator.SetBool("PickaxeOnShoulder", true);
+        }
+        if (isTorchInventory == true)
+        {
+            m_Animator.SetBool("TorchOnShoulder", true);
+        }
+
+
     }
 
     private void Update()
     {
         timeSinceAttack += Time.deltaTime;
-
         //playerHasWeaponItem();
 
         Moving();
@@ -125,7 +168,7 @@ public class PlayerCotroller : MonoBehaviour
         Block();
         Kick();
 
-    
+
     }
 
     /// <summary>
@@ -148,63 +191,6 @@ public class PlayerCotroller : MonoBehaviour
 
     }
 
-    // ÇÃ·¹ÀÌ¾î°¡ ¹«±â ¾ÆÀÌÅÛÀ» °¡Áö°í ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
-    public void SetHasKnife(bool hasItem)
-    {
-        isKnife = hasItem;
-        
-    }
-    public void SetHasHammer(bool hasItem)
-    {
-        isHammer = hasItem;
-    }
-    public void SetHasPickaxe(bool hasItem)
-    {
-        isPickaxe = hasItem;
-    }
-    public void SetHasTouch(bool hasItem)
-    {
-        isTorch = hasItem;
-    }
-
-    public void playerHasWeaponItem()
-    {
-        if (knifeOnShoulder.activeSelf == true)
-        {
-            Debug.Log("Ä®ÀÌ È°¼ºÈ­ÀÎ »óÅÂ");
-            isKnife = true;
-            m_Animator.SetBool("isKnife", true);
-        }
-        else
-        {
-            Debug.Log("Ä®ÀÌ ºñÈ°¼ºÈ­ÀÎ »óÅÂ");
-            isKnife = false;
-            m_Animator.SetBool("isKnife", false);
-        }
-
-        if (hammer != null)
-        {
-            isHammer = true;
-            m_Animator.SetBool("isHammer", true);
-        }
-        else
-        {
-            isHammer= false;
-            m_Animator.SetBool("isHammer", false);
-        }
-
-        if (pickaxe != null)
-        {
-            isPickaxe = true;
-            m_Animator.SetBool("isPickaxe", true);
-        }
-        else
-        {
-            isPickaxe = false;
-            m_Animator.SetBool("isPickaxe", false);
-        }
-
-    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -220,6 +206,7 @@ public class PlayerCotroller : MonoBehaviour
     {
         if (other.transform.CompareTag("Ground"))
         {
+
             _isGrounded = false;
         }
 
@@ -270,7 +257,7 @@ public class PlayerCotroller : MonoBehaviour
     public void AttackMonster()
     {
         float attackValue = inputManager.inputMaster.Movement.Attack.ReadValue<float>();
-        if (attackValue >0 && m_Animator.GetBool("OnGround") && timeSinceAttack > 0.8f)
+        if (attackValue > 0 && m_Animator.GetBool("OnGround") && timeSinceAttack > 0.8f)
         {
             if (!isEquipped)
                 return;
@@ -305,7 +292,7 @@ public class PlayerCotroller : MonoBehaviour
     public void Kick()
     {
         float kickValue = inputManager.inputMaster.Movement.Kick.ReadValue<float>();
-        if (kickValue >0 && m_Animator.GetBool("OnGround"))
+        if (kickValue > 0 && m_Animator.GetBool("OnGround"))
         {
             m_Animator.SetBool("Kick", true);
             isKicking = true;
@@ -315,6 +302,40 @@ public class PlayerCotroller : MonoBehaviour
             m_Animator.SetBool("Kick", false);
             isKicking = false;
         }
+    }
+
+
+    // ÇÃ·¹ÀÌ¾î°¡ ¹«±â ¾ÆÀÌÅÛÀ» °¡Áö°í ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+    public void SetHasKnife(bool hasItem)
+    {
+        isKnifeInventory = hasItem;
+        m_Animator.SetBool("KnifeInventory", hasItem);
+    }
+    public void SetHasHammer(bool hasItem)
+    {
+        isHammerInventory = hasItem;
+        m_Animator.SetBool("HammerInventory", hasItem);
+    }
+    public void SetHasPickaxe(bool hasItem)
+    {
+        isPickaxeInventory = hasItem;
+        m_Animator.SetBool("PickaxeInventory", hasItem);
+    }
+    public void SetHasTouch(bool hasItem)
+    {
+        isTorchInventory = hasItem;
+        m_Animator.SetBool("TorchInventory", hasItem);
+    }
+
+    public void playerHasWeaponItem()
+    {
+
+        SetHasKnife(knifeOnShoulder.activeSelf);
+        SetHasHammer(hammerOnShoulder.activeSelf);
+        SetHasPickaxe(pickaxeOnShoulder.activeSelf);
+        SetHasTouch(torchOnShoulder.activeSelf);
+
+
     }
 
     public void Equipped()
@@ -339,56 +360,157 @@ public class PlayerCotroller : MonoBehaviour
 
     private void Equip()
     {
+
         float changeKnifeValue = inputManager.inputMaster.Movement.ChangeKnife.ReadValue<float>();
         float changeHammerValue = inputManager.inputMaster.Movement.ChangeHammer.ReadValue<float>();
         float changePickaxeValue = inputManager.inputMaster.Movement.ChangePickaxe.ReadValue<float>();
-    
+        float changeTorchValue = inputManager.inputMaster.Movement.ChangeTorch.ReadValue<float>();
+
         if (m_Animator.GetBool("OnGround"))
         {
-            // Ä®
-            if (isKnife == true)
-            {
-                if(changeKnifeValue > 0)
-                {
-                    
-                    m_Animator.SetBool("isUnarmed", true);
-                    isEquipping = true;
-                    m_Animator.SetTrigger("knifeEquip");
-                    changeKnife = true;
-                }
- 
-               
 
+            // Ä®
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+
+                if (isKnifeInventory == true)
+                {
+                    if (repeatClick1 == false)
+                    {
+                        m_Animator.SetBool("isArmed", true);
+                        m_Animator.SetTrigger("knifeEquipTrigger");
+                        isEquipping = true;
+                        knifeChangeTrigger = true;
+
+                        repeatClick1 = true;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
+                    else if (repeatClick1 == true)
+                    {
+                        m_Animator.SetBool("KnifeOnShoulder", true);
+                        m_Animator.SetBool("isArmed", false);
+                        m_Animator.SetTrigger("knifeEquipTrigger");
+                        isEquipping = false;
+                        knifeChangeTrigger = false;
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
+
+
+                }
             }
             // µµ³¢        
-            if (isHammer == true)
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if(changeHammerValue > 0)
+                if (isHammerInventory == true)
                 {
-                    m_Animator.SetBool("isUnarmed", true);
-                    isEquipping = true;
-                    m_Animator.SetTrigger("hammerEquip");
-                    changeHammer = true;
+                    if (repeatClick2 == false)
+                    {
+                        m_Animator.SetBool("isArmed", true);
+                        m_Animator.SetTrigger("hammerEquipTrigger");
+                        isEquipping = true;
+                        hammerChangeTrigger = true;
+
+                        repeatClick1 = false;
+                        repeatClick2 = true;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
+                    else if (repeatClick2 == true)
+                    {
+                        m_Animator.SetBool("HammerOnShoulder", true);
+                        m_Animator.SetBool("isArmed", false);
+                        m_Animator.SetTrigger("hammerEquipTrigger");
+                        isEquipping = false;
+                        hammerChangeTrigger = false;
+
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
                 }
- 
-                
-               
+
             }
             // °î±ªÀÌ
-            if (isPickaxe == true)
+            if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                if(changePickaxeValue > 0)
+                if (isPickaxeInventory == true)
                 {
-                    m_Animator.SetBool("isUnarmed", true);
-                    isEquipping = true;
-                    m_Animator.SetTrigger("pickaxeEquip");
-                    changePickaxe = true;
-                }
-            
+                    if (repeatClick3 == false)
+                    {
+                        m_Animator.SetBool("isArmed", true);
+                        isEquipping = true;
+                        m_Animator.SetTrigger("pickaxeEquipTrigger");
+                        pickaxeChangeTrigger = true;
 
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = true;
+                        repeatClick4 = false;
+                    }
+                    else if (repeatClick3 == true)
+                    {
+                        m_Animator.SetBool("PickaxeOnShoulder", true);
+                        m_Animator.SetBool("isArmed", false);
+                        m_Animator.SetTrigger("pickaxeEquipTrigger");
+                        isEquipping = false;
+                        pickaxeChangeTrigger = false;
+
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
+
+
+                }
+            }
+            // È½ºÒ
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (isTorchInventory == true)
+                {
+                    if (repeatClick4 == false)
+                    {
+                        m_Animator.SetBool("isArmed", true);
+                        isEquipping = true;
+                        m_Animator.SetTrigger("torchEquipTrigger");
+                        torchChangeTrigger = true;
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = true;
+                    }
+                    else if (repeatClick4 == true)
+                    {
+                        m_Animator.SetBool("TorchOnShoulder", true);
+                        m_Animator.SetBool("isArmed", false);
+                        m_Animator.SetTrigger("torchEquipTrigger");
+                        isEquipping = false;
+                        pickaxeChangeTrigger = false;
+
+
+                        repeatClick1 = false;
+                        repeatClick2 = false;
+                        repeatClick3 = false;
+                        repeatClick4 = false;
+                    }
+
+                }
             }
 
-          
+
         }
 
 
@@ -400,73 +522,97 @@ public class PlayerCotroller : MonoBehaviour
 
         if (!isEquipped)
         {
-                    
-            if (isKnife == true && changeKnife == true)         // Ä®
+            // Ä®
+            if (knifeChangeTrigger == true)
             {
-                knife.SetActive(true);
+                m_Animator.SetBool("KnifeOnShoulder", false);
+                knifeOnHand.SetActive(true);
                 knifeOnShoulder.SetActive(false);
+                knifeChangeTrigger = false;
+                knifeEquipOnHand = true;  // ¼Õ¿¡ ÀåÂø
                 Debug.Log("Ä® ÀåÂø");
-          
             }
-            
-            if (isHammer == true && changeHammer == true)       // ¸ÁÄ¡
+            // ¸ÁÄ¡
+            else if (hammerChangeTrigger == true)
             {
-                hammer.SetActive(true);
+                m_Animator.SetBool("HammerOnShoulder", false);
+                hammeOnHand.SetActive(true);
                 hammerOnShoulder.SetActive(false);
+                hammerChangeTrigger = false;
+                hammerEquipOnHand = true;
                 Debug.Log("µµ³¢ ÀåÂø");
 
             }
-            
-            if (isPickaxe == true && changePickaxe == true)     // °î±ªÀÌ
+            // °î±ªÀÌ
+            else if (pickaxeChangeTrigger == true)
             {
-                pickaxe.SetActive(true);
+                m_Animator.SetBool("PickaxeOnShoulder", false);
+                pickaxeOnHand.SetActive(true);
                 pickaxeOnShoulder.SetActive(false);
+                pickaxeChangeTrigger = false;
+                pickaxeEquipOnHand = true;
                 Debug.Log("°î±ªÀÌ ÀåÂø");
-               
+
+            }
+            // È½ºÒ
+            else if (torchChangeTrigger == true)
+            {
+                m_Animator.SetBool("TorchOnShoulder", false);
+                torchOnHand.SetActive(true);
+                torchOnShoulder.SetActive(false);
+                torchChangeTrigger = false;
+                torchEquipOnHand = true;
+                Debug.Log("È½ºÒ ÀåÂø");
             }
             isEquipped = !isEquipped;
 
         }
         else
         {
-            
-          
-            if(isKnife == true)            // Ä®
+
+            // Ä®
+            if (knifeEquipOnHand == true)
             {
-                knife.SetActive(false);
+                m_Animator.SetBool("KnifeOnShoulder", true);
+                knifeOnHand.SetActive(false);
                 knifeOnShoulder.SetActive(true);
+                knifeEquipOnHand = false;
                 Debug.Log("Ä® ÇØÁ¦");
-  
-
-            }            
-            
-            if(isHammer == true)         // ¸ÁÄ¡
+            }
+            // ¸ÁÄ¡
+            else if (hammerEquipOnHand == true)
             {
-                hammer.SetActive(false);
+                m_Animator.SetBool("HammerOnShoulder", true);
+                hammeOnHand.SetActive(false);
                 hammerOnShoulder.SetActive(true);
+                hammerEquipOnHand = false;
                 Debug.Log("ÇØ¸Ó ÇØÁ¦");
-
-
             }
-
-            if (isPickaxe == true)         // °î±ªÀÌ
+            // °î±ªÀÌ
+            else if (pickaxeEquipOnHand == true)
             {
-                pickaxe.SetActive(false);
+                m_Animator.SetBool("PickaxeOnShoulder", true);
+                pickaxeOnHand.SetActive(false);
                 pickaxeOnShoulder.SetActive(true);
+                pickaxeEquipOnHand = false;
                 Debug.Log("°î±ªÀÌ ÇØÁ¦");
-  
-
             }
-            changeKnife = false;
-            changeHammer = false;
-            changePickaxe = false;
-            m_Animator.SetBool("isUnarmed", false);
+            // È½ºÒ
+            else if (torchEquipOnHand == true)
+            {
+                m_Animator.SetBool("TorchOnShoulder", true);
+                torchOnHand.SetActive(false);
+                torchOnShoulder.SetActive(true);
+                torchEquipOnHand = false;
+                Debug.Log("È½ºÒ ÇØÁ¦");
+            }
+            m_Animator.SetBool("isArmed", false);
             isEquipped = !isEquipped;
         }
 
 
 
-      
+
     }
 
     private void Sprint()
@@ -492,25 +638,29 @@ public class PlayerCotroller : MonoBehaviour
 
     private void Jump()
     {
+        //float jumpValue = inputManager.inputMaster.Movement.Jump.ReadValue<float>();
 
-        if (_isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space))//if(jumpValue > 0)
         {
+            if (_isGrounded)
+            {
+                
+                rb.AddForce(Vector3.up * jumpForce);
 
-            rb.AddForce(Vector3.up * jumpForce);
+                Vector3 newPosition = cameraObject.transform.position;
+                newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
+                cameraObject.transform.position = newPosition;
 
-            Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
-            cameraObject.transform.position = newPosition;
+                _isJump = true;          
 
-
-            _isJump = true;
-
+            }
+            else
+            {
+                _isJump = false;
+                cameraObject.transform.localPosition = originalCameraLocalPosition;
+            }
         }
-        else
-        {
-            _isJump = false;
-            cameraObject.transform.localPosition = originalCameraLocalPosition;
-        }
+       
 
     }
 
@@ -568,7 +718,9 @@ public class PlayerCotroller : MonoBehaviour
         if (!_isGrounded)
         {
             m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+
         }
+      
 
 
         // calculate which leg is behind, so as to leave that leg trailing in the jump animation
@@ -588,6 +740,7 @@ public class PlayerCotroller : MonoBehaviour
         if (_isGrounded && move.magnitude > 0)
         {
             m_Animator.speed = m_AnimSpeedMultiplier;
+            Debug.Log("¿¡¾îº»");
         }
         else
         {

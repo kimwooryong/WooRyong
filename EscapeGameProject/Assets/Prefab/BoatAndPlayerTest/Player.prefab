@@ -4247,14 +4247,14 @@ MonoBehaviour:
   m_AnimSpeedMultiplier: 1
   m_RunCycleLegOffset: 0.2
   cameraObject: {fileID: 1209326246043286984}
-  knifeOnHand: {fileID: 0}
+  knifeOnHand: {fileID: 9035976917180460586}
   knifeOnShoulder: {fileID: 1625468961014399723}
-  hammeOnHand: {fileID: 0}
+  hammeOnHand: {fileID: 3850303607581823751}
   hammerOnShoulder: {fileID: 4826023608190310699}
-  pickaxeOnHand: {fileID: 0}
+  pickaxeOnHand: {fileID: 1188089340707746412}
   pickaxeOnShoulder: {fileID: 3431306869250592082}
-  torchOnHand: {fileID: 0}
-  torchOnShoulder: {fileID: 0}
+  torchOnHand: {fileID: 8845173441748996454}
+  torchOnShoulder: {fileID: 2824619371828459560}
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
@@ -4356,7 +4356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5500958625217420957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.502, z: 0.423}
+  m_LocalPosition: {x: 0, y: 1.426, z: 0.268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7058,7 +7058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8204485232082738861
 Transform:
   m_ObjectHideFlags: 0
@@ -7066,15 +7066,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8845173441748996454}
-  m_LocalRotation: {x: -0.52343595, y: 0.57301265, z: 0.37091774, w: -0.5099916}
-  m_LocalPosition: {x: -0.029, y: 0.133, z: 0.041}
+  m_LocalRotation: {x: -0.32236135, y: 0.4156662, z: 0.541431, w: -0.65586376}
+  m_LocalPosition: {x: -0.029, y: 0.088, z: 0.012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8471468302469732667}
   m_Father: {fileID: 880370895470475714}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -186.247, y: 78.119, z: 100.249}
+  m_LocalEulerAnglesHint: {x: -178.438, y: 116.537, z: 101.885}
 --- !u!1 &8912856358493476191
 GameObject:
   m_ObjectHideFlags: 0
@@ -7356,7 +7356,12 @@ PrefabInstance:
     - target: {fileID: 3200132447511103347, guid: 4382aa9ecf18255429d114d97c89cc97,
         type: 3}
       propertyPath: m_Name
-      value: Club (1)
+      value: TorchOnShoulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200132447511103347, guid: 4382aa9ecf18255429d114d97c89cc97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3997591689899910914, guid: 4382aa9ecf18255429d114d97c89cc97,
         type: 3}
@@ -7515,7 +7520,7 @@ PrefabInstance:
     - target: {fileID: 6032137825525080156, guid: 3af8a209753ffb24caed5d1cc969d0fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6032137825525080156, guid: 3af8a209753ffb24caed5d1cc969d0fe,
         type: 3}
@@ -7801,7 +7806,7 @@ PrefabInstance:
     - target: {fileID: 3200132447511103347, guid: 4382aa9ecf18255429d114d97c89cc97,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3997591689899910914, guid: 4382aa9ecf18255429d114d97c89cc97,
         type: 3}
@@ -7989,7 +7994,7 @@ PrefabInstance:
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
@@ -8335,7 +8340,7 @@ PrefabInstance:
     - target: {fileID: 4231031488058023189, guid: 14cd7d5e6c431eb48b471fa1b6928984,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4987527544187817468, guid: 14cd7d5e6c431eb48b471fa1b6928984,
         type: 3}
