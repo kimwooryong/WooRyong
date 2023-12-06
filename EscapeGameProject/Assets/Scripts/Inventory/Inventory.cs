@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
     {
         InitializeInventory();
     }
-    protected void InitializeInventory()
+    public void InitializeInventory()
     {
         InventorySlots = new List<ItemSlot>();
         for(int i = 0; i < inventorySize;  i++)
@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
             GameObject tempGo = Instantiate(inventorySlotPrefab, gameObject.transform);
             ItemSlot tempSlot = tempGo.GetComponent<ItemSlot>();
             InventorySlots.Add(tempSlot);
+            InventorySlots[i].InitializeSlot();
         }
     }
 

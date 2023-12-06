@@ -27,10 +27,15 @@ public class CreateTable : MonoBehaviour
 
     private void Awake()
     {
+        InitializeTable();
+        
+    }
+    private void InitializeTable()
+    {
         btnCreate.onClick.AddListener(CreateItemToInventory);
         ItemManager.Instance.OpenInventory += TestCreateCondition;
         Debug.Log(ItemManager.Instance.OpenInventory);
-        
+
     }
     private void Start()
     {

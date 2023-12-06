@@ -26,6 +26,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
 
     public virtual void InitializeSlot()
     {
+        Debug.Log("ÃÊ±âÈ­");
         itemID = 0;
         itemName = "ºó Ä­";
         itemDescription = "ºó Ä­";

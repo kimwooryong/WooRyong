@@ -43,8 +43,7 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        SetQuickSlot();
-        data = CSVReader.Read(dataBasePath);
+        InitializeItemManager();
     }
     #endregion
     private List<Dictionary<string, object>> data;
@@ -74,7 +73,14 @@ public class ItemManager : MonoBehaviour
     private void Start()
     {
     }
-
+    private void InitializeItemManager()
+    {
+        SetQuickSlot();
+        data = CSVReader.Read(dataBasePath);
+        preSlotObject = null;
+        playerInventory.InitializeInventory();
+        playerQuickSlot.InitializeInventory();
+    }
     //ID로 값 전체 받아오기
     public Dictionary<string, object> ReadItemData(int itemID)
     {
@@ -170,7 +176,7 @@ public class ItemManager : MonoBehaviour
         Vector2 quickPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         return (quickPos - screenCenter).normalized * quickSlotDistance + screenCenter;
     }
-    GameObject preSlotObject = null;
+    GameObject preSlotObject;
     private void DetectQuickSlot()
     {
         raycastResults.Clear();
