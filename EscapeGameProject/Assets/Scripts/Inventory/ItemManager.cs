@@ -69,6 +69,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     public Image UsingItemIcon;
 
+    public Action OpenInventory;
+
     private void Start()
     {
     }
@@ -79,7 +81,6 @@ public class ItemManager : MonoBehaviour
         // ID에 해당하는 아이템 데이터 찾기
         foreach (var item in data)
         {
-            Debug.Log($"item = {item}");
             if (item.ContainsKey(eItemKeyColumns.ID.ToString()) 
                 && Convert.ToInt32(item[eItemKeyColumns.ID.ToString()]) == itemID)
             {
@@ -105,10 +106,12 @@ public class ItemManager : MonoBehaviour
         //인벤토리 온오프
         if(Input.GetKeyDown(KeyCode.I))
         {
+            OpenInventory?.Invoke();
             isActiveInventory = !isActiveInventory;
             inventoryCanvas.gameObject.SetActive(isActiveInventory);
             if (isActiveInventory)
             {
+
                 GameManager.Instance.VisibleCursor();
             }
             else

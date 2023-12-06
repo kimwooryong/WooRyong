@@ -35,7 +35,6 @@ public class CreateItemSlot : ItemSlot
     {
         if (getItemID == 0 || amount == 0)
         {
-            Debug.Log("ID 가 0 인 칸은 안보이도록");
             SetColorEmpty();
             return;
         }

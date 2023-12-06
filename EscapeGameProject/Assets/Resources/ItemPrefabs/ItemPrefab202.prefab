@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4596978106992883318}
   - component: {fileID: 5138130539928231846}
   - component: {fileID: 1563057610981949197}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: ItemPrefab202
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,8 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 202
   itemName: 
-  healingAmount: 0
-  itemType: 1
 --- !u!54 &5138130539928231846
 Rigidbody:
   m_ObjectHideFlags: 0

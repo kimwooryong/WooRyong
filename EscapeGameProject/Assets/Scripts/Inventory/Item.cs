@@ -15,7 +15,6 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("아이템 설정");
         var itemDataAll = ItemManager.Instance.ReadItemData(itemID);
         itemName = itemDataAll[eItemKeyColumns.Name.ToString()] as string;
         
