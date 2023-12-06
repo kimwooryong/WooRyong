@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BuildDestroy : MonoBehaviour
 {
     [SerializeField]
-    private Camera mainCamera;
+    private Camera mainCamera; // 메인 카메라 지정
     [SerializeField]
     private float raycastDistance; // 레이 최대 거리
+
+    [SerializeField]
+    private TextMeshProUGUI BuildName;
+    private GameObject crosshairInstance; // 크로스헤어
+    public GameObject crosshairPrefab; // 크로스헤어 프리팹
+
     void Update()
     {
         PerformRaycast();
@@ -15,26 +22,46 @@ public class BuildDestroy : MonoBehaviour
 
     void PerformRaycast()
     {
-        // 메인 카메라의 중앙에서 앞으로 레이 발사
         Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        // 레이가 어떤 물체와 충돌했는지 확인
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
-            // 레이가 충돌한 물체의 태그를 출력
-            Debug.Log("Hit object with tag: " + hit.collider.gameObject.tag);
+            Debug.Log("Hit object with tag: " + hit.collider.gameObject.tag); // 레이가 충돌한 물체의 태그를 출력
 
             GameObject destroy = hit.collider.gameObject;
 
-            if (destroy.tag == "BuildDestroy")
+            if (destroy != null)
             {
-                Debug.Log("떴음");
-                if (Input.GetKeyDown(KeyCode.E)) // 건축물 부수기
+                if (destroy.tag == "BuildDestroy")
                 {
-                    Destroy(destroy);
+                    BuildName.text = destroy.name;
+                    crosshairPrefab.gameObject.SetActive(true);
+                    UpdateCrosshair(hit.point); // 크로스헤어를 표시하거나 업데이트
+                    if (Input.GetKeyDown(KeyCode.E)) // 건축물 부수기
+                    {
+                        Destroy(destroy);
+                    }
                 }
+
             }
+            else
+            {
+                crosshairPrefab.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void UpdateCrosshair(Vector3 position)
+    {
+        // 크로스헤어를 표시할 위치에 인스턴스를 생성하거나 위치 업데이트
+        if (crosshairInstance == null)
+        {
+            crosshairInstance = Instantiate(crosshairPrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            crosshairInstance.transform.position = position;
         }
     }
 }

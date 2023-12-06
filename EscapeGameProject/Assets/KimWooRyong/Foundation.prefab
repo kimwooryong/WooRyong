@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: -6363083129508077552}
   m_Layer: 24
   m_Name: Foundation
-  m_TagString: Untagged
+  m_TagString: BuildDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

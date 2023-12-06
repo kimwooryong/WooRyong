@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 6130137288999539715}
   m_Layer: 29
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: BuildDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

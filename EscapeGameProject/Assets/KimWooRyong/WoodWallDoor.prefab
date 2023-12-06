@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 841304088670237357}
   m_Layer: 28
   m_Name: WoodWallDoor
-  m_TagString: Untagged
+  m_TagString: BuildDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
