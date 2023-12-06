@@ -5,7 +5,8 @@ using UnityEngine;
 public class MinimapController : MonoBehaviour
 {
     public Camera minimapCamera;
-    private bool isMinimapActive = false;
+    [HideInInspector]
+    public bool isMinimapActive = false;
 
     private DayNightCycle dayNightCycle;
     private Quaternion savedRotation;
@@ -50,9 +51,4 @@ public class MinimapController : MonoBehaviour
         }
     }
 
-    void SetMinimapCameraAmbientIntensity(Camera camera, float intensity)
-    {
-        camera.backgroundColor = Color.white;
-        RenderSettings.ambientIntensity = intensity;
-    }
 }
