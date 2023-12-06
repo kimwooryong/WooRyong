@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2066414018853612251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4035888254618773347}
+  - component: {fileID: 149089113706304698}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4035888254618773347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066414018853612251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149089113706304698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066414018853612251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9ea6fc3e4cf4045b8907eb19d5f753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmClips:
+  - {fileID: 8300000, guid: e117dc331261f49e49639779ed75920a, type: 3}
+  - {fileID: 8300000, guid: fc368c82f15be4bd3a96aca2e6f595ac, type: 3}
+  - {fileID: 8300000, guid: be473298357514ef5817d7a42ba89ff4, type: 3}
+  bgmVolume: 0
+  sfxClips:
+  - {fileID: 8300000, guid: 8c6d6d9f1a20248f39d18991bbe04083, type: 3}
+  - {fileID: 8300000, guid: 675c492bbdb3045f2992a45fb1487389, type: 3}
+  - {fileID: 8300000, guid: 907c94c3e725e418d9b06ebbdab9dc72, type: 3}
+  - {fileID: 8300000, guid: 70283f37eb7384c86b9ee02bfb0ec4b2, type: 3}
+  - {fileID: 8300000, guid: 33d8d61368f20429aa747377672c966b, type: 3}
+  sfxVolume: 0
+  uiClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  uiVolume: 0
+  playerClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  playerVolume: 0
