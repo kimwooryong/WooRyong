@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 2360106968126892163}
   m_Layer: 25
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: BuildDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
