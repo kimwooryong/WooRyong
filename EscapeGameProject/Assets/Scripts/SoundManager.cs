@@ -91,26 +91,114 @@ public class SoundManager : MonoBehaviour
     }
 
     //BGM
-    public void PlayMoveSound()
+    // 배경 음악 
+    public void PlayBgm()
     {
 
     }
 
     //SFX
+    //동물 우는 소리
+    public void PlayAnimalNoise()
+    {
 
+    }
+
+    // 동물이 걷는 소리
+    public void PlayAnimalWalking()
+    {
+
+    }
+
+    // 불 지피는 소리 
+    public void PlayCampfire()
+    {
+
+    }
 
     //UI
+    // 건축물 설치/취소
+    public void PlayOnOffBuilding()
+    {
 
+    }
+
+    // 건축창 On/Off
+    public void PlayOnOffConstructionInventory()
+    {
+
+    }
+
+
+    // 인벤토리 On/Off
+    public void PlayOnOffItemInventory()
+    {
+
+    }
+
+    // 아이템 습득
+    public void PlayGetItem()
+    {
+
+    }
+
+    // 아이템 드랍
+    public void PlayDropItem()
+    {
+
+    }
+
+    // 아이템 장착
+    public void PlaySetItem()
+    {
+
+    }
+
+    // 인벤토리 내 - 아이템 위치 변경
+    public void PlayArrangeItem()
+    {
+
+    }
 
     //Player
-    public void PlaySoundPlayerMove()
-    {
-    }
-    public void PlaySoundPlayerRun()
+    // 걷기
+    public void PlayPlayerMove()
     {
 
     }
-    public void PlaySoundPlayerJump()
+
+    // 달리기
+    public void PlayPlayerRun()
+    {
+
+    }
+
+    // 점프
+    public void PlayPlayerJump()
+    {
+
+    }
+
+    // 음식 먹기
+    public void PlayPlayerEatFood()
+    {
+
+    }
+
+    // 무기로 나무를 가격
+    public void PlayPlayerAttackTree()
+    {
+
+    }
+
+    // 무기로 바위를 가격
+    public void PlayPlayerAttackRock()
+    {
+
+    }
+
+    // 건축물 부수기
+    public void PlayPlayerDestroyBuilding()
     {
 
     }
