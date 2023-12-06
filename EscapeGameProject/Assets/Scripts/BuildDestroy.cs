@@ -15,6 +15,7 @@ public class BuildDestroy : MonoBehaviour
     private GameObject crosshairInstance; // 크로스헤어
     public GameObject crosshairPrefab; // 크로스헤어 프리팹
 
+
     void Update()
     {
         PerformRaycast();
@@ -24,6 +25,7 @@ public class BuildDestroy : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
+        BuildName.gameObject.SetActive(false);
 
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
@@ -35,10 +37,11 @@ public class BuildDestroy : MonoBehaviour
             {
                 if (destroy.tag == "BuildDestroy")
                 {
+                    BuildName.gameObject.SetActive(true);
                     BuildName.text = destroy.name;
                     crosshairPrefab.gameObject.SetActive(true);
                     UpdateCrosshair(hit.point); // 크로스헤어를 표시하거나 업데이트
-                    if (Input.GetKeyDown(KeyCode.E)) // 건축물 부수기
+                    if (Input.GetKeyDown(KeyCode.F)) // 건축물 부수기
                     {
                         Destroy(destroy);
                     }
@@ -47,6 +50,7 @@ public class BuildDestroy : MonoBehaviour
             }
             else
             {
+                BuildName.gameObject.SetActive(false);
                 crosshairPrefab.gameObject.SetActive(false);
             }
         }

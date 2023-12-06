@@ -2733,7 +2733,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 300, y: 70}
+  m_SizeDelta: {x: 500, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &893637177
 CanvasRenderer:
@@ -6793,7 +6793,7 @@ PrefabInstance:
         type: 3}
       propertyPath: craft_Build.Array.data[1].go_Prefab
       value: 
-      objectReference: {fileID: 4869367290019317714, guid: 15f4adf9f02123b4aa15f4a2f1129f5c,
+      objectReference: {fileID: 4869367290019317714, guid: 5acdad288151a0a43a495472cf24fc5b,
         type: 3}
     - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
         type: 3}
@@ -6838,7 +6838,7 @@ PrefabInstance:
         type: 3}
       propertyPath: craft_Build.Array.data[1].go_PreviewPrefab
       value: 
-      objectReference: {fileID: 4869367290019317714, guid: f99748fcc893b3e4db8cbed1965e74e5,
+      objectReference: {fileID: 4869367290019317714, guid: 0567c585f3320604fb52c018579ae703,
         type: 3}
     - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
         type: 3}
