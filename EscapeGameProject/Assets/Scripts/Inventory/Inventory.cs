@@ -42,6 +42,10 @@ public class Inventory : MonoBehaviour
             if(emptyIndex == -1)
             {
                 Debug.Log("인벤토리에 빈 칸이 없음.");
+                for(int i = 0; i < amount; i++)
+                {
+                    ItemManager.Instance.DropItemToField(itemID);
+                }
             }
             else
             {
@@ -73,7 +77,7 @@ public class Inventory : MonoBehaviour
     }
     public virtual void RemoveItem(int index, int amount)
     {
-
+        InventorySlots[index].PlusItemAmount(-amount);
     }
 
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
@@ -91,7 +95,11 @@ public class Inventory : MonoBehaviour
     }
     public int FindItemAmountWithIndex(int index)
     {
-        int itemAmount = InventorySlots[index].itemAmount;
+        int itemAmount = 0;
+        if(0 <= index && index < InventorySlots.Count)
+        {
+            itemAmount = InventorySlots[index].itemAmount;
+        }
         if(itemAmount <= 0)
         {
             Debug.Log("그 칸에는 뭐가 없다.");

@@ -92,8 +92,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     {
         itemAmount += quantity;
         //-1로 아이템 버리기.
-        if(itemAmount == 0)
+        if(itemAmount <= 0)
         {
+            Debug.Log("버리는 양이 더 많아");
             SetItemSlot(0, 0);
         }
         itemAmountText.text = itemAmount.ToString();

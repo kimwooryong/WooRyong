@@ -28,38 +28,40 @@ public class CreateTable : MonoBehaviour
     private void Awake()
     {
         btnCreate.onClick.AddListener(CreateItemToInventory);
+        ItemManager.Instance.OpenInventory += TestCreateCondition;
+        Debug.Log(ItemManager.Instance.OpenInventory);
+        
     }
     private void Start()
     {
         SetSlots();
     }
 
-    private void OnEnable()
-    {
-        TestCreateCondition();
-    }
     public void SetSlots()
     {
         targetItem.SetItemSlot(targetItemID, targetItemAmount);
         for(int i = 0; i < materialItems.Length; i++)
         {
-            Debug.Log($"{i}번째 재료 슬롯 세팅. {materialItems[i].slot}, {materialItems[i].materialItemID}, {materialItems[i].materialItemAmount}");
             materialItems[i].slot.SetItemSlot
                 (materialItems[i].materialItemID, materialItems[i].materialItemAmount);
         }
     }
     public void TestCreateCondition()
-    {
+    { 
         bool createCondition = true;
         for(int i = 0; i < materialItems.Length; i++)
         {
+            if(materialItems[i].materialItemID == 0)
+            {
+                break;
+            }
             //맞는 재료가 있는지 확인
             int itemIndex = ItemManager.Instance.playerInventory.FindItem(materialItems[i].materialItemID);
             int itemAmount = ItemManager.Instance.playerInventory.FindItemAmountWithIndex(itemIndex);
             if(itemAmount < materialItems[i].materialItemAmount)
             {
                 createCondition = false;
-                return;
+                break;
             }
         }
         if (createCondition == true)
@@ -68,14 +70,26 @@ public class CreateTable : MonoBehaviour
         }
         else
         {
+            
             btnCreate.gameObject.SetActive(false);
         }
     }
     public void CreateItemToInventory()
     {
-        //아이템 재료가 다 있으면
-
-
+        //아이템 재료가 다 있으면 활성화되는 버튼
+        for (int i = 0; i < materialItems.Length; i++)
+        {
+            if (materialItems[i].materialItemID == 0)
+            {
+                break;
+            }
+            //맞는 재료가 있는지 확인
+            int itemIndex = ItemManager.Instance.playerInventory.FindItem(materialItems[i].materialItemID);
+            int itemAmount = ItemManager.Instance.playerInventory.FindItemAmountWithIndex(itemIndex);
+            ItemManager.Instance.playerInventory.RemoveItem(itemIndex, materialItems[i].materialItemAmount);
+        }
+        ItemManager.Instance.OpenInventory?.Invoke();
+        ItemManager.Instance.LootItemToInventory(targetItemID, targetItemAmount);
         Debug.Log("아이템 생성");
     }
 }
