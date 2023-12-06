@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.size
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[0]
@@ -707,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[5]
       value: 
-      objectReference: {fileID: 7400014, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
+      objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[6]
       value: 
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 361293138026540266, guid: 270f72259f9dd904a9dae823823a0d82, type: 3}
+  - {fileID: 5025040443983621328, guid: 703290c47bf80b04787c89f9989f3028, type: 3}
   minDropCount: 4
   maxDropCount: 4
 --- !u!4 &5927564802457447473 stripped
