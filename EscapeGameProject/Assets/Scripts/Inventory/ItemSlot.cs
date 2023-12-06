@@ -21,7 +21,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     public TextMeshProUGUI itemAmountText;
     public virtual void Awake()
     {
-        InitializeSlot();
     }
 
     public virtual void InitializeSlot()

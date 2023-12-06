@@ -81,6 +81,7 @@ public class CreateTable : MonoBehaviour
     }
     public void CreateItemToInventory()
     {
+        ItemManager.Instance.OpenInventory?.Invoke();
         //아이템 재료가 다 있으면 활성화되는 버튼
         for (int i = 0; i < materialItems.Length; i++)
         {
@@ -93,8 +94,8 @@ public class CreateTable : MonoBehaviour
             int itemAmount = ItemManager.Instance.playerInventory.FindItemAmountWithIndex(itemIndex);
             ItemManager.Instance.playerInventory.RemoveItem(itemIndex, materialItems[i].materialItemAmount);
         }
-        ItemManager.Instance.OpenInventory?.Invoke();
         ItemManager.Instance.LootItemToInventory(targetItemID, targetItemAmount);
+        TestCreateCondition();
         Debug.Log("아이템 생성");
     }
 }

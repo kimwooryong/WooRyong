@@ -17,10 +17,10 @@ public class Inventory : MonoBehaviour
 
     protected void Awake()
     {
-        InitializeInventory();
     }
     public void InitializeInventory()
     {
+        Debug.Log("인벤토리 초기화");
         InventorySlots = new List<ItemSlot>();
         for(int i = 0; i < inventorySize;  i++)
         {
