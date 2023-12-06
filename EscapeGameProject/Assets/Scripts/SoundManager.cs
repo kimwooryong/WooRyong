@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -7,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [Header("#BGM")]
-    public AudioClip bgmClip;
+    public AudioClip[] bgmClips;
     public float bgmVolume;
     AudioSource bgmPlayer;
 
@@ -62,17 +63,15 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmVolume;
-        bgmPlayer.clip = bgmClip;
+        //bgmPlayer.clips = bgmClip;
 
         // 효과음 플레이어 초기화
         GameObject sfxObject = new GameObject("SfxPlayer");
         sfxPlayer.transform.parent = transform;
         sfxPlayer = sfxObject.AddComponent<AudioSource>();
         sfxPlayer.playOnAwake = false;
-        //sfxPlayer.loop = false;
         sfxPlayer.volume = sfxVolume;
 
-        //sfxPlayers = new AudioSource[channels]
 
         //UI 효과음 플레이어 초기화
         GameObject uiObject = new GameObject("UIPlayer");
@@ -91,11 +90,24 @@ public class SoundManager : MonoBehaviour
     }
 
     //BGM
-    // 배경 음악 
-    public void PlayBgm()
+    // 해변가
+    public void PlayBgmBeach()
     {
-
+        // Bgm - Beach
     }
+
+    // 풀숲 - 밤
+    public void PlayBgmForestNight()
+    {
+        // Bgm - ForestNight
+    }
+
+    // 빗소리
+    public void PlayBgmRain()
+    {
+        // Bgm - Rain
+    }
+
 
     //SFX
     //동물 우는 소리
@@ -113,8 +125,15 @@ public class SoundManager : MonoBehaviour
     // 불 지피는 소리 
     public void PlayCampfire()
     {
-
+        // Sfx - FireBurning
     }
+
+    // 갈매기 소리
+    public void PlaySeagullsSound()
+    {
+        // Sfx - Seagulls
+    }
+
 
     //UI
     // 건축물 설치/취소
@@ -151,7 +170,7 @@ public class SoundManager : MonoBehaviour
     // 아이템 장착
     public void PlaySetItem()
     {
-
+        // Sfx-SetItem
     }
 
     // 인벤토리 내 - 아이템 위치 변경
@@ -164,13 +183,13 @@ public class SoundManager : MonoBehaviour
     // 걷기
     public void PlayPlayerMove()
     {
-
+        // Sfx - FootstepsGrass
     }
 
     // 달리기
     public void PlayPlayerRun()
     {
-
+        // Player - footstepsRunning
     }
 
     // 점프
@@ -182,7 +201,8 @@ public class SoundManager : MonoBehaviour
     // 음식 먹기
     public void PlayPlayerEatFood()
     {
-
+        // Player-EatingFood
+        // Player-EatingChips
     }
 
     // 무기로 나무를 가격
@@ -194,7 +214,8 @@ public class SoundManager : MonoBehaviour
     // 무기로 바위를 가격
     public void PlayPlayerAttackRock()
     {
-
+        // Sfx - HeaviStonesFall
+        // Sfx - StonesFall5
     }
 
     // 건축물 부수기
