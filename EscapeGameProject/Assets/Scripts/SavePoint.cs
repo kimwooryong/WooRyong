@@ -84,14 +84,14 @@ public class SavePoint : MonoBehaviour
 
                 panelCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
                 timer += Time.deltaTime;
-                playerMovement.onMove = false;
+                //playerMovement.onMove = false; 나중에 플레이어 들어오면 불값 줘서 움직임 막을 수 있게 하기
                 yield return null;
             }
             SetSavePoint();
             //treeSpawner.SpawnTrees(); 한정 자원 변경
             dayNightCycle.ResetDayNightCycle();
             panelCanvasGroup.alpha = 0f;
-            playerMovement.onMove = true;
+            //playerMovement.onMove = true;
         }
     }
 }
