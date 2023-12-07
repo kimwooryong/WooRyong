@@ -144,7 +144,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeAxe",
+                    "name": "ChangeHammer",
                     "type": "Button",
                     "id": "416df4cd-3ec9-43c2-97e9-0c431c6000ef",
                     "expectedControlType": "Button",
@@ -333,7 +333,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeAxe",
+                    "action": "ChangeHammer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

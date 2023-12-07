@@ -12,7 +12,7 @@ public class CameraLook : MonoBehaviour
 
     private PlayerMovement playerMove;
 
-    //private bool IsMenuOpen = false;
+    private bool IsMenuOpen = false;
     
     
     // Start is called before the first frame update

@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2950579007048431269}
   m_Layer: 6
-  m_Name: AxeOnHand
+  m_Name: HammerOnHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,8 +428,8 @@ MonoBehaviour:
   cameraObject: {fileID: 3176567673999532474}
   knifeOnHand: {fileID: 6239258926013136150}
   knifeOnShoulder: {fileID: 8849054090608899298}
-  axeOnHand: {fileID: 102649217148155913}
-  axeOnShoulder: {fileID: 1826719728749086233}
+  hammeOnHand: {fileID: 102649217148155913}
+  hammerOnShoulder: {fileID: 1826719728749086233}
   pickaxeOnHand: {fileID: 6059524017337424086}
   pickaxeOnShoulder: {fileID: 3529883566941604890}
   torchOnHand: {fileID: 2534441066982887851}
@@ -437,7 +437,7 @@ MonoBehaviour:
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
-  isAxeInventory: 0
+  isHammerInventory: 0
   isPickaxeInventory: 0
   isTorchInventory: 0
   isBlocking: 0
@@ -6159,7 +6159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3843803443349663592
 Transform:
   m_ObjectHideFlags: 0
@@ -6715,7 +6715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765140059959919774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3910003, z: 0.036987305}
+  m_LocalPosition: {x: 0, y: 1.391, z: 0.037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6913,12 +6913,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9058008005857511026}
   m_Layer: 6
-  m_Name: AxeOnShoulder
+  m_Name: HammerOnShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9058008005857511026
 Transform:
   m_ObjectHideFlags: 0
@@ -13257,7 +13257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1975997944344386319
 Transform:
   m_ObjectHideFlags: 0
@@ -26383,7 +26383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1802556223515808873
 Transform:
   m_ObjectHideFlags: 0
@@ -26637,20 +26637,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9058008005857511026}
     m_Modifications:
-    - target: {fileID: 4858202934594877868, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5018058255103986816, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
       propertyPath: m_Name
-      value: AxeOnShoulder
+      value: HammerOnShoulder
       objectReference: {fileID: 0}
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
@@ -26924,11 +26914,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1802556223515808873}
     m_Modifications:
-    - target: {fileID: 740780769937946864, guid: 14cd7d5e6c431eb48b471fa1b6928984,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4231031488058023189, guid: 14cd7d5e6c431eb48b471fa1b6928984,
         type: 3}
       propertyPath: m_Name
@@ -26994,11 +26979,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5583076670489543664, guid: 14cd7d5e6c431eb48b471fa1b6928984,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27031,7 +27011,7 @@ PrefabInstance:
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
       propertyPath: m_Name
-      value: AxeOnHand
+      value: HammerOnHand
       objectReference: {fileID: 0}
     - target: {fileID: 6135351296565723480, guid: 13acfbb3d1f8b454590e2ae0b3b7f78b,
         type: 3}
@@ -27112,26 +27092,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3843803443349663592}
     m_Modifications:
-    - target: {fileID: 615335037864296064, guid: 4382aa9ecf18255429d114d97c89cc97,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168948688151985292, guid: 4382aa9ecf18255429d114d97c89cc97,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1627960717449548645, guid: 4382aa9ecf18255429d114d97c89cc97,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3043412356993069091, guid: 4382aa9ecf18255429d114d97c89cc97,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3200132447511103347, guid: 4382aa9ecf18255429d114d97c89cc97,
         type: 3}
       propertyPath: m_Name
@@ -27291,11 +27251,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.809
       objectReference: {fileID: 0}
-    - target: {fileID: 5188306478117838863, guid: 3af8a209753ffb24caed5d1cc969d0fe,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6032137825525080156, guid: 3af8a209753ffb24caed5d1cc969d0fe,
         type: 3}
       propertyPath: m_Name
@@ -27310,11 +27265,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907994335924076733, guid: 3af8a209753ffb24caed5d1cc969d0fe,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -91,8 +91,6 @@ public class Inventory : MonoBehaviour
             {
                 return i;
             }
-
-         
         }
         return -1;
     }
