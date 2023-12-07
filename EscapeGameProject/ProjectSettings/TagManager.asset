@@ -15,6 +15,7 @@ TagManager:
   - Bow
   - Tornado
   - BuildDestroy
+  - Boat
   layers:
   - Default
   - TransparentFX
