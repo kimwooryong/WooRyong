@@ -346,15 +346,30 @@ public class ItemManager : MonoBehaviour
     public void ShowTooltip(ItemSlot item, Vector3 cursorPos)
     {
         RectTransform tooltipRect = TooltipUI.GetComponent<RectTransform>();
-        //오른쪽에 있다면 왼쪽으로 피벗생성
-        if(cursorPos.x > Screen.width / 2)
+        float pivotX;
+        float pivotY;
+        float ScreenX = Screen.width;
+        float ScreenY = Screen.height;
+        //오른쪽에 있다면 왼쪽으로 툴팁 창 생성
+        if(cursorPos.x > ScreenX / 2f)
         {
-            tooltipRect.pivot = new Vector2(1f, 0f);
+            pivotX = 1f;
         }
         else
         {
-            tooltipRect.pivot = new Vector2(0f, 0f);
+            pivotX = 0f;
         }
+        //위에 있다면 아래쪽으로 툴팁 창 생성
+        if (cursorPos.y > ScreenY * (2f / 3f))
+        {
+            Debug.Log($"커서 y값은 {cursorPos.y} 스크린은 {ScreenY * (2f / 3f)}");
+            pivotY = 1f;
+        }
+        else
+        {
+            pivotY = 0f;
+        }
+        tooltipRect.pivot = new Vector2(pivotX, pivotY);
         TooltipUI.transform.position = cursorPos;
         TooltipUI.SetActive(true);
         TooltipItemName.text = item.itemName;
