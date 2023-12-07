@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Rigidbody rb;
     private Collider collider;
-    public int playerDamage = 2;
     public GameObject miniMap;
     //public bool onMove;
     private GameManager gameManager;
@@ -17,12 +16,18 @@ public class PlayerMovement : MonoBehaviour
 
     public float rayDistance = 2.0f;
 
+    [SerializeField]
+    private int playerCurrentHp = 100;
+    private int playerMaxHp = 100;
+    public int playerDamage = 2;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
     void Start()
     {
+        playerCurrentHp = playerMaxHp;
 
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
@@ -84,5 +89,9 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
+    }
+    public void TakeDamage(int damage)
+    {
+        playerCurrentHp -= damage;
     }
 }

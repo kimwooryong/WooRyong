@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum AnimalDamage
+{
+    Bear,
+    Boar,
+    Wolf
+
+}
+
 public class AnimalAttack : MonoBehaviour
 {
 
@@ -17,6 +25,9 @@ public class AnimalAttack : MonoBehaviour
     private PlayerMovement player;
     public CapsuleCollider capsuleCollider;
 
+    public AnimalDamage damage;
+
+
     private void Awake()
     {
         player = FindAnyObjectByType<PlayerMovement>();
@@ -28,16 +39,34 @@ public class AnimalAttack : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (player == null)
+        {
+            player = FindAnyObjectByType<PlayerMovement>();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
+            if (damage == AnimalDamage.Bear)
+            {
+                player.TakeDamage(20);
+            }
+            else if (damage == AnimalDamage.Boar)
+            {
+                player.TakeDamage(15);
+            }
+            else if (damage == AnimalDamage.Wolf)
+            {
+                player.TakeDamage(10);
+            }
             player.rb.AddForce(Vector3.back * 20, ForceMode.Impulse);
             Debug.Log("동물 공격");
 
-        }   
+        }
     }
     public IEnumerator Attack()
     {
