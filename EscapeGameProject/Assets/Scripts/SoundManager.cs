@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -9,24 +6,26 @@ public class SoundManager : MonoBehaviour
 
     [Header("#BGM")]
     public AudioClip[] bgmClips;
-    public float bgmVolume;
+    public float bgmVolume = 2f;
+    [SerializeField]
     AudioSource bgmPlayer;
 
     [Header("#SFX")]
     public AudioClip[] sfxClips;
-    public float sfxVolume;
+    public float sfxVolume = 3f;
     AudioSource sfxPlayer;
 
     [Header("#UI")]
     public AudioClip[] uiClips;
-    public float uiVolume;
+    public float uiVolume = 3f;
     AudioSource uiPlayer;
 
     //플레이어의 움직임, 점프 관련
     [Header("#Player")]
     public AudioClip[] playerClips;
-    public float playerVolume;
+    public float playerVolume = 3f;
     AudioSource playerPlayer;
+
 
     void Awake()
     {
@@ -39,19 +38,8 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Init();
     }
-
-    public void SFXPlay(string sfxName, AudioClip clip)
-    {
-        GameObject go = new GameObject(sfxName + "Sound");
-        sfxPlayer = go.AddComponent<AudioSource>();
-        AudioSource audioSource = go.AddComponent<AudioSource>();
-        audioSource.clip = clip;
-        audioSource.Play();
-
-        Destroy(go, clip.length);
-    }
-
 
 
     public void Init()
@@ -67,7 +55,7 @@ public class SoundManager : MonoBehaviour
 
         // 효과음 플레이어 초기화
         GameObject sfxObject = new GameObject("SfxPlayer");
-        sfxPlayer.transform.parent = transform;
+        sfxObject.transform.parent = transform;
         sfxPlayer = sfxObject.AddComponent<AudioSource>();
         sfxPlayer.playOnAwake = false;
         sfxPlayer.volume = sfxVolume;
@@ -75,153 +63,199 @@ public class SoundManager : MonoBehaviour
 
         //UI 효과음 플레이어 초기화
         GameObject uiObject = new GameObject("UIPlayer");
-        uiPlayer.transform.parent = transform;
+        uiObject.transform.parent = transform;
         uiPlayer = uiObject.AddComponent<AudioSource>();
         uiPlayer.playOnAwake = false;
         uiPlayer.volume = uiVolume;
 
         //Player 소리 플레이어 초기화
         GameObject playerObject = new GameObject("PlayerPlayer");
-        playerPlayer.transform.parent = transform;
+        playerObject.transform.parent = transform;
         playerPlayer = playerObject.AddComponent<AudioSource>();
         playerPlayer.playOnAwake = false;
         playerPlayer.volume = playerVolume;
 
     }
 
+
+
+    public void PlaySound(AudioSource player, AudioClip[] AudioClips, string clipName)
+    {
+        AudioClip selectedClip = null;
+
+        foreach(AudioClip clip in AudioClips)
+        {
+            if (clip.name.Contains(clipName))
+            {
+                selectedClip = clip;
+                break;
+            }
+        }
+
+        if (selectedClip != null)
+        {
+            player.PlayOneShot(selectedClip);
+        } else
+        {
+            Debug.Log("\"clipName\" sound is Empty.");
+        }
+    }
+
+
+
+    //Sound Test
+    //public void Start()
+    //{
+    //    PlaySound(bgmPlayer, bgmClips, "Beach");
+    //    PlaySound(sfxPlayer, sfxClips, "Seagulls");
+    //}
+
+
     //BGM
     // 해변가
     public void PlayBgmBeach()
     {
-        // Bgm - Beach
+        PlaySound(bgmPlayer, bgmClips, "Beach");
+
     }
 
     // 풀숲 - 밤
     public void PlayBgmForestNight()
     {
-        // Bgm - ForestNight
+        PlaySound(bgmPlayer, bgmClips, "ForestNight");
     }
 
     // 빗소리
     public void PlayBgmRain()
     {
-        // Bgm - Rain
+        PlaySound(bgmPlayer, bgmClips, "Rain");
     }
 
 
     //SFX
     //동물 우는 소리
-    public void PlayAnimalNoise()
+    public void PlayGrowlsAnimal()
     {
-
+        PlaySound(sfxPlayer, sfxClips, "GrowlsAnimal");
     }
 
     // 동물이 걷는 소리
     public void PlayAnimalWalking()
     {
-
+        PlaySound(sfxPlayer, sfxClips, "animalWalking"); // x
     }
 
     // 불 지피는 소리 
     public void PlayCampfire()
     {
-        // Sfx - FireBurning
+        PlaySound(sfxPlayer, sfxClips, "Campfire");  
     }
 
     // 갈매기 소리
     public void PlaySeagullsSound()
     {
-        // Sfx - Seagulls
+        PlaySound(sfxPlayer, sfxClips, "Seagulls");  
     }
+
 
 
     //UI
     // 건축물 설치/취소
     public void PlayOnOffBuilding()
     {
-
+        PlaySound(uiPlayer, uiClips, "Building");   
     }
 
     // 건축창 On/Off
     public void PlayOnOffConstructionInventory()
     {
-
+        PlaySound(uiPlayer, uiClips, "ConstructionInventory");  
     }
 
-
-    // 인벤토리 On/Off
+    // 아이템창 On/Off
     public void PlayOnOffItemInventory()
     {
-
+        PlaySound(uiPlayer, uiClips, "ItemInventory");  
     }
 
     // 아이템 습득
     public void PlayGetItem()
     {
-
+        PlaySound(uiPlayer, uiClips, "GetItem");  
     }
 
     // 아이템 드랍
     public void PlayDropItem()
     {
-
+        PlaySound(uiPlayer, uiClips, "DropItem"); 
     }
 
     // 아이템 장착
-    public void PlaySetItem()
+    public void PlayEuipItem()
     {
-        // Sfx-SetItem
+        PlaySound(uiPlayer, uiClips, "EquipItem");  
     }
 
     // 인벤토리 내 - 아이템 위치 변경
     public void PlayArrangeItem()
     {
-
+        PlaySound(uiPlayer, uiClips, "ArrangeItem");
     }
+
+
 
     //Player
     // 걷기
-    public void PlayPlayerMove()
+    public void PlayPlayerFootStep()
     {
-        // Sfx - FootstepsGrass
+        PlaySound(playerPlayer, playerClips, "PlayerFootStep");  
     }
 
     // 달리기
     public void PlayPlayerRun()
     {
-        // Player - footstepsRunning
+        PlaySound(playerPlayer, playerClips, "PlayerRun");  
     }
 
     // 점프
     public void PlayPlayerJump()
     {
-
+        PlaySound(playerPlayer, playerClips, "PlayerJump"); // x
     }
 
     // 음식 먹기
     public void PlayPlayerEatFood()
     {
-        // Player-EatingFood
-        // Player-EatingChips
+        PlaySound(playerPlayer, playerClips, "EatFood");  
     }
 
     // 무기로 나무를 가격
     public void PlayPlayerAttackTree()
     {
-
+        PlaySound(playerPlayer, playerClips, "AttackTree");  
     }
 
     // 무기로 바위를 가격
     public void PlayPlayerAttackRock()
     {
-        // Sfx - HeaviStonesFall
-        // Sfx - StonesFall5
+        PlaySound(playerPlayer, playerClips, "AttackRock");   
     }
 
     // 건축물 부수기
     public void PlayPlayerDestroyBuilding()
     {
-
+        PlaySound(playerPlayer, playerClips, "EestroyBuilding");  
     }
 
 }
+
+    //public void SFXPlay(string sfxName, AudioClip clip)
+    //{
+    //    GameObject go = new GameObject(sfxName + "Sound");
+    //    sfxPlayer = go.AddComponent<AudioSource>();
+    //    AudioSource audioSource = go.AddComponent<AudioSource>();
+    //    audioSource.clip = clip;
+    //    audioSource.Play();
+
+    //    Destroy(go, clip.length);
+    //}
