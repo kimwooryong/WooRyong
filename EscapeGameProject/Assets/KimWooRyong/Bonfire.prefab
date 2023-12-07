@@ -24521,6 +24521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6649632923353284632}
   - component: {fileID: 2856555282015133498}
+  - component: {fileID: 6861153174608306154}
   m_Layer: 0
   m_Name: CampFire_3
   m_TagString: Untagged
@@ -24571,8 +24572,20 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.8
+  m_Radius: 1.23
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6861153174608306154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678830136895971150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e309472269cde4aa854bad4687d7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7989744456115066008
 GameObject:
   m_ObjectHideFlags: 0
