@@ -46,6 +46,12 @@ public class CraftManual : MonoBehaviour
     private Transform tf_Player; // 플레이어 위치
 
 
+    [SerializeField]
+    private GameObject Fire_Base;
+    [SerializeField]
+    private GameObject Craft_Base;
+
+
     // RaycastHit 필요 변수 선언
     private RaycastHit hitInfo; // 정보
     [SerializeField]
@@ -98,7 +104,6 @@ public class CraftManual : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cancel(); // 취소
-            GameManager.Instance.InvisibleCursor();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -170,6 +175,8 @@ public class CraftManual : MonoBehaviour
         go_Preview = null;
         go_Prefab = null;
         GameManager.Instance.InvisibleCursor();
+        Fire_Base.gameObject.SetActive(false);
+        Craft_Base.gameObject.SetActive(false);
 
     }
 
