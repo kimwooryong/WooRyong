@@ -15,8 +15,7 @@ public class TitleManager : MonoBehaviour
     public Button OptionExitButton;
 
 /*    public AudioMixer audioMixer;
-    public Slider bgmSlider;
-    public Slider effectSlider;*/
+    public Slider soundSlider;*/
 
     public Toggle fullScreenToggle;
     public Toggle windowScreenToggle;
@@ -29,8 +28,7 @@ public class TitleManager : MonoBehaviour
         endButton.GetComponent<Button>().onClick.AddListener(OnExitButtonClick);
         OptionExitButton.GetComponent<Button>().onClick.AddListener(OnOptionExitButtonClick);
 
-       /* bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
-        effectSlider.value = PlayerPrefs.GetFloat("EffectVolume", 1.0f);*/
+       /*soundSlider.value = PlayerPrefs.GetFloat("SoundVolume", 1.0f);*/
         fullScreenToggle.isOn = PlayerPrefs.GetInt("FullScreen", 1) == 1;
         windowScreenToggle.isOn =  !fullScreenToggle.isOn;
 
@@ -59,13 +57,10 @@ public class TitleManager : MonoBehaviour
         OptionPanel.SetActive(false);
     }
 
-/*    public void SetBgmBolime(float volume)
-    {
-        audioMixer.SetFloat("BgmVolume", volume); // 오디오 믹서 그룹 이름
-    }
+/*
     public void SetEffectBolime(float volume)
     {
-        audioMixer.SetFloat("EffectVolume", volume);
+        audioMixer.SetFloat("SoundVolume", volume);
     }*/
     public void SetFullScreen(bool isFullScreen)
     {
