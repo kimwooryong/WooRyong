@@ -569,7 +569,7 @@ MonoBehaviour:
   - eat
   - idle
   attackRecognitionScope: 0
-  moveSpeed: 2
+  moveSpeed: 1.5
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 1

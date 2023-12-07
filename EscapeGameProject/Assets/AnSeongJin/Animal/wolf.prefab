@@ -822,7 +822,7 @@ MonoBehaviour:
   - howl
   - search
   attackRecognitionScope: 1.4
-  moveSpeed: 2
+  moveSpeed: 4
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
