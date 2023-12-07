@@ -98,26 +98,38 @@ public class QuickSlot : ItemSlot
         //¼±ÅÃµÈ ½½·ÔÀÏ °æ¿ì Áß¾Ó ½½·Ô ¾ÆÀÌÄÜÀ» À§ ¾ÆÀÌÄÜÀ¸·Î ´ëÃ¼.
         ItemManager.Instance.UsingItemIcon.gameObject.SetActive(true);
         ItemManager.Instance.UsingItemIcon.sprite = itemIcon.sprite;
+
+        if(ItemManager.Instance.playerQuickSlot.FindItem(101) != -1)
+        {
+            Debug.Log("good");
+        }
+
+
         //¼Õ¿¡ µå´Â ÄÚµå
         switch (itemType)
         {
             case eItemType.Food:
+                
                 playerController.EquipFood(itemID);
                 Debug.Log("¼Õ¿¡ À½½Ä µë");
                 break;
             case eItemType.Knife:
+                playerController.SetHasKnife(true);
                 playerController.EquipKnife();
                 Debug.Log("¼Õ¿¡ Ä® µë");
                 break;
             case eItemType.Axe:
+                playerController.SetHasAxe(true);
                 playerController.EquipAxe();
                 Debug.Log("¼Õ¿¡ µµ³¢ µë");
                 break;
             case eItemType.Pickaxe:
+                playerController.SetHasPickaxe(true);
                 playerController.EquipPickaxe();
                 Debug.Log("¼Õ¿¡ °î±ªÀÌ µë");
                 break;
             case eItemType.Torch:
+                playerController.SetHasTorch(true);
                 playerController.EquipTorch();
                 Debug.Log("¼Õ¿¡ È¶ºÒ µë");
                 break;

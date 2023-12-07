@@ -55,9 +55,9 @@ public class PlayerCotroller : MonoBehaviour
     private GameObject knifeOnShoulder;
     // 도끼
     [SerializeField]
-    private GameObject hammeOnHand;
+    private GameObject axeOnHand;
     [SerializeField]
-    private GameObject hammerOnShoulder;
+    private GameObject axeOnShoulder;
     // 곡괭이
     [SerializeField]
     private GameObject pickaxeOnHand;
@@ -82,21 +82,21 @@ public class PlayerCotroller : MonoBehaviour
     // 무기 소지 여부 확인, 퀵슬롯에 아이템이 있을 때 true. -> 퀵슬롯에서
     // 인벤토리에 존재
     public bool isKnifeInventory;
-    public bool isHammerInventory;
+    public bool isAxeInventory;
     public bool isPickaxeInventory;
     public bool isTorchInventory;
 
 
     // 누르면 트리거로 실행. -> 장착중이면 해제, 장착 중이 아니고, is~~값이 true이면 장착
     private bool knifeChangeTrigger;
-    private bool hammerChangeTrigger;
+    private bool axeChangeTrigger;
     private bool pickaxeChangeTrigger;
     private bool torchChangeTrigger;
 
 
     // 현재 손에 장착중인 장비의 Bool값
     private bool knifeEquipOnHand;
-    private bool hammerEquipOnHand;
+    private bool axeEquipOnHand;
     private bool pickaxeEquipOnHand;
     private bool torchEquipOnHand;
 
@@ -115,6 +115,8 @@ public class PlayerCotroller : MonoBehaviour
     //public GameObject[] weaponPrefabs;
     //private int weaponNum =0;
 
+    public Transform playerPosition;
+
     private void Awake()
     {
 
@@ -132,15 +134,16 @@ public class PlayerCotroller : MonoBehaviour
         originalCameraLocalPosition = cameraObject.transform.localPosition;
 
 
+        /*
         playerHasWeaponItem();
 
         if (isKnifeInventory == true)
         {
             m_Animator.SetBool("KnifeOnShoulder", true);
         }
-        if (isHammerInventory == true)
+        if (isAxeInventory == true)
         {
-            m_Animator.SetBool("HammerOnShoulder", true);
+            m_Animator.SetBool("AxeOnShoulder", true);
         }
         if (isPickaxeInventory == true)
         {
@@ -150,7 +153,7 @@ public class PlayerCotroller : MonoBehaviour
         {
             m_Animator.SetBool("TorchOnShoulder", true);
         }
-
+        */
 
     }
 
@@ -164,7 +167,7 @@ public class PlayerCotroller : MonoBehaviour
         Sprint();
 
         AttackMonster();
-        Equip();
+        //Equip();
         Block();
         Kick();
 
@@ -311,17 +314,17 @@ public class PlayerCotroller : MonoBehaviour
         isKnifeInventory = hasItem;
         m_Animator.SetBool("KnifeInventory", hasItem);
     }
-    public void SetHasHammer(bool hasItem)
+    public void SetHasAxe(bool hasItem)
     {
-        isHammerInventory = hasItem;
-        m_Animator.SetBool("HammerInventory", hasItem);
+        isAxeInventory = hasItem;
+        m_Animator.SetBool("AxeInventory", hasItem);
     }
     public void SetHasPickaxe(bool hasItem)
     {
         isPickaxeInventory = hasItem;
         m_Animator.SetBool("PickaxeInventory", hasItem);
     }
-    public void SetHasTouch(bool hasItem)
+    public void SetHasTorch(bool hasItem)
     {
         isTorchInventory = hasItem;
         m_Animator.SetBool("TorchInventory", hasItem);
@@ -329,12 +332,12 @@ public class PlayerCotroller : MonoBehaviour
 
     public void playerHasWeaponItem()
     {
-
+        /*
         SetHasKnife(knifeOnShoulder.activeSelf);
-        SetHasHammer(hammerOnShoulder.activeSelf);
+        SetHasAxe(axeOnShoulder.activeSelf);
         SetHasPickaxe(pickaxeOnShoulder.activeSelf);
         SetHasTouch(torchOnShoulder.activeSelf);
-
+        */
 
     }
 
@@ -360,7 +363,7 @@ public class PlayerCotroller : MonoBehaviour
 
     public void EquipKnife()
     {
-        if (isKnifeInventory == true)
+        if (m_Animator.GetBool("OnGround") && isKnifeInventory == true)
         {
             if (repeatClick1 == false)
             {
@@ -387,19 +390,109 @@ public class PlayerCotroller : MonoBehaviour
                 repeatClick3 = false;
                 repeatClick4 = false;
             }
+
+
         }
     }
     public void EquipPickaxe()
     {
+        if (m_Animator.GetBool("OnGround") &&  isPickaxeInventory == true)
+        {
+            if (repeatClick3 == false)
+            {
+                m_Animator.SetBool("isArmed", true);
+                isEquipping = true;
+                m_Animator.SetTrigger("pickaxeEquipTrigger");
+                pickaxeChangeTrigger = true;
 
+
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = true;
+                repeatClick4 = false;
+            }
+            else if (repeatClick3 == true)
+            {
+                m_Animator.SetBool("PickaxeOnShoulder", true);
+                m_Animator.SetBool("isArmed", false);
+                m_Animator.SetTrigger("pickaxeEquipTrigger");
+                isEquipping = false;
+                pickaxeChangeTrigger = false;
+
+
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+
+
+        }
     }
     public void EquipAxe()
     {
+        if (m_Animator.GetBool("OnGround") &&  isAxeInventory == true)
+        {
+            if (repeatClick2 == false)
+            {
+                m_Animator.SetBool("isArmed", true);
+                m_Animator.SetTrigger("axeEquipTrigger");
+                isEquipping = true;
+                axeChangeTrigger = true;
 
+                repeatClick1 = false;
+                repeatClick2 = true;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+            else if (repeatClick2 == true)
+            {
+                m_Animator.SetBool("AxeOnShoulder", true);
+                m_Animator.SetBool("isArmed", false);
+                m_Animator.SetTrigger("axeEquipTrigger");
+                isEquipping = false;
+                axeChangeTrigger = false;
+
+
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+        }
     }
     public void EquipTorch()
     {
+        if (m_Animator.GetBool("OnGround") && isTorchInventory == true)
+        {
+            if (repeatClick4 == false)
+            {
+                m_Animator.SetBool("isArmed", true);
+                isEquipping = true;
+                m_Animator.SetTrigger("torchEquipTrigger");
+                torchChangeTrigger = true;
 
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = true;
+            }
+            else if (repeatClick4 == true)
+            {
+                m_Animator.SetBool("TorchOnShoulder", true);
+                m_Animator.SetBool("isArmed", false);
+                m_Animator.SetTrigger("torchEquipTrigger");
+                isEquipping = false;
+                pickaxeChangeTrigger = false;
+
+
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+
+        }
     }
     public void EquipFood(int itemID)
     {
@@ -408,10 +501,10 @@ public class PlayerCotroller : MonoBehaviour
     private void Equip()
     {
 
-        float changeKnifeValue = inputManager.inputMaster.Movement.ChangeKnife.ReadValue<float>();
-        float changeHammerValue = inputManager.inputMaster.Movement.ChangeHammer.ReadValue<float>();
-        float changePickaxeValue = inputManager.inputMaster.Movement.ChangePickaxe.ReadValue<float>();
-        float changeTorchValue = inputManager.inputMaster.Movement.ChangeTorch.ReadValue<float>();
+        //float changeKnifeValue = inputManager.inputMaster.Movement.ChangeKnife.ReadValue<float>();
+        //float changeAxeValue = inputManager.inputMaster.Movement.ChangeAxe.ReadValue<float>();
+        //float changePickaxeValue = inputManager.inputMaster.Movement.ChangePickaxe.ReadValue<float>();
+        //float changeTorchValue = inputManager.inputMaster.Movement.ChangeTorch.ReadValue<float>();
 
         if (m_Animator.GetBool("OnGround"))
         {
@@ -419,142 +512,23 @@ public class PlayerCotroller : MonoBehaviour
             // 칼
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-
-                if (isKnifeInventory == true)
-                {
-                    if (repeatClick1 == false)
-                    {
-                        m_Animator.SetBool("isArmed", true);
-                        m_Animator.SetTrigger("knifeEquipTrigger");
-                        isEquipping = true;
-                        knifeChangeTrigger = true;
-
-                        repeatClick1 = true;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-                    else if (repeatClick1 == true)
-                    {
-                        m_Animator.SetBool("KnifeOnShoulder", true);
-                        m_Animator.SetBool("isArmed", false);
-                        m_Animator.SetTrigger("knifeEquipTrigger");
-                        isEquipping = false;
-                        knifeChangeTrigger = false;
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-
-
-                }
+                EquipKnife();
             }
             // 도끼        
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (isHammerInventory == true)
-                {
-                    if (repeatClick2 == false)
-                    {
-                        m_Animator.SetBool("isArmed", true);
-                        m_Animator.SetTrigger("hammerEquipTrigger");
-                        isEquipping = true;
-                        hammerChangeTrigger = true;
-
-                        repeatClick1 = false;
-                        repeatClick2 = true;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-                    else if (repeatClick2 == true)
-                    {
-                        m_Animator.SetBool("HammerOnShoulder", true);
-                        m_Animator.SetBool("isArmed", false);
-                        m_Animator.SetTrigger("hammerEquipTrigger");
-                        isEquipping = false;
-                        hammerChangeTrigger = false;
-
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-                }
-
+                EquipAxe();
             }
             // 곡괭이
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                if (isPickaxeInventory == true)
-                {
-                    if (repeatClick3 == false)
-                    {
-                        m_Animator.SetBool("isArmed", true);
-                        isEquipping = true;
-                        m_Animator.SetTrigger("pickaxeEquipTrigger");
-                        pickaxeChangeTrigger = true;
-
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = true;
-                        repeatClick4 = false;
-                    }
-                    else if (repeatClick3 == true)
-                    {
-                        m_Animator.SetBool("PickaxeOnShoulder", true);
-                        m_Animator.SetBool("isArmed", false);
-                        m_Animator.SetTrigger("pickaxeEquipTrigger");
-                        isEquipping = false;
-                        pickaxeChangeTrigger = false;
-
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-
-
-                }
+                EquipPickaxe();
             }
             // 횟불
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                if (isTorchInventory == true)
-                {
-                    if (repeatClick4 == false)
-                    {
-                        m_Animator.SetBool("isArmed", true);
-                        isEquipping = true;
-                        m_Animator.SetTrigger("torchEquipTrigger");
-                        torchChangeTrigger = true;
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = true;
-                    }
-                    else if (repeatClick4 == true)
-                    {
-                        m_Animator.SetBool("TorchOnShoulder", true);
-                        m_Animator.SetBool("isArmed", false);
-                        m_Animator.SetTrigger("torchEquipTrigger");
-                        isEquipping = false;
-                        pickaxeChangeTrigger = false;
-
-
-                        repeatClick1 = false;
-                        repeatClick2 = false;
-                        repeatClick3 = false;
-                        repeatClick4 = false;
-                    }
-
-                }
+                EquipTorch();
             }
 
 
@@ -580,13 +554,13 @@ public class PlayerCotroller : MonoBehaviour
                 Debug.Log("칼 장착");
             }
             // 망치
-            else if (hammerChangeTrigger == true)
+            else if (axeChangeTrigger == true)
             {
-                m_Animator.SetBool("HammerOnShoulder", false);
-                hammeOnHand.SetActive(true);
-                hammerOnShoulder.SetActive(false);
-                hammerChangeTrigger = false;
-                hammerEquipOnHand = true;
+                m_Animator.SetBool("AxeOnShoulder", false);
+                axeOnHand.SetActive(true);
+                axeOnShoulder.SetActive(false);
+                axeChangeTrigger = false;
+                axeEquipOnHand = true;
                 Debug.Log("도끼 장착");
 
             }
@@ -627,12 +601,12 @@ public class PlayerCotroller : MonoBehaviour
                 Debug.Log("칼 해제");
             }
             // 망치
-            else if (hammerEquipOnHand == true)
+            else if (axeEquipOnHand == true)
             {
-                m_Animator.SetBool("HammerOnShoulder", true);
-                hammeOnHand.SetActive(false);
-                hammerOnShoulder.SetActive(true);
-                hammerEquipOnHand = false;
+                m_Animator.SetBool("AxeOnShoulder", true);
+                axeOnHand.SetActive(false);
+                axeOnShoulder.SetActive(true);
+                axeEquipOnHand = false;
                 Debug.Log("해머 해제");
             }
             // 곡괭이
@@ -722,9 +696,15 @@ public class PlayerCotroller : MonoBehaviour
 
         if (_isCrouch)
         {
-            Vector3 newPosition = cameraObject.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : -0.777f;
-            cameraObject.transform.position = newPosition;
+            // 현재 카메라의 로컬 좌표를 새로운 변수에 저장
+            Vector3 newLocalPosition = transform.localPosition;
+            newLocalPosition.y = 3.7f; // Y 값을 변경하여 로컬 좌표를 설정
+
+            // 부모의 월드 좌표를 변경
+            transform.parent.position = newLocalPosition;
+
+            // 확인용으로 로그 찍기
+            Debug.Log($"Parent position: {transform.parent.position}");
         }
         else
         {
