@@ -61,6 +61,11 @@ public class AnimalMovement : MonoBehaviour
 
     void Update()
     {
+        if(player == null)
+        {
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+            player = FindObjectOfType<PlayerMovement>();
+        }
         float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.position);
 
         if (!isPlayerCheck && !isHit && !isDie)

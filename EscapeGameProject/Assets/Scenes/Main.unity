@@ -3023,7 +3023,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4036202737910617982, guid: 2f5efae9c5b001b4685782a62131bc7d,
     type: 3}
-  spawnPlace: {fileID: 518923873}
+  spawnPlace: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
   isCaveEnter: 0
 --- !u!4 &1069224778
 Transform:
