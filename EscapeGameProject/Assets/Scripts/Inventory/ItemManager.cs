@@ -295,6 +295,28 @@ public class ItemManager : MonoBehaviour
             }
         }
     }
+    //ID 받아와서 필드 내에 prefab 드롭함
+    public void DropItemToField(int id, Vector3 dropPos)
+    {
+        if (id == 0)
+        {
+            Debug.Log("그런 아이템은 없다.");
+            return;
+        }
+        else
+        {
+            string itemPrefabFile = $"{itemPrefabPath}{id.ToString()}";
+            GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
+            if (itemPrefab != null)
+            {
+                Instantiate(itemPrefab, dropPos, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("데이터베이스에 아이템이 없다");
+            }
+        }
+    }
 
     public Inventory playerInventory;
     public Inventory playerQuickSlot;
