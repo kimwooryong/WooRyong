@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Cook : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Collider cookCollider;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        cookCollider = GetComponent<Collider>();
+
     }
 }
