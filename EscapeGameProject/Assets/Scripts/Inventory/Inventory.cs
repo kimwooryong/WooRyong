@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
     {
         InventorySlots[index].PlusItemAmount(-amount);
     }
-
+    
     //ID로 검색해서 아이템 위치(index) 반환, 0으로 검색하면 빈칸찾기. -1 반환은 같은게 없다.
     public virtual int FindItem(int itemID)
     {

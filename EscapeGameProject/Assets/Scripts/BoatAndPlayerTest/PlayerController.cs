@@ -168,7 +168,7 @@ public class PlayerCotroller : MonoBehaviour
         Block();
         Kick();
 
-
+        
     }
 
     /// <summary>
@@ -358,6 +358,53 @@ public class PlayerCotroller : MonoBehaviour
         }
     }
 
+    public void EquipKnife()
+    {
+        if (isKnifeInventory == true)
+        {
+            if (repeatClick1 == false)
+            {
+                m_Animator.SetBool("isArmed", true);
+                m_Animator.SetTrigger("knifeEquipTrigger");
+                isEquipping = true;
+                knifeChangeTrigger = true;
+
+                repeatClick1 = true;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+            else if (repeatClick1 == true)
+            {
+                m_Animator.SetBool("KnifeOnShoulder", true);
+                m_Animator.SetBool("isArmed", false);
+                m_Animator.SetTrigger("knifeEquipTrigger");
+                isEquipping = false;
+                knifeChangeTrigger = false;
+
+                repeatClick1 = false;
+                repeatClick2 = false;
+                repeatClick3 = false;
+                repeatClick4 = false;
+            }
+        }
+    }
+    public void EquipPickaxe()
+    {
+
+    }
+    public void EquipAxe()
+    {
+
+    }
+    public void EquipTorch()
+    {
+
+    }
+    public void EquipFood(int itemID)
+    {
+
+    }
     private void Equip()
     {
 

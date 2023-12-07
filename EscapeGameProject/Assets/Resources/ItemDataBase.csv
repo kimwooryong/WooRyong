@@ -8,7 +8,7 @@ ID,Name,Type,Description,CanCount,CanGrab,HealingAmount,Cook,Building,Expendable
 101,도끼,"""Axe""","""나무를 베거나 동물을 공격하는데 사용 가능 검으로 공격하는 것보다는 약하다""",FALSE,TRUE,0,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,"Tree + 4 , Animal + 2"
 102,곡괭이,"""Pickaxe""","""돌을 캐거나 동물을 공격하는데 사용 가능 검으로 공격하는 것보다는 약하다.""",FALSE,TRUE,0,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,"Rock + 4 , Animal + 2"
 103,칼,"""Knife""","""도끼나 곡괭이보다 짧으나 더 강하게 공격이 가능하다.""",FALSE,TRUE,0,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,Animal + 4
-104,횃불,"""Touch""","""이걸로 동물을 잡아보려 했으나, 그만 두자 주변을 밝혀준다.""",FALSE,TRUE,0,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,
+104,횃불,"""Torch""","""이걸로 동물을 잡아보려 했으나, 그만 두자 주변을 밝혀준다.""",FALSE,TRUE,0,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,FALSE,
 201,사과,"""Food""","""나무에서 열리는 열매 아삭거리는 식감이 일품이다.""",TRUE,TRUE,10,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,
 202,코코넛,"""Food""","""나무에서 열리는 열매 단단한 껍질을 벗기면 달달한 과육이 나온다.""",TRUE,TRUE,30,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,
 203,베리,"""Food""","""덤불에서 자라는 열매 양은 적지만, 달콤하다.""",TRUE,TRUE,5,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,

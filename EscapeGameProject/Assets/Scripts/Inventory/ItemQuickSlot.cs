@@ -10,7 +10,7 @@ public enum eItemType
     Knife,
     Axe,
     Pickaxe,
-    Touch
+    Torch
 }
 public class QuickSlot : ItemSlot
 {
@@ -31,6 +31,11 @@ public class QuickSlot : ItemSlot
         if (itemType == eItemType.Food)
         {
             healingAmount = (int)itemDataAll[eItemKeyColumns.HealingAmount.ToString()];
+        }
+        GameObject goPlayer = GameObject.Find("Player");
+        if (goPlayer != null) 
+        {
+            playerController = goPlayer.GetComponent<PlayerCotroller>();
         }
     }
     private void Update()
@@ -97,22 +102,23 @@ public class QuickSlot : ItemSlot
         switch (itemType)
         {
             case eItemType.Food:
+                playerController.EquipFood(itemID);
                 Debug.Log("¼Õ¿¡ À½½Ä µë");
                 break;
             case eItemType.Knife:
-                playerController.isKnifeInventory = true;
+                playerController.EquipKnife();
                 Debug.Log("¼Õ¿¡ Ä® µë");
                 break;
             case eItemType.Axe:
-                playerController.isHammerInventory = true;
+                playerController.EquipAxe();
                 Debug.Log("¼Õ¿¡ µµ³¢ µë");
                 break;
             case eItemType.Pickaxe:
-                playerController.isPickaxeInventory = true;
+                playerController.EquipPickaxe();
                 Debug.Log("¼Õ¿¡ °î±ªÀÌ µë");
                 break;
-            case eItemType.Touch:
-                playerController.isTorchInventory = true;
+            case eItemType.Torch:
+                playerController.EquipTorch();
                 Debug.Log("¼Õ¿¡ È¶ºÒ µë");
                 break;
             default:
