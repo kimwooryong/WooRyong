@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     void Update()
     {
         RayObject();
-        if(isDetecting == true)
+        UpdateCrosshair(); // 크로스헤어를 표시하거나 업데이트
+        if (isDetecting == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -20,8 +22,9 @@ public class PlayerBehaviour : MonoBehaviour
     private RaycastHit hit;
 
     public float maxRaycast; // 오브젝트 확인 레이 거리 
-    public GameObject crosshairPrefab; // 크로스헤어 프리팹
-    private GameObject crosshairInstance; // 크로스헤어
+    public Image crosshair; // 크로스헤어 프리팹
+    public Sprite selectedCrosshairSprite;
+    public Sprite nonSelectedCrosshairSprite;
     [SerializeField]
     private LayerMask itemLayer;
     public TextMeshProUGUI ItemText;
@@ -51,15 +54,13 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 Debug.Log("item 스크립트가 없다.");
             }
-            crosshairPrefab.gameObject.SetActive(true);
-            UpdateCrosshair(hit.point); // 크로스헤어를 표시하거나 업데이트
+            
         }
         else
         {
             isDetecting = false;
 
             ItemText.gameObject.SetActive(false);
-            crosshairPrefab.gameObject.SetActive(false);
         }
     }
     
@@ -77,16 +78,16 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    void UpdateCrosshair(Vector3 position)
+    void UpdateCrosshair()
     {
-        // 크로스헤어를 표시할 위치에 인스턴스를 생성하거나 위치 업데이트
-        if (crosshairInstance == null)
+        if (isDetecting)
         {
-            crosshairInstance = Instantiate(crosshairPrefab, position, Quaternion.identity);
+            crosshair.sprite = selectedCrosshairSprite;
         }
         else
         {
-            crosshairInstance.transform.position = position;
+            crosshair.sprite = nonSelectedCrosshairSprite;
         }
+
     }
 }
