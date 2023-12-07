@@ -31,7 +31,7 @@ public class NaturalObjectSpawn : MonoBehaviour
 
     private void Start()
     {
-        emptyObject = new GameObject("TreeObject");
+        emptyObject = new GameObject("NaturalObject");
 
         randomRotation = Quaternion.identity;
 
