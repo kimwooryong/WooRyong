@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum MonsterBehavior
@@ -61,89 +57,90 @@ public class AnimalMovement : MonoBehaviour
 
     void Update()
     {
-        if(player == null)
+        if (player == null || playerPosition == null)
         {
-            playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
             player = FindObjectOfType<PlayerMovement>();
-        }
-        float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.position);
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        if (!isPlayerCheck && !isHit && !isDie)
-        {
-            ani.wrapMode = WrapMode.Loop;
-            timer += Time.deltaTime;
-
-            if (!isIdleStateChangeRunning)
+            if (playerObject != null)
             {
-                StartCoroutine(IdleStateChange());
+                playerPosition = playerObject.transform;
             }
-
-            string currentAnimationState = idleStates[currentIdle];
-
-            ani.CrossFade(idleStates[currentIdle], 0.3f);
-
-            if (currentIdle == 0)
-            {
-                if (timer >= rotationInterval)
-                {
-                    RotateSmoothly();
-                    timer = 0f;
-                }
-                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            }
-
         }
 
-
-        else if (isPlayerCheck && !isHit && !isDie)
+        if (playerPosition != null && !isHit && !isDie)
         {
+            float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.position);
 
-            if (behavior == MonsterBehavior.Aggression)
+            if (!isPlayerCheck)
             {
-                
-                Vector3 directionToPlayer = (playerPosition.position - transform.position);
-                directionToPlayer.y = 0f;
+                ani.wrapMode = WrapMode.Loop;
+                timer += Time.deltaTime;
 
-                Quaternion rotation = Quaternion.LookRotation(directionToPlayer);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
-
-                if (distanceToPlayer > attackRecognitionScope && !isAttckTime)
+                if (!isIdleStateChangeRunning)
                 {
-                    transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
-                    ani.wrapMode = WrapMode.Loop;
-                    ani.Play("run");
+                    StartCoroutine(IdleStateChange());
                 }
-                if (distanceToPlayer <= attackRecognitionScope)
+
+                string currentAnimationState = idleStates[currentIdle];
+
+                ani.CrossFade(idleStates[currentIdle], 0.3f);
+
+                if (currentIdle == 0)
                 {
-                    transform.Translate(Vector3.forward * moveSpeed * 0.01f * Time.deltaTime);
-                    if(isAttckTime == false)
+                    if (timer >= rotationInterval)
                     {
-                    StartCoroutine(WaitAttackTime());
+                        RotateSmoothly();
+                        timer = 0f;
+                    }
+                    transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+                }
+            }
+            else if (isPlayerCheck && !isHit && !isDie)
+            {
+                if (behavior == MonsterBehavior.Aggression)
+                {
+                    Vector3 directionToPlayer = (playerPosition.position - transform.position);
+                    directionToPlayer.y = 0f;
 
+                    Quaternion rotation = Quaternion.LookRotation(directionToPlayer);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
+
+                    if (distanceToPlayer > attackRecognitionScope && !isAttckTime)
+                    {
+                        transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
+                        ani.wrapMode = WrapMode.Loop;
+                        ani.Play("run");
+                    }
+                    if (distanceToPlayer <= attackRecognitionScope)
+                    {
+                        transform.Translate(Vector3.forward * moveSpeed * 0.01f * Time.deltaTime);
+                        if (isAttckTime == false)
+                        {
+                            StartCoroutine(WaitAttackTime());
+                        }
+                    }
+                    else if (distanceToPlayer >= 20)
+                    {
+                        isPlayerCheck = false;
                     }
                 }
 
-                else if (distanceToPlayer >= 20)
+                if (behavior == MonsterBehavior.Defensiveness)
                 {
-                    isPlayerCheck = false;
-                }
+                    ani.wrapMode = WrapMode.Loop;
+                    ani.Play("run");
+                    Vector3 directionToPlayer = (playerPosition.position - transform.position);
+                    directionToPlayer.y = 0f;
 
-            }
+                    Quaternion rotation = Quaternion.LookRotation(-directionToPlayer);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
 
-            if (behavior == MonsterBehavior.Defensiveness)
-            {
-                ani.wrapMode = WrapMode.Loop;
-                ani.Play("run");
-                Vector3 directionToPlayer = (playerPosition.position - transform.position);
-                directionToPlayer.y = 0f;
-
-                Quaternion rotation = Quaternion.LookRotation(-directionToPlayer);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 2f);
-
-                transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
-                if (distanceToPlayer >= 20)
-                {
-                    isPlayerCheck = false;
+                    transform.Translate(Vector3.forward * moveSpeed * 2 * Time.deltaTime);
+                    if (distanceToPlayer >= 20)
+                    {
+                        isPlayerCheck = false;
+                    }
                 }
             }
         }
