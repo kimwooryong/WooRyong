@@ -119,7 +119,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     //Tooltip
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("½½·Ô Å½Áö È½¼ö");
+
         if(itemID == 0)
         {
             return;

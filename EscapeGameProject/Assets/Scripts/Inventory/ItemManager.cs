@@ -343,10 +343,10 @@ public class ItemManager : MonoBehaviour
     private TextMeshProUGUI TooltipItemDescription;
     [SerializeField]
     private TextMeshProUGUI TooltipItemAmount;
-
-    
+    private bool tooltipTimerCondition;
     public void ShowTooltip(ItemSlot item, Vector3 cursorPos)
     {
+
         RectTransform tooltipRect = TooltipUI.GetComponent<RectTransform>();
         float pivotX;
         float pivotY;
@@ -364,6 +364,7 @@ public class ItemManager : MonoBehaviour
         TooltipItemDescription.text = item.itemDescription;
         TooltipItemAmount.text = $"¼ö·® : {item.itemAmount}";
     }
+    
     public void HideTooltip()
     {
         TooltipUI.SetActive(false);
