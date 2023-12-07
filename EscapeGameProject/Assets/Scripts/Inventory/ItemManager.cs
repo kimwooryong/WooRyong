@@ -211,6 +211,7 @@ public class ItemManager : MonoBehaviour
                     tempQuickSlot = preSlotObject.GetComponent<QuickSlot>();
                     if (tempQuickSlot != null)
                     {
+                        SoundManager.Instance.PlayArrangeItem();
                         tempQuickSlot.SetNonSelect();
                     }
                 }
@@ -379,6 +380,7 @@ public class ItemManager : MonoBehaviour
         int tempAmount = slotA.itemAmount;
         slotA.SetItemSlot(slotB.itemID, slotB.itemAmount);
         slotB.SetItemSlot(tempID, tempAmount);
+        SoundManager.Instance.PlayArrangeItem();
     }
 
 }
