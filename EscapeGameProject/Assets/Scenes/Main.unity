@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.53555536, g: 0.72713995, b: 0.7830189, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.002
   m_LinearFogStart: 0
@@ -5727,6 +5727,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2983928019525662188, guid: 1c8b1440dbd91314e8b9609015121d39,
+        type: 3}
+      propertyPath: faunaAndFlora
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2991288344063870767, guid: 1c8b1440dbd91314e8b9609015121d39,
         type: 3}
       propertyPath: m_Size.y
@@ -6146,6 +6151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306504002351172969, guid: 1c8b1440dbd91314e8b9609015121d39,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370129000623284146, guid: 1c8b1440dbd91314e8b9609015121d39,
         type: 3}
