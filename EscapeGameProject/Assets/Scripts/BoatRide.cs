@@ -7,7 +7,9 @@ public class BoatRide : MonoBehaviour
     private PlayerMovement player;
 
     public Transform boatSeat;
-    private bool isRiding = false;
+    public bool isRiding = false;
+    private Animator ani;
+    
 
     void Start()
     {
@@ -16,6 +18,9 @@ public class BoatRide : MonoBehaviour
     
     void Update()
     {
-        
+        if(isRiding)
+        {
+            ani.SetTrigger("isRide");
+        }
     }
 }

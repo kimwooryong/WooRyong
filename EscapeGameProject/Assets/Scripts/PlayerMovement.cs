@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
     //public bool onMove;
     private GameManager gameManager;
     private CaveEntrance cave;
+    private CameraLook cameraLook;
 
-    public float rayDistance = 2.0f;
+    public float rayDistance = 3.0f;
 
     [SerializeField]
     private int playerCurrentHp = 100;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerCurrentHp = playerMaxHp;
+        cameraLook = GetComponentInChildren<CameraLook>();
 
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
@@ -60,8 +62,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E))
         {
-            Vector3 rayOrigin = transform.position;
-            Vector3 rayDirection = transform.forward;
+            Vector3 rayOrigin = cameraLook.transform.position;
+            Vector3 rayDirection = cameraLook.transform.forward;
             RaycastHit hit;
 
             if(Physics.Raycast(rayOrigin, rayDirection, out hit, rayDistance))
@@ -75,14 +77,12 @@ public class PlayerMovement : MonoBehaviour
                     collider.isTrigger = true;
                     gameObject.transform.position = boat.boatSeat.transform.position;
                         gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-                       // gameObject.transform.SetParent(boat.transform);
+                        boat.isRiding = true;
+                        // gameObject.transform.SetParent(boat.transform);
 
 
                     }
-                    else
-                    {
-                        Debug.Log("gmgmg");
-                    }
+
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red, 0.1f);
