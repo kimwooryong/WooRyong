@@ -3712,6 +3712,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792331760575856534, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 1837924119}
     - target: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_RootOrder
@@ -4646,6 +4661,12 @@ RectTransform:
 --- !u!20 &1837924118 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1614401847146868456, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490934341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1837924119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
     type: 3}
   m_PrefabInstance: {fileID: 1490934341}
   m_PrefabAsset: {fileID: 0}
