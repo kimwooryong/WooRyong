@@ -95,6 +95,7 @@ public class CreateTable : MonoBehaviour
             ItemManager.Instance.playerInventory.RemoveItem(itemIndex, materialItems[i].materialItemAmount);
         }
         ItemManager.Instance.LootItemToInventory(targetItemID, targetItemAmount);
+        SoundManager.Instance.PlayGetItem();
         TestCreateCondition();
         Debug.Log("아이템 생성");
     }

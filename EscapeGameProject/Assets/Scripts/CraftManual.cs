@@ -50,14 +50,10 @@ public class CraftManual : MonoBehaviour
     [SerializeField]
     private GameObject Craft_Base;
 
-
     // RaycastHit 필요 변수 선언
     private RaycastHit hitInfo; // 정보
     [SerializeField]
     private float range; // 거리
-
-
-    private bool IsBuildMenuOpen = false;
 
 
     public void SlotClick(int _slotNumber) // 슬롯 클릭

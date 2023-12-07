@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8353357130742391709}
   - component: {fileID: 1834985435309416190}
+  - component: {fileID: 7338415411089703460}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Hammer
@@ -115,7 +116,7 @@ Transform:
   - {fileID: 2214399320056318529}
   - {fileID: 4358634087584369910}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &1834985435309416190
 LODGroup:
@@ -140,6 +141,29 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5018058255103986816}
   m_Enabled: 1
+--- !u!136 &7338415411089703460
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135351296565723480}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.40412074
+  m_Height: 0.9633255
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.6229945, z: 0.01833725}
 --- !u!1 &8306846099414164393
 GameObject:
   m_ObjectHideFlags: 0
