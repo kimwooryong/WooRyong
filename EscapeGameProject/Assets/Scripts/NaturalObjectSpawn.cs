@@ -6,7 +6,8 @@ using UnityEngine;
 public enum FaunaAndFlora
 {
     Animal,
-    Plant
+    Plant,
+    MushRoom
 }
 
 public class NaturalObjectSpawn : MonoBehaviour
@@ -36,7 +37,7 @@ public class NaturalObjectSpawn : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            if(faunaAndFlora == FaunaAndFlora.Plant)
+            if(faunaAndFlora == FaunaAndFlora.Plant || faunaAndFlora == FaunaAndFlora.MushRoom)
             {
             SpawnTrees();
             }
@@ -155,7 +156,15 @@ private int WeightedRandomSelection(float[] probabilities)
         RaycastHit hit;
         if (Physics.Raycast(new Vector3(position.x, 100f, position.z), Vector3.down, out hit, 200f, spawnLayer))
         {
-            return hit.point.y;
+            if(faunaAndFlora == FaunaAndFlora.MushRoom)
+            {
+
+            return hit.point.y + 0.1f;
+            }
+            else
+            {
+                return hit.point.y;
+            }
         }
         return 0f;
     }

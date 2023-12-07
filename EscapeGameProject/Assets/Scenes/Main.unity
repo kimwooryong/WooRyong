@@ -5758,6 +5758,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2983928019525662188, guid: 1c8b1440dbd91314e8b9609015121d39,
+        type: 3}
+      propertyPath: faunaAndFlora
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2991288344063870767, guid: 1c8b1440dbd91314e8b9609015121d39,
         type: 3}
       propertyPath: m_Size.y
