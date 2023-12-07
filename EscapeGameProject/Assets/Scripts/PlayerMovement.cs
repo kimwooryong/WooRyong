@@ -94,7 +94,8 @@ public class PlayerMovement : MonoBehaviour
 }
     private void FixedUpdate()
     {
-
+        if(boat != null)
+        {
             if (boat.isRiding)
             {
                 gameObject.transform.position = boat.boatSeat.transform.position;
@@ -102,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
                 DestroyChild("_M_Hands_C");
                 DestroyChild("_M_Rig");
             }
+
+        }
 
     }
     public void TakeDamage(int damage)
