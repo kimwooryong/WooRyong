@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed = 5f;
     [HideInInspector]
     public Rigidbody rb;
+    private Collider collider;
     public int playerDamage = 2;
     public GameObject miniMap;
     //public bool onMove;
     private GameManager gameManager;
     private CaveEntrance cave;
 
-    public float rayDistance = 2.0f; 
+    public float rayDistance = 2.0f;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
         //onMove = true;
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
         if(miniMap != null)
         {
              miniMap.SetActive(false);
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-
+        
         if (Input.GetKeyDown(KeyCode.M))
         {
             miniMap.SetActive(!miniMap.activeSelf);
@@ -61,7 +63,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Boat"))
                 {
-                
+                BoatRide boat = FindObjectOfType<BoatRide>();
+                    if(boat != null)
+                    {
+                    rb.isKinematic = true;
+                    collider.isTrigger = true;
+                    gameObject.transform.position = boat.boatSeat.transform.position;
+                        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                       // gameObject.transform.SetParent(boat.transform);
+
+
+                    }
+                    else
+                    {
+                        Debug.Log("gmgmg");
+                    }
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red, 0.1f);

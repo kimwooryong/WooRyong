@@ -6,6 +6,9 @@ public class BoatRide : MonoBehaviour
 {
     private PlayerMovement player;
 
+    public Transform boatSeat;
+    private bool isRiding = false;
+
     void Start()
     {
     player = FindObjectOfType<PlayerMovement>();    

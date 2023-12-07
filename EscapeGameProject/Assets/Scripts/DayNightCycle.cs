@@ -12,9 +12,9 @@ public class DayNightCycle : MonoBehaviour
 
     [SerializeField]
     private float nightFogDensity;// π„ Fog
-    private float dayFogDensity; // ≥∑ Fog
+    private float dayFogDensity = 0.0f; // ≥∑ Fog
     [SerializeField]
-    private float fogDensityCalc; // ¡ı∞®∑Æ ∫Ò¿≤
+    private float fogDensityCalc = 0.00002f; // ¡ı∞®∑Æ ∫Ò¿≤
     public float currentFogDensity;
 
     private void Start()
@@ -39,21 +39,29 @@ public class DayNightCycle : MonoBehaviour
         {
             if(currentFogDensity <= nightFogDensity)
             {
-                currentFogDensity += 50f * fogDensityCalc * Time.deltaTime;
+                
+                currentFogDensity += 0.1f * fogDensityCalc * Time.deltaTime;
                 RenderSettings.fogDensity = currentFogDensity;
+                
             }
         }
         else
         {
             if(currentFogDensity >= dayFogDensity)
             {
-                currentFogDensity -= 50f * fogDensityCalc * Time.deltaTime;
+                currentFogDensity -= 0.1f * fogDensityCalc * Time.deltaTime;
                 RenderSettings.fogDensity = currentFogDensity;
+                if(currentFogDensity <= 0.003)
+                {
+                    currentFogDensity = 0.0f;
+                }
+                
             }
         }
     }
     public void ResetDayNightCycle()
     {
         transform.rotation = Quaternion.Euler(0, -115, 0);
+
     }
 }
