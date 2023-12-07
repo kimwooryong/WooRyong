@@ -119,6 +119,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     //Tooltip
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
+
         if(itemID == 0)
         {
             return;
@@ -128,6 +129,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log("슬롯에서 나간 횟수");
         ItemManager.Instance.HideTooltip();
     }
     //아이템 버리기
