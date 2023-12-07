@@ -39,7 +39,7 @@ public class DayNightCycle : MonoBehaviour
         {
             if(currentFogDensity <= nightFogDensity)
             {
-                currentFogDensity += 0.1f * fogDensityCalc * Time.deltaTime;
+                currentFogDensity += 50f * fogDensityCalc * Time.deltaTime;
                 RenderSettings.fogDensity = currentFogDensity;
             }
         }
@@ -47,7 +47,7 @@ public class DayNightCycle : MonoBehaviour
         {
             if(currentFogDensity >= dayFogDensity)
             {
-                currentFogDensity -= 0.1f * fogDensityCalc * Time.deltaTime;
+                currentFogDensity -= 50f * fogDensityCalc * Time.deltaTime;
                 RenderSettings.fogDensity = currentFogDensity;
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CampFire : MonoBehaviour
 {
-
+    
 
     void Start()
     {
