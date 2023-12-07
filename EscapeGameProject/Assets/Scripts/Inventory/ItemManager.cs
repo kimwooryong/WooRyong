@@ -81,6 +81,7 @@ public class ItemManager : MonoBehaviour
         preSlotObject = null;
         playerInventory.InitializeInventory();
         playerQuickSlot.InitializeInventory();
+        OpenInventory += HideTooltip;
     }
     //ID로 값 전체 받아오기
     public Dictionary<string, object> ReadItemData(int itemID)
@@ -343,6 +344,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI TooltipItemAmount;
 
+    
     public void ShowTooltip(ItemSlot item, Vector3 cursorPos)
     {
         RectTransform tooltipRect = TooltipUI.GetComponent<RectTransform>();

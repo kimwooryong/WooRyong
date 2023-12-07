@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -121,6 +119,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
     //Tooltip
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
+        Debug.Log("½½·Ô Å½Áö È½¼ö");
         if(itemID == 0)
         {
             return;
@@ -130,6 +129,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log("½½·Ô¿¡¼­ ³ª°£ È½¼ö");
         ItemManager.Instance.HideTooltip();
     }
     //¾ÆÀÌÅÛ ¹ö¸®±â

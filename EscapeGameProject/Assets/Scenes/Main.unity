@@ -3205,9 +3205,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   rb: {fileID: 0}
-  playerDamage: 2
   miniMap: {fileID: 1153232312}
   rayDistance: 2
+  playerCurrentHp: 100
+  playerDamage: 2
 --- !u!1 &1153232312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3871,6 +3872,11 @@ PrefabInstance:
     - target: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780044585315064177, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
