@@ -87,13 +87,22 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        
-        if(boat.isRiding)
+        if (boat == null)
         {
-            DestroyChild("_M_Base_Suit");
-            DestroyChild("_M_Hands_C");
-            DestroyChild("_M_Rig");
+            boat = FindObjectOfType<BoatRide>();
         }
+}
+    private void FixedUpdate()
+    {
+
+            if (boat.isRiding)
+            {
+                gameObject.transform.position = boat.boatSeat.transform.position;
+                DestroyChild("_M_Base_Suit");
+                DestroyChild("_M_Hands_C");
+                DestroyChild("_M_Rig");
+            }
+
     }
     public void TakeDamage(int damage)
     {

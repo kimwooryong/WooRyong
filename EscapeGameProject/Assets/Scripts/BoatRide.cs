@@ -31,6 +31,7 @@ public class BoatRide : MonoBehaviour
     {
         if(isRiding)
         {
+            gameObject.transform.Translate(Vector3.up * 5 * Time.deltaTime);
             leftChild.SetTrigger("isRide");
             rightChild.SetTrigger("isRide");
         }
