@@ -48,15 +48,19 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Cook cookComponent = other.GetComponent<Cook>();
-        if (cookComponent != null)
+        if (canCook)
         {
-            cookingGaugeNow += Time.deltaTime;
-            if(cookingGaugeNow >= cookingGaugeMax)
+            Cook cookComponent = other.GetComponent<Cook>();
+            if (cookComponent != null)
             {
-                ItemManager.Instance.DropItemToField(itemID + 1, gameObject.transform.position);
-                Destroy(gameObject);
+                cookingGaugeNow += Time.deltaTime;
+                if(cookingGaugeNow >= cookingGaugeMax)
+                {
+                    ItemManager.Instance.DropItemToField(itemID + 1, gameObject.transform.position);
+                    Destroy(gameObject);
+                }
             }
+
         }
     }
 }
