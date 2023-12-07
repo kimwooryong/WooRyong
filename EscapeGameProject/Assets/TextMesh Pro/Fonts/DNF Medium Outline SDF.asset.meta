@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:EscapeGameProject/Assets/TextMesh Pro/Fonts/DNF Medium Outline SDF.asset.meta
 guid: f8d937a6a75eadc4197787ddcd1b0a94
 NativeFormatImporter:
+========
+guid: 32e533069de0d0f44a625d57e977ca64
+DefaultImporter:
+>>>>>>>> ba5292a96757381e25f09dc26ec0dc37a62644a5:EscapeGameProject/Assets/Prefab/BoatAndPlayerTest/Weapons/Pipeline/HDRP.unitypackage.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

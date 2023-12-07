@@ -26769,8 +26769,8 @@ MonoBehaviour:
   cameraObject: {fileID: 1217578129}
   knifeOnHand: {fileID: 1072962198}
   knifeOnShoulder: {fileID: 486178177}
-  hammeOnHand: {fileID: 1818984282}
-  hammerOnShoulder: {fileID: 1909512224}
+  axeOnHand: {fileID: 0}
+  axeOnShoulder: {fileID: 0}
   pickaxeOnHand: {fileID: 497533249}
   pickaxeOnShoulder: {fileID: 1368665784}
   torchOnHand: {fileID: 1578657759}
@@ -26778,7 +26778,7 @@ MonoBehaviour:
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
-  isHammerInventory: 0
+  isAxeInventory: 0
   isPickaxeInventory: 0
   isTorchInventory: 0
   isBlocking: 0
@@ -50692,8 +50692,8 @@ MonoBehaviour:
   cameraObject: {fileID: 17345767}
   knifeOnHand: {fileID: 307428242}
   knifeOnShoulder: {fileID: 844700122}
-  hammeOnHand: {fileID: 2080350256}
-  hammerOnShoulder: {fileID: 2007796898}
+  axeOnHand: {fileID: 0}
+  axeOnShoulder: {fileID: 0}
   pickaxeOnHand: {fileID: 760332124}
   pickaxeOnShoulder: {fileID: 1688582476}
   torchOnHand: {fileID: 288603530}
@@ -50701,7 +50701,7 @@ MonoBehaviour:
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
-  isHammerInventory: 0
+  isAxeInventory: 0
   isPickaxeInventory: 0
   isTorchInventory: 0
   isBlocking: 0
@@ -51822,8 +51822,8 @@ MonoBehaviour:
   cameraObject: {fileID: 67993032}
   knifeOnHand: {fileID: 2142394261}
   knifeOnShoulder: {fileID: 1081375867}
-  hammeOnHand: {fileID: 1440388204}
-  hammerOnShoulder: {fileID: 764074453}
+  axeOnHand: {fileID: 0}
+  axeOnShoulder: {fileID: 0}
   pickaxeOnHand: {fileID: 1529645754}
   pickaxeOnShoulder: {fileID: 842330613}
   torchOnHand: {fileID: 19869944}
@@ -51831,7 +51831,7 @@ MonoBehaviour:
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
-  isHammerInventory: 0
+  isAxeInventory: 0
   isPickaxeInventory: 0
   isTorchInventory: 0
   isBlocking: 0

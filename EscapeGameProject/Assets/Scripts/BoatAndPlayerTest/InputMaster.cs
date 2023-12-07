@@ -166,7 +166,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChangeHammer"",
+                    ""name"": ""ChangeAxe"",
                     ""type"": ""Button"",
                     ""id"": ""416df4cd-3ec9-43c2-97e9-0c431c6000ef"",
                     ""expectedControlType"": ""Button"",
@@ -355,7 +355,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeHammer"",
+                    ""action"": ""ChangeAxe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -402,7 +402,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Movement_Kick = m_Movement.FindAction("Kick", throwIfNotFound: true);
         m_Movement_Aiming = m_Movement.FindAction("Aiming", throwIfNotFound: true);
         m_Movement_ChangeKnife = m_Movement.FindAction("ChangeKnife", throwIfNotFound: true);
-        m_Movement_ChangeHammer = m_Movement.FindAction("ChangeHammer", throwIfNotFound: true);
+        m_Movement_ChangeAxe = m_Movement.FindAction("ChangeAxe", throwIfNotFound: true);
         m_Movement_ChangePickaxe = m_Movement.FindAction("ChangePickaxe", throwIfNotFound: true);
         m_Movement_ChangeTorch = m_Movement.FindAction("ChangeTorch", throwIfNotFound: true);
     }
@@ -530,7 +530,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Kick;
     private readonly InputAction m_Movement_Aiming;
     private readonly InputAction m_Movement_ChangeKnife;
-    private readonly InputAction m_Movement_ChangeHammer;
+    private readonly InputAction m_Movement_ChangeAxe;
     private readonly InputAction m_Movement_ChangePickaxe;
     private readonly InputAction m_Movement_ChangeTorch;
     public struct MovementActions
@@ -547,7 +547,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Kick => m_Wrapper.m_Movement_Kick;
         public InputAction @Aiming => m_Wrapper.m_Movement_Aiming;
         public InputAction @ChangeKnife => m_Wrapper.m_Movement_ChangeKnife;
-        public InputAction @ChangeHammer => m_Wrapper.m_Movement_ChangeHammer;
+        public InputAction @ChangeAxe => m_Wrapper.m_Movement_ChangeAxe;
         public InputAction @ChangePickaxe => m_Wrapper.m_Movement_ChangePickaxe;
         public InputAction @ChangeTorch => m_Wrapper.m_Movement_ChangeTorch;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
@@ -589,9 +589,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @ChangeKnife.started += instance.OnChangeKnife;
             @ChangeKnife.performed += instance.OnChangeKnife;
             @ChangeKnife.canceled += instance.OnChangeKnife;
-            @ChangeHammer.started += instance.OnChangeHammer;
-            @ChangeHammer.performed += instance.OnChangeHammer;
-            @ChangeHammer.canceled += instance.OnChangeHammer;
+            @ChangeAxe.started += instance.OnChangeAxe;
+            @ChangeAxe.performed += instance.OnChangeAxe;
+            @ChangeAxe.canceled += instance.OnChangeAxe;
             @ChangePickaxe.started += instance.OnChangePickaxe;
             @ChangePickaxe.performed += instance.OnChangePickaxe;
             @ChangePickaxe.canceled += instance.OnChangePickaxe;
@@ -632,9 +632,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @ChangeKnife.started -= instance.OnChangeKnife;
             @ChangeKnife.performed -= instance.OnChangeKnife;
             @ChangeKnife.canceled -= instance.OnChangeKnife;
-            @ChangeHammer.started -= instance.OnChangeHammer;
-            @ChangeHammer.performed -= instance.OnChangeHammer;
-            @ChangeHammer.canceled -= instance.OnChangeHammer;
+            @ChangeAxe.started -= instance.OnChangeAxe;
+            @ChangeAxe.performed -= instance.OnChangeAxe;
+            @ChangeAxe.canceled -= instance.OnChangeAxe;
             @ChangePickaxe.started -= instance.OnChangePickaxe;
             @ChangePickaxe.performed -= instance.OnChangePickaxe;
             @ChangePickaxe.canceled -= instance.OnChangePickaxe;
@@ -675,7 +675,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnKick(InputAction.CallbackContext context);
         void OnAiming(InputAction.CallbackContext context);
         void OnChangeKnife(InputAction.CallbackContext context);
-        void OnChangeHammer(InputAction.CallbackContext context);
+        void OnChangeAxe(InputAction.CallbackContext context);
         void OnChangePickaxe(InputAction.CallbackContext context);
         void OnChangeTorch(InputAction.CallbackContext context);
     }

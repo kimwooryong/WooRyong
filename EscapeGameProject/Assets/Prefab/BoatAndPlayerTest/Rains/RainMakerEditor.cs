@@ -1,15 +1,8 @@
-﻿//
-// Rain Maker (c) 2015 Digital Ruby, LLC
-// http://www.digitalruby.com
-//
-
-using System;
-
+﻿using System;
 using UnityEngine;
 using UnityEditor;
 
-namespace DigitalRuby.RainMaker
-{
+
     public class RainMakerEditor : Editor
     {
         private Texture2D logo;
@@ -61,4 +54,3 @@ namespace DigitalRuby.RainMaker
     public class RainMakerEditor2D : RainMakerEditor
     {
     }
-}

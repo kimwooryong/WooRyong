@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private CaveEntrance cave;
     private CameraLook cameraLook;
-
+    private BoatRide boat;
     public float rayDistance = 3.0f;
 
     [SerializeField]
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Start()
     {
+        boat = FindObjectOfType<BoatRide>();
         playerCurrentHp = playerMaxHp;
         cameraLook = GetComponentInChildren<CameraLook>();
 
@@ -70,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Boat"))
                 {
-                BoatRide boat = FindObjectOfType<BoatRide>();
+
                     if(boat != null)
                     {
                     rb.isKinematic = true;
                     collider.isTrigger = true;
                     gameObject.transform.position = boat.boatSeat.transform.position;
-                        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
                         boat.isRiding = true;
                         // gameObject.transform.SetParent(boat.transform);
 
@@ -85,13 +86,34 @@ public class PlayerMovement : MonoBehaviour
 
                 }
             }
-            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red, 0.1f);
         }
-        
+        if (boat == null)
+        {
+            boat = FindObjectOfType<BoatRide>();
+        }
+}
+    private void FixedUpdate()
+    {
+
+            if (boat.isRiding)
+            {
+                gameObject.transform.position = boat.boatSeat.transform.position;
+                DestroyChild("_M_Base_Suit");
+                DestroyChild("_M_Hands_C");
+                DestroyChild("_M_Rig");
+            }
 
     }
     public void TakeDamage(int damage)
     {
         playerCurrentHp -= damage;
+    }
+    private void DestroyChild(string name)
+    {
+        Transform childName = gameObject.transform.Find(name);
+        if (childName != null)
+        {
+            childName.gameObject.SetActive(false);
+        }
     }
 }
