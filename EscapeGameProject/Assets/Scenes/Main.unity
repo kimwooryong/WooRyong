@@ -2761,7 +2761,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!114 &893637178 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7439642486756121910, guid: 851c462a602ed1846bbd31dea089ee77,
+  m_CorrespondingSourceObject: {fileID: 5847537743179358331, guid: 851c462a602ed1846bbd31dea089ee77,
     type: 3}
   m_PrefabInstance: {fileID: 1397626013}
   m_PrefabAsset: {fileID: 0}
