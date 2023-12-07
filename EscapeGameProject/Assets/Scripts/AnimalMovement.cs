@@ -57,7 +57,7 @@ public class AnimalMovement : MonoBehaviour
 
     void Update()
     {
-        if (player == null || playerPosition == null)
+        if (player == null && playerPosition == null)
         {
             player = FindObjectOfType<PlayerMovement>();
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
