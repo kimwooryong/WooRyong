@@ -351,24 +351,10 @@ public class ItemManager : MonoBehaviour
         float ScreenX = Screen.width;
         float ScreenY = Screen.height;
         //오른쪽에 있다면 왼쪽으로 툴팁 창 생성
-        if(cursorPos.x > ScreenX / 2f)
-        {
-            pivotX = 1f;
-        }
-        else
-        {
-            pivotX = 0f;
-        }
+        pivotX = cursorPos.x > (ScreenX / 2f) ? 1f : 0f;
         //위에 있다면 아래쪽으로 툴팁 창 생성
-        if (cursorPos.y > ScreenY * (2f / 3f))
-        {
-            Debug.Log($"커서 y값은 {cursorPos.y} 스크린은 {ScreenY * (2f / 3f)}");
-            pivotY = 1f;
-        }
-        else
-        {
-            pivotY = 0f;
-        }
+        pivotY = cursorPos.y > (ScreenY * (2f / 3f)) ? 1f : 0f;
+
         tooltipRect.pivot = new Vector2(pivotX, pivotY);
         TooltipUI.transform.position = cursorPos;
         TooltipUI.SetActive(true);
