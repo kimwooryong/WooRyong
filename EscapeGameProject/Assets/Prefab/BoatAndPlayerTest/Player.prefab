@@ -288,7 +288,7 @@ Transform:
   - {fileID: 6987405414183242049}
   - {fileID: 3176567673999532474}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2393381338705216198
 Animator:
@@ -6702,7 +6702,7 @@ GameObject:
   - component: {fileID: 5897323952001264110}
   m_Layer: 6
   m_Name: PlayerCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
