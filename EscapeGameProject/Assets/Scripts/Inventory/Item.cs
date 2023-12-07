@@ -56,6 +56,7 @@ public class Item : MonoBehaviour
                 cookingGaugeNow += Time.deltaTime;
                 if(cookingGaugeNow >= cookingGaugeMax)
                 {
+                    Debug.Log($"{itemName} 아이템 조리됨.");
                     ItemManager.Instance.DropItemToField(itemID + 1, gameObject.transform.position);
                     Destroy(gameObject);
                 }
