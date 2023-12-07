@@ -95,6 +95,7 @@ public class QuickSlot : ItemSlot
             ItemManager.Instance.UsingItemIcon.gameObject.SetActive(false);
             return;
         }
+        SoundManager.Instance.PlayEuipItem();
         //선택된 슬롯일 경우 중앙 슬롯 아이콘을 위 아이콘으로 대체.
         ItemManager.Instance.UsingItemIcon.gameObject.SetActive(true);
         ItemManager.Instance.UsingItemIcon.sprite = itemIcon.sprite;
