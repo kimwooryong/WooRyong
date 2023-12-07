@@ -11,6 +11,8 @@ public class CameraLook : MonoBehaviour
     private float xRotation = 0f;
 
     private PlayerMovement playerMove;
+
+    private bool IsMenuOpen = false;
     
     
     // Start is called before the first frame update
@@ -35,6 +37,9 @@ public class CameraLook : MonoBehaviour
         body.Rotate(Vector3.up * mouseX);
  
     }
+
+
+
 
     
 }

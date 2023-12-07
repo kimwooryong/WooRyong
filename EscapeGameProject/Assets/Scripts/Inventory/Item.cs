@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 
@@ -48,15 +45,21 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Cook cookComponent = other.GetComponent<Cook>();
-        if (cookComponent != null)
+        if (canCook)
         {
-            cookingGaugeNow += Time.deltaTime;
-            if(cookingGaugeNow >= cookingGaugeMax)
+            Cook cookComponent = other.GetComponent<Cook>();
+            if (cookComponent != null)
             {
-                ItemManager.Instance.DropItemToField(itemID + 1, gameObject.transform.position);
-                Destroy(gameObject);
+                cookingGaugeNow += Time.deltaTime;
+                if(cookingGaugeNow >= cookingGaugeMax)
+                {
+                    Debug.Log($"{itemName} 아이템 조리됨.");
+                    ItemManager.Instance.DropItemToField(itemID + 1, 
+                        gameObject.transform.position + Vector3.up * 0.5f);
+                    Destroy(gameObject);
+                }
             }
+
         }
     }
 }

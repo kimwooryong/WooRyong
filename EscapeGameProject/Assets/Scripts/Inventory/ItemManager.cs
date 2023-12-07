@@ -81,6 +81,7 @@ public class ItemManager : MonoBehaviour
         preSlotObject = null;
         playerInventory.InitializeInventory();
         playerQuickSlot.InitializeInventory();
+        OpenInventory += HideTooltip;
     }
     //ID로 값 전체 받아오기
     public Dictionary<string, object> ReadItemData(int itemID)
@@ -262,7 +263,7 @@ public class ItemManager : MonoBehaviour
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         if(playerGO != null)
         {
-            Vector3 dropPos = playerGO.transform.position + playerGO.transform.up + playerGO.transform.forward * 2;
+            Vector3 dropPos = playerGO.transform.position + Vector3.up + playerGO.transform.forward * 0.3f;
             return dropPos;
         }
         else
@@ -342,25 +343,28 @@ public class ItemManager : MonoBehaviour
     private TextMeshProUGUI TooltipItemDescription;
     [SerializeField]
     private TextMeshProUGUI TooltipItemAmount;
-
+    private bool tooltipTimerCondition;
     public void ShowTooltip(ItemSlot item, Vector3 cursorPos)
     {
+
         RectTransform tooltipRect = TooltipUI.GetComponent<RectTransform>();
-        //오른쪽에 있다면 왼쪽으로 피벗생성
-        if(cursorPos.x > Screen.width / 2)
-        {
-            tooltipRect.pivot = new Vector2(1f, 0f);
-        }
-        else
-        {
-            tooltipRect.pivot = new Vector2(0f, 0f);
-        }
+        float pivotX;
+        float pivotY;
+        float ScreenX = Screen.width;
+        float ScreenY = Screen.height;
+        //오른쪽에 있다면 왼쪽으로 툴팁 창 생성
+        pivotX = cursorPos.x > (ScreenX / 2f) ? 1f : 0f;
+        //위에 있다면 아래쪽으로 툴팁 창 생성
+        pivotY = cursorPos.y > (ScreenY * (2f / 3f)) ? 1f : 0f;
+
+        tooltipRect.pivot = new Vector2(pivotX, pivotY);
         TooltipUI.transform.position = cursorPos;
         TooltipUI.SetActive(true);
         TooltipItemName.text = item.itemName;
         TooltipItemDescription.text = item.itemDescription;
         TooltipItemAmount.text = $"수량 : {item.itemAmount}";
     }
+    
     public void HideTooltip()
     {
         TooltipUI.SetActive(false);

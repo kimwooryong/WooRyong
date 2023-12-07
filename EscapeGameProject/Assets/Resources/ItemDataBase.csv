@@ -1,4 +1,4 @@
-ID,Name,Type,Description,CanCount,CanGrab,HealingAmount,Cook,Building,Expendables,Eating,Food_Poisoning,equipment,Drop,AttackPossible,AttackDamage
+ID,Name,Type,Description,CanCount,CanGrab,HealingAmount,CanCook,Building,Expendables,Eating,Food_Poisoning,equipment,Drop,AttackPossible,AttackDamage
 1,목재,"""None""","""나무를 잘라 얻었다. 가공하면 뭔가 만들 수 있을 것 같다.""",TRUE,FALSE,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,
 2,판자,"""None""","""목재를 가공해서 얻었다. 또 다시 가공하거나 무언가를 만들 재료로 쓰자""",TRUE,FALSE,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,
 3,막대기,"""None""","""바닥에서 뒹구는 나뭇가지다. 판자를 가공해도 나온다. 의외로 쓸 곳이 많은 것 같다.""",TRUE,FALSE,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,

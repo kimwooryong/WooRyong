@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 [System.Serializable]
@@ -58,6 +57,9 @@ public class CraftManual : MonoBehaviour
     private float range; // °Å¸®
 
 
+    private bool IsBuildMenuOpen = false;
+
+
     public void SlotClick(int _slotNumber) // ½½·Ô Å¬¸¯
     {
         go_Preview = Instantiate(craft_Build[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
@@ -66,6 +68,7 @@ public class CraftManual : MonoBehaviour
         go_Prefab = craft_Build[_slotNumber].go_Prefab;
         isPreviewActived = true; // ÇÁ¸®ºä ÄÑÁÖ±â
         go_BaseUI.SetActive(false); // UI ²¨ÁÖ±â
+
 
     }
 
@@ -204,6 +207,7 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.InvisibleCursor();
         isActivated = false;
         go_BaseUI.SetActive(false);
+
     }
 
 }
