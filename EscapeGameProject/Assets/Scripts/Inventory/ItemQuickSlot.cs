@@ -22,6 +22,9 @@ public class QuickSlot : ItemSlot
     [SerializeField]
     private eItemType itemType = eItemType.None;
 
+    //
+    public PlayerCotroller playerController;
+
     private void Start()
     {
         //À½½ÄÀÌ¶ó¸é
@@ -97,15 +100,19 @@ public class QuickSlot : ItemSlot
                 Debug.Log("¼Õ¿¡ À½½Ä µë");
                 break;
             case eItemType.Knife:
+                playerController.isKnifeInventory = true;
                 Debug.Log("¼Õ¿¡ Ä® µë");
                 break;
             case eItemType.Axe:
+                playerController.isHammerInventory = true;
                 Debug.Log("¼Õ¿¡ µµ³¢ µë");
                 break;
             case eItemType.Pickaxe:
+                playerController.isPickaxeInventory = true;
                 Debug.Log("¼Õ¿¡ °î±ªÀÌ µë");
                 break;
             case eItemType.Touch:
+                playerController.isTorchInventory = true;
                 Debug.Log("¼Õ¿¡ È¶ºÒ µë");
                 break;
             default:
@@ -117,8 +124,10 @@ public class QuickSlot : ItemSlot
     //¿À¹ö¶óÀÌµå·Î ¾È¾²±â
     public override void OnPointerEnter(PointerEventData eventData)
     {
+
     }
     public override void OnPointerExit(PointerEventData eventData)
     {
+
     }
 }
