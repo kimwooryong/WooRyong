@@ -383,4 +383,10 @@ public class ItemManager : MonoBehaviour
         SoundManager.Instance.PlayArrangeItem();
     }
 
+    public void UseFood(int itemID)
+    {
+
+
+    }
+
 }
