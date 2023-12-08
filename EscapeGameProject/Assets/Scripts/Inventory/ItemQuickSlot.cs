@@ -100,11 +100,6 @@ public class QuickSlot : ItemSlot
         ItemManager.Instance.UsingItemIcon.gameObject.SetActive(true);
         ItemManager.Instance.UsingItemIcon.sprite = itemIcon.sprite;
 
-        if(ItemManager.Instance.playerQuickSlot.FindItem(101) != -1)
-        {
-            Debug.Log("good");
-        }
-
 
         //손에 드는 코드
         switch (itemType)

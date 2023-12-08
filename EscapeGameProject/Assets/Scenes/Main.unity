@@ -125,6 +125,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &9242101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5189869962691804802, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490934341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &57702201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,12 +1095,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 479204, guid: 00e708cfbd8ed654fa10f374737442cb,
     type: 3}
   m_PrefabInstance: {fileID: 372851315}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &415106869 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1826719728749086233, guid: 1ba43efeda1fd7741bb203819adbc900,
-    type: 3}
-  m_PrefabInstance: {fileID: 1490934341}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &427473925
 PrefabInstance:
@@ -2472,12 +2472,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 757473394}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &768842968 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 102649217148155913, guid: 1ba43efeda1fd7741bb203819adbc900,
-    type: 3}
-  m_PrefabInstance: {fileID: 1490934341}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &769195173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,56 +3825,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 102649217148155913, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: m_Name
-      value: AxeOnHand
-      objectReference: {fileID: 0}
     - target: {fileID: 326759465327271643, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1826719728749086233, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: m_Name
-      value: AxeOnShoulder
-      objectReference: {fileID: 0}
-    - target: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
+    - target: {fileID: 5189869962691804802, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.037
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5792331760575856534, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
-      propertyPath: axeOnHand
+      propertyPath: jumpCamPos
       value: 
-      objectReference: {fileID: 768842968}
-    - target: {fileID: 5792331760575856534, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: cameraObject
-      value: 
-      objectReference: {fileID: 1837924119}
-    - target: {fileID: 5792331760575856534, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: axeOnShoulder
-      value: 
-      objectReference: {fileID: 415106869}
-    - target: {fileID: 5792331760575856534, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: playerPosition
-      value: 
-      objectReference: {fileID: 307458281}
-    - target: {fileID: 6000449148358552073, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: m_Name
-      value: AxeOnShoulder
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9242101}
     - target: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_RootOrder
@@ -3935,11 +3894,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589294260969037529, guid: 1ba43efeda1fd7741bb203819adbc900,
-        type: 3}
-      propertyPath: m_Name
-      value: AxeOnHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4824,12 +4778,6 @@ RectTransform:
 --- !u!20 &1837924118 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1614401847146868456, guid: 1ba43efeda1fd7741bb203819adbc900,
-    type: 3}
-  m_PrefabInstance: {fileID: 1490934341}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1837924119 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3176567673999532474, guid: 1ba43efeda1fd7741bb203819adbc900,
     type: 3}
   m_PrefabInstance: {fileID: 1490934341}
   m_PrefabAsset: {fileID: 0}
