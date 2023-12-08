@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     public bool isCaveEnter = false;
 
-
     private void Awake()
     {
         if (Instance == null)
@@ -60,7 +59,4 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // 마우스 고정 해제
         Cursor.visible = false; // 마우스 클릭불가
     }
-
-
-
 }

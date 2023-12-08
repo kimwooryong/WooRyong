@@ -12,15 +12,13 @@ public class CameraLook : MonoBehaviour
 
     private PlayerStatus playerMove;
 
-    private bool IsMenuOpen = false;
+    public bool IsMenuOpen = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!IsMenuOpen)  // UI가 열려있지 않은 경우에만 카메라 움직임 수행
@@ -36,13 +34,11 @@ public class CameraLook : MonoBehaviour
         }
     }
 
-    // UI가 열릴 때 호출되는 함수 (예: 게임 메뉴 열릴 때)
     public void OnMenuOpen()
     {
         IsMenuOpen = true;
     }
 
-    // UI가 닫힐 때 호출되는 함수 (예: 게임 메뉴 닫힐 때)
     public void OnMenuClose()
     {
         IsMenuOpen = false;
