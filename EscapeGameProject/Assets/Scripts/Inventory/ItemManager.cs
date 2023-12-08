@@ -389,6 +389,10 @@ public class ItemManager : MonoBehaviour
         //현재 사용중인 퀵슬롯의 아이템 갯수 -1
 
     }
+    public void UseFood(CreateItemSlot slot, int itemID)
+    {
+
+    }
     public void SetFoodOnHand(int itemID)
     {
         

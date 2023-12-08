@@ -77,9 +77,6 @@ public class SoundManager : MonoBehaviour
         playerPlayer.volume = playerVolume;
 
     }
-
-
-
     public void PlaySound(AudioSource player, AudioClip[] AudioClips, string clipName)
     {
         AudioClip selectedClip = null;
