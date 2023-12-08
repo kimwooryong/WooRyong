@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -104,11 +105,16 @@ public class SoundManager : MonoBehaviour
 
 
     //Sound Test
-    //public void Start()
-    //{
-    //    PlaySound(bgmPlayer, bgmClips, "Beach");
-    //    PlaySound(sfxPlayer, sfxClips, "Seagulls");
-    //}
+    public void Start()
+    {
+        // 해변가 
+        //PlaySound(sfxPlayer, sfxClips, "Bat");
+        //PlayBatNoiseWaitForSeconds();
+
+        // 동굴 
+        //PlaySound(bgmPlayer, bgmClips, "Cave");
+        //StartCoroutine(PlayBatNoiseWaitForSeconds());
+    }
 
 
     //BGM
@@ -131,6 +137,12 @@ public class SoundManager : MonoBehaviour
         PlaySound(bgmPlayer, bgmClips, "Rain");
     }
 
+    // 동굴안 
+    public void PlayBgmInCave()
+    {
+        PlaySound(bgmPlayer, bgmClips, "Cave");
+    }
+
 
     //SFX
     //동물 우는 소리
@@ -151,12 +163,24 @@ public class SoundManager : MonoBehaviour
         PlaySound(sfxPlayer, sfxClips, "Campfire");  
     }
 
-    // 갈매기 소리
+    // 갈매기
     public void PlaySeagullsSound()
     {
         PlaySound(sfxPlayer, sfxClips, "Seagulls");  
     }
 
+    // 박쥐
+    public void PlayBatNoise()
+    {
+        PlaySound(sfxPlayer, sfxClips, "Bat");
+    }
+
+    // 박쥐 : 2초 후 플레이 
+    public IEnumerator PlayBatNoiseWaitForSeconds()
+    {
+        yield return new WaitForSeconds(2f);
+        PlayBatNoise();
+    } 
 
 
     //UI
