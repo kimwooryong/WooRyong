@@ -163,6 +163,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler,
             Debug.Log("ºó ½½·ÔÀº ¹ö¸± ¼ö ¾ø¾î");
         }
     }
+    //±øÅë
+    public virtual void EatFood()
+    {
+    }
 
     [HideInInspector]
     public Vector2 startPosition = new Vector2();

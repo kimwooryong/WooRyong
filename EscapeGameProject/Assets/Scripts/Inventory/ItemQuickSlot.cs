@@ -134,6 +134,10 @@ public class QuickSlot : ItemSlot
                 break;
         }
     }
+    public override void EatFood()
+    {
+        //이 슬롯에 있는 음식 아이템 사용
+    }
 
     //오버라이드로 안쓰기
     public override void OnPointerEnter(PointerEventData eventData)

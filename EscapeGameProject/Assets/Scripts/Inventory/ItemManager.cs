@@ -395,7 +395,14 @@ public class ItemManager : MonoBehaviour
     }
     public void UseFood(CreateItemSlot slot, int itemID)
     {
-
+        int slotIndex = playerQuickSlot.FindItem(itemID);
+        if(slotIndex == -1)
+        {
+            Debug.Log("퀵슬롯에 아이템 없음");
+            return;
+        }
+        playerQuickSlot.InventorySlots[slotIndex].EatFood();
+        
     }
     public void SetFoodOnHand(int itemID)
     {
