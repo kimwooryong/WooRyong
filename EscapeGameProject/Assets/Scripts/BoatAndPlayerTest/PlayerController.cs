@@ -147,7 +147,7 @@ public class PlayerCotroller : MonoBehaviour
         //Crouch();
         Sprint();
 
-        AttackMonster();
+
         //Equip();
         Block();
         Kick();
@@ -171,7 +171,7 @@ public class PlayerCotroller : MonoBehaviour
 
 
         UpdateAnimator(move);
-
+        AttackMonster();
 
     }
 
