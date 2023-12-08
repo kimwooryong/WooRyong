@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] bgmClips;
     public float bgmVolume = 2f;
     [SerializeField]
-    AudioSource bgmPlayer;
+    public AudioSource bgmPlayer;
 
     [Header("#SFX")]
     public AudioClip[] sfxClips;
@@ -107,13 +107,14 @@ public class SoundManager : MonoBehaviour
     //Sound Test
     public void Start()
     {
-        // 해변가 
+        // 박쥐  
         //PlaySound(sfxPlayer, sfxClips, "Bat");
         //PlayBatNoiseWaitForSeconds();
 
         // 동굴 
         //PlaySound(bgmPlayer, bgmClips, "Cave");
         //StartCoroutine(PlayBatNoiseWaitForSeconds());
+        //PlayBgmForestNight();
     }
 
 
@@ -125,10 +126,10 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    // 풀숲 - 밤
-    public void PlayBgmForestNight()
+    // 풀숲
+    public void PlayBgmForest()
     {
-        PlaySound(bgmPlayer, bgmClips, "ForestNight");
+        PlaySound(bgmPlayer, bgmClips, "Forest");
     }
 
     // 빗소리
@@ -180,7 +181,26 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         PlayBatNoise();
-    } 
+    }
+
+    // 여우
+    public void PlayFox()
+    {
+        PlaySound(sfxPlayer, sfxClips, "Fox");
+    }
+
+    // 멧돼지 성날떄 
+    public void PlayBoardRun()
+    {
+        PlaySound(sfxPlayer, sfxClips, "BoarRun");
+    }
+
+    // 멧돼지 쓰러지는 소리
+    public void PlayBoarDie()
+    {
+        PlaySound(sfxPlayer, sfxClips, "BoarDie");
+    }
+
 
 
     //UI
