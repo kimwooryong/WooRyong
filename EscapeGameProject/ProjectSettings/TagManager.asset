@@ -18,7 +18,8 @@ TagManager:
   - Boat
   - Animal
   - Rock
-  - Wood
+  - Particle
+  - Tree
   layers:
   - Default
   - TransparentFX
