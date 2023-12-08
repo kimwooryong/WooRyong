@@ -10,7 +10,7 @@ public class CameraLook : MonoBehaviour
 
     private float xRotation = 0f;
 
-    private PlayerMovement playerMove;
+    private PlayerStatus playerMove;
 
     //private bool IsMenuOpen = false;
     

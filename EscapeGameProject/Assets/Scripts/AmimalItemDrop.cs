@@ -8,7 +8,7 @@ public class AnimalItemDrop : MonoBehaviour
 {
 
 
-    private PlayerMovement player;
+    private PlayerStatus player;
     private AnimalMovement animal;
 
     public GameObject[] dropItem;
@@ -27,7 +27,7 @@ public class AnimalItemDrop : MonoBehaviour
     private void Start()
     {
         animal = GetComponent<AnimalMovement>();
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerStatus>();
 
         dropCount = Random.Range(minDropCount, maxDropCount);
 

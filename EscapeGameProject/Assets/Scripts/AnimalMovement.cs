@@ -32,7 +32,7 @@ public class AnimalMovement : MonoBehaviour
 
     public int currentHp;
     public int maxHp;
-    private PlayerMovement player;
+    private PlayerStatus player;
     private bool isHit = false;
     private bool isDie = false;
     [HideInInspector]
@@ -46,7 +46,7 @@ public class AnimalMovement : MonoBehaviour
     {
         ani = GetComponent<Animation>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerStatus>();
         animalAttack = GetComponentInChildren<AnimalAttack>();
 
 
@@ -59,7 +59,7 @@ public class AnimalMovement : MonoBehaviour
     {
         if (player == null && playerPosition == null)
         {
-            player = FindObjectOfType<PlayerMovement>();
+            player = FindObjectOfType<PlayerStatus>();
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
             if (playerObject != null)

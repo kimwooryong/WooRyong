@@ -11,7 +11,7 @@ public class Tree : MonoBehaviour
     public int maxHp;
     public GameObject[] dropItem;
     private float dropLocation;
-    private PlayerMovement player;
+    private PlayerStatus player;
 
     private int dropCount;
 
@@ -29,7 +29,7 @@ public class Tree : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerStatus>();
         currentHp = maxHp;
         dropCount = Random.Range(3, 4);
 

@@ -23,7 +23,7 @@ public class BuildDestroy : MonoBehaviour
 
     void PerformRaycast()
     {
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)); 
         RaycastHit hit;
         BuildName.gameObject.SetActive(false);
 

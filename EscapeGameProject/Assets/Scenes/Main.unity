@@ -3832,7 +3832,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 326759465327271643, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2062681146}
   m_SourcePrefab: {fileID: 100100000, guid: 1ba43efeda1fd7741bb203819adbc900, type: 3}
 --- !u!224 &1591115620 stripped
 RectTransform:
@@ -5382,6 +5386,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelCanvasGroup: {fileID: 528847833}
   fadeDuration: 5
+--- !u!1 &2062681139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 326759465327271643, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490934341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062681146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062681139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00aa11a903465cb41a0d752227fc5458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 5
+  rb: {fileID: 0}
+  miniMap: {fileID: 1153232312}
+  rayDistance: 3
+  playerCurrentHp: 100
+  playerDamage: 2
+  theCurrentStateOfHunger: 100
+  theMaxHunger: 100
+  hungerDamageTimer: 0
+  hungerTimer: 0
 --- !u!1001 &2087333795
 PrefabInstance:
   m_ObjectHideFlags: 0

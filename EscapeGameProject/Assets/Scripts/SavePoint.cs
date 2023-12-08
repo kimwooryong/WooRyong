@@ -10,7 +10,7 @@ public class SavePoint : MonoBehaviour
     private NaturalObjectSpawn naturalObjectSpawn;
     private DayNightCycle dayNightCycle;
     private UIManager uiManager;
-    private PlayerMovement playerMovement;
+    private PlayerStatus playerMovement;
 
     public CanvasGroup panelCanvasGroup;
 
@@ -23,7 +23,7 @@ public class SavePoint : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         naturalObjectSpawn = FindObjectOfType<NaturalObjectSpawn>();
         uiManager = FindObjectOfType<UIManager>();
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement = FindObjectOfType<PlayerStatus>();
 
         if (gameManager != null)
         {
