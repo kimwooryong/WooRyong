@@ -7,7 +7,8 @@ public enum FaunaAndFlora
 {
     Animal,
     Plant,
-    MushRoom
+    MushRoom,
+    wood
 }
 
 public class NaturalObjectSpawn : MonoBehaviour
@@ -37,13 +38,13 @@ public class NaturalObjectSpawn : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            if(faunaAndFlora == FaunaAndFlora.Plant || faunaAndFlora == FaunaAndFlora.MushRoom)
-            {
-            SpawnTrees();
-            }
-            else if(faunaAndFlora == FaunaAndFlora.Animal) 
+            if(faunaAndFlora == FaunaAndFlora.Animal)
             {
                 SpawnAnimal();
+            }
+            else
+            {
+                SpawnTrees();
             }
         }
     }
@@ -73,6 +74,10 @@ public class NaturalObjectSpawn : MonoBehaviour
             GameObject treeInstance = Instantiate(naturalObject[randomPrefabCount], randomPosition, randomRotation);
             randomSize = Random.Range(0.9f, 1.1f);
             treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
+            if(faunaAndFlora == FaunaAndFlora.wood)
+            {
+                treeInstance.transform.localScale = new Vector3(1, 1, 4);
+            }
             treeInstance.transform.parent = emptyObject.transform;
         }
     }

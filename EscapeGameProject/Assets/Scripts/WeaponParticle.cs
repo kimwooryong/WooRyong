@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class WeaponParticle : MonoBehaviour
 {
+    
     public GameObject[] particlePrefab;
+    private PlayerStatus player;
+
+    private void Start()
+    {
+        player = GetComponentInParent<PlayerStatus>();
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameObject.CompareTag("Axe"))
+        {
+            player.playerDamage = 0;
+        }
         if (other.CompareTag("Animal"))
         {
             Vector3 hitPoint = other.ClosestPointOnBounds(transform.position);

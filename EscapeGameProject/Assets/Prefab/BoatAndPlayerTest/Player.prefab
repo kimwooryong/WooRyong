@@ -262,7 +262,6 @@ GameObject:
   - component: {fileID: 8454063756929841319}
   - component: {fileID: 5792331760575856534}
   - component: {fileID: 2042116594857941850}
-  - component: {fileID: 7077806694858143657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -293,7 +292,7 @@ Transform:
   - {fileID: 2057780697715612749}
   - {fileID: 5189869962691804802}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2393381338705216198
 Animator:
@@ -448,36 +447,12 @@ MonoBehaviour:
   isAxeInventory: 0
   isPickaxeInventory: 0
   isTorchInventory: 0
+  isFoodInventory: 0
   isBlocking: 0
   isKicking: 0
   isAttacking: 0
   currentAttack: 0
 --- !u!114 &2042116594857941850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326759465327271643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00aa11a903465cb41a0d752227fc5458, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 5
-  rb: {fileID: 0}
-  miniMap: {fileID: 0}
-  rayDistance: 3
-  playerCurrentHp: 100
-  playerDamage: 2
-  theCurrentStateOfHunger: 100
-  theMaxHunger: 100
-  hungerDamageTimer: 0
-  hungerTimer: 0
-  fullHungerHpAddTimer: 0
-  attackHungerDamageCheck: 0
-  attackHungerCheck: 0
---- !u!114 &7077806694858143657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
