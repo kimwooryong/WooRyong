@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3454322505641235974}
   m_Layer: 0
   m_Name: PalmTree
-  m_TagString: NaturalObject
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
