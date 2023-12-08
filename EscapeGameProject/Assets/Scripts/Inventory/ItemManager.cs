@@ -101,6 +101,11 @@ public class ItemManager : MonoBehaviour
     //테스트용
     public void Update()
     {
+        // UI 끄기
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            inventoryCanvas.gameObject.SetActive(false);
+        }
         //테스트용 아이템 드랍
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -119,7 +124,6 @@ public class ItemManager : MonoBehaviour
             inventoryCanvas.gameObject.SetActive(isActiveInventory);
             if (isActiveInventory)
             {
-
                 GameManager.Instance.VisibleCursor();
             }
             else
@@ -383,14 +387,39 @@ public class ItemManager : MonoBehaviour
         SoundManager.Instance.PlayArrangeItem();
     }
 
+    public GameObject FoodParentHand;
     public void UseFood(int itemID)
+    {
+        //현재 사용중인 퀵슬롯의 아이템 갯수 -1
+
+    }
+    public void UseFood(CreateItemSlot slot, int itemID)
     {
 
     }
     public void SetFoodOnHand(int itemID)
     {
+        //quickslot의 isSelected를 false로
+        string itemPrefabFile = $"{itemPrefabPath}{itemID.ToString()}";
+        GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
+        if (itemPrefab != null)
+        {
+            GameObject go = Instantiate(itemPrefab, FoodParentHand.transform.position, Quaternion.identity);
+            Collider collider = go.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
 
+            Rigidbody rigidbody = go.GetComponent<Rigidbody>();
+            if (rigidbody != null)
+            {
+                rigidbody.isKinematic = true; // 혹은 rigidbody.enabled = false;
+            }
+            go.transform.parent = FoodParentHand.transform;
+        }
     }
+
     public void DeleteFoodOnHand()
     {
 

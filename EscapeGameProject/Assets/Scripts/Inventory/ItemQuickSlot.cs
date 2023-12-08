@@ -105,7 +105,7 @@ public class QuickSlot : ItemSlot
         switch (itemType)
         {
             case eItemType.Food:
-                
+                ItemManager.Instance.SetFoodOnHand(itemID);
                 playerController.EquipFood(itemID);
                 Debug.Log("¼Õ¿¡ À½½Ä µë");
                 break;

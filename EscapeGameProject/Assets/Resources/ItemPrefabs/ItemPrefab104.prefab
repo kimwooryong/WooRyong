@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7992658181850603026}
   m_Layer: 0
-  m_Name: Torch_2
+  m_Name: ItemPrefab104
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

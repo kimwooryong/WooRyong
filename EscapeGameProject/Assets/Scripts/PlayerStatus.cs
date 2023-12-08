@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
@@ -64,102 +65,13 @@ public class PlayerStatus : MonoBehaviour
             miniMap.SetActive(false);
 
         }
+        StartCoroutine(HandleHunger());
 
     }
     void Update()
     {
-        if (theCurrentStateOfHunger <= 0.0f)
-        {
-            if (hungerTimer != 0.0f)
-            {
-                hungerTimer = 0.0f;
-            }
-            if (fullHungerHpAddTimer != 0.0f)
-            {
-                fullHungerHpAddTimer = 0.0f;
-            }
-            if (playerCotroller.isAttacking)
-            {
-                attackHungerDamageCheck = true;
-                if (attackHungerDamageCheck)
-                {
-                    hungerDamageTimer += 0.5f;
-                    attackHungerDamageCheck = false;
-                    playerCotroller.isAttacking = false;
-                }
-            }
-            hungerDamageTimer += Time.deltaTime;
-                if (hungerDamageTimer >= 5.0f)
-                {
-                    TakeDamage(10);
-                    hungerDamageTimer = 0.0f;
-                }
-        }
-        else if (100.0f > theCurrentStateOfHunger && theCurrentStateOfHunger > 0.0f)
-        {
-            if (hungerDamageTimer != 0.0f)
-            {
-                hungerDamageTimer = 0.0f;
-            }
-            if (fullHungerHpAddTimer != 0.0f)
-            {
-                fullHungerHpAddTimer = 0.0f;
-            }
-            if (playerCotroller.isAttacking)
-            {
-                attackHungerCheck = true;
-                if (attackHungerCheck)
-                {
-                    hungerTimer += 1.0f;
-                    attackHungerCheck = false;
-                    playerCotroller.isAttacking = false;
-                }
-            }
-            hungerTimer += Time.deltaTime;
-            if (hungerTimer >= 30.0f)
-            {
-                ReductionInHunger(5);
-                hungerTimer = 0.0f;
-            }
+       
 
-        }
-        else if (100.0f == theCurrentStateOfHunger)
-        {
-            if (playerCotroller.isAttacking)
-            {
-                attackHungerCheck = true;
-                if (attackHungerCheck)
-                {
-                    hungerTimer += 1.0f;
-                    attackHungerCheck = false;
-                    playerCotroller.isAttacking = false;
-                }
-            }
-            if(playerCurrentHp < 100)
-            {
-                fullHungerHpAddTimer += Time.deltaTime;
-                if (fullHungerHpAddTimer >= 10.0f)
-                {
-
-                    playerCurrentHp += 10;
-                    fullHungerHpAddTimer = 0.0f;
-                }
-            }
-            else if(playerCurrentHp >= 100)
-            {
-                fullHungerHpAddTimer = 0.0f;
-            }
-
-            
-            hungerTimer += Time.deltaTime;
-            if (hungerTimer >= 50.0f)
-            {
-                ReductionInHunger(5);
-                hungerTimer = 0.0f;
-            }
-
-        }
-        //if문 작성 먹어서 생기는 불값이던 추가값이 발생시 hungerTimer를 0으로 초기화
 
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -228,5 +140,105 @@ public class PlayerStatus : MonoBehaviour
             childName.gameObject.SetActive(false);
         }
     }
+    IEnumerator HandleHunger()
+    {
+        while (true)
+        {
+            if (theCurrentStateOfHunger <= 0.0f)
+            {
+                theCurrentStateOfHunger = 0.0f;
+                if (hungerTimer != 0.0f)
+                {
+                    hungerTimer = 0.0f;
+                }
+                if (fullHungerHpAddTimer != 0.0f)
+                {
+                    fullHungerHpAddTimer = 0.0f;
+                }
+                if (playerCotroller.isAttacking)
+                {
+                    attackHungerDamageCheck = true;
+                    if (attackHungerDamageCheck)
+                    {
+                        hungerDamageTimer += 0.5f;
+                        attackHungerDamageCheck = false;
+                        playerCotroller.isAttacking = false;
+                    }
+                }
+                hungerDamageTimer += 0.5f;
+                if (hungerDamageTimer >= 5.0f)
+                {
+                    TakeDamage(10);
+                    hungerDamageTimer = 0.0f;
+                }
+            }
+            else if (100.0f > theCurrentStateOfHunger && theCurrentStateOfHunger > 0.0f)
+            {
+                if (hungerDamageTimer != 0.0f)
+                {
+                    hungerDamageTimer = 0.0f;
+                }
+                if (fullHungerHpAddTimer != 0.0f)
+                {
+                    fullHungerHpAddTimer = 0.0f;
+                }
+                if (playerCotroller.isAttacking)
+                {
+                    attackHungerCheck = true;
+                    if (attackHungerCheck)
+                    {
+                        hungerTimer += 1.0f;
+                        attackHungerCheck = false;
+                        playerCotroller.isAttacking = false;
+                    }
+                }
 
+                hungerTimer += 1.0f;
+                if (hungerTimer >= 30.0f)
+                {
+                    ReductionInHunger(5);
+                    hungerTimer = 0.0f;
+                }
+            }
+            else if (100.0f == theCurrentStateOfHunger)
+            {
+                if (playerCotroller.isAttacking)
+                {
+                    attackHungerCheck = true;
+                    if (attackHungerCheck)
+                    {
+                        hungerTimer += 1.0f;
+                        attackHungerCheck = false;
+                        playerCotroller.isAttacking = false;
+                    }
+                }
+                if (playerCurrentHp < 100)
+                {
+                    fullHungerHpAddTimer += 1.0f;
+                    if (fullHungerHpAddTimer >= 10.0f)
+                    {
+                        playerCurrentHp += 10;
+                        fullHungerHpAddTimer = 0.0f;
+                    }
+                }
+                else if (playerCurrentHp >= 100)
+                {
+                    fullHungerHpAddTimer = 0.0f;
+                }
+
+                hungerTimer += 1.0f;
+                if (hungerTimer >= 50.0f)
+                {
+                    ReductionInHunger(5);
+                    hungerTimer = 0.0f;
+                }
+            }
+            //if문 작성 먹어서 생기는 불값이던 추가값이 발생시 hungerTimer를 0으로 초기화
+            yield return new WaitForSeconds(1.0f); // Adjust the interval as needed
+        }
+    }
+    public void AddHp(int amount)
+    {
+        playerCurrentHp += amount;
+    }
 }

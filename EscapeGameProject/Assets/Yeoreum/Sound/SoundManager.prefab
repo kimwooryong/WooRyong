@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &149089113706304698
 MonoBehaviour:
@@ -57,6 +57,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 54757cbaea01546afaa0e1b3d15dc2f2, type: 3}
   - {fileID: 8300000, guid: e2511e94d6107497aad0eba141c9e58a, type: 3}
   - {fileID: 8300000, guid: b72a5e29eccb74d20b3c2f7abedbe7c3, type: 3}
+  - {fileID: 8300000, guid: 02d37622769104061bff7696c6d2a2b8, type: 3}
+  - {fileID: 8300000, guid: 6447bb7454012444a8d0540d9a78af1c, type: 3}
+  - {fileID: 8300000, guid: 9d8cd773e7e3b40db9b3d24c93fd4981, type: 3}
   sfxVolume: 0.7
   uiClips:
   - {fileID: 8300000, guid: 3ad8e5e9de1044743ba48c685b8cb097, type: 3}
@@ -64,7 +67,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 035b7da555a02408495486c77d2b0b37, type: 3}
   - {fileID: 8300000, guid: 52cf2a2ced0f14f658a96fb4d5bed040, type: 3}
   - {fileID: 8300000, guid: 1b3b61f798e0241fc9bede553524ce24, type: 3}
-  - {fileID: 8300000, guid: ef7de8b32e35c439193459c3d306d534, type: 3}
+  - {fileID: 8300000, guid: ff46b99a3f4aa4da9a74491efed7807b, type: 3}
   - {fileID: 8300000, guid: b393e330131a14bf08118e49a52a656f, type: 3}
   uiVolume: 3
   playerClips:
