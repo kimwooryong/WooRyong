@@ -399,6 +399,8 @@ public class ItemManager : MonoBehaviour
     }
     public void SetFoodOnHand(int itemID)
     {
+
+
         //quickslot¿« isSelected∏¶ false∑Œ
         string itemPrefabFile = $"{itemPrefabPath}{itemID.ToString()}";
         GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
