@@ -435,10 +435,21 @@ public class PlayerCotroller : MonoBehaviour
 
         }
     }
+    #region 음식 장착
+    
+        // 음식을 꺼내서 손에 생성하는 코드;
+        //ItemManager.Instance.SetFoodOnHand(itemID);
+        // 손에 든 음식을 없애는 코드;
+        //ItemManager.Instance.DeleteFoodOnHand();
+        //손에 음식을 들고 있을 때, 음식을 먹었을 때 일어나는 일들 (HP가 올라간다거나)
+        //ItemManager.Instance.UseFood(itemID);
     public void EquipFood(int itemID)
     {
-
+        //만약 손에 다른 것이 들려있다면, 그것 대신 음식을 손에 든다.
+        // 1. 손에 들고있는 도구? 무기를 집어넣는다.
+        //아이템을 소환해서, 플레이어 손에 붙이는 함수
     }
+    #endregion
     private void Equip()
     {
 
