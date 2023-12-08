@@ -383,13 +383,15 @@ public class ItemManager : MonoBehaviour
         SoundManager.Instance.PlayArrangeItem();
     }
 
+    public GameObject FoodParentHand;
     public void UseFood(int itemID)
     {
+        //현재 사용중인 퀵슬롯의 아이템 갯수 -1
 
     }
     public void SetFoodOnHand(int itemID)
     {
-
+        
     }
     public void DeleteFoodOnHand()
     {
