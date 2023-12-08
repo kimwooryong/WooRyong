@@ -30,6 +30,7 @@ public class CraftManual : MonoBehaviour
 
 
     private PreviewObject previewObject; // 클래스 참조
+    private CameraLook cameraLook;
 
 
     private Quaternion savedRotation;
@@ -120,6 +121,10 @@ public class CraftManual : MonoBehaviour
                 go_Preview.transform.Rotate(new Vector3(0f, -45f, 0f)); // 회전
             }
         }
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            go_BaseUI.gameObject.SetActive(false);
+        }
     }
 
     private void Build() // 건설
@@ -176,6 +181,7 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.InvisibleCursor();
         Fire_Base.gameObject.SetActive(false);
         Craft_Base.gameObject.SetActive(false);
+        cameraLook.OnMenuClose();
 
     }
 
@@ -196,6 +202,7 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
+        cameraLook.OnMenuOpen();
     }
 
     private void CloseWindow()
