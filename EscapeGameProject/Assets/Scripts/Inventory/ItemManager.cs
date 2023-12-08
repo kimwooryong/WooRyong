@@ -386,6 +386,13 @@ public class ItemManager : MonoBehaviour
     public void UseFood(int itemID)
     {
 
+    }
+    public void SetFoodOnHand(int itemID)
+    {
+
+    }
+    public void DeleteFoodOnHand()
+    {
 
     }
 
