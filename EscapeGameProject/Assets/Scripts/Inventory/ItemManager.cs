@@ -399,8 +399,27 @@ public class ItemManager : MonoBehaviour
     }
     public void SetFoodOnHand(int itemID)
     {
-        
+        //quickslot의 isSelected를 false로
+        string itemPrefabFile = $"{itemPrefabPath}{itemID.ToString()}";
+        GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
+        if (itemPrefab != null)
+        {
+            GameObject go = Instantiate(itemPrefab, FoodParentHand.transform.position, Quaternion.identity);
+            Collider collider = go.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+
+            Rigidbody rigidbody = go.GetComponent<Rigidbody>();
+            if (rigidbody != null)
+            {
+                rigidbody.isKinematic = true; // 혹은 rigidbody.enabled = false;
+            }
+            go.transform.parent = FoodParentHand.transform;
+        }
     }
+
     public void DeleteFoodOnHand()
     {
 
