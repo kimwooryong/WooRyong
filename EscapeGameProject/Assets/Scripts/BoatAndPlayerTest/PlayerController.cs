@@ -34,7 +34,15 @@ public class PlayerCotroller : MonoBehaviour
     float attack;
     float right;
     float forward;
-    float crouch;
+
+    // 카메라 위치 정보
+    private Camera playerCamera;
+    //private Vector3 originalCameraLocalPosition;
+    // camera 위치
+    public Transform standingCamPos; // 서 있을 때 카메라 위치
+    public Transform sittingCamPos; // 앉을 때 카메라 위치
+    public Transform jumpCamPos;
+    //
 
     const float k_Half = 0.5f;
 
@@ -43,9 +51,7 @@ public class PlayerCotroller : MonoBehaviour
     Animator m_Animator;
     CapsuleCollider m_Capsule;
 
-    // 카메라 위치 정보
-    public Transform cameraObject;
-    private Vector3 originalCameraLocalPosition;
+
 
 
     // 칼
@@ -111,15 +117,10 @@ public class PlayerCotroller : MonoBehaviour
     private float timeSinceAttack;
     public int currentAttack = 0;
 
-    // 무기 장착
-    //public GameObject[] weaponPrefabs;
-    //private int weaponNum =0;
-
-    public Transform playerPosition;
 
     private void Awake()
     {
-
+ 
     }
 
     private void Start()
@@ -127,33 +128,12 @@ public class PlayerCotroller : MonoBehaviour
         inputManager.inputMaster.Movement.Jump.started += _ => Jump();
         inputManager.inputMaster.Movement.Attack.started += _ => AttackMonster();
 
+        playerCamera = GetComponentInChildren<Camera>();
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Capsule = GetComponent<CapsuleCollider>();
 
-        originalCameraLocalPosition = cameraObject.transform.localPosition;
-
-
-        /*
-        playerHasWeaponItem();
-
-        if (isKnifeInventory == true)
-        {
-            m_Animator.SetBool("KnifeOnShoulder", true);
-        }
-        if (isAxeInventory == true)
-        {
-            m_Animator.SetBool("AxeOnShoulder", true);
-        }
-        if (isPickaxeInventory == true)
-        {
-            m_Animator.SetBool("PickaxeOnShoulder", true);
-        }
-        if (isTorchInventory == true)
-        {
-            m_Animator.SetBool("TorchOnShoulder", true);
-        }
-        */
+        //originalCameraLocalPosition = playerCamera.transform.localPosition;
 
     }
 
@@ -164,6 +144,7 @@ public class PlayerCotroller : MonoBehaviour
 
         Moving();
         Crouch();
+        //Crouch();
         Sprint();
 
         AttackMonster();
@@ -216,45 +197,6 @@ public class PlayerCotroller : MonoBehaviour
 
     }
 
-    /* 무기교체
-    public void ChangeWeapon()
-    {
-       
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            // Player를 찾기
-            GameObject player = GameObject.Find("Player");
-
-            // Player가 있다면
-            if (player != null)
-            {
-                // Player의 자식들을 찾아 Weapon을 검색
-                Transform weapon = player.transform.Find("M_Nurse_Basic/_M_Rig/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R/DEF-forearm.R/DEF-hand.R/Weapon");
-
-                // Weapon이 있다면
-                if (weapon != null)
-                {
-                    // 기존의 자식 GameObject들 삭제
-                    foreach (Transform child in weapon)
-                    {
-                        GameObject.Destroy(child.gameObject);
-                    }
-
-                    // 무기 프리팹 배열 길이에 맞춰 무기 번호 설정
-                    weaponNum %= weaponPrefabs.Length;
-
-                    // 새로운 무기의 프리팹을 인스턴스화하고 Weapon의 자식으로 설정
-                    GameObject newWeapon = Instantiate(weaponPrefabs[weaponNum], weapon);
-                    weaponNum++; // 다음 무기 번호로 이동
-                    
-                }
-            }
-        }
-
-
-    }
-    */
 
 
     public void AttackMonster()
@@ -338,7 +280,6 @@ public class PlayerCotroller : MonoBehaviour
         SetHasPickaxe(pickaxeOnShoulder.activeSelf);
         SetHasTouch(torchOnShoulder.activeSelf);
         */
-
     }
 
     public void Equipped()
@@ -501,11 +442,6 @@ public class PlayerCotroller : MonoBehaviour
     private void Equip()
     {
 
-        //float changeKnifeValue = inputManager.inputMaster.Movement.ChangeKnife.ReadValue<float>();
-        //float changeAxeValue = inputManager.inputMaster.Movement.ChangeAxe.ReadValue<float>();
-        //float changePickaxeValue = inputManager.inputMaster.Movement.ChangePickaxe.ReadValue<float>();
-        //float changeTorchValue = inputManager.inputMaster.Movement.ChangeTorch.ReadValue<float>();
-
         if (m_Animator.GetBool("OnGround"))
         {
 
@@ -530,11 +466,7 @@ public class PlayerCotroller : MonoBehaviour
             {
                 EquipTorch();
             }
-
-
         }
-
-
 
     }
 
@@ -660,25 +592,28 @@ public class PlayerCotroller : MonoBehaviour
     private void Jump()
     {
         //float jumpValue = inputManager.inputMaster.Movement.Jump.ReadValue<float>();
+        //if(jumpValue > 0)
+        //{
+        //    _isGrounded = false;
+        //}
 
-        if(Input.GetKeyDown(KeyCode.Space))//if(jumpValue > 0)
+        if(Input.GetKeyDown(KeyCode.Space))//
         {
             if (_isGrounded)
-            {
-                
+            {            
                 rb.AddForce(Vector3.up * jumpForce);
-
-                Vector3 newPosition = cameraObject.transform.position;
-                newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
-                cameraObject.transform.position = newPosition;
-
+                jumpCamPosition();
+                //Vector3 newPosition = playerCamera.transform.position;
+                //newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
+                //playerCamera.transform.position = newPosition;
                 _isJump = true;          
 
             }
             else
-            {
+            {             
+                StandCamPosition();
                 _isJump = false;
-                cameraObject.transform.localPosition = originalCameraLocalPosition;
+                //playerCamera.transform.localPosition = originalCameraLocalPosition;
             }
         }
        
@@ -686,9 +621,87 @@ public class PlayerCotroller : MonoBehaviour
     }
 
 
+    //private void HandleCrouch()
+    //{
+    //    float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
+    //    _isCrouch = crouchValue > 0.0f;
+    //    if (_isCrouch == true && _isGrounded == true)
+    //    {
+    //        StartCoroutine(CrouchStand());
+    //    }
+    //}
 
+    //private IEnumerator CrouchStand()
+    //{
+    //    if(_isCrouch && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
+    //    {
+    //        yield break;
+    //    }
 
+    //    m_Animator.SetBool("Crouch", true);
 
+    //    float timeElapsed = 0;
+    //    float targetHeight = _isCrouch ? standingHeight : crouchHeight;
+    //    float currentHeight = characterController.height;
+    //    Vector3 targetCenter = _isCrouch ? standingCenter : crouchingCenter;
+    //    Vector3 currentCenter = characterController.center;
+
+    //    while(timeElapsed < timeToCrouch)
+    //    {
+    //        characterController.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed/timeToCrouch);
+    //        characterController.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed / timeToCrouch);
+    //        timeElapsed += Time.deltaTime;
+    //        yield return null;
+
+    //    }
+
+    //    characterController.height = targetHeight;
+    //    characterController.center = targetCenter;
+
+    //    _isCrouch = !_isCrouch;
+
+    //    m_Animator.SetBool("Crouch", false);
+
+    //}
+    public void Crouch()
+    {
+        float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
+        _isCrouch = crouchValue > 0.0f;
+        //_isCrouch = !_isCrouch;
+        if (_isCrouch)
+        {
+            // 앉는 동작을 수행하고 카메라 위치 변경
+            SitCamPosition();
+        }
+        else
+        {
+            // 서 있는 동작을 수행하고 카메라 위치 변경
+            StandCamPosition();
+        }
+
+        m_Animator.SetBool("Crouch", _isCrouch);
+    }
+
+    // 앉는 동작을 정의합니다.
+    private void SitCamPosition()
+    {
+        // 카메라 위치 변경
+        Camera.main.transform.position = sittingCamPos.position;
+    }
+
+    // 서는 동작을 정의합니다.
+    private void StandCamPosition()
+    {
+        // 카메라 위치 변경
+        Camera.main.transform.position = standingCamPos.position;
+    }
+
+    private void jumpCamPosition()
+    {
+        Camera.main.transform.position = jumpCamPos.position;
+    }
+
+    /*
     private void Crouch()
     {
         float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
@@ -696,24 +709,18 @@ public class PlayerCotroller : MonoBehaviour
 
         if (_isCrouch)
         {
-            // 현재 카메라의 로컬 좌표를 새로운 변수에 저장
-            Vector3 newLocalPosition = transform.localPosition;
-            newLocalPosition.y = 3.7f; // Y 값을 변경하여 로컬 좌표를 설정
-
-            // 부모의 월드 좌표를 변경
-            transform.parent.position = newLocalPosition;
-
-            // 확인용으로 로그 찍기
-            Debug.Log($"Parent position: {transform.parent.position}");
+            Vector3 newPosition = playerCamera.transform.position;
+            newPosition.y = inputManager.inputMaster.Movement.Crouch.ReadValue<float>() == 0 ? 1f : 0.7f;
+            playerCamera.transform.position = newPosition;
         }
         else
         {
-            cameraObject.transform.localPosition = originalCameraLocalPosition;
+            playerCamera.transform.localPosition = originalCameraLocalPosition;
         }
 
         m_Animator.SetBool("Crouch", _isCrouch);
     }
-
+    */
 
 
     public void OnAnimatorMove()
