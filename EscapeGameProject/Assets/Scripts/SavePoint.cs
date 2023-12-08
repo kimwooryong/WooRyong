@@ -10,12 +10,17 @@ public class SavePoint : MonoBehaviour
     private NaturalObjectSpawn naturalObjectSpawn;
     private DayNightCycle dayNightCycle;
     private UIManager uiManager;
-    private PlayerStatus playerMovement;
+    private PlayerCotroller playerCotroller;
 
     public CanvasGroup panelCanvasGroup;
 
     public float fadeDuration = 5f;
     private int randCount;
+
+    private void Awake()
+    {
+        panelCanvasGroup.gameObject.SetActive(false);
+    }
 
     private void Start()
     {
@@ -23,7 +28,7 @@ public class SavePoint : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         naturalObjectSpawn = FindObjectOfType<NaturalObjectSpawn>();
         uiManager = FindObjectOfType<UIManager>();
-        playerMovement = FindObjectOfType<PlayerStatus>();
+        playerCotroller = FindObjectOfType<PlayerCotroller>();
 
         if (gameManager != null)
         {
@@ -37,8 +42,7 @@ public class SavePoint : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             uiManager.sleepPanel.SetActive(true);
-
-
+            GameManager.Instance.VisibleCursor();
 
         }
         else if (canInteract && Input.GetKeyDown(KeyCode.E))
@@ -78,20 +82,27 @@ public class SavePoint : MonoBehaviour
     {
 
         {
+            panelCanvasGroup.gameObject.SetActive(true);
             float timer = 0f;
             while (timer < fadeDuration)
             {
 
                 panelCanvasGroup.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
                 timer += Time.deltaTime;
+
                 //playerMovement.onMove = false; 나중에 플레이어 들어오면 불값 줘서 움직임 막을 수 있게 하기
+                playerCotroller.speed = 0.0f;
+                playerCotroller.runSpeed = 0.0f;
+                playerCotroller.jumpForce = 0.0f;
                 yield return null;
             }
             SetSavePoint();
-            //treeSpawner.SpawnTrees(); 한정 자원 변경
             dayNightCycle.ResetDayNightCycle();
             panelCanvasGroup.alpha = 0f;
-            //playerMovement.onMove = true;
+            playerCotroller.speed = 10.0f;
+            playerCotroller.runSpeed = 15.0f;
+            playerCotroller.jumpForce = 200.0f;
+            panelCanvasGroup.gameObject.SetActive(false);
         }
     }
 }
