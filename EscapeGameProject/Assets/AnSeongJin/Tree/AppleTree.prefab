@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2432383869131395926}
   m_Layer: 0
   m_Name: AppleTree
-  m_TagString: NaturalObject
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}
   - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}
   - {fileID: 999758202487395976, guid: 28d2b8b60a3884d698d293a90a32df14, type: 3}
+  treeType: 0
 --- !u!54 &2432383869131395926
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ TagManager:
   - Tornado
   - BuildDestroy
   - Boat
+  - Animal
+  - Rock
+  - Particle
+  - Tree
   layers:
   - Default
   - TransparentFX

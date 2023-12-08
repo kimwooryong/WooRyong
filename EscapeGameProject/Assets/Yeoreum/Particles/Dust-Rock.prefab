@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6988650499424297735}
-  m_LocalRotation: {x: 0.13281211, y: -0, z: -0, w: 0.99114126}
-  m_LocalPosition: {x: -0.22150111, y: -0.07, z: 1.89}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430174947352328617}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 15.264, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4391273767299201094
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4844,7 +4844,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ab3a945fa60c421495112cf0b5ca428, type: 2}
+  - {fileID: 2100000, guid: 425281d4528aa4c18a2bb45f73dd5985, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4920,14 +4920,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7203031056536981433}
-  m_LocalRotation: {x: 0.13281211, y: -0, z: -0, w: 0.99114126}
-  m_LocalPosition: {x: -0.22150111, y: -0.05776453, z: 1.3436809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430174947352328617}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 15.264, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &7175873313722746063
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9739,7 +9739,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9e2f39d31e354b94b8d9173978d184a, type: 2}
+  - {fileID: 2100000, guid: 05bbf7bb32eda41e5bc8c2b87823c9a5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9801,7 +9801,7 @@ GameObject:
   - component: {fileID: 430174947352328617}
   m_Layer: 0
   m_Name: Dust-Rock
-  m_TagString: Untagged
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9821,5 +9821,5 @@ Transform:
   - {fileID: 1401027570417413635}
   - {fileID: 5343929569472669729}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

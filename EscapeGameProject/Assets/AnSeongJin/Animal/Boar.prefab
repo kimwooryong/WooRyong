@@ -682,6 +682,7 @@ MonoBehaviour:
   attackDuration: 0.3336
   attackEnd: 0.2919
   capsuleCollider: {fileID: 3228048872579080105}
+  damage: 0
 --- !u!1 &4735671805265009723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1553,7 @@ GameObject:
   - component: {fileID: -5502850189762387038}
   m_Layer: 0
   m_Name: Boar
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
