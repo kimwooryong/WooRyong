@@ -4,6 +4,7 @@ public class WeaponParticle : MonoBehaviour
 {
     public GameObject[] particlePrefab;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Animal"))
