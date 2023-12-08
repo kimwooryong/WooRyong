@@ -101,6 +101,7 @@ public class ItemManager : MonoBehaviour
     //테스트용
     public void Update()
     {
+        // UI 끄기
         if (Input.GetKeyDown(KeyCode.T))
         {
             inventoryCanvas.gameObject.SetActive(false);
@@ -123,7 +124,6 @@ public class ItemManager : MonoBehaviour
             inventoryCanvas.gameObject.SetActive(isActiveInventory);
             if (isActiveInventory)
             {
-
                 GameManager.Instance.VisibleCursor();
             }
             else
