@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Rock : MonoBehaviour
 {
-    private PlayerMovement player;
+    private PlayerStatus player;
 
     public GameObject[] dropItem;
     [SerializeField]
@@ -22,7 +22,7 @@ public class Rock : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerStatus>();
 
         dropCount = Random.Range(minDropCount, maxDropCount);
 

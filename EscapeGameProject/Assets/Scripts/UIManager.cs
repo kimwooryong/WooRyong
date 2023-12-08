@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     }
     private void OnSleepYesButton()
     {
+        GameManager.Instance.InvisibleCursor();
         StartCoroutine(savePoint.FadePanel());
         sleepPanel.SetActive(false);
         Time.timeScale = 1.0f;
@@ -28,6 +29,8 @@ public class UIManager : MonoBehaviour
     private void OnSleepNoButton()
     {
         sleepPanel.SetActive(false);
+        GameManager.Instance.InvisibleCursor();
+        Time.timeScale = 1.0f;
     }
 
 

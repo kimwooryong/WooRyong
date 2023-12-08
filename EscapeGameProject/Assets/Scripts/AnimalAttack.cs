@@ -22,7 +22,7 @@ public class AnimalAttack : MonoBehaviour
     private float attackEnd;
 
     private AnimalMovement animal;
-    private PlayerMovement player;
+    private PlayerStatus player;
     public CapsuleCollider capsuleCollider;
 
     public AnimalDamage damage;
@@ -30,7 +30,7 @@ public class AnimalAttack : MonoBehaviour
 
     private void Awake()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
+        player = FindAnyObjectByType<PlayerStatus>();
     }
     void Start()
     {
@@ -43,7 +43,7 @@ public class AnimalAttack : MonoBehaviour
     {
         if (player == null)
         {
-            player = FindAnyObjectByType<PlayerMovement>();
+            player = FindAnyObjectByType<PlayerStatus>();
         }
     }
 

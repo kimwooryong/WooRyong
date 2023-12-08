@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatRide : MonoBehaviour
 {
-    private PlayerMovement player;
+    private PlayerStatus player;
 
     public Transform boatSeat;
     public bool isRiding = false;
@@ -24,7 +24,7 @@ public class BoatRide : MonoBehaviour
         right = gameObject.transform.Find("Right");
         rightChild = right.GetComponent<Animator>();
 
-        player = FindObjectOfType<PlayerMovement>();    
+        player = FindObjectOfType<PlayerStatus>();    
     }
     
     void Update()

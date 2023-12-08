@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerGps : MonoBehaviour
 {
     public float yOffSet;
-    private PlayerMovement playerMovement;
+    private PlayerStatus playerMovement;
     void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement = FindObjectOfType<PlayerStatus>();
     }
 
     // Update is called once per frame

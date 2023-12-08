@@ -11,7 +11,7 @@ public class BoatCameraLook : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
-    private PlayerMovement playerMove;
+    private PlayerStatus playerMove;
 
 
     // Start is called before the first frame update
