@@ -25,6 +25,7 @@ public class PlayerCotroller : MonoBehaviour
     public bool _isJump;
     private bool _isCrouch;
     private bool _isSprint;
+    public bool _isAttack;
 
     //
     [SerializeField] float m_MoveSpeedMultiplier = 1f;
@@ -43,16 +44,12 @@ public class PlayerCotroller : MonoBehaviour
     public Transform sittingCamPos; // 앉을 때 카메라 위치
     public Transform jumpCamPos;
     //
-
     const float k_Half = 0.5f;
 
     // 캐릭터 기본 요소
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     CapsuleCollider m_Capsule;
-
-
-
 
     // 칼
     [SerializeField]
@@ -91,6 +88,7 @@ public class PlayerCotroller : MonoBehaviour
     public bool isAxeInventory;
     public bool isPickaxeInventory;
     public bool isTorchInventory;
+    public bool isFoodInventory;
 
 
     // 누르면 트리거로 실행. -> 장착중이면 해제, 장착 중이 아니고, is~~값이 true이면 장착
@@ -98,13 +96,14 @@ public class PlayerCotroller : MonoBehaviour
     private bool axeChangeTrigger;
     private bool pickaxeChangeTrigger;
     private bool torchChangeTrigger;
-
+    private bool foodChangeTrigger;
 
     // 현재 손에 장착중인 장비의 Bool값
     private bool knifeEquipOnHand;
     private bool axeEquipOnHand;
     private bool pickaxeEquipOnHand;
     private bool torchEquipOnHand;
+    private bool foodEquipOnHand;
 
     //막기
     public bool isBlocking;
@@ -140,15 +139,10 @@ public class PlayerCotroller : MonoBehaviour
     private void Update()
     {
         timeSinceAttack += Time.deltaTime;
-        //playerHasWeaponItem();
-
         Moving();
         Crouch();
-        //Crouch();
         Sprint();
 
-
-        //Equip();
         Block();
         Kick();
 
@@ -182,8 +176,6 @@ public class PlayerCotroller : MonoBehaviour
         {
             _isGrounded = true;
         }
-
-
     }
 
     private void OnCollisionExit(Collision other)
@@ -193,22 +185,19 @@ public class PlayerCotroller : MonoBehaviour
 
             _isGrounded = false;
         }
-
-
     }
-
-
 
     public void AttackMonster()
     {
         float attackValue = inputManager.inputMaster.Movement.Attack.ReadValue<float>();
-        if (attackValue > 0 && m_Animator.GetBool("OnGround") && timeSinceAttack > 0.8f)
+        _isAttack = attackValue >0; // 공격가능
+        if (_isAttack && m_Animator.GetBool("OnGround") && timeSinceAttack > 0.8f)
         {
             if (!isEquipped)
                 return;
 
             //currentAttack++;
-            isAttacking = true;
+            isAttacking = true; // 공격 중
 
             /*
             if (currentAttack > 3)
@@ -272,14 +261,10 @@ public class PlayerCotroller : MonoBehaviour
         m_Animator.SetBool("TorchInventory", hasItem);
     }
 
-    public void playerHasWeaponItem()
+    public void SetHasFood(bool hasItem)
     {
-        /*
-        SetHasKnife(knifeOnShoulder.activeSelf);
-        SetHasAxe(axeOnShoulder.activeSelf);
-        SetHasPickaxe(pickaxeOnShoulder.activeSelf);
-        SetHasTouch(torchOnShoulder.activeSelf);
-        */
+        isFoodInventory = hasItem;
+        m_Animator.SetBool("FoodInventory", hasItem) ;
     }
 
     public void Equipped()
@@ -448,21 +433,26 @@ public class PlayerCotroller : MonoBehaviour
         //만약 손에 다른 것이 들려있다면, 그것 대신 음식을 손에 든다.
         // 1. 손에 들고있는 도구? 무기를 집어넣는다.
         //아이템을 소환해서, 플레이어 손에 붙이는 함수
+
+        if (m_Animator.GetBool("OnGround") && isFoodInventory == true)
+        {
+            m_Animator.SetBool("isArmed", false);
+            isEquipping = true;
+            m_Animator.SetTrigger("foodEquipTrigger");
+            foodChangeTrigger = true;
+        }
     }
     #endregion
     private void Equip()
     {
-
         if (m_Animator.GetBool("OnGround"))
         {
-
             // 칼
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 EquipKnife();
             }
             // 도끼        
-
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 EquipAxe();
@@ -528,6 +518,15 @@ public class PlayerCotroller : MonoBehaviour
                 torchEquipOnHand = true;
                 Debug.Log("횟불 장착");
             }
+            else if (foodChangeTrigger == true)
+            {
+                m_Animator.SetBool("FoodOnShoulder", false);
+                //foodOnHand.SetActive(true);
+                //foodOnShoulder.SetActive(false);
+                foodChangeTrigger = false;
+                foodEquipOnHand = true;
+                Debug.Log("음식 장착");
+            }
             isEquipped = !isEquipped;
 
         }
@@ -573,18 +572,12 @@ public class PlayerCotroller : MonoBehaviour
             m_Animator.SetBool("isArmed", false);
             isEquipped = !isEquipped;
         }
-
-
-
-
     }
 
     private void Sprint()
     {
         float sprintValue = inputManager.inputMaster.Movement.Run.ReadValue<float>();
         _isSprint = sprintValue > 0.0f;
-
-
         if (_isSprint)
         {
             m_Animator.SetFloat("Speed_f", 2f); // Speed_f 값을 변경
@@ -602,78 +595,22 @@ public class PlayerCotroller : MonoBehaviour
 
     private void Jump()
     {
-        //float jumpValue = inputManager.inputMaster.Movement.Jump.ReadValue<float>();
-        //if(jumpValue > 0)
-        //{
-        //    _isGrounded = false;
-        //}
-
-        if(Input.GetKeyDown(KeyCode.Space))//
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             if (_isGrounded)
             {            
                 rb.AddForce(Vector3.up * jumpForce);
                 jumpCamPosition();
-                //Vector3 newPosition = playerCamera.transform.position;
-                //newPosition.y = inputManager.inputMaster.Movement.Jump.ReadValue<float>() == 0 ? 1f : 1.3f;
-                //playerCamera.transform.position = newPosition;
                 _isJump = true;          
-
             }
             else
             {             
                 StandCamPosition();
                 _isJump = false;
-                //playerCamera.transform.localPosition = originalCameraLocalPosition;
             }
-        }
-       
-
+        }     
     }
 
-
-    //private void HandleCrouch()
-    //{
-    //    float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
-    //    _isCrouch = crouchValue > 0.0f;
-    //    if (_isCrouch == true && _isGrounded == true)
-    //    {
-    //        StartCoroutine(CrouchStand());
-    //    }
-    //}
-
-    //private IEnumerator CrouchStand()
-    //{
-    //    if(_isCrouch && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
-    //    {
-    //        yield break;
-    //    }
-
-    //    m_Animator.SetBool("Crouch", true);
-
-    //    float timeElapsed = 0;
-    //    float targetHeight = _isCrouch ? standingHeight : crouchHeight;
-    //    float currentHeight = characterController.height;
-    //    Vector3 targetCenter = _isCrouch ? standingCenter : crouchingCenter;
-    //    Vector3 currentCenter = characterController.center;
-
-    //    while(timeElapsed < timeToCrouch)
-    //    {
-    //        characterController.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed/timeToCrouch);
-    //        characterController.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed / timeToCrouch);
-    //        timeElapsed += Time.deltaTime;
-    //        yield return null;
-
-    //    }
-
-    //    characterController.height = targetHeight;
-    //    characterController.center = targetCenter;
-
-    //    _isCrouch = !_isCrouch;
-
-    //    m_Animator.SetBool("Crouch", false);
-
-    //}
     public void Crouch()
     {
         float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
