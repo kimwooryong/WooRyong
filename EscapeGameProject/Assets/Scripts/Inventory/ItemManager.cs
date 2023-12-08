@@ -101,7 +101,7 @@ public class ItemManager : MonoBehaviour
     //테스트용
     public void Update()
     {
-        // UI 끄기
+        // 인벤토리 UI 끄기
         if (Input.GetKeyDown(KeyCode.T))
         {
             inventoryCanvas.gameObject.SetActive(false);
@@ -399,6 +399,8 @@ public class ItemManager : MonoBehaviour
     }
     public void SetFoodOnHand(int itemID)
     {
+
+
         //quickslot의 isSelected를 false로
         string itemPrefabFile = $"{itemPrefabPath}{itemID.ToString()}";
         GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
