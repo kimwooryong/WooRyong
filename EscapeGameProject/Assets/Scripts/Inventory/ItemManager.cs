@@ -101,6 +101,10 @@ public class ItemManager : MonoBehaviour
     //테스트용
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            inventoryCanvas.gameObject.SetActive(false);
+        }
         //테스트용 아이템 드랍
         if (Input.GetKeyDown(KeyCode.K))
         {

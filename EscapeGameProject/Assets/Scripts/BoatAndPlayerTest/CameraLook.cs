@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraLook : MonoBehaviour
 {
@@ -18,15 +17,41 @@ public class CameraLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-       
+        SetAllUIInactive();
     }
 
     // Update is called once per frame
     void Update()
     {
+        CameraMove();
+
+    }
+
+    public GameObject Build_Base;
+    public GameObject Inventory_BAse;
+    public GameObject Fire_Base;
+    public GameObject Craft_Base;
+
+    private bool isUIActive = false;
+
+    void ActivateUI(GameObject activeUI)
+    {
+        SetAllUIInactive();
+
+        activeUI.SetActive(true);
+    }
+
+    void SetAllUIInactive()
+    {
+        Build_Base.SetActive(false);
+        Inventory_BAse.SetActive(false);
+        Fire_Base.SetActive(false);
+        Craft_Base.SetActive(false);
+    }
+    private void CameraMove()
+    {
         float mouseX = inputManager.inputMaster.CameraLook.MouseX.ReadValue<float>() * mouseSensitivity *
-                        Time.deltaTime;
+                Time.deltaTime;
         float mouseY = inputManager.inputMaster.CameraLook.MouseY.ReadValue<float>() * mouseSensitivity *
                        Time.deltaTime;
 
@@ -35,11 +60,8 @@ public class CameraLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         body.Rotate(Vector3.up * mouseX);
- 
     }
 
 
 
-
-    
 }
