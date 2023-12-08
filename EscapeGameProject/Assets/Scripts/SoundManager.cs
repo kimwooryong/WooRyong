@@ -189,16 +189,17 @@ public class SoundManager : MonoBehaviour
         PlaySound(sfxPlayer, sfxClips, "Fox");
     }
 
-    // 멧돼지 성날떄 
-    public void PlayBoardRun()
-    {
-        PlaySound(sfxPlayer, sfxClips, "BoarRun");
-    }
 
     // 멧돼지 쓰러지는 소리
     public void PlayBoarDie()
     {
         PlaySound(sfxPlayer, sfxClips, "BoarDie");
+    }
+
+    // 나무문 열리는 소리
+    public void PlayOpenDoor()
+    {
+        //삐걱 , 끼익 
     }
 
 
@@ -283,6 +284,18 @@ public class SoundManager : MonoBehaviour
     public void PlayPlayerAttackRock()
     {
         PlaySound(playerPlayer, playerClips, "AttackRock");   
+    }
+
+    // 공격이 빗나갔을때
+    public void PlayPlayerAttackMiss()
+    {
+        // 바람소리 
+    }
+
+    // 나무 위를 걷는 소리 
+    public void PlayPlayerStepOnWood()
+    {
+
     }
 
     // 건축물 부수기
