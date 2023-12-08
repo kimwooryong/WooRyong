@@ -120,6 +120,11 @@ public class CraftManual : MonoBehaviour
                 go_Preview.transform.Rotate(new Vector3(0f, -45f, 0f)); // 회전
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            Cancel();
+        }
     }
 
     private void Build() // 건설
