@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -65,8 +66,6 @@ public class CraftManual : MonoBehaviour
         go_Prefab = craft_Build[_slotNumber].go_Prefab;
         isPreviewActived = true; // 橇府轰 难林扁
         go_BaseUI.SetActive(false); // UI 波林扁
-
-
     }
 
     void Update()
@@ -181,7 +180,7 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.InvisibleCursor();
         Fire_Base.gameObject.SetActive(false);
         Craft_Base.gameObject.SetActive(false);
-        cameraLook.OnMenuClose();
+
 
     }
 
@@ -202,7 +201,6 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
-        cameraLook.OnMenuOpen();
     }
 
     private void CloseWindow()
