@@ -31,10 +31,7 @@ public class Rock : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(player.playerDamage);
-        }
+
 
         if (currentHp <= 0 && !isDrop)
         {
@@ -67,7 +64,7 @@ public class Rock : MonoBehaviour
             Instantiate(choiceItem, spawnPosition, Quaternion.identity);
         }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHp -= damage;
     }

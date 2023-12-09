@@ -23,7 +23,9 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private int playerCurrentHp = 100;
     private int playerMaxHp = 100;
-    public int playerDamage = 2;
+    public int animalDamage;
+    public int TreeDamage;
+    public int rockDamage;
 
 
     //나중에 다 private로

@@ -121,10 +121,6 @@ public class Tree : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(player.playerDamage);
-        }
 
         if (currentHp <= 0 && !isDrop)
         {
@@ -159,7 +155,7 @@ public class Tree : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHp -= damage;
     }

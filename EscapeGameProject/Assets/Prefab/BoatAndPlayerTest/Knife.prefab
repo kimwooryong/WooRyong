@@ -243,7 +243,7 @@ Transform:
   - {fileID: 6157144372782811158}
   - {fileID: 3999965387590985167}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &9169466182541393220
 LODGroup:
@@ -288,6 +288,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.07110509
-  m_Height: 0.5454005
+  m_Height: 0.77254164
   m_Direction: 1
-  m_Center: {x: 0, y: 0.48415273, z: -0.0036114156}
+  m_Center: {x: 0.00000014228425, y: 0.5977226, z: -0.003611254}

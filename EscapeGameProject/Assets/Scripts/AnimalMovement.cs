@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum MonsterBehavior
@@ -33,8 +34,8 @@ public class AnimalMovement : MonoBehaviour
     public int currentHp;
     public int maxHp;
     private PlayerStatus player;
-    private bool isHit = false;
-    private bool isDie = false;
+    public bool isHit = false;
+    public bool isDie = false;
     [HideInInspector]
     public float dieTime = 1.0f;
 
@@ -144,18 +145,10 @@ public class AnimalMovement : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            isHit = true;
-            TakeDamage(player.playerDamage);
-            if (currentHp <= 0)
-            {
 
-                isDie = true;
-                StartCoroutine(DestroyAfterDelay(dieTime));
 
-            }
-        }
+
+        
     }
 
     void RotateSmoothly()
@@ -212,9 +205,10 @@ public class AnimalMovement : MonoBehaviour
         isAttckTime = false;
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         isPlayerCheck = true;
+        isHit = true;
         currentHp -= damage;
 
         if (currentHp < 0)
@@ -222,17 +216,26 @@ public class AnimalMovement : MonoBehaviour
             currentHp = 0;
         }
 
+        if (currentHp >= 1)
+        {
         StartCoroutine(HitAnimation());
+
+        }else if(currentHp <= 0)
+        {
+            isDie = true;
+            StartCoroutine(DestroyAfterDelay(dieTime));
+        }
     }
 
     IEnumerator DestroyAfterDelay(float delay)
     {
-        ani.Stop();
+        
+        isHit = true;
+        ani.wrapMode = WrapMode.Once;
         ani.Play("die");
-
+        
         Destroy(boxCollider, delay - 0.1f);
         yield return new WaitForSecondsRealtime(delay);
-        ani.Stop();
         float destroyWaitTime = 0f;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z);

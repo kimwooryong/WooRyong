@@ -116,7 +116,7 @@ Transform:
   - {fileID: 2214399320056318529}
   - {fileID: 4358634087584369910}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &1834985435309416190
 LODGroup:
@@ -160,10 +160,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.40412074
-  m_Height: 0.9633255
+  m_Radius: 0.4684002
+  m_Height: 1.0893992
   m_Direction: 2
-  m_Center: {x: 0, y: 0.6229945, z: 0.01833725}
+  m_Center: {x: -0.0000000069816957, y: 0.6872662, z: 0.06061816}
 --- !u!1 &8306846099414164393
 GameObject:
   m_ObjectHideFlags: 0

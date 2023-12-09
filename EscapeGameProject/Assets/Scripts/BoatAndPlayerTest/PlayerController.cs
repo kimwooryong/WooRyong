@@ -73,10 +73,10 @@ public class PlayerCotroller : MonoBehaviour
     public bool isEquipped;  // 장착 됨
 
     // 1,2,3,4 번 키 반복하여 누른 횟수
-    private bool repeatClickKnife = false;
-    private bool repeatClickAxe = false;
-    private bool repeatClicPickaxe = false;
-    private bool repeatClickTorch = false;
+    //private bool repeatClickKnife = false;
+    //private bool repeatClickAxe = false;
+    //private bool repeatClicPickaxe = false;
+    //private bool repeatClickTorch = false;
 
     // 무기 소지 여부 확인, 퀵슬롯에 아이템이 있을 때 true. -> 퀵슬롯에서
     // 인벤토리에 존재
