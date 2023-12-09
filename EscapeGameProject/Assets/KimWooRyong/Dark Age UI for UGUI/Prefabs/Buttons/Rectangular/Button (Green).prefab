@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 11497590}
   - component: {fileID: 22226440}
   - component: {fileID: 11444760}
-  - component: {fileID: 11464718}
   - component: {fileID: 11497612}
   m_Layer: 5
   m_Name: Button (Green)
@@ -113,7 +112,7 @@ RectTransform:
   - {fileID: 22465626}
   - {fileID: 22465426}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -202,18 +201,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &11464718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e1ce3fe4b4851478e36a2f9a4db54b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11497612
 MonoBehaviour:
   m_ObjectHideFlags: 0
