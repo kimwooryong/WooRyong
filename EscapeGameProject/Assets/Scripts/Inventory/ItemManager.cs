@@ -409,6 +409,8 @@ public class ItemManager : MonoBehaviour
         
     }
     GameObject FoodOnHandObject;
+    [SerializeField]
+    private PlayerStatus playerStatus;
     public void SetFoodOnHand(int itemID)
     {
         DeleteFoodOnHand();
