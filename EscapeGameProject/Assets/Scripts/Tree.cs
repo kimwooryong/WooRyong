@@ -159,7 +159,7 @@ public class Tree : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHp -= damage;
     }

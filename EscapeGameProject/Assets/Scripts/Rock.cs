@@ -67,7 +67,7 @@ public class Rock : MonoBehaviour
             Instantiate(choiceItem, spawnPosition, Quaternion.identity);
         }
     }
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHp -= damage;
     }
