@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public enum eItemKeyColumns
 {
@@ -391,10 +393,12 @@ public class ItemManager : MonoBehaviour
     public void UseFood(int itemID)
     {
         //현재 사용중인 퀵슬롯의 아이템 갯수 -1
+        Debug.Log("음식 섭취1");
 
     }
     public void UseFood(CreateItemSlot slot, int itemID)
     {
+        Debug.Log("음식 섭취1");
         int slotIndex = playerQuickSlot.FindItem(itemID);
         if(slotIndex == -1)
         {
@@ -404,34 +408,43 @@ public class ItemManager : MonoBehaviour
         playerQuickSlot.InventorySlots[slotIndex].EatFood();
         
     }
+    GameObject FoodOnHandObject;
     public void SetFoodOnHand(int itemID)
     {
-
+        DeleteFoodOnHand();
+        if(itemID == 0)
+        {
+            return;
+        }
 
         //quickslot의 isSelected를 false로
         string itemPrefabFile = $"{itemPrefabPath}{itemID.ToString()}";
         GameObject itemPrefab = Resources.Load(itemPrefabFile) as GameObject;
         if (itemPrefab != null)
         {
-            GameObject go = Instantiate(itemPrefab, FoodParentHand.transform.position, Quaternion.identity);
-            Collider collider = go.GetComponent<Collider>();
+            FoodOnHandObject = Instantiate(itemPrefab, FoodParentHand.transform.position, Quaternion.identity);
+            Collider collider = FoodOnHandObject.GetComponent<Collider>();
             if (collider != null)
             {
                 collider.enabled = false;
             }
 
-            Rigidbody rigidbody = go.GetComponent<Rigidbody>();
+            Rigidbody rigidbody = FoodOnHandObject.GetComponent<Rigidbody>();
             if (rigidbody != null)
             {
                 rigidbody.isKinematic = true; // 혹은 rigidbody.enabled = false;
             }
-            go.transform.parent = FoodParentHand.transform;
+            FoodOnHandObject.transform.parent = FoodParentHand.transform;
         }
     }
 
     public void DeleteFoodOnHand()
     {
-
+        if(FoodOnHandObject != null)
+        {
+            Destroy(FoodOnHandObject.gameObject);
+        }
+        FoodOnHandObject = null;
     }
 
 }
