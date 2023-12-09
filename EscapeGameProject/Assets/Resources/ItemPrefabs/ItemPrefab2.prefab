@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 2
   itemName: 
+  canCook: 0
+  cookingGaugeMax: 0
 --- !u!54 &1475426562217024865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,7 +138,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8505758044580410867}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 42cb8d9cdb10b7146b9dc05b23ff9c0c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
