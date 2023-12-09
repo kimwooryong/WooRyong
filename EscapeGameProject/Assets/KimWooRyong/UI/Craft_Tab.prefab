@@ -1904,9 +1904,9 @@ MonoBehaviour:
     go_PreviewPrefab: {fileID: 9079102003691628436, guid: 22021ed387869b143b0df565eb63f90c,
       type: 3}
   - craftName: Foundation
-    go_Prefab: {fileID: 4869367290019317714, guid: 5acdad288151a0a43a495472cf24fc5b,
+    go_Prefab: {fileID: 4869367290019317714, guid: 15f4adf9f02123b4aa15f4a2f1129f5c,
       type: 3}
-    go_PreviewPrefab: {fileID: 4869367290019317714, guid: 0567c585f3320604fb52c018579ae703,
+    go_PreviewPrefab: {fileID: 4869367290019317714, guid: f99748fcc893b3e4db8cbed1965e74e5,
       type: 3}
   - craftName: Wall
     go_Prefab: {fileID: 3943032989887938890, guid: 3591396943254ff46b96539a60d83643,
@@ -1942,11 +1942,6 @@ MonoBehaviour:
     go_Prefab: {fileID: 8090425886996403149, guid: 9566eaccbc098524ea00c80fb3afad7c,
       type: 3}
     go_PreviewPrefab: {fileID: 8090425886996403149, guid: afb5a31166f2116429593b921203765f,
-      type: 3}
-  - craftName: Bed
-    go_Prefab: {fileID: 9172179922966388994, guid: 9a45e86737cbce34ea98fbbf218831bf,
-      type: 3}
-    go_PreviewPrefab: {fileID: 6810641411381799196, guid: 49178c8cf36554449b960c4eee2806f9,
       type: 3}
   layerMask:
     serializedVersion: 2
