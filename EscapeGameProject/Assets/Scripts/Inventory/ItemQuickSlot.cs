@@ -105,26 +105,31 @@ public class QuickSlot : ItemSlot
         switch (itemType)
         {
             case eItemType.Food:
-                ItemManager.Instance.SetFoodOnHand(itemID);
+                playerController.NotEquipTheOthers();
+                ItemManager.Instance.SetFoodOnHand(itemID);              
                 playerController.EquipFood(itemID);
                 Debug.Log("¼Õ¿¡ À½½Ä µë");
                 break;
             case eItemType.Knife:
+                playerController.NotEquipTheOthers();
                 playerController.SetHasKnife(true);
                 playerController.EquipKnife();
                 Debug.Log("¼Õ¿¡ Ä® µë");
                 break;
             case eItemType.Axe:
+                playerController.NotEquipTheOthers();
                 playerController.SetHasAxe(true);
                 playerController.EquipAxe();
                 Debug.Log("¼Õ¿¡ µµ³¢ µë");
                 break;
             case eItemType.Pickaxe:
+                playerController.NotEquipTheOthers();
                 playerController.SetHasPickaxe(true);
-                playerController.EquipPickaxe();
+                playerController.EquipPickaxe();  
                 Debug.Log("¼Õ¿¡ °î±ªÀÌ µë");
                 break;
             case eItemType.Torch:
+                playerController.NotEquipTheOthers();
                 playerController.SetHasTorch(true);
                 playerController.EquipTorch();
                 Debug.Log("¼Õ¿¡ È¶ºÒ µë");
