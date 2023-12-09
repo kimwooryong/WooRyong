@@ -239,8 +239,9 @@ public class PlayerStatus : MonoBehaviour
             yield return new WaitForSeconds(1.0f); // Adjust the interval as needed
         }
     }
-    public void AddHp(int amount)
+    public void AddHunger(int amount)
     {
-        playerCurrentHp += amount;
+        theCurrentStateOfHunger += amount;
     }
+    
 }
