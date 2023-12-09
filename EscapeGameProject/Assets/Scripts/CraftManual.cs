@@ -140,9 +140,7 @@ public class CraftManual : MonoBehaviour
             go_Prefab = null;
             go_Preview = null;
             previewObject = null;
-            CloseWindow();
             SoundManager.Instance.PlayOnOffBuilding();
-
         }
     }
 
