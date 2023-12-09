@@ -292,7 +292,7 @@ Transform:
   - {fileID: 2057780697715612749}
   - {fileID: 5189869962691804802}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2393381338705216198
 Animator:
@@ -422,9 +422,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 8454063756929841319}
   rb: {fileID: 3745129162221443323}
-  speed: 10
-  runSpeed: 15
-  jumpForce: 200
+  speed: 5
+  runSpeed: 8
+  jumpForce: 150
   _isJump: 0
   _isAttack: 0
   m_MoveSpeedMultiplier: 1
@@ -434,13 +434,9 @@ MonoBehaviour:
   sittingCamPos: {fileID: 2057780697715612749}
   jumpCamPos: {fileID: 5189869962691804802}
   knifeOnHand: {fileID: 6239258926013136150}
-  knifeOnShoulder: {fileID: 8849054090608899298}
   axeOnHand: {fileID: 102649217148155913}
-  axeOnShoulder: {fileID: 1826719728749086233}
   pickaxeOnHand: {fileID: 6059524017337424086}
-  pickaxeOnShoulder: {fileID: 3529883566941604890}
   torchOnHand: {fileID: 8576667950012802440}
-  torchOnShoulder: {fileID: 1101062409057585023}
   isEquipping: 0
   isEquipped: 0
   isKnifeInventory: 0
@@ -469,7 +465,9 @@ MonoBehaviour:
   miniMap: {fileID: 0}
   rayDistance: 3
   playerCurrentHp: 100
-  playerDamage: 2
+  animalDamage: 0
+  TreeDamage: 0
+  rockDamage: 0
   theCurrentStateOfHunger: 100
   theMaxHunger: 100
   hungerDamageTimer: 0
@@ -11969,6 +11967,7 @@ MonoBehaviour:
   inputManager: {fileID: 8454063756929841319}
   mouseSensitivity: 15
   body: {fileID: 7486661350929848575}
+  IsMenuOpen: 0
 --- !u!1 &1766836534020465736
 GameObject:
   m_ObjectHideFlags: 0
