@@ -19,7 +19,6 @@ public class WeaponParticle : MonoBehaviour
     {
         if (gameObject.CompareTag("Hammer"))
         {
-            player.playerDamage = 0;
             //if로 무기들 tag 해두고 PlayerStatus에 데미지를 나눠놓고 거기에 맞게 더해주기
             player.animalDamage = 2;
             player.rockDamage = 2;

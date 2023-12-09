@@ -145,11 +145,7 @@ public class AnimalMovement : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            
-            TakeDamage(player.playerDamage);
-        }
+
 
 
         
