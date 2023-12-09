@@ -137,7 +137,13 @@ public class PlayerCotroller : MonoBehaviour
 
         Block();
         Kick();
-      
+        if (isEquipFood)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                ItemManager.Instance.UseFood(itemFoodID);
+            }
+        }
     }
 
     /// <summary>
@@ -348,9 +354,12 @@ public class PlayerCotroller : MonoBehaviour
       
     }
 
+    bool isEquipFood;
+    int itemFoodID = 0;
     public void NotEquipTheOthers()
     {
-        
+        isEquipFood = false;
+        itemFoodID = 0;
         if (knifeChangeTrigger == false)
         {
             m_Animator.SetBool("WeaponOnShoulder", true);
@@ -402,7 +411,8 @@ public class PlayerCotroller : MonoBehaviour
         //만약 손에 다른 것이 들려있다면, 그것 대신 음식을 손에 든다.
         // 1. 손에 들고있는 도구? 무기를 집어넣는다.
         //아이템을 소환해서, 플레이어 손에 붙이는 함수
-
+        isEquipFood = true;
+        itemFoodID = itemID;
         if (m_Animator.GetBool("OnGround") && isFoodInventory == true)
         {
             m_Animator.SetBool("isArmed", false);
@@ -421,16 +431,6 @@ public class PlayerCotroller : MonoBehaviour
             torchOnHand.SetActive(false);
 
             // 마우스 왼쪽 버튼 누르면 손에 음식 삭제 및 음식 섭취 효과 발생
-            if (Input.GetMouseButtonDown(0))
-            {
-                _isAttack = false;
-                ItemManager.Instance.UseFood(itemID);
-                ItemManager.Instance.DeleteFoodOnHand();
-            }
-
-          
-
-
         }
     }
     #endregion
