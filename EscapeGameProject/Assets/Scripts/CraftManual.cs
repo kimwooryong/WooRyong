@@ -141,6 +141,7 @@ public class CraftManual : MonoBehaviour
             go_Preview = null;
             previewObject = null;
             CloseWindow();
+            SoundManager.Instance.PlayOnOffBuilding();
 
         }
     }
@@ -168,18 +169,22 @@ public class CraftManual : MonoBehaviour
 
     private void Cancel() // √Îº“
     {
-        if (isPreviewActived)
+        if (isActivated)
         {
-            Destroy(go_Preview);
+            if (isPreviewActived)
+            {
+                Destroy(go_Preview);
+            }
+            go_BaseUI.SetActive(false);
+            isActivated = false;
+            isPreviewActived = false;
+            go_Preview = null;
+            go_Prefab = null;
+            GameManager.Instance.InvisibleCursor();
+            Fire_Base.gameObject.SetActive(false);
+            Craft_Base.gameObject.SetActive(false);
+            SoundManager.Instance.PlayOnOffItemInventory();
         }
-        go_BaseUI.SetActive(false);
-        isActivated = false;
-        isPreviewActived = false;
-        go_Preview = null;
-        go_Prefab = null;
-        GameManager.Instance.InvisibleCursor();
-        Fire_Base.gameObject.SetActive(false);
-        Craft_Base.gameObject.SetActive(false);
 
 
     }
@@ -201,14 +206,15 @@ public class CraftManual : MonoBehaviour
         GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
+        SoundManager.Instance.PlayOnOffItemInventory();
     }
 
     private void CloseWindow()
     {
         GameManager.Instance.InvisibleCursor();
         isActivated = false;
-        go_BaseUI.SetActive(false);
-
+        go_BaseUI.SetActive(false); 
+        SoundManager.Instance.PlayOnOffItemInventory();
     }
 
 }
