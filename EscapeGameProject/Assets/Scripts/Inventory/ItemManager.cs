@@ -101,6 +101,7 @@ public class ItemManager : MonoBehaviour
     }
 
     //테스트용
+    public CameraLook cameraLook;
     public void Update()
     {
         // 인벤토리 UI 끄기
@@ -126,17 +127,21 @@ public class ItemManager : MonoBehaviour
             inventoryCanvas.gameObject.SetActive(isActiveInventory);
             if (isActiveInventory)
             {
+                cameraLook.OnMouseMoveStop();
                 GameManager.Instance.VisibleCursor();
             }
             else
             {
+                cameraLook.OnMouseMove();
                 GameManager.Instance.InvisibleCursor();
             }
+            SoundManager.Instance.PlayOnOffItemInventory();
         }
         //퀵슬롯 온오프
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             isActiveQuickSlot = true;
+            cameraLook.OnMouseMoveStop();
             GameManager.Instance.InvisibleAndNoneCursor();
         }
         if (Input.GetKeyUp(KeyCode.Tab))
@@ -147,6 +152,7 @@ public class ItemManager : MonoBehaviour
                 slots.UseQuickSlot();
             }
             isActiveQuickSlot = false;
+            cameraLook.OnMouseMove();
             GameManager.Instance.InvisibleCursor();
         }
         //인벤토리 활성화(I키)
@@ -394,23 +400,17 @@ public class ItemManager : MonoBehaviour
     {
         //현재 사용중인 퀵슬롯의 아이템 갯수 -1
         Debug.Log("음식 섭취1");
-
-    }
-    public void UseFood(CreateItemSlot slot, int itemID)
-    {
-        Debug.Log("음식 섭취1");
         int slotIndex = playerQuickSlot.FindItem(itemID);
-        if(slotIndex == -1)
+        if (slotIndex == -1)
         {
             Debug.Log("퀵슬롯에 아이템 없음");
             return;
         }
         playerQuickSlot.InventorySlots[slotIndex].EatFood();
-        
     }
     GameObject FoodOnHandObject;
     [SerializeField]
-    private PlayerStatus playerStatus;
+    public PlayerStatus playerStatus;
     public void SetFoodOnHand(int itemID)
     {
         DeleteFoodOnHand();

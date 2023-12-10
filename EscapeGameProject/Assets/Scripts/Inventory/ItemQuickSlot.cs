@@ -148,6 +148,13 @@ public class QuickSlot : ItemSlot
     public override void EatFood()
     {
         //이 슬롯에 있는 음식 아이템 사용
+        SoundManager.Instance.PlayPlayerEatFood();
+        PlusItemAmount(-1);
+        if(itemAmount <= 0)
+        {
+            ItemManager.Instance.SetFoodOnHand(0);
+        }
+        ItemManager.Instance.playerStatus.AddHunger(healingAmount);
     }
 
     //오버라이드로 안쓰기

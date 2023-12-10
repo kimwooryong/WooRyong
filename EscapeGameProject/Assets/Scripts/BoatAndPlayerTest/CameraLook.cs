@@ -56,12 +56,12 @@ public class CameraLook : MonoBehaviour
 
     public void OnMouseMoveStop()
     {
-        IsMenuOpen = false;
+        IsMenuOpen = true;
     }
 
     public void OnMouseMove()
     {
-        IsMenuOpen = true;
+        IsMenuOpen = false;
     }
 
 

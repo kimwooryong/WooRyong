@@ -3949,6 +3949,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e2aa46255822b41824d96f9405bd71, type: 3}
+--- !u!114 &1457248844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2042116594857941850, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490934341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00aa11a903465cb41a0d752227fc5458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1459992532 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 186436, guid: 52061dad29aaa6e47852af96dfcbb988,
@@ -6180,6 +6192,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1490934341}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1837924120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5897323952001264110, guid: 1ba43efeda1fd7741bb203819adbc900,
+    type: 3}
+  m_PrefabInstance: {fileID: 1490934341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4f9a79ff3b5f640a5e923596440e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848684265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6215,6 +6239,7 @@ MonoBehaviour:
   middleCanvas: {fileID: 1760559915}
   rightCanvas: {fileID: 1760559913}
   UsingItemIcon: {fileID: 458799644}
+  cameraLook: {fileID: 1837924120}
   idText: {fileID: 1760559918}
   playerInventory: {fileID: 1760559916}
   playerQuickSlot: {fileID: 1760559914}
@@ -6223,6 +6248,7 @@ MonoBehaviour:
   TooltipItemDescription: {fileID: 1760559910}
   TooltipItemAmount: {fileID: 1760559909}
   FoodParentHand: {fileID: 1429812021}
+  playerStatus: {fileID: 1457248844}
 --- !u!4 &1848684267
 Transform:
   m_ObjectHideFlags: 0
