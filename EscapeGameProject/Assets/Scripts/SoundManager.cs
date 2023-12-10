@@ -8,24 +8,24 @@ public class SoundManager : MonoBehaviour
 
     [Header("#BGM")]
     public AudioClip[] bgmClips;
-    public float bgmVolume = 2f;
+    public float bgmVolume = 0.5f;
     [SerializeField]
     public AudioSource bgmPlayer;
 
     [Header("#SFX")]
     public AudioClip[] sfxClips;
-    public float sfxVolume = 3f;
+    public float sfxVolume = 0.7f;
     AudioSource sfxPlayer;
 
     [Header("#UI")]
     public AudioClip[] uiClips;
-    public float uiVolume = 3f;
+    public float uiVolume = 0.7f;
     AudioSource uiPlayer;
 
     //플레이어의 움직임, 점프 관련
     [Header("#Player")]
     public AudioClip[] playerClips;
-    public float playerVolume = 3f;
+    public float playerVolume = 0.7f;
     AudioSource playerPlayer;
 
     [SerializeField]
