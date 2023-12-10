@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+    public float fadeOutDuration = 1.5f;
 
     [Header("#BGM")]
     public AudioClip[] bgmClips;
@@ -26,6 +27,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] playerClips;
     public float playerVolume = 3f;
     AudioSource playerPlayer;
+
+    [SerializeField]
+    public string selectedClipName = "None";
 
 
     void Awake()
@@ -89,6 +93,7 @@ public class SoundManager : MonoBehaviour
             if (clip.name.Contains(clipName))
             {
                 selectedClip = clip;
+                selectedClipName = clip.name;
                 break;
             }
         }
@@ -101,6 +106,26 @@ public class SoundManager : MonoBehaviour
             Debug.Log("\"clipName\" sound is Empty.");
         }
     }
+
+    //public void FadeOutAndStopSound()
+    //{
+    //    StartCoroutine(FadeOutCoroutine());
+    //}
+
+    //IEnumerator FadeOutCoroutine()
+    //{
+    //    float bgmVolume = bgmPlayer.volume;
+    //    while(bgmPlayer.volume > 0)
+    //    {
+    //        bgmPlayer.volume -= bgmVolume * Time.deltaTime / fadeOutDuration;
+    //        yield return null;
+    //    }
+
+    //    // 사운드 중지 후 
+    //    bgmPlayer.Stop();
+    //    // 기존 볼륨대로 초기화
+    //    bgmPlayer.volume = bgmVolume;
+    //}
 
 
 
@@ -153,10 +178,10 @@ public class SoundManager : MonoBehaviour
     }
 
     // 동물이 걷는 소리
-    public void PlayAnimalWalking()
-    {
-        PlaySound(sfxPlayer, sfxClips, "animalWalking"); // x
-    }
+    //public void PlayAnimalWalking()
+    //{
+    //    PlaySound(sfxPlayer, sfxClips, "animalWalking"); // x
+    //}
 
     // 불 지피는 소리 
     public void PlayCampfire()
@@ -199,6 +224,7 @@ public class SoundManager : MonoBehaviour
     // 나무문 열리는 소리
     public void PlayOpenDoor()
     {
+        PlaySound(sfxPlayer, sfxClips, "OpenDoor");
         //삐걱 , 끼익 
     }
 
@@ -244,7 +270,10 @@ public class SoundManager : MonoBehaviour
     // 인벤토리 내 - 아이템 위치 변경
     public void PlayArrangeItem()
     {
+        if (!uiPlayer.isPlaying)
+        {
         PlaySound(uiPlayer, uiClips, "ArrangeItem");
+        }
     }
 
 
@@ -263,10 +292,10 @@ public class SoundManager : MonoBehaviour
     }
 
     // 점프
-    public void PlayPlayerJump()
-    {
-        PlaySound(playerPlayer, playerClips, "PlayerJump"); // x
-    }
+    //public void PlayPlayerJump()
+    //{
+    //    PlaySound(playerPlayer, playerClips, "PlayerJump"); // x
+    //}
 
     // 음식 먹기
     public void PlayPlayerEatFood()
@@ -286,17 +315,12 @@ public class SoundManager : MonoBehaviour
         PlaySound(playerPlayer, playerClips, "AttackRock");   
     }
 
-    // 공격이 빗나갔을때
+    // 공격 미스
     public void PlayPlayerAttackMiss()
     {
-        // 바람소리 
+        PlaySound(playerPlayer, playerClips, "AttackMiss");
     }
 
-    // 나무 위를 걷는 소리 
-    public void PlayPlayerStepOnWood()
-    {
-
-    }
 
     // 건축물 부수기
     public void PlayPlayerDestroyBuilding()
@@ -306,13 +330,3 @@ public class SoundManager : MonoBehaviour
 
 }
 
-    //public void SFXPlay(string sfxName, AudioClip clip)
-    //{
-    //    GameObject go = new GameObject(sfxName + "Sound");
-    //    sfxPlayer = go.AddComponent<AudioSource>();
-    //    AudioSource audioSource = go.AddComponent<AudioSource>();
-    //    audioSource.clip = clip;
-    //    audioSource.Play();
-
-    //    Destroy(go, clip.length);
-    //}
