@@ -125,12 +125,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &9242101 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5189869962691804802, guid: 1ba43efeda1fd7741bb203819adbc900,
-    type: 3}
-  m_PrefabInstance: {fileID: 1490934341}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &57702201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,7 +3838,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpCamPos
       value: 
-      objectReference: {fileID: 9242101}
+      objectReference: {fileID: 0}
     - target: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_RootOrder
@@ -5479,13 +5473,6 @@ MonoBehaviour:
   rayDistance: 3
   playerCurrentHp: 100
   playerDamage: 2
-  theCurrentStateOfHunger: 100
-  theMaxHunger: 100
-  hungerDamageTimer: 0
-  hungerTimer: 0
-  fullHungerHpAddTimer: 0
-  attackHungerDamageCheck: 0
-  attackHungerCheck: 0
 --- !u!114 &2062681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
