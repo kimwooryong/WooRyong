@@ -6,9 +6,12 @@ public class BgmController : MonoBehaviour
 {
     string Sand = "Sand";
     string Ground = "Ground";
+    string InCave = "InCave";
     
     int SandLayerNumber;
     int GroundLayerNumber;
+    int CaveLayerNumber;
+    bool IsInCave = true;
     
 
     // Start is called before the first frame update
@@ -17,6 +20,7 @@ public class BgmController : MonoBehaviour
         //Debug.Log("Start Trigger Check");
         SandLayerNumber = LayerMask.NameToLayer(Sand);
         GroundLayerNumber = LayerMask.NameToLayer(Ground);
+        CaveLayerNumber = LayerMask.NameToLayer(InCave);
     }
 
 
@@ -25,7 +29,13 @@ public class BgmController : MonoBehaviour
         if (other.gameObject.layer == SandLayerNumber)
         {
             SoundManager.Instance.PlayBgmBeach();
-        } else
+        } else if (IsInCave && other.gameObject.layer == CaveLayerNumber)
+        {
+            SoundManager.Instance.PlayBgmInCave();
+            StartCoroutine(SoundManager.Instance.PlayBatNoiseWaitForSeconds());
+            IsInCave = false;
+        }
+        else
         {
             SoundManager.Instance.bgmPlayer.Stop();
         }
