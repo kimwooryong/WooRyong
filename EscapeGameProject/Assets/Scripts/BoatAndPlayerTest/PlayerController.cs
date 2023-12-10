@@ -26,7 +26,8 @@ public class PlayerCotroller : MonoBehaviour
     private bool _isCrouch;
     private bool _isSprint;
     public bool _isAttack;
-
+    private bool _isPlayingFootstep = false;
+    private bool _isPlayingRun = false;
     //
     [SerializeField] float m_MoveSpeedMultiplier = 1f;
     [SerializeField] float m_AnimSpeedMultiplier = 1f;
@@ -67,16 +68,9 @@ public class PlayerCotroller : MonoBehaviour
     [SerializeField]
     private GameObject torchOnHand;
 
-
     //  
     public bool isEquipping; // 장착 중
     public bool isEquipped;  // 장착 됨
-
-    // 1,2,3,4 번 키 반복하여 누른 횟수
-    //private bool repeatClickKnife = false;
-    //private bool repeatClickAxe = false;
-    //private bool repeatClicPickaxe = false;
-    //private bool repeatClickTorch = false;
 
     // 무기 소지 여부 확인, 퀵슬롯에 아이템이 있을 때 true. -> 퀵슬롯에서
     // 인벤토리에 존재
@@ -124,8 +118,6 @@ public class PlayerCotroller : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Capsule = GetComponent<CapsuleCollider>();
 
-   
-
     }
 
     private void Update()
@@ -146,6 +138,17 @@ public class PlayerCotroller : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayFootstep()
+    {
+        _isPlayingFootstep = true; // footstep을 재생 중으로 설정
+
+        SoundManager.Instance.PlayPlayerFootStep(); // footstep 재생
+
+        yield return new WaitForSeconds(0.55f); // 0.55초 대기
+
+        _isPlayingFootstep = false; // footstep 재생 종료
+    }
+
     /// <summary>
     /// Input System으로 움직이는 코드
     /// </summary>
@@ -157,9 +160,19 @@ public class PlayerCotroller : MonoBehaviour
         Vector3 move = transform.right * right + transform.forward * forward;
         move *= inputManager.inputMaster.Movement.Run.ReadValue<float>() == 0 ? speed : runSpeed;
 
-
         rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
 
+        if (right > 0 || forward > 0)
+        {
+            if (!_isPlayingFootstep && _isSprint == false) // footstep을 재생 중이 아닐 때만 실행
+            {
+                StartCoroutine(PlayFootstep()); // footstep 재생 코루틴 시작
+            }
+        }
+        else if (right == 0 && forward == 0)
+        {
+            _isPlayingFootstep = false; // 정지 상태일 때 footstep 재생 중이 아님
+        }
 
         UpdateAnimator(move);
         AttackMonster();
@@ -435,6 +448,8 @@ public class PlayerCotroller : MonoBehaviour
     }
     #endregion
 
+
+    // 에니메이션을 위한 함수(무기 꺼내보이게 해주는 함수)
     public void ActiveWeapon()
     {
 
@@ -565,6 +580,18 @@ public class PlayerCotroller : MonoBehaviour
         }
     }
 
+
+    private IEnumerator PlayRunSound()
+    {
+        _isPlayingRun = true; // 뛰는 소리 재생 중
+
+        SoundManager.Instance.PlayPlayerRun(); // 뛰는 소리 재생
+
+        yield return new WaitForSeconds(0.55f); // 0.55초 대기
+
+        _isPlayingRun = false; // 뛰는 소리 재생 종료
+    }
+
     private void Sprint()
     {
         float sprintValue = inputManager.inputMaster.Movement.Run.ReadValue<float>();
@@ -572,12 +599,15 @@ public class PlayerCotroller : MonoBehaviour
         if (_isSprint)
         {
             m_Animator.SetFloat("Speed_f", 2f); // Speed_f 값을 변경
-            //Debug.Log("뛰는 중");
+
+            if (!_isPlayingRun) // 뛰는 소리를 재생 중이 아닐 때만 실행
+            {
+                StartCoroutine(PlayRunSound()); // 뛰는 소리 재생 코루틴 시작
+            }
         }
         else
         {
             m_Animator.SetFloat("Speed_f", 1f); // Speed_f 값을 변경
-            //Debug.Log("뛰기 끝");
         }
     }
 
@@ -640,26 +670,7 @@ public class PlayerCotroller : MonoBehaviour
         Camera.main.transform.position = jumpCamPos.position;
     }
 
-    /*
-    private void Crouch()
-    {
-        float crouchValue = inputManager.inputMaster.Movement.Crouch.ReadValue<float>();
-        _isCrouch = crouchValue > 0.0f;
 
-        if (_isCrouch)
-        {
-            Vector3 newPosition = playerCamera.transform.position;
-            newPosition.y = inputManager.inputMaster.Movement.Crouch.ReadValue<float>() == 0 ? 1f : 0.7f;
-            playerCamera.transform.position = newPosition;
-        }
-        else
-        {
-            playerCamera.transform.localPosition = originalCameraLocalPosition;
-        }
-
-        m_Animator.SetBool("Crouch", _isCrouch);
-    }
-    */
 
 
     public void OnAnimatorMove()
