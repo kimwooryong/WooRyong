@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
+  - {fileID: 2100000, guid: cd18a0c9373f87242beb64d23a88e5ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
+  - {fileID: 2100000, guid: cd18a0c9373f87242beb64d23a88e5ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,11 +177,11 @@ GameObject:
   - component: {fileID: 6774800160189341537}
   - component: {fileID: 8966769870110228969}
   - component: {fileID: 8980609281234573119}
-  - component: {fileID: 1781186296895187023}
-  - component: {fileID: 7601907993269887570}
   - component: {fileID: 1462531711915177800}
+  - component: {fileID: 5180739451625813094}
+  - component: {fileID: 6236098738559362772}
   m_Layer: 0
-  m_Name: Boat Green
+  m_Name: Boat Test
   m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6810641411381799196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.27059832, y: -0.6532814, z: -0.6532814, w: 0.27059832}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -232,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
+  - {fileID: 2100000, guid: cd18a0c9373f87242beb64d23a88e5ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,36 +254,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1781186296895187023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6810641411381799196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f119064fdf3a340862a5fc87f3846c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRotationAngleX: -90
-  targetRotationAngleY: 0
-  target: {fileID: 3662019519970498951, guid: 7184e9c997ffaae478392b0d88c045d8, type: 3}
---- !u!114 &7601907993269887570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6810641411381799196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f136b448ffb41964bb2d589463f672e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerGround: 10
-  green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
-  Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
 --- !u!64 &1462531711915177800
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -299,10 +269,51 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1821591f14bb859438b6125443c97687, type: 3}
+--- !u!54 &5180739451625813094
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810641411381799196}
+  serializedVersion: 4
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6236098738559362772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810641411381799196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d272710d3fad5c49a7f9867813c7e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatSeat: {fileID: 6774800160189341537}
+  isRiding: 0

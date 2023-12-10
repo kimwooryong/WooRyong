@@ -109,7 +109,7 @@ public class CraftManual : MonoBehaviour
         {
             if (go_Preview != null)
             {
-                go_Preview.transform.Rotate(new Vector3(0f, 45f , 0f)); // 회전
+                go_Preview.transform.Rotate(new Vector3(0f, 45f, 0f)); // 회전
             }
         }
 
@@ -120,7 +120,16 @@ public class CraftManual : MonoBehaviour
                 go_Preview.transform.Rotate(new Vector3(0f, -45f, 0f)); // 회전
             }
         }
-        if(Input.GetKeyDown(KeyCode.I))
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (go_Preview != null)
+            {
+                go_Preview.transform.Rotate(new Vector3(0f, 0f, 45f)); // 배 용
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
         {
             go_BaseUI.gameObject.SetActive(false);
         }
@@ -144,7 +153,7 @@ public class CraftManual : MonoBehaviour
         }
     }
 
-    private void PreviewPositionUpdate() // 프리뷰 설치전 움직임
+    public void PreviewPositionUpdate() // 프리뷰 설치전 움직임
     {
         Debug.DrawRay(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, Color.red); // 씬 창에 레이선이 보이게 해주는 코드
         if (Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, out hitInfo, range, layerMask)) // 카메라 앞으로 레이를 쏘고 위치값을 보내주고 레이어 마스크를 확인한다
@@ -211,7 +220,7 @@ public class CraftManual : MonoBehaviour
     {
         GameManager.Instance.InvisibleCursor();
         isActivated = false;
-        go_BaseUI.SetActive(false); 
+        go_BaseUI.SetActive(false);
         SoundManager.Instance.PlayOnOffItemInventory();
     }
 

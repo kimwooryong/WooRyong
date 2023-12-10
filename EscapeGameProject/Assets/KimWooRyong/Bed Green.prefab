@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1852928129654135280}
   - component: {fileID: 8099351476902815727}
   - component: {fileID: -3759056556148120408}
+  - component: {fileID: 5604165249246678836}
   m_Layer: 0
   m_Name: Bed Green
   m_TagString: Untagged
@@ -121,3 +122,15 @@ MonoBehaviour:
   layerGround: 10
   green: {fileID: 2100000, guid: 6a19b5a4c3fdcd24b8961188485f4b40, type: 2}
   Red: {fileID: 2100000, guid: d121990c27d7ba3498d5e2c3eb15d9e5, type: 2}
+--- !u!114 &5604165249246678836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090425886996403149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64d755da610e014aa4f25d7e9bc7ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
