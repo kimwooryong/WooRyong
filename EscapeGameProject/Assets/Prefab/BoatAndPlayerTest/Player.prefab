@@ -292,7 +292,7 @@ Transform:
   - {fileID: 2057780697715612749}
   - {fileID: 5189869962691804802}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2393381338705216198
 Animator:
@@ -465,6 +465,7 @@ MonoBehaviour:
   miniMap: {fileID: 0}
   rayDistance: 3
   playerCurrentHp: 100
+  playerMaxHp: 100
   animalDamage: 0
   TreeDamage: 0
   rockDamage: 0

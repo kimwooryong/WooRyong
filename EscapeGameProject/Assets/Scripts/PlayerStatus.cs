@@ -20,17 +20,16 @@ public class PlayerStatus : MonoBehaviour
     private PlayerCotroller playerCotroller;
     public float rayDistance = 3.0f;
 
-    [SerializeField]
-    private int playerCurrentHp = 100;
-    private int playerMaxHp = 100;
+    public int playerCurrentHp = 100;
+    public int playerMaxHp = 100;
     public int animalDamage;
     public int TreeDamage;
     public int rockDamage;
 
 
     //나중에 다 private로
-    public float theCurrentStateOfHunger = 100.0f;
-    public float theMaxHunger = 100.0f;
+    public int theCurrentStateOfHunger = 100;
+    public int theMaxHunger = 100;
     public float hungerDamageTimer = 0.0f;
     public float hungerTimer = 0.0f;
     public float fullHungerHpAddTimer = 0.0f;
@@ -62,13 +61,27 @@ public class PlayerStatus : MonoBehaviour
         //onMove = true;
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
-        if (miniMap != null)
+
+        if (miniMap == null)
         {
-            miniMap.SetActive(false);
+            GameObject[] foundObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (GameObject obj in foundObjects)
+            {
+                if (obj.name == "Canvas_Minimap" && !obj.activeSelf)
+                {
+                    miniMap = obj;
+                    miniMap.SetActive(false); // Set it inactive again
+                    break;
+                }
+            }
 
+            if (miniMap == null)
+            {
+                Debug.LogError("MiniMap GameObject not found. Make sure the GameObject is named 'Canvas_Minimap'.");
+            }
         }
-        StartCoroutine(HandleHunger());
 
+        StartCoroutine(HandleHunger());
     }
     void Update()
     {
@@ -148,7 +161,7 @@ public class PlayerStatus : MonoBehaviour
         {
             if (theCurrentStateOfHunger <= 0.0f)
             {
-                theCurrentStateOfHunger = 0.0f;
+                theCurrentStateOfHunger = 0;
                 if (hungerTimer != 0.0f)
                 {
                     hungerTimer = 0.0f;
