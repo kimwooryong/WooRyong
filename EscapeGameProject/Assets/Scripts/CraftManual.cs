@@ -31,7 +31,7 @@ public class CraftManual : MonoBehaviour
 
 
     private PreviewObject previewObject; // 클래스 참조
-    private CameraLook cameraLook;
+    public CameraLook cameraLook;
 
 
     private Quaternion savedRotation;
@@ -66,6 +66,7 @@ public class CraftManual : MonoBehaviour
         go_Prefab = craft_Build[_slotNumber].go_Prefab;
         isPreviewActived = true; // 프리뷰 켜주기
         go_BaseUI.SetActive(false); // UI 꺼주기
+        cameraLook.OnMouseMove();
     }
 
     void Update()
@@ -184,6 +185,7 @@ public class CraftManual : MonoBehaviour
             }
             go_BaseUI.SetActive(false);
             isActivated = false;
+            cameraLook.OnMouseMove();
             isPreviewActived = false;
             go_Preview = null;
             go_Prefab = null;
@@ -210,6 +212,7 @@ public class CraftManual : MonoBehaviour
 
     private void OpenWindow()
     {
+        cameraLook.OnMouseMoveStop();
         GameManager.Instance.VisibleCursor();
         isActivated = true;
         go_BaseUI.SetActive(true);
@@ -218,6 +221,7 @@ public class CraftManual : MonoBehaviour
 
     private void CloseWindow()
     {
+        cameraLook.OnMouseMove();
         GameManager.Instance.InvisibleCursor();
         isActivated = false;
         go_BaseUI.SetActive(false);

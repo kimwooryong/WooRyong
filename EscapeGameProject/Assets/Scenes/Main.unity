@@ -8551,26 +8551,9 @@ PrefabInstance:
       objectReference: {fileID: 307458281}
     - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
         type: 3}
-      propertyPath: craft_Build.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
-        type: 3}
-      propertyPath: craft_Build.Array.data[9].craftName
-      value: Bed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
-        type: 3}
-      propertyPath: craft_Build.Array.data[9].go_Prefab
+      propertyPath: cameraLook
       value: 
-      objectReference: {fileID: 9172179922966388994, guid: 9a45e86737cbce34ea98fbbf218831bf,
-        type: 3}
-    - target: {fileID: 8459029477496938569, guid: 6d24ac3f92745d143a35e4c1fe0b45f8,
-        type: 3}
-      propertyPath: craft_Build.Array.data[9].go_PreviewPrefab
-      value: 
-      objectReference: {fileID: 6810641411381799196, guid: 49178c8cf36554449b960c4eee2806f9,
-        type: 3}
+      objectReference: {fileID: 1837924120}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
