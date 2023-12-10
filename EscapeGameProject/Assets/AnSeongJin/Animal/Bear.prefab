@@ -202,7 +202,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3105285639287441230}
   - {fileID: 7095223680812871845}
@@ -248,11 +248,12 @@ MonoBehaviour:
   - walk
   - eat
   - idle
-  attackRecognitionScope: 2.2
-  moveSpeed: 4.5
+  attackRecognitionScope: 2.7
+  moveSpeed: 4
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
+  animalType: 4
   boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
@@ -261,6 +262,8 @@ MonoBehaviour:
   isIdleStateChangeRunning: 0
   currentHp: 20
   maxHp: 20
+  isHit: 0
+  isDie: 0
   dieTime: 1
 --- !u!65 &8924035378638451717
 BoxCollider:

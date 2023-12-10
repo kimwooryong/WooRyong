@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[0]
@@ -716,15 +716,15 @@ PrefabInstance:
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[5]
       value: 
-      objectReference: {fileID: 7400014, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
+      objectReference: {fileID: 7400018, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[6]
       value: 
-      objectReference: {fileID: 7400018, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
+      objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[7]
       value: 
-      objectReference: {fileID: 7400022, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
+      objectReference: {fileID: 7400024, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
     - target: {fileID: 11100000, guid: 0faec1d65d1a862429fd6c3fdef4bfcb, type: 3}
       propertyPath: m_Animations.Array.data[8]
       value: 
@@ -824,21 +824,23 @@ MonoBehaviour:
   - walk
   - eat
   - idle
-  - howl
   - search
   attackRecognitionScope: 1.4
   moveSpeed: 4
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
+  animalType: 2
   boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 70
   rayCount: 5
   isIdleStateChangeRunning: 0
-  currentHp: 8
-  maxHp: 8
+  currentHp: 30
+  maxHp: 30
+  isHit: 0
+  isDie: 0
   dieTime: 1
 --- !u!65 &3358483280066266036
 BoxCollider:

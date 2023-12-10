@@ -1662,19 +1662,22 @@ MonoBehaviour:
   - walk
   - eat
   - idle
-  attackRecognitionScope: 1.7
+  attackRecognitionScope: 2
   moveSpeed: 4
   rotationSpeed: 2
   rotationInterval: 2
   behavior: 0
+  animalType: 3
   boxSize: 1
   playerPosition: {fileID: 0}
   isPlayerCheck: 0
   coneAngle: 20
   rayCount: 3
   isIdleStateChangeRunning: 0
-  currentHp: 5
-  maxHp: 5
+  currentHp: 40
+  maxHp: 40
+  isHit: 0
+  isDie: 0
   dieTime: 1
 --- !u!136 &1153157467021881429
 CapsuleCollider:

@@ -7,6 +7,14 @@ public enum MonsterBehavior
     Aggression,
     Defensiveness
 }
+public enum AnimalType
+{
+    RabbitFox,
+    Deer,
+    Wolf,
+    Boar,
+    Bear
+}
 
 public class AnimalMovement : MonoBehaviour
 {
@@ -21,6 +29,8 @@ public class AnimalMovement : MonoBehaviour
     private float timer = 0f;
 
     public MonsterBehavior behavior;
+    public AnimalType animalType;
+
     public float boxSize = 1f;
     public Transform playerPosition;
     public bool isPlayerCheck;
@@ -197,6 +207,18 @@ public class AnimalMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.2f);
         StartCoroutine(animalAttack.Attack());
+        if(animalType == AnimalType.Wolf)
+        {
+            SoundManager1.Instance.PlayWolfAttack();
+        }
+        else if (animalType == AnimalType.Boar)
+        {
+            SoundManager1.Instance.PlayBoarAttack();
+        }
+        else if (animalType == AnimalType.Bear)
+        {
+            SoundManager1.Instance.PlayBearAttack();
+        }
         yield return new WaitForSecondsRealtime(0.6f);
         ani.Stop("attack");
 
@@ -210,7 +232,26 @@ public class AnimalMovement : MonoBehaviour
         isPlayerCheck = true;
         isHit = true;
         currentHp -= damage;
-
+        if(animalType == AnimalType.RabbitFox)
+        {
+            SoundManager.Instance.PlayFox();
+        }
+        else if(animalType == AnimalType.Deer)
+        {
+            SoundManager1.Instance.PlayDeerHit();
+        }
+        else if (animalType == AnimalType.Wolf)
+        {
+            SoundManager1.Instance.PlayWolfHit();
+        }
+        else if (animalType == AnimalType.Boar)
+        {
+            SoundManager1.Instance.PlayBoarHit();
+        }
+        else if (animalType == AnimalType.Bear)
+        {
+            SoundManager1.Instance.PlayBearHit();
+        }
         if (currentHp < 0)
         {
             currentHp = 0;
@@ -233,7 +274,26 @@ public class AnimalMovement : MonoBehaviour
         isHit = true;
         ani.wrapMode = WrapMode.Once;
         ani.Play("die");
-        
+        if (animalType == AnimalType.RabbitFox)
+        {
+            SoundManager.Instance.PlayFox();
+        }
+        else if (animalType == AnimalType.Deer)
+        {
+            SoundManager1.Instance.PlayDeerDie();
+        }
+        else if (animalType == AnimalType.Wolf)
+        {
+            SoundManager1.Instance.PlayWolfDie();
+        }
+        else if (animalType == AnimalType.Boar)
+        {
+            SoundManager.Instance.PlayBoarDie();
+        }
+        else if (animalType == AnimalType.Bear)
+        {
+            SoundManager1.Instance.PlayBearDie();
+        }
         Destroy(boxCollider, delay - 0.1f);
         yield return new WaitForSecondsRealtime(delay);
         float destroyWaitTime = 0f;
