@@ -14,7 +14,7 @@ public class BgmController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start Trigger Check");
+        //Debug.Log("Start Trigger Check");
         SandLayerNumber = LayerMask.NameToLayer(Sand);
         GroundLayerNumber = LayerMask.NameToLayer(Ground);
     }
