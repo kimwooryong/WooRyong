@@ -3077,6 +3077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cave_Set2
       objectReference: {fileID: 0}
+    - target: {fileID: 175278, guid: 1dbc68de5fa7d3e4d917794165871dce, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 420284, guid: 1dbc68de5fa7d3e4d917794165871dce, type: 3}
       propertyPath: m_RootOrder
       value: -1
