@@ -7,15 +7,13 @@ public class SavePoint : MonoBehaviour
     private bool canInteract = false;
     private GameManager gameManager;
     private Transform firstSpawnPosition;
-    private NaturalObjectSpawn naturalObjectSpawn;
     private DayNightCycle dayNightCycle;
     private UIManager uiManager;
-    private PlayerCotroller playerCotroller;
+    private PlayerStatus player;
 
     public CanvasGroup panelCanvasGroup;
 
     public float fadeDuration = 5f;
-    private int randCount;
 
     private void Awake()
     {
@@ -26,9 +24,8 @@ public class SavePoint : MonoBehaviour
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
         gameManager = FindObjectOfType<GameManager>();
-        naturalObjectSpawn = FindObjectOfType<NaturalObjectSpawn>();
         uiManager = FindObjectOfType<UIManager>();
-        playerCotroller = FindObjectOfType<PlayerCotroller>();
+        player = FindObjectOfType<PlayerStatus>();
 
         if (gameManager != null)
         {
@@ -38,6 +35,10 @@ public class SavePoint : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerStatus>();
+        }
         if (canInteract && Input.GetKeyDown(KeyCode.E) && dayNightCycle.isNight == true)
         {
             Time.timeScale = 0.0f;
@@ -82,6 +83,7 @@ public class SavePoint : MonoBehaviour
     {
 
         {
+            player.rb.isKinematic = true;
             panelCanvasGroup.gameObject.SetActive(true);
             float timer = 0f;
             while (timer < fadeDuration)
@@ -91,17 +93,12 @@ public class SavePoint : MonoBehaviour
                 timer += Time.deltaTime;
 
                 //playerMovement.onMove = false; 나중에 플레이어 들어오면 불값 줘서 움직임 막을 수 있게 하기
-                playerCotroller.speed = 0.0f;
-                playerCotroller.runSpeed = 0.0f;
-                playerCotroller.jumpForce = 0.0f;
                 yield return null;
             }
             SetSavePoint();
+            player.rb.isKinematic = false;
             dayNightCycle.ResetDayNightCycle();
             panelCanvasGroup.alpha = 0f;
-            playerCotroller.speed = 10.0f;
-            playerCotroller.runSpeed = 15.0f;
-            playerCotroller.jumpForce = 200.0f;
             panelCanvasGroup.gameObject.SetActive(false);
         }
     }

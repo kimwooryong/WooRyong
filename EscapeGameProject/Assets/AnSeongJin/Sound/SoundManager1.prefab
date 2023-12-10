@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &378529358214636287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3139778348407001788}
+  - component: {fileID: 2442089094867051187}
+  m_Layer: 6
+  m_Name: SoundManager1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3139778348407001788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378529358214636287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2442089094867051187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378529358214636287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e43051849b6d047b00f403a2d81b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutDuration: 1.5
+  bgmClips: []
+  bgmVolume: 0.5
+  bgmPlayer: {fileID: 0}
+  sfxClips:
+  - {fileID: 8300000, guid: 12ae294e4434ce743a20b26d9b3d07de, type: 3}
+  - {fileID: 8300000, guid: b30e742a2c8ddb24d8c95f0950e27f0e, type: 3}
+  - {fileID: 8300000, guid: 0b5e34707c2077549b436c097796befa, type: 3}
+  - {fileID: 8300000, guid: ef8f7fba60e49a44f96e49bd30903a32, type: 3}
+  - {fileID: 8300000, guid: 18bd2626e411f964eb2c7ad8c084b8ca, type: 3}
+  - {fileID: 8300000, guid: 5aeaf0513bb35b14e8e14616396fdc1b, type: 3}
+  - {fileID: 8300000, guid: 646487e24c8bb9b42ad20278fca325cb, type: 3}
+  - {fileID: 8300000, guid: 96783c5d102b8414d833a8d13828825f, type: 3}
+  - {fileID: 8300000, guid: 88c9979b5d60a2e4d815497d62be9f9d, type: 3}
+  - {fileID: 8300000, guid: 38f709c6f9522a340a42f95bb29ef7d6, type: 3}
+  sfxVolume: 0.7
+  uiClips: []
+  uiVolume: 0.7
+  playerClips: []
+  playerVolume: 0.7
+  selectedClipName: None

@@ -18,5 +18,10 @@ public class PlayerGps : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(playerMovement.transform.position.x, yOffSet, playerMovement.transform.position.z);
         }
+        else if (playerMovement == null)
+        {
+            playerMovement = FindObjectOfType<PlayerStatus>();
+        }
+    
     }
 }

@@ -102,18 +102,24 @@ private void SpawnAnimal()
 
             if(prefabIndex == 3)
             { 
-                float wolfSize = 2.0f;
+                float wolfSize = 3.0f;
                 treeInstance.transform.localScale = new Vector3(wolfSize, wolfSize, wolfSize);
+                treeInstance.transform.parent = emptyObject.transform;
+            }
+            else if (prefabIndex == 4)
+            {
+                randomSize = Random.Range(1.45f, 1.5f);
+                treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
                 treeInstance.transform.parent = emptyObject.transform;
             }
             else
             {
-                randomSize = Random.Range(0.95f, 1.05f);
+                randomSize = Random.Range(1.95f, 2.0f);
                 treeInstance.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
                 treeInstance.transform.parent = emptyObject.transform;
             }
 
-    }
+        }
 }
 
 private int WeightedRandomSelection(float[] probabilities)
