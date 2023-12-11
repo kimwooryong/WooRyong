@@ -142,10 +142,18 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerCurrentHp -= damage;
+        if(playerCurrentHp <= 0)
+        {
+            playerCurrentHp = 0;
+        }
     }
     public void ReductionInHunger(int reduction)
     {
         theCurrentStateOfHunger -= reduction;
+        if(theCurrentStateOfHunger <= 0)
+        {
+            theCurrentStateOfHunger = 0;
+        }
     }
     private void DestroyChild(string name)
     {
@@ -255,6 +263,10 @@ public class PlayerStatus : MonoBehaviour
     public void AddHunger(int amount)
     {
         theCurrentStateOfHunger += amount;
+        if(theCurrentStateOfHunger >= 100)
+        {
+            theCurrentStateOfHunger = 100;
+        }
     }
     
 }
