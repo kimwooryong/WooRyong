@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
     [Header("#SFX")]
     public AudioClip[] sfxClips;
     public float sfxVolume = 0.7f;
-    AudioSource sfxPlayer;
+    public AudioSource sfxPlayer;
 
     [Header("#UI")]
     public AudioClip[] uiClips;
@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour
     [Header("#Player")]
     public AudioClip[] playerClips;
     public float playerVolume = 0.7f;
-    AudioSource playerPlayer;
+    public AudioSource playerPlayer;
 
     [SerializeField]
     public string selectedClipName = "None";
@@ -87,7 +87,10 @@ public class SoundManager : MonoBehaviour
 
         foreach(AudioClip clip in AudioClips)
         {
-            if (clip.name.Contains(clipName))
+            if (clip == null)
+            {
+                Debug.Log("SoundManager AudioClip is Missing.");
+            } else if (clip.name.Contains(clipName))
             {
                 selectedClip = clip;
                 selectedClipName = clip.name;
@@ -177,8 +180,18 @@ public class SoundManager : MonoBehaviour
     // 불 지피는 소리 
     public void PlayCampfire()
     {
-        PlaySound(sfxPlayer, sfxClips, "Campfire");  
+        PlaySound(sfxPlayer, sfxClips, "Campfire");
     }
+
+    public IEnumerator PlayCampFireNoiseWaitForSeconds()
+    {
+        while(true)
+        {
+        PlayCampfire();
+        yield return new WaitForSeconds(10.159f);
+        }
+    }
+
 
     // 갈매기
     public void PlaySeagullsSound()

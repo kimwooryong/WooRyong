@@ -11,4 +11,13 @@ public class Cook : MonoBehaviour
         cookCollider = GetComponent<Collider>();
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SoundManager.Instance.PlayCampfire();
+        } 
+    }
+
 }
