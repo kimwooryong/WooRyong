@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponParticle : MonoBehaviour
@@ -6,7 +7,9 @@ public class WeaponParticle : MonoBehaviour
     private PlayerStatus player;
     private PlayerCotroller playerController;
     private CapsuleCollider capsuleCollider;
-    private bool hasPlayedAttackMissSound = false; // »õ º¯¼ö
+    private bool hasPlayedAttackMissSound = false;
+    private bool isCapsuleColliderEnabled = false;
+    private bool isAttackUsing = false;
 
     private void Start()
     {
@@ -20,20 +23,28 @@ public class WeaponParticle : MonoBehaviour
     {
         if (playerController.isAttacking)
         {
-            capsuleCollider.enabled = true;
-
-            if (!hasPlayedAttackMissSound)
+            if (!isCapsuleColliderEnabled)
             {
-                SoundManager.Instance.PlayPlayerAttackMiss();
-                hasPlayedAttackMissSound = true;
+                if(!isAttackUsing)
+                {
+                StartCoroutine(EnableCapsuleColliderWithDelay(0.2f));
+
+                }
+                if (!hasPlayedAttackMissSound)
+                {
+                    SoundManager.Instance.PlayPlayerAttackMiss();
+                    hasPlayedAttackMissSound = true;
+                }
             }
         }
         else
         {
             capsuleCollider.enabled = false;
             hasPlayedAttackMissSound = false;
+            isCapsuleColliderEnabled = false; // Reset the flag when not attacking
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -136,6 +147,14 @@ public class WeaponParticle : MonoBehaviour
         {
             Destroy(particleInstance);
         }
+    }
+    IEnumerator EnableCapsuleColliderWithDelay(float delay)
+    {
+        isAttackUsing = true;
+        yield return new WaitForSeconds(delay);
+        capsuleCollider.enabled = true;
+        isCapsuleColliderEnabled = true;
+        isAttackUsing = false;
     }
 
 }
