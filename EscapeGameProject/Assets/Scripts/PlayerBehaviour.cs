@@ -32,8 +32,11 @@ public class PlayerBehaviour : MonoBehaviour
     private bool isDetecting;
     private void RayObject()
     {
-        Ray testRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // 카메라 기준 가운데에 레이 발사
-        TestWhatHit(testRay);
+        if(Camera.main != null)
+        {
+            Ray testRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // 카메라 기준 가운데에 레이 발사
+            TestWhatHit(testRay);
+        }
     }
     private void TestWhatHit(Ray ray)
     {
