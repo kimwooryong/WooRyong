@@ -6,7 +6,6 @@ public class PlayerDie : MonoBehaviour
 {
     private GameManager gameManager;
     private Transform firstSpawnPosition;
-    private UIManager uiManager;
     private PlayerCotroller playerCotroller;
     private PlayerStatus player;
 
@@ -17,7 +16,6 @@ public class PlayerDie : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        uiManager = FindObjectOfType<UIManager>();
         playerCotroller = FindObjectOfType<PlayerCotroller>();
         player = FindObjectOfType<PlayerStatus>();
         if (gameManager != null)

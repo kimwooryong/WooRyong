@@ -42,7 +42,7 @@ public class TitleManager : MonoBehaviour
 
     void ONStartButtonClick()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("TestScene");
     }
     void OnOptionButtonClick()
     {
