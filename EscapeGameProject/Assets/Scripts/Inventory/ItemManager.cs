@@ -85,6 +85,22 @@ public class ItemManager : MonoBehaviour
         playerQuickSlot.InitializeInventory();
         OpenInventory += HideTooltip;
     }
+    public void ResetWhenPlayerDie()
+    {
+        FoodParentHand = GameObject.Find("FoodOnHand");
+        GameObject goPlayer = GameObject.FindGameObjectWithTag("Player");
+        if(goPlayer != null )
+        {
+            Debug.Log("플레이어 없음");
+        }
+        playerStatus = goPlayer.GetComponent<PlayerStatus>();
+        GameObject goCamera = GameObject.Find("PlayerCamera");
+        if(goCamera != null)
+        {
+            Debug.Log("카메라 없음");
+        }
+        cameraLook = goCamera.GetComponent<CameraLook>();
+    }
     //ID로 값 전체 받아오기
     public Dictionary<string, object> ReadItemData(int itemID)
     {
