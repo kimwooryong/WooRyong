@@ -157,10 +157,10 @@ public class PlayerCotroller : MonoBehaviour
         move *= inputManager.inputMaster.Movement.Run.ReadValue<float>() == 0 ? speed : runSpeed;
 
         rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
-
+        bool isJumping = _isJump;
         if (right > 0 || forward > 0)
         {
-            if (!_isPlayingFootstep && _isSprint == false && _isJump == false) // footstep을 재생 중이 아닐 때만 실행
+            if (!_isPlayingFootstep && _isSprint == false && !isJumping) // footstep을 재생 중이 아닐 때만 실행
             {
                 StartCoroutine(PlayFootstep()); // footstep 재생 코루틴 시작
             }
@@ -592,11 +592,13 @@ public class PlayerCotroller : MonoBehaviour
     {
         float sprintValue = inputManager.inputMaster.Movement.Run.ReadValue<float>();
         _isSprint = sprintValue > 0.0f;
+
+        bool isJumping = _isJump;
         if (_isSprint)
         {
             m_Animator.SetFloat("Speed_f", 2f); // Speed_f 값을 변경
 
-            if (!_isPlayingRun && _isJump == false) // 뛰는 소리를 재생 중이 아닐 때만 실행
+            if (!_isPlayingRun && !isJumping) // 뛰는 소리를 재생 중이 아닐 때만 실행
             {
                 StartCoroutine(PlayRunSound()); // 뛰는 소리 재생 코루틴 시작
             }
