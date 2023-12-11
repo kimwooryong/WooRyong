@@ -27,11 +27,7 @@ public class QuickSlot : ItemSlot
 
     private void Start()
     {
-        //음식이라면
-        if (itemType == eItemType.Food)
-        {
-            healingAmount = (int)itemDataAll[eItemKeyColumns.HealingAmount.ToString()];
-        }
+
         GameObject goPlayer = GameObject.Find("Player");
         if (goPlayer != null) 
         {
@@ -73,6 +69,13 @@ public class QuickSlot : ItemSlot
             InitializeSlot();
             return;
         }
+
+        //음식이라면
+        if (itemType == eItemType.Food)
+        {
+            healingAmount = (int)itemDataAll[eItemKeyColumns.HealingAmount.ToString()];
+        }
+
     }
     public void SetSelect()
     {
@@ -148,13 +151,14 @@ public class QuickSlot : ItemSlot
     public override void EatFood()
     {
         //이 슬롯에 있는 음식 아이템 사용
+        Debug.Log($"작동, {itemType}, {healingAmount}");
         SoundManager.Instance.PlayPlayerEatFood();
+        ItemManager.Instance.playerStatus.AddHunger(healingAmount);
         PlusItemAmount(-1);
         if(itemAmount <= 0)
         {
             ItemManager.Instance.SetFoodOnHand(0);
         }
-        ItemManager.Instance.playerStatus.AddHunger(healingAmount);
     }
 
     //오버라이드로 안쓰기
