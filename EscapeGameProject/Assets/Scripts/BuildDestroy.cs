@@ -22,6 +22,7 @@ public class BuildDestroy : MonoBehaviour
         {
             mainCamera = Camera.main;
         }
+        else
         PerformRaycast();
     }
 
