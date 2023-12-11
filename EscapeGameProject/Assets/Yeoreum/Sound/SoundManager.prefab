@@ -79,6 +79,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 675c492bbdb3045f2992a45fb1487389, type: 3}
   - {fileID: 8300000, guid: f30a91a851d014e3996e70398f43f825, type: 3}
   - {fileID: 8300000, guid: 5e76747f6eef747bfa1fb2cc135904b8, type: 3}
-  - {fileID: 8300000, guid: 5e76747f6eef747bfa1fb2cc135904b8, type: 3}
+  - {fileID: 8300000, guid: 67d61c9727f9c42438d518160bfa0007, type: 3}
   playerVolume: 0.7
   selectedClipName: None
