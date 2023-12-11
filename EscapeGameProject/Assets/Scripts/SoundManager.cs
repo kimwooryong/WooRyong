@@ -174,12 +174,6 @@ public class SoundManager : MonoBehaviour
         PlaySound(sfxPlayer, sfxClips, "GrowlsAnimal");
     }
 
-    // 동물이 걷는 소리
-    //public void PlayAnimalWalking()
-    //{
-    //    PlaySound(sfxPlayer, sfxClips, "animalWalking"); // x
-    //}
-
     // 불 지피는 소리 
     public void PlayCampfire()
     {
@@ -310,6 +304,12 @@ public class SoundManager : MonoBehaviour
     public void PlayPlayerAttackRock()
     {
         PlaySound(playerPlayer, playerClips, "AttackRock");   
+    }
+
+    // 무기로 동물 가격
+    public void PlayPlayerAttackAnimals()
+    {
+        PlaySound(playerPlayer, playerClips, "AttackAnimals");
     }
 
     // 공격 미스
