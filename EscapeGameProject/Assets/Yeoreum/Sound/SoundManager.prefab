@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &149089113706304698
 MonoBehaviour:
@@ -73,12 +73,12 @@ MonoBehaviour:
   uiVolume: 3
   playerClips:
   - {fileID: 8300000, guid: 199a320b1785645e3a1fa8fcda697979, type: 3}
-  - {fileID: 8300000, guid: fc1c3c643a44446f9a23b607ca37be26, type: 3}
+  - {fileID: 8300000, guid: eebc1100794c947cd8d0dad9141b493f, type: 3}
   - {fileID: 8300000, guid: 24f3bec699137466194f55ef308b4069, type: 3}
   - {fileID: 8300000, guid: 6e546cc8d956b4890ac384914f93120c, type: 3}
   - {fileID: 8300000, guid: 675c492bbdb3045f2992a45fb1487389, type: 3}
   - {fileID: 8300000, guid: f30a91a851d014e3996e70398f43f825, type: 3}
   - {fileID: 8300000, guid: 5e76747f6eef747bfa1fb2cc135904b8, type: 3}
-  - {fileID: 8300000, guid: 67d61c9727f9c42438d518160bfa0007, type: 3}
+  - {fileID: 8300000, guid: cc4d190c081784992a89d3a271cb9671, type: 3}
   playerVolume: 0.7
   selectedClipName: None

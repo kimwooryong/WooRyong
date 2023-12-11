@@ -110553,6 +110553,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1819757250}
     m_Modifications:
+    - target: {fileID: 149089113706304698, guid: 74f08ef78ed494af68519d05321bbbbb,
+        type: 3}
+      propertyPath: playerClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: eebc1100794c947cd8d0dad9141b493f, type: 3}
     - target: {fileID: 2066414018853612251, guid: 74f08ef78ed494af68519d05321bbbbb,
         type: 3}
       propertyPath: m_Name
