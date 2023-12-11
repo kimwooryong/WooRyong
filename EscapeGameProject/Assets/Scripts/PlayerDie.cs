@@ -51,7 +51,7 @@ public class PlayerDie : MonoBehaviour
             yield return null;
         }
 
-        Destroy(player.gameObject);
+        player.gameObject.SetActive(false);
         panelCanvasGroup.alpha = 0f;
         panelCanvasGroup.gameObject.SetActive(false);
 

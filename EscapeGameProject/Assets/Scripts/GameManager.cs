@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject playerPrefab;
     public Transform spawnPlace;
+    private PlayerStatus player;
 
     public bool isCaveEnter = false;
 
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-
+        player = FindObjectOfType<PlayerStatus>();
     }
 
     private void Update()
@@ -36,7 +37,14 @@ public class GameManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        Instantiate(playerPrefab, spawnPlace.position, spawnPlace.rotation);
+        player.rb.isKinematic = false;
+        player.gameObject.SetActive(true);
+        player.playerCurrentHp = 100;
+        player.theCurrentStateOfHunger = 100;
+        player.transform.position = spawnPlace.position;
+        player.transform.rotation = spawnPlace.rotation;
+        //Instantiate(playerPrefab, spawnPlace.position, spawnPlace.rotation);
+        //ItemManager.Instance.ResetWhenPlayerDie();
     }
 
     public void SetSpawnPoint(Transform newSpawnPoint)
