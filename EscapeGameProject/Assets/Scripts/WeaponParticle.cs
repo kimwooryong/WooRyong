@@ -77,7 +77,7 @@ public class WeaponParticle : MonoBehaviour
                 if (boxCollider != null)
                 {
                     int beforeHp = animal.currentHp;
-                    SoundManager.Instance.PlayPlayerAttackTree(); // 다른 소리로 바꾸자
+                    SoundManager.Instance.PlayPlayerAttackAnimals(); // 다른 소리로 바꾸자
                     animal.isHit = true;
                     animal.TakeDamage(player.animalDamage);
                     if (animal.currentHp != beforeHp)

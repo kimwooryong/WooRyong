@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine;  
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +14,7 @@ public class TitleManager : MonoBehaviour
     {
         startButton.GetComponent<Button>().onClick.AddListener(ONStartButtonClick);
         endButton.GetComponent<Button>().onClick.AddListener(OnExitButtonClick);
+
     }
 
     void Update()
