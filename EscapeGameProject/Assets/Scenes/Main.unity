@@ -4367,6 +4367,11 @@ PrefabInstance:
       propertyPath: miniMap
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4968613185874125212, guid: 1ba43efeda1fd7741bb203819adbc900,
+        type: 3}
+      propertyPath: playerClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3300c8e4f4ef24298bf4248a97c6979e, type: 3}
     - target: {fileID: 7486661350929848575, guid: 1ba43efeda1fd7741bb203819adbc900,
         type: 3}
       propertyPath: m_RootOrder
