@@ -36,6 +36,8 @@ public class PlayerStatus : MonoBehaviour
     public bool attackHungerDamageCheck = false;
     public bool attackHungerCheck = false;
 
+    public GameObject bloodPost;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -142,6 +144,7 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerCurrentHp -= damage;
+        StartCoroutine(Blood());
         if(playerCurrentHp <= 0)
         {
             playerCurrentHp = 0;
@@ -267,6 +270,12 @@ public class PlayerStatus : MonoBehaviour
         {
             theCurrentStateOfHunger = 100;
         }
+    }
+    IEnumerator Blood()
+    {
+        bloodPost.SetActive(true);       
+        yield return new WaitForSecondsRealtime(0.8f);
+        bloodPost.SetActive(false);
     }
     
 }
