@@ -39,7 +39,7 @@ public class MovieScene : MonoBehaviour
 
     IEnumerator SceneSkip()
     {
-        yield return new WaitForSecondsRealtime(132);
+        yield return new WaitForSecondsRealtime(138);
         {
             isFading = true;
 

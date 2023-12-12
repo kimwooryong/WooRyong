@@ -9799,14 +9799,14 @@ MonoBehaviour:
     obstaclePrefab: {fileID: 6194846869780483608, guid: b29944395365f4d44a88ef97744b3ecb,
       type: 3}
     spawnPos: {x: 30, y: 0, z: 130}
-    startDelay: 5
+    startDelay: 8
     repeatRate: 5
     isChangeWave: 0
   - spawnName: "\uC624\uB978\uCABD \uBD80\uD45C"
     obstaclePrefab: {fileID: 6194846869780483608, guid: b29944395365f4d44a88ef97744b3ecb,
       type: 3}
     spawnPos: {x: -30, y: 0, z: 130}
-    startDelay: 5
+    startDelay: 8
     repeatRate: 5
     isChangeWave: 0
   - spawnName: "\uD1A0\uB124\uC774\uB3C4"
