@@ -868,6 +868,7 @@ GameObject:
   - component: {fileID: 727044215322950513}
   - component: {fileID: 1109840786582905690}
   - component: {fileID: 4105841547340395773}
+  - component: {fileID: 7349003585883363017}
   m_Layer: 0
   m_Name: calf
   m_TagString: Animal
@@ -946,6 +947,7 @@ MonoBehaviour:
   isHit: 0
   isDie: 0
   dieTime: 1
+  recognitionCollider: {fileID: 1109840786582905690}
 --- !u!54 &5392470082242897492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1033,6 +1035,29 @@ MonoBehaviour:
   - {fileID: 5025040443983621328, guid: 703290c47bf80b04787c89f9989f3028, type: 3}
   minDropCount: 4
   maxDropCount: 4
+--- !u!136 &7349003585883363017
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887716965108339866}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45941162
+  m_Height: 1.4667664
+  m_Direction: 2
+  m_Center: {x: 0.0035095215, y: 0.40869188, z: 0.12162781}
 --- !u!1 &3934560565235326010
 GameObject:
   m_ObjectHideFlags: 0

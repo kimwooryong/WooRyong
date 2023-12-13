@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 4487344268662112558}
   - component: {fileID: 7323487964402345428}
   - component: {fileID: 5418439139433067676}
+  - component: {fileID: 3281024757137384277}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Animal
@@ -260,11 +261,12 @@ MonoBehaviour:
   coneAngle: 60
   rayCount: 7
   isIdleStateChangeRunning: 0
-  currentHp: 20
-  maxHp: 20
+  currentHp: 60
+  maxHp: 60
   isHit: 0
   isDie: 0
   dieTime: 1
+  recognitionCollider: {fileID: 4487344268662112558}
 --- !u!65 &8924035378638451717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -352,6 +354,29 @@ MonoBehaviour:
   - {fileID: 5025040443983621328, guid: 703290c47bf80b04787c89f9989f3028, type: 3}
   minDropCount: 8
   maxDropCount: 9
+--- !u!136 &3281024757137384277
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914806452919722965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.91396403
+  m_Height: 3.2688713
+  m_Direction: 2
+  m_Center: {x: 0.0311625, y: 0.7385458, z: 0.29512024}
 --- !u!1 &1298265028668788979
 GameObject:
   m_ObjectHideFlags: 0

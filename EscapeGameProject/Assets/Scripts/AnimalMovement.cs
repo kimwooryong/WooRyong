@@ -50,6 +50,7 @@ public class AnimalMovement : MonoBehaviour
     public float dieTime = 1.0f;
 
     private BoxCollider boxCollider;
+    public CapsuleCollider recognitionCollider;
 
     private AnimalAttack animalAttack;
 
@@ -134,6 +135,7 @@ public class AnimalMovement : MonoBehaviour
                     else if (distanceToPlayer >= 20)
                     {
                         isPlayerCheck = false;
+                        recognitionCollider.enabled = true;
                     }
                 }
 
@@ -151,6 +153,7 @@ public class AnimalMovement : MonoBehaviour
                     if (distanceToPlayer >= 20)
                     {
                         isPlayerCheck = false;
+                        recognitionCollider.enabled = true;
                     }
                 }
             }
@@ -185,6 +188,7 @@ public class AnimalMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerCheck = true;
+            recognitionCollider.enabled = false;
             
         }
     }

@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 8458123841114158988}
   - component: {fileID: 1298055204982149731}
   - component: {fileID: 7815604609386225284}
+  - component: {fileID: 4954905636368168961}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Animal
@@ -730,6 +731,7 @@ MonoBehaviour:
   isHit: 0
   isDie: 0
   dieTime: 1
+  recognitionCollider: {fileID: 8458123841114158988}
 --- !u!65 &8983768748837974204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -817,6 +819,29 @@ MonoBehaviour:
   - {fileID: 5025040443983621328, guid: 703290c47bf80b04787c89f9989f3028, type: 3}
   minDropCount: 2
   maxDropCount: 3
+--- !u!136 &4954905636368168961
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2705382774451182363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.50429916
+  m_Height: 1.2678919
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.3424549, z: 0}
 --- !u!1 &2841849267067434167
 GameObject:
   m_ObjectHideFlags: 0
