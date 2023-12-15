@@ -144,7 +144,10 @@ public class PlayerStatus : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerCurrentHp -= damage;
+        if(playerCurrentHp > 0)
+        {
         StartCoroutine(Blood());
+        }
         if(playerCurrentHp <= 0)
         {
             playerCurrentHp = 0;

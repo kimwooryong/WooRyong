@@ -17,7 +17,20 @@ public class SavePoint : MonoBehaviour
 
     private void Awake()
     {
+        if (panelCanvasGroup == null)
+        {
+            GameObject panelObject = GameObject.Find("Canvas_Dark");
+            if (panelObject != null)
+            {
+                panelCanvasGroup = panelObject.GetComponent<CanvasGroup>();
+            }
+            else
+            {
+                Debug.Log("Panel Canvas Group을 찾을 수 없습니다!");
+            }
+        }
         panelCanvasGroup.gameObject.SetActive(false);
+
     }
 
     private void Start()
@@ -31,7 +44,9 @@ public class SavePoint : MonoBehaviour
         {
             firstSpawnPosition = gameManager.spawnPlace.transform;
         }
+
     }
+
 
     private void Update()
     {
