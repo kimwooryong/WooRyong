@@ -12,14 +12,28 @@ public class CaveEntrance : MonoBehaviour
     public GameObject invisibleWall;
 
     private DayNightCycle dayNightCycle;
-    private Quaternion savedRotation;
-    private float savedFog;
+    public CaveLight caveLight;
 
     private GameManager gameManager;
 
     [HideInInspector]
     public float newIntensityMultiplier = 1.0f;
 
+    private void Awake()
+    {
+        if (caveLight == null)
+        {
+            CaveLight[] caveLights = GameObject.FindObjectsOfType<CaveLight>(true);
+
+            if (caveLights.Length > 0)
+            {
+                caveLight = caveLights[0];
+            }
+        }
+
+            caveLight.enabled = false;
+        
+    }
     private void Start()
     {
         dayNightCycle = FindObjectOfType<DayNightCycle>();
@@ -47,6 +61,7 @@ public class CaveEntrance : MonoBehaviour
             RenderSettings.ambientIntensity *= newIntensityMultiplier;
 
             dayNightCycle.gameObject.SetActive(false);
+            caveLight.gameObject.SetActive(true);
 
             if(invisibleWall != null)
             {
@@ -59,6 +74,7 @@ public class CaveEntrance : MonoBehaviour
             newIntensityMultiplier = 1.0f;
             RenderSettings.reflectionIntensity *= newIntensityMultiplier;
             dayNightCycle.gameObject.SetActive(true);
+            caveLight.gameObject.SetActive(false);
         }
     }
 }

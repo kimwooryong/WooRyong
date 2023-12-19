@@ -24,10 +24,6 @@ public class SavePoint : MonoBehaviour
             {
                 panelCanvasGroup = panelObject.GetComponent<CanvasGroup>();
             }
-            else
-            {
-                Debug.Log("Panel Canvas Group을 찾을 수 없습니다!");
-            }
         }
         panelCanvasGroup.gameObject.SetActive(false);
 
